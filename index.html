@@ -1,0 +1,552 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Learning Mastery Protocol</title>
+<meta name="description" content="An evidence-based 12-week training system for learning how to learn: diagnostic, Week 1 plan, spaced repetition, and a progress dashboard.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,500;8..60,600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f7f6f2; --surface:#ffffff; --surface-2:#f0eee8; --text:#1d1d1b; --muted:#5f5d57;
+  --border:#dedbd2; --accent:#2f5d50; --accent-soft:#e1ece7; --warn:#9a5b13; --warn-soft:#f6ead9;
+  --bad:#a33a2c; --bad-soft:#f6e1dd; --good:#2f6b3a; --good-soft:#e2efe2;
+  --radius:10px; --shadow:0 1px 2px rgba(0,0,0,.04),0 2px 8px rgba(0,0,0,.04);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#151614; --surface:#1d1f1c; --surface-2:#252824; --text:#ebe9e3; --muted:#a3a19a;
+    --border:#33362f; --accent:#8cc2ad; --accent-soft:#22332c; --warn:#e0a85c; --warn-soft:#3a2d1b;
+    --bad:#e98a7c; --bad-soft:#3b221e; --good:#8fcf98; --good-soft:#1f3322; --shadow:none;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#151614; --surface:#1d1f1c; --surface-2:#252824; --text:#ebe9e3; --muted:#a3a19a;
+  --border:#33362f; --accent:#8cc2ad; --accent-soft:#22332c; --warn:#e0a85c; --warn-soft:#3a2d1b;
+  --bad:#e98a7c; --bad-soft:#3b221e; --good:#8fcf98; --good-soft:#1f3322; --shadow:none;
+}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--bg);color:var(--text);font:16px/1.6 Inter,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+h1,h2,h3{font-family:"Source Serif 4",Georgia,serif;font-weight:600;line-height:1.25;margin:0 0 .5em}
+h1{font-size:clamp(1.8rem,4vw,2.4rem)} h2{font-size:1.5rem;margin-top:1.4em} h3{font-size:1.15rem;margin-top:1.2em}
+p{margin:0 0 1em} a{color:var(--accent)}
+.wrap{max-width:960px;margin:0 auto;padding:0 16px}
+header.top{border-bottom:1px solid var(--border);background:var(--surface)}
+header.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;padding-top:14px;padding-bottom:14px}
+.brand{font-weight:700;letter-spacing:-.01em}
+.brand small{display:block;font-weight:400;color:var(--muted);font-size:.8rem}
+button,.btn{font:inherit;font-size:.92rem;border:1px solid var(--border);background:var(--surface);color:var(--text);border-radius:8px;padding:8px 14px;cursor:pointer}
+button.primary{background:var(--accent);border-color:var(--accent);color:var(--bg);font-weight:600}
+button:hover{border-color:var(--accent)}
+button:disabled{opacity:.5;cursor:not-allowed}
+nav.tabs{position:sticky;top:0;z-index:5;background:var(--bg);border-bottom:1px solid var(--border)}
+nav.tabs .wrap{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none}
+nav.tabs button{border:0;border-bottom:2px solid transparent;border-radius:0;background:none;padding:12px 10px;white-space:nowrap;color:var(--muted)}
+nav.tabs button[aria-selected="true"]{color:var(--text);border-bottom-color:var(--accent);font-weight:600}
+main{padding:28px 0 80px}
+section.panel{display:none} section.panel.active{display:block}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:20px;margin:0 0 16px;box-shadow:var(--shadow)}
+.lede{font-size:1.08rem;color:var(--muted);max-width:68ch}
+.grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
+.tag{display:inline-block;font-size:.72rem;font-weight:600;text-transform:uppercase;letter-spacing:.05em;padding:2px 8px;border-radius:99px}
+.t-strong{background:var(--good-soft);color:var(--good)} .t-mixed{background:var(--warn-soft);color:var(--warn)} .t-myth{background:var(--bad-soft);color:var(--bad)}
+.muted{color:var(--muted)} .small{font-size:.88rem}
+dl.wh{display:grid;grid-template-columns:110px 1fr;gap:6px 14px;margin:10px 0 0}
+dl.wh dt{font-weight:600;color:var(--muted);font-size:.85rem;padding-top:2px}
+dl.wh dd{margin:0}
+@media (max-width:560px){dl.wh{grid-template-columns:1fr} dl.wh dt{padding-top:8px}}
+details{border:1px solid var(--border);border-radius:var(--radius);background:var(--surface);margin:0 0 10px}
+details summary{cursor:pointer;padding:14px 18px;font-weight:600;list-style:none}
+details summary::-webkit-details-marker{display:none}
+details summary::before{content:"+";display:inline-block;width:1.2em;color:var(--accent)}
+details[open] summary::before{content:"–"}
+details .body{padding:0 18px 16px}
+.callout{border-left:3px solid var(--accent);background:var(--accent-soft);padding:12px 16px;border-radius:0 8px 8px 0;margin:0 0 16px}
+.callout.warn{border-color:var(--warn);background:var(--warn-soft)}
+label{display:block;font-weight:500;margin:12px 0 6px}
+input[type=text],input[type=number],textarea,select{width:100%;font:inherit;padding:9px 12px;border:1px solid var(--border);border-radius:8px;background:var(--surface);color:var(--text)}
+textarea{min-height:140px;resize:vertical}
+.opts label{font-weight:400;display:flex;gap:10px;align-items:flex-start;padding:8px 10px;border:1px solid var(--border);border-radius:8px;margin:6px 0;cursor:pointer}
+.opts label:hover{border-color:var(--accent)}
+.opts input{margin-top:5px}
+.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.progress{height:6px;background:var(--surface-2);border-radius:99px;overflow:hidden;margin:8px 0 16px}
+.progress>i{display:block;height:100%;background:var(--accent);transition:width .3s}
+.stat{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:16px}
+.stat b{display:block;font-size:1.7rem;font-family:"Source Serif 4",serif}
+.stat span{color:var(--muted);font-size:.85rem}
+table{width:100%;border-collapse:collapse;font-size:.92rem}
+th,td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--border);vertical-align:top}
+th{font-weight:600;color:var(--muted);font-size:.8rem;text-transform:uppercase;letter-spacing:.04em}
+.tablewrap{overflow-x:auto}
+.day{display:grid;grid-template-columns:72px 1fr;gap:16px}
+.day .dn{font-family:"Source Serif 4",serif;font-size:1.3rem;font-weight:600;color:var(--accent)}
+.day .dn small{display:block;font-family:Inter,sans-serif;font-size:.78rem;color:var(--muted);font-weight:500}
+@media (max-width:560px){.day{grid-template-columns:1fr;gap:4px}}
+.block{border-top:1px dashed var(--border);padding-top:10px;margin-top:10px}
+.block:first-child{border-top:0;padding-top:0;margin-top:0}
+.phase{border-left:4px solid var(--accent);padding-left:16px}
+.passage{font-family:"Source Serif 4",Georgia,serif;font-size:1.06rem;line-height:1.75;background:var(--surface-2);padding:18px 20px;border-radius:8px}
+.idea{display:flex;gap:10px;align-items:flex-start;padding:6px 0;border-bottom:1px solid var(--border)}
+.idea:last-child{border:0}
+.flash{min-height:150px;display:flex;align-items:center;justify-content:center;text-align:center;font-size:1.15rem;padding:24px;background:var(--surface-2);border-radius:8px;margin:12px 0}
+svg text{fill:var(--muted);font:12px Inter,sans-serif}
+.hidden{display:none!important}
+footer{border-top:1px solid var(--border);padding:24px 0;color:var(--muted);font-size:.85rem}
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <div class="brand">Learning Mastery Protocol<small>12-week, evidence-based training in learning how to learn</small></div>
+  <button id="themeBtn" aria-label="Toggle theme">Theme</button>
+</div></header>
+
+<nav class="tabs" aria-label="Sections"><div class="wrap" role="tablist" id="tablist">
+  <button role="tab" data-tab="start">Start here</button>
+  <button role="tab" data-tab="diagnostic">1 · Diagnostic</button>
+  <button role="tab" data-tab="exercise">2 · First exercise</button>
+  <button role="tab" data-tab="week1">3 · Week 1</button>
+  <button role="tab" data-tab="review">Review queue</button>
+  <button role="tab" data-tab="dashboard">Dashboard</button>
+  <button role="tab" data-tab="roadmap">12-week roadmap</button>
+  <button role="tab" data-tab="principles">Principles</button>
+  <button role="tab" data-tab="science">How learning works</button>
+</div></nav>
+
+<main><div class="wrap">
+
+<!-- START -->
+<section class="panel" id="start">
+  <h1>Train how you learn, then measure it</h1>
+  <p class="lede">This site is your training system. The aim isn't to study harder. It's to swap low-yield habits (rereading, highlighting, cramming) for methods that research supports, and to check with data whether they're working for you.</p>
+
+  <div class="callout warn"><b>An honest promise.</b> Nobody can guarantee "10x learning" or a top-1% ranking. What you can expect from consistent retrieval practice and spacing is reliably better long-term retention than rereading, often by a large margin on delayed tests. Your dashboard will show whether that's happening for you.</div>
+
+  <h2>Your path</h2>
+  <div class="grid">
+    <div class="card"><h3>1 · Intake & diagnostic</h3><p class="small">Tell the system about your habits and time, then take a 12-question test that also measures your <i>calibration</i>, meaning how well your confidence predicts your accuracy.</p><button data-go="diagnostic">Begin</button></div>
+    <div class="card"><h3>2 · First exercise</h3><p class="small">Read a short passage once, predict your score, then free-recall it. This sets your baseline for retention at days 1, 3, 7 and 30.</p><button data-go="exercise">Open</button></div>
+    <div class="card"><h3>3 · Week 1 plan</h3><p class="small">Seven days of 30–60 minute sessions. For each activity you get what to do, how, why it works, and how to measure it.</p><button data-go="week1">View</button></div>
+  </div>
+
+  <h2>Your profile</h2>
+  <div class="card" id="intakeCard">
+    <p class="muted small">Answer honestly. Your answers adjust session length and flag your main obstacles.</p>
+    <label for="inTime">Minutes per day you can reliably protect for focused study</label>
+    <select id="inTime"><option value="30">About 30</option><option value="45" selected>About 45</option><option value="60">About 60</option><option value="90">90 or more</option></select>
+    <label>Which of these do you currently do? (tick all that apply)</label>
+    <div class="opts" id="habits"></div>
+    <label for="inGoal">What subject will you apply the system to in Phase 3 (weeks 7–9)?</label>
+    <input type="text" id="inGoal" placeholder="e.g. statistics, Python, organic chemistry, a language">
+    <div class="row" style="margin-top:14px"><button class="primary" id="saveIntake">Save profile and find obstacles</button></div>
+  </div>
+  <div id="obstacles"></div>
+</section>
+
+<!-- DIAGNOSTIC -->
+<section class="panel" id="diagnostic">
+  <h1>Diagnostic assessment</h1>
+  <p class="lede">12 questions about how learning works. For each one, pick an answer <i>and</i> rate your confidence. The point isn't only your score. You'll also see whether your confidence was accurate. Answer first; explanations come after.</p>
+  <div id="diagArea"></div>
+</section>
+
+<!-- EXERCISE -->
+<section class="panel" id="exercise">
+  <h1>Exercise 1: Baseline free recall</h1>
+  <p class="lede">This measures how much you keep from a single careful reading, which is what most people rely on. You'll retest the same material at days 1, 3, 7 and 30 to build your forgetting curve.</p>
+  <div id="exArea"></div>
+</section>
+
+<!-- WEEK 1 -->
+<section class="panel" id="week1">
+  <h1>Week 1: Foundations and baseline</h1>
+  <p class="lede" id="w1lede"></p>
+  <div id="w1days"></div>
+</section>
+
+<!-- REVIEW -->
+<section class="panel" id="review">
+  <h1>Review queue</h1>
+  <p class="lede">Spaced repetition with adaptive intervals. Write each card as a <b>question</b> you must answer from memory, not a fact to reread. When you get a card right, its interval grows (1 → 3 → 7 → 16 → 35 days…). When you miss it, the interval resets to 1.</p>
+  <div class="card">
+    <div class="row" style="justify-content:space-between"><b id="dueCount"></b><button class="primary" id="startReview">Start review</button></div>
+    <div id="reviewBox" class="hidden">
+      <div class="small muted" id="rvMeta"></div>
+      <div class="flash" id="rvFront"></div>
+      <div id="rvAnswerWrap" class="hidden"><div class="flash" id="rvBack" style="background:var(--accent-soft)"></div></div>
+      <div class="row" id="rvBtns"></div>
+    </div>
+  </div>
+  <div class="card">
+    <h3 style="margin-top:0">Add a card</h3>
+    <label for="cFront">Question (cue)</label><input type="text" id="cFront" placeholder="Why does retrieval practice beat rereading?">
+    <label for="cBack">Answer</label><textarea id="cBack" style="min-height:80px"></textarea>
+    <div class="row" style="margin-top:10px"><button class="primary" id="addCard">Add card</button><span class="small muted">Starter cards on the course material are already loaded.</span></div>
+  </div>
+  <details><summary>All cards</summary><div class="body tablewrap"><table id="cardTable"></table></div></details>
+</section>
+
+<!-- DASHBOARD -->
+<section class="panel" id="dashboard">
+  <h1>Progress dashboard</h1>
+  <p class="lede">Judge progress by these numbers, not by how a session felt. Fluent, easy sessions often produce less durable learning. Data is saved in this browser only; use Export to back it up or move it to another device.</p>
+  <div class="grid" id="stats"></div>
+  <div class="card"><h3 style="margin-top:0">Retention curve: Exercise 1</h3><div id="curve"></div></div>
+  <div class="card"><h3 style="margin-top:0">Calibration: predicted vs actual</h3><p class="small muted">Before each test, write down your predicted score. A gap near 0 means good calibration. A large positive gap means overconfidence, which is the usual "illusion of competence."</p><div id="calib"></div></div>
+  <div class="card">
+    <h3 style="margin-top:0">Log a session</h3>
+    <div class="grid">
+      <div><label for="lgMin">Focused minutes</label><input type="number" id="lgMin" min="1" value="45"></div>
+      <div><label for="lgType">Type</label><select id="lgType"><option>Retrieval / review</option><option>New material</option><option>Feynman explanation</option><option>Problem practice</option><option>Weekly assessment</option></select></div>
+      <div><label for="lgPred">Predicted score %</label><input type="number" id="lgPred" min="0" max="100" placeholder="optional"></div>
+      <div><label for="lgAct">Actual score %</label><input type="number" id="lgAct" min="0" max="100" placeholder="optional"></div>
+    </div>
+    <label for="lgNote">What worked / what didn't</label><input type="text" id="lgNote">
+    <div class="row" style="margin-top:10px"><button class="primary" id="addLog">Save session</button></div>
+  </div>
+  <details><summary>Session log</summary><div class="body tablewrap"><table id="logTable"></table></div></details>
+  <div class="row"><button id="exportBtn">Export data</button><label class="btn" style="margin:0;font-weight:400">Import data<input type="file" id="importFile" accept="application/json" class="hidden"></label><button id="resetBtn">Reset everything</button></div>
+</section>
+
+<!-- ROADMAP -->
+<section class="panel" id="roadmap">
+  <h1>12-week mastery roadmap</h1>
+  <p class="lede">Four phases. You move on when you meet the <b>gate</b> criteria, not just because the calendar says so. Missing a gate means repeating the weakest week, which is normal and expected.</p>
+  <div id="phases"></div>
+</section>
+
+<!-- PRINCIPLES -->
+<section class="panel" id="principles">
+  <h1>Core principles and the evidence behind them</h1>
+  <p class="lede">Each method is graded by how well the research supports it. <span class="tag t-strong">Strong</span> means replicated across many labs and real classrooms. <span class="tag t-mixed">Promising</span> means it works under some conditions or the evidence is thinner. <span class="tag t-myth">Myth</span> means it's popular but unsupported or refuted.</p>
+  <div id="principleList"></div>
+  <h2>Popular myths to drop</h2>
+  <div id="mythList"></div>
+</section>
+
+<!-- SCIENCE -->
+<section class="panel" id="science">
+  <h1>How learning actually works</h1>
+  <p class="lede">Each topic opens with an analogy, then gives the technical version. Read one per day in Week 1, then <b>close the page and explain it aloud</b> before you move on.</p>
+  <div id="sciList"></div>
+</section>
+
+</div></main>
+<footer><div class="wrap">Built as a personal training system. Progress data stays in your browser (localStorage). Research basis includes Dunlosky et al. (2013), Roediger &amp; Karpicke (2006), Cepeda et al. (2006, 2008), Rohrer &amp; Taylor (2007), Sweller's cognitive load theory, Ericsson's deliberate practice, and Bjork's desirable difficulties.</div></footer>
+
+<script>
+/* ---------- storage ---------- */
+const KEY='lmp-v1';
+const blank=()=>({intake:null,diag:null,ex:{reads:[]},cards:[],logs:[],theme:null});
+let S=blank();
+try{const raw=localStorage.getItem(KEY); if(raw) S=Object.assign(blank(),JSON.parse(raw));}catch(e){}
+const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}};
+const $=s=>document.querySelector(s), el=(t,a={},h='')=>{const e=document.createElement(t);Object.assign(e,a);if(h)e.innerHTML=h;return e};
+const today=()=>{const d=new Date();d.setHours(0,0,0,0);return d.getTime()};
+const DAY=864e5;
+const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+
+/* ---------- theme ---------- */
+if(S.theme) document.documentElement.dataset.theme=S.theme;
+$('#themeBtn').onclick=()=>{const dark=matchMedia('(prefers-color-scheme: dark)').matches;
+  const cur=document.documentElement.dataset.theme||(dark?'dark':'light');
+  S.theme=cur==='dark'?'light':'dark';document.documentElement.dataset.theme=S.theme;save();};
+
+/* ---------- tabs ---------- */
+function show(id){document.querySelectorAll('.panel').forEach(p=>p.classList.toggle('active',p.id===id));
+  document.querySelectorAll('[data-tab]').forEach(b=>b.setAttribute('aria-selected',b.dataset.tab===id));
+  try{localStorage.setItem(KEY+'-tab',id)}catch(e){}
+  if(id==='dashboard')renderDash(); if(id==='review')renderReview(); window.scrollTo(0,0);}
+document.querySelectorAll('[data-tab]').forEach(b=>b.onclick=()=>show(b.dataset.tab));
+document.addEventListener('click',e=>{const g=e.target.closest('[data-go]');if(g)show(g.dataset.go)});
+
+/* ---------- intake & obstacles ---------- */
+const HABITS=[
+ ['reread','I mainly reread notes or textbooks to study'],
+ ['highlight','I highlight or underline heavily'],
+ ['cram','I study mostly in the last days before a deadline/exam'],
+ ['phone','My phone or notifications are within reach while studying'],
+ ['tutorial','I follow tutorials/videos and feel I understand, but struggle alone'],
+ ['blocked','I practice one problem type at a time until it feels easy'],
+ ['nocheck','I rarely test myself before the real test'],
+ ['sleep','I often sleep under 7 hours or study late into the night'],
+ ['flashcards','I already use flashcards or self-quizzing'],
+ ['explain','I explain material to others or out loud'],
+];
+const OBST={
+ reread:['Passive review creates an illusion of competence','Rereading makes material <i>familiar</i>, and familiarity feels like knowing. On delayed tests, rereading consistently loses to retrieval practice. Fix: close the source and recall before you reread anything.'],
+ highlight:['Highlighting replaces processing with marking','Dunlosky et al. (2013) rated highlighting "low utility." It decides what matters without making you encode it. Fix: replace highlights with questions written in the margin, then answer them from memory later.'],
+ cram:['Massed study, which helps the exam and hurts retention','Cramming can carry you through tomorrow\'s test, but forgetting is steep afterward. Spacing the same total time across days is among the most robust findings in memory research. Fix: the review queue and a fixed daily slot.'],
+ phone:['Attention leaks from a phone within reach','Each check costs refocusing time, and a visible phone may also draw on attention (evidence on the "mere presence" effect is mixed, but removing it costs nothing). Fix: phone in another room for every session.'],
+ tutorial:['Tutorial dependence: recognition mistaken for skill','Following a solution uses recognition. Producing one uses recall and problem-solving, which are different abilities. Fix: after each worked example, close it and redo the problem from a blank page.'],
+ blocked:['Blocked practice hides the hardest skill, which is choosing the method','When every problem is the same type, you never practice recognizing <i>which</i> type it is. Fix: interleave once you can solve each type alone.'],
+ nocheck:['No feedback loop, so you can\'t tell what you know','Without self-testing, your confidence goes unchecked. Fix: predict, test, compare, and log the gap on the dashboard.'],
+ sleep:['Under-slept consolidation','Sleep supports memory consolidation, and sleep loss impairs attention and encoding the next day. Fix: protect 7–9 hours and stop heavy study about an hour before bed.'],
+};
+const ORDER=['reread','tutorial','cram','nocheck','highlight','blocked','phone','sleep'];
+const hb=$('#habits');
+HABITS.forEach(([k,t])=>hb.append(el('label',{},`<input type="checkbox" value="${k}"><span>${t}</span>`)));
+function loadIntake(){if(!S.intake)return;$('#inTime').value=S.intake.time;$('#inGoal').value=S.intake.goal||'';
+  hb.querySelectorAll('input').forEach(i=>i.checked=S.intake.habits.includes(i.value));renderObstacles();}
+$('#saveIntake').onclick=()=>{S.intake={time:+$('#inTime').value,goal:$('#inGoal').value.trim(),habits:[...hb.querySelectorAll('input:checked')].map(i=>i.value),date:Date.now()};save();renderObstacles();renderWeek1();};
+function renderObstacles(){const box=$('#obstacles');box.innerHTML='';if(!S.intake)return;
+  let picks=ORDER.filter(k=>S.intake.habits.includes(k));
+  if(S.diag&&S.diag.gap>15&&!picks.includes('nocheck'))picks.unshift('nocheck');
+  if(picks.length<3)['nocheck','cram','reread'].forEach(k=>{if(picks.length<3&&!picks.includes(k))picks.push(k)});
+  picks=picks.slice(0,3);
+  const strengths=[];if(S.intake.habits.includes('flashcards'))strengths.push('you already self-test');if(S.intake.habits.includes('explain'))strengths.push('you already explain material aloud');
+  box.append(el('h2',{},'Your three biggest obstacles'));
+  if(strengths.length)box.append(el('p',{className:'muted'},'Strengths to build on: '+strengths.join('; ')+'.'));
+  picks.forEach((k,i)=>box.append(el('div',{className:'card'},`<h3 style="margin-top:0">${i+1}. ${OBST[k][0]}</h3><p style="margin:0">${OBST[k][1]}</p>`)));
+  if(!S.intake.habits.some(h=>ORDER.includes(h)))box.append(el('p',{className:'small muted'},'You reported no common problem habits, so these are the defaults most learners need to fix. Your diagnostic calibration will tell us whether your self-report is accurate.'));
+}
+
+/* ---------- diagnostic ---------- */
+const DQ=[
+ {q:'A student has 3 hours to prepare for an exam in one week. Which plan will most likely give the best score on a test given a <i>month</i> later?',o:['3 hours the night before','1 hour on each of 3 separate days','3 hours today, then nothing','Rereading notes for 3 hours spread out'],a:1,e:'Spacing: the same time spread across sessions beats massed study for delayed retention. Option D is spaced but passive. Spaced <i>retrieval</i> would beat it.'},
+ {q:'After reading a chapter, which activity best improves retention a week later?',o:['Rereading it','Highlighting key points','Closing the book and writing down everything you remember','Making a neat summary while looking at the text'],a:2,e:'The testing effect (Roediger & Karpicke 2006): free recall beats rereading on delayed tests, even when it gives less exposure time and feels less productive.'},
+ {q:'Material feels easy and familiar while you review it. This most reliably indicates that…',o:['You have mastered it','You can recall it without cues','You recognize it, which may not mean you can recall or use it','You should study it more slowly'],a:2,e:'Fluency and recognition are weak signals of recall. This is the classic illusion of competence. Test with no cues before you trust the feeling.'},
+ {q:'"Learning styles" (matching teaching to visual/auditory/kinesthetic preference) improves learning outcomes…',o:['Strongly, in many studies','Only for visual learners','There is no good evidence that matching improves outcomes','Only in children'],a:2,e:'Pashler et al. (2008) found no adequate evidence for the meshing hypothesis. People have preferences, but matching instruction to them doesn\'t improve learning. The content should decide the format.'},
+ {q:'You\'re learning 4 types of math problems. Which practice schedule leads to better performance on a later mixed test?',o:['All of type A, then B, then C, then D','Mixed order (A, C, B, D, B, A…)','Only the hardest type','It makes no difference'],a:1,e:'Interleaving (Rohrer & Taylor 2007) forces you to pick the right strategy each time. It feels harder and practice scores are lower, but delayed test scores are often much higher.'},
+ {q:'Working memory can actively hold roughly how many new, unrelated chunks?',o:['About 4 (give or take)','About 20','About 50','Unlimited if motivated'],a:0,e:'Cowan (2001) estimates about 4 chunks. Miller\'s classic "7±2" overestimated it. This limit is why chunking and reducing extraneous load matter.'},
+ {q:'Which is the best description of a "desirable difficulty"?',o:['Any task that feels hard','A challenge that slows practice but improves long-term retention or transfer','Studying while tired','Using a confusing textbook'],a:1,e:'Bjork: spacing, retrieval, interleaving and variation slow apparent progress but build durable learning. Difficulty that you can\'t overcome, or that\'s irrelevant (like a bad textbook), is just undesirable.'},
+ {q:'Why does explaining a concept in plain language (Feynman technique) help?',o:['Simple words are easier to memorize','It forces you to generate connections and exposes gaps you didn\'t know about','It reduces study time','It works only for science'],a:1,e:'It\'s a form of self-explanation and generation. Where your explanation stalls or turns vague, you\'ve found a gap that rereading would have hidden.'},
+ {q:'A complete novice in a domain usually learns problem-solving best by…',o:['Solving hard problems with no guidance','Studying worked examples, then gradually fading the support','Watching experts without practicing','Memorizing the formulas only'],a:1,e:'The worked-example effect: novices have no schemas, so unguided search overloads working memory. As expertise grows, the benefit reverses (the expertise-reversal effect) and independent problem solving becomes better.'},
+ {q:'Sleep after learning mainly…',o:['Has no effect on memory','Helps consolidate and stabilize new memories','Erases recent learning','Only matters for children'],a:1,e:'Sleep supports consolidation. Hippocampal replay during slow-wave sleep is the leading account. Cutting sleep to study more is usually a bad trade.'},
+ {q:'Experts solve problems in their field faster mainly because they…',o:['Have more working memory capacity','Have higher IQ','Have large, organized knowledge structures that let them see patterns and chunk information','Think faster in general'],a:2,e:'Chase & Simon\'s chess studies: experts recall real board positions far better than novices, but not random ones. Their advantage is domain-specific organized knowledge, not raw capacity.'},
+ {q:'You got a flashcard right after seeing it 30 seconds ago. What does that best predict?',o:['You will remember it in a month','Little about long-term retention; it was still in short-term memory','You can delete the card','You understand the concept'],a:1,e:'Immediate success measures what\'s still active in working memory. Only retrieval after a delay predicts long-term retention, which is why spacing intervals matter.'},
+];
+const CONF=[['25','Guessing'],['50','Unsure'],['75','Fairly sure'],['95','Certain']];
+let dIdx=0,dAns=[];
+function renderDiag(){const A=$('#diagArea');A.innerHTML='';
+  if(S.diag){return renderDiagResult(A)}
+  if(dIdx>=DQ.length){const correct=dAns.filter((x,i)=>x.c===DQ[i].a).length;const conf=dAns.reduce((s,x)=>s+x.f,0)/DQ.length;
+    const acc=correct/DQ.length*100;S.diag={answers:dAns,score:Math.round(acc),conf:Math.round(conf),gap:Math.round(conf-acc),date:Date.now()};save();renderObstacles();return renderDiag();}
+  const Q=DQ[dIdx];
+  A.append(el('div',{className:'progress'},`<i style="width:${dIdx/DQ.length*100}%"></i>`));
+  const c=el('div',{className:'card'},`<p class="small muted">Question ${dIdx+1} of ${DQ.length}</p><p style="font-size:1.05rem">${Q.q}</p><div class="opts">${Q.o.map((o,i)=>`<label><input type="radio" name="dq" value="${i}"><span>${o}</span></label>`).join('')}</div>
+   <label>How confident are you?</label><div class="row">${CONF.map(([v,t])=>`<label style="font-weight:400;margin:0;display:flex;gap:6px;align-items:center"><input type="radio" name="dc" value="${v}">${t} (${v}%)</label>`).join('')}</div>
+   <div class="row" style="margin-top:16px"><button class="primary" id="dNext">Lock in answer</button></div>`);
+  A.append(c);
+  $('#dNext').onclick=()=>{const a=c.querySelector('input[name=dq]:checked'),f=c.querySelector('input[name=dc]:checked');
+    if(!a||!f){alert('Choose an answer and a confidence level.');return}
+    dAns.push({c:+a.value,f:+f.value});dIdx++;renderDiag();};
+}
+function renderDiagResult(A){const d=S.diag;
+  let verdict=d.gap>15?'<b>Overconfident.</b> Your confidence ran well ahead of your accuracy. This is the most common pattern and the main thing Week 1 targets: you\'ll start predicting before every test.':d.gap<-15?'<b>Underconfident.</b> You know more than you think. Trust retrieval results over feelings, and log your predictions so you can see the pattern.':'<b>Well calibrated.</b> Your confidence tracked your accuracy closely. Keep checking that this holds on harder material.';
+  A.innerHTML=`<div class="grid"><div class="stat"><b>${d.score}%</b><span>Accuracy</span></div><div class="stat"><b>${d.conf}%</b><span>Average confidence</span></div><div class="stat"><b>${d.gap>0?'+':''}${d.gap}</b><span>Calibration gap (confidence − accuracy)</span></div></div>
+  <div class="callout" style="margin-top:16px">${verdict}</div>
+  <h2>Review every answer</h2><p class="muted small">Don't just read the explanations. For each question you missed, write one sentence on <i>why</i> the right answer is right, then add it as a card in the Review queue.</p>`;
+  DQ.forEach((Q,i)=>{const x=d.answers[i],ok=x.c===Q.a;
+    A.append(el('details',{},`<summary>${ok?'✓':'✗'} Q${i+1} <span class="muted small">· you: ${esc(Q.o[x.c].replace(/<[^>]+>/g,''))} · ${x.f}% sure</span></summary><div class="body"><p>${Q.q}</p><p><b>Answer:</b> ${Q.o[Q.a]}</p><p class="muted">${Q.e}</p></div>`));});
+  const r=el('button',{},'Retake diagnostic (do this at week 3 and week 12)');r.onclick=()=>{if(confirm('Clear your current diagnostic result? Export your data first if you want to keep it.')){S.diag=null;dIdx=0;dAns=[];save();renderDiag();}};
+  A.append(r);
+}
+
+/* ---------- exercise 1 ---------- */
+const PASSAGE=`<p>In 1885, Hermann Ebbinghaus memorized lists of nonsense syllables and tested himself after different delays. He found that forgetting is fastest right after learning and then slows down. This pattern is now called the <b>forgetting curve</b>. He also found that relearning forgotten material takes less time than learning it the first time, a measure he called <b>savings</b>.</p>
+<p>A century later, researchers asked what slows the curve. Two answers stand out. The first is <b>spacing</b>. When study sessions are spread over time rather than packed together, memories last longer, and the best gap between sessions grows the longer you need to remember something. The second is <b>retrieval practice</b>. In a 2006 study by Roediger and Karpicke, students who read a passage once and then practiced recalling it remembered much more a week later than students who spent the same time rereading. Yet the rereaders <b>predicted</b> they would do better.</p>
+<p>That mismatch matters. Rereading produces <b>fluency</b>, a feeling of ease that learners mistake for knowledge. Retrieval feels harder and produces more errors in the moment, but the effort of reconstructing a memory strengthens it and makes it easier to find again. Psychologist Robert Bjork calls such productive struggles <b>desirable difficulties</b>. They are desirable only if the learner can eventually succeed: a difficulty you cannot overcome teaches nothing.</p>`;
+const IDEAS=['Ebbinghaus (1885) studied his own memory with nonsense syllables','Forgetting is fastest right after learning, then slows (forgetting curve)','Relearning is faster than original learning ("savings")','Spacing study sessions over time improves retention','The best spacing gap grows with how long you need to retain','Retrieval practice was compared to rereading (Roediger & Karpicke, 2006)','Retrieval group remembered more after a week','Both groups had the same study time','Rereaders predicted they would do better (overconfidence)','Rereading creates fluency, which is mistaken for knowledge','Retrieval is effortful, and the effort strengthens memory','Desirable difficulties (Bjork) only help if the learner can eventually succeed'];
+const RETEST=[1,3,7,30];
+let exStage='intro',exT0=0;
+function renderEx(){const A=$('#exArea');A.innerHTML='';const r=S.ex.reads;
+  const base=r.find(x=>x.day===0);
+  if(base&&exStage!=='recall'&&exStage!=='score'){ // show schedule
+    A.innerHTML=`<div class="card"><h3 style="margin-top:0">Baseline recorded: ${base.score}/12 idea units (predicted ${base.pred}/12)</h3><p class="small muted">Recorded ${new Date(base.date).toLocaleDateString()}. Don't reread the passage. Retests are free recall from memory only.</p><div class="tablewrap"><table><tr><th>Retest</th><th>Due</th><th>Result</th></tr>${RETEST.map(d=>{const due=new Date(new Date(base.date).setHours(0,0,0,0)+d*DAY);const done=r.find(x=>x.day===d);const isDue=!done&&today()>=due.getTime();
+      return `<tr><td>Day ${d}</td><td>${due.toLocaleDateString()}</td><td>${done?`${done.score}/12 (pred ${done.pred})`:isDue?`<button class="primary" data-retest="${d}">Take now</button>`:'<span class="muted">not yet</span>'}</td></tr>`}).join('')}</table></div></div>
+      <div class="callout"><b>What to notice.</b> The day 1 and day 3 results show your natural forgetting after a single read. From Week 2 on you'll learn new passages with retrieval and spacing, and compare their curves against this one. That comparison is your personal evidence that the method works, or that it doesn't.</div>`;
+    A.querySelectorAll('[data-retest]').forEach(b=>b.onclick=()=>{exStage='recall';exRecall(+b.dataset.retest)});
+    return;}
+  if(exStage==='intro'){A.innerHTML=`<div class="card"><h3 style="margin-top:0">Instructions</h3><ol><li>Phone in another room. Set aside 15 minutes.</li><li>Read the passage <b>once</b>, carefully, at your normal pace. No notes.</li><li>Predict how many of its 12 key ideas you'll recall.</li><li>Write everything you remember on a blank page in the box.</li><li>Score yourself honestly against the idea list.</li></ol><button class="primary" id="exGo">I'm ready. Show the passage</button></div>`;
+    $('#exGo').onclick=()=>{exStage='read';exT0=Date.now();renderEx()};return;}
+  if(exStage==='read'){A.innerHTML=`<div class="card"><div class="passage">${PASSAGE}</div><div class="row" style="margin-top:16px"><button class="primary" id="exDone">Done reading. Hide it</button></div></div>`;
+    $('#exDone').onclick=()=>{exStage='recall';exRecall(0)};return;}
+}
+function exRecall(day){const A=$('#exArea');
+  A.innerHTML=`<div class="card"><h3 style="margin-top:0">${day?`Day ${day} retest`:'Free recall'}</h3><label for="exPred">Prediction: how many of the 12 key ideas will you recall? (0–12)</label><input type="number" id="exPred" min="0" max="12">
+  <label for="exText">Write everything you remember. Don't look anything up. Full sentences or fragments both count.</label><textarea id="exText" style="min-height:220px"></textarea>
+  <div class="row" style="margin-top:12px"><button class="primary" id="exScore">Finished. Score my recall</button></div></div>`;
+  $('#exScore').onclick=()=>{const p=$('#exPred').value;if(p===''){alert('Make a prediction first. Calibration is part of the exercise.');return}
+    const txt=$('#exText').value;exStage='score';
+    A.innerHTML=`<div class="card"><h3 style="margin-top:0">Score yourself</h3><p class="small muted">Tick an idea only if your text contains it, even in other words. Be strict: "something about spacing" doesn't count for the specific idea about gaps growing.</p><div class="passage small" style="white-space:pre-wrap;margin-bottom:14px">${esc(txt)||'<i>(empty)</i>'}</div>${IDEAS.map((t,i)=>`<label class="idea" style="font-weight:400;margin:0"><input type="checkbox" value="${i}"><span>${t}</span></label>`).join('')}
+    <div class="row" style="margin-top:14px"><button class="primary" id="exSave">Save result</button></div></div>`;
+    $('#exSave').onclick=()=>{const sc=A.querySelectorAll('input:checked').length;
+      S.ex.reads=S.ex.reads.filter(x=>x.day!==day);S.ex.reads.push({day,score:sc,pred:+p,date:Date.now(),text:txt});
+      S.logs.push({date:Date.now(),min:day?5:15,type:'Weekly assessment',pred:Math.round(+p/12*100),act:Math.round(sc/12*100),note:`Exercise 1 ${day?'day '+day+' retest':'baseline'}`});
+      save();exStage='done';renderEx();
+      const msg=sc-(+p);A.prepend(el('div',{className:'callout'},`You recalled <b>${sc}/12</b> and predicted ${p}. ${msg<0?'You overestimated by '+(-msg)+'. Rereading-style confidence tends to do this.':msg>0?'You underestimated by '+msg+'.':'Perfect calibration.'} ${day===0?'<br><b>Next step:</b> Open the Review queue and turn the ideas you <i>missed</i> into question cards. Write them yourself, and don\'t copy the list wording.':''}`));};
+  };
+}
+
+/* ---------- week 1 ---------- */
+function renderWeek1(){const t=S.intake?.time||45;const f=t/45;const m=n=>Math.max(5,Math.round(n*f/5)*5);
+  $('#w1lede').innerHTML=`Built for about <b>${t} minutes/day</b>${S.intake?'':' (default; fill in your profile under Start here to adjust)'}. The goals for this week: establish your baseline, start the daily retrieval habit, and learn the core model of memory. Each block lists what to do, how, why it works, and how to measure success.`;
+  const D=[
+   ['Mon','Baseline',[
+     ['Diagnostic + profile',10,'Complete the intake and the 12-question diagnostic with confidence ratings.','Answer before looking anything up. Pick honest confidence levels.','You can\'t improve what you haven\'t measured. Calibration is the core metacognitive skill.','Diagnostic recorded; calibration gap noted.'],
+     ['Exercise 1: free recall',15,'Read the forgetting-curve passage once, predict, recall, score.','Phone away. One reading only. Score strictly.','This is your untrained baseline, the curve every later technique gets compared against.','Score and prediction saved; retests scheduled.'],
+     ['Make your first cards',m(15),'Turn each diagnostic miss and each missed idea unit into a question card.','One idea per card. Ask "why" or "how", not just "what". Write it in your own words.','Writing questions is itself elaborative processing, and the cards become your spaced retrieval system.','At least 8 cards in the queue.']]],
+   ['Tue','Memory model',[
+     ['Review queue',m(10),'Do all due cards.','Answer out loud or in writing <i>before</i> you flip. Grade honestly.','Retrieval after a delay is what strengthens memory, and the delay is what makes it effortful.','Percent correct logged.'],
+     ['Exercise 1, day 1 retest',5,'Free recall the passage, no rereading.','Same procedure as Monday.','Measures your 24-hour forgetting.','Score vs baseline.'],
+     ['Study: working memory and cognitive load',m(15),'Read the two topics in "How learning works".','Read one, close it, and write a 3-sentence summary from memory. Then check it.','Turns reading into a read → recall → check loop.','Summary covers the key points without peeking.'],
+     ['Feynman pass',m(10),'Explain "why working memory limits learning" as if to a 12-year-old.','Record yourself or write it out. Circle anything vague or any jargon.','Generation exposes gaps that recognition hides.','Number of gaps found, each turned into a card.']]],
+   ['Wed','Retrieval mechanics',[
+     ['Review queue',m(10),'All due cards.','As Tuesday.','Spacing plus retrieval.','% correct.'],
+     ['Study: encoding, consolidation, forgetting',m(15),'Read the topic, then do a blank-page brain dump.','Draw the chain: encode → consolidate → retrieve → reconsolidate.','Building a structure (chunking) is easier to retain than a list.','Diagram reproduced from memory with ≥80% of links.'],
+     ['Pre-testing drill',m(10),'Before you read tomorrow\'s topic, write answers to its title as questions: "What does sleep do for memory?"','Guess even if you have no idea.','The pretesting effect: trying to answer first, even wrongly, improves later learning of the answer.','Predictions written; compare tomorrow.']]],
+   ['Thu','Exercise 1 day 3, Attention',[
+     ['Review queue',m(10),'All due cards.','As before.','',''],
+     ['Exercise 1, day 3 retest',5,'Free recall.','No peeking.','Charts your forgetting curve.','Score logged.'],
+     ['Study: attention, sleep and recovery',m(15),'Read the topic, check yesterday\'s pre-test guesses.','Note which guesses were wrong. Those corrections tend to stick.','Errors corrected with feedback are well remembered (the hypercorrection effect, for confident errors).','Corrections written as cards.'],
+     ['Focus audit',m(5),'Set a timer for a 25-min block. Tally each urge to switch tasks.','Don\'t act on the urge, just mark it.','Self-monitoring is the first step in executive control.','Urge count (lower it over the following weeks).']]],
+   ['Fri','Interleaving taste',[
+     ['Mixed review',m(15),'Shuffle all cards regardless of due date and answer 15.','Before each answer, name which principle it belongs to (spacing, retrieval, load…).','Interleaving trains you to discriminate between concepts, not just recall them.','% correct, and % of categories named correctly.'],
+     ['Study: recognition vs recall vs mastery',m(15),'Read the topic.','Then write one example from your own life of each level.','Self-generated examples force transfer.','Three examples that fit the definitions.'],
+     ['Weekly reflection',5,'In the dashboard log, note what felt productive vs what scored well.','Compare feelings against numbers.','Builds the habit of trusting data over fluency.','Entry written.']]],
+   ['Sat','Weekly assessment',[
+     ['Week 1 test',m(20),'Without notes, write answers: (1) Why does rereading feel effective? (2) Design a 2-week plan for 50 vocab words using spacing. (3) Explain cognitive load to a friend. (4) Predict your score first.','Grade against the "How learning works" and "Principles" pages afterward.','A cumulative test of comprehension (1, 3) and application (2).','Score per question; prediction gap; target ≥70%.'],
+     ['Plan adjustment',m(10),'Look at the dashboard. Which card categories fail most?','Write those topics into next week\'s Tuesday study slot.','Deliberate practice targets weaknesses, not comfortable material.','Two named weak spots.']]],
+   ['Sun','Recovery',[
+     ['Rest',0,'No structured study. Walk, exercise, sleep well.','Optional: a 5-minute review queue if cards are due, and nothing more.','Consolidation happens between sessions, and burnout ruins consistency, which matters more than intensity.','You start Monday wanting to study.']]],
+  ];
+  const box=$('#w1days');box.innerHTML='';
+  D.forEach(([d,theme,blocks])=>{const tot=blocks.reduce((s,b)=>s+b[1],0);
+    box.append(el('div',{className:'card day'},`<div class="dn">${d}<small>${theme}${tot?' · '+tot+' min':''}</small></div><div>${blocks.map(([n,mn,what,how,why,meas])=>`<div class="block"><b>${n}</b>${mn?` <span class="muted small">${mn} min</span>`:''}<dl class="wh"><dt>What</dt><dd>${what}</dd><dt>How</dt><dd>${how}</dd>${why?`<dt>Why it works</dt><dd>${why}</dd>`:''}${meas?`<dt>Success</dt><dd>${meas}</dd>`:''}</dl></div>`).join('')}</div>`));});
+}
+
+/* ---------- spaced repetition ---------- */
+const STARTER=[
+ ['What is the testing effect?','Retrieving information from memory strengthens it more than restudying it, especially on delayed tests.'],
+ ['Why does rereading feel effective even though it isn\'t?','It produces fluency and familiarity (recognition), which we mistake for being able to recall and use the material.'],
+ ['What is the spacing effect?','Distributing study over separated sessions produces better long-term retention than massing the same time together.'],
+ ['Roughly how many chunks can working memory hold?','About 4 (Cowan, 2001).'],
+ ['What makes a difficulty "desirable"?','It slows apparent progress but improves long-term retention or transfer, and the learner can still succeed.'],
+ ['Why does interleaving help?','Mixing problem types forces you to choose the strategy, building discrimination. Blocked practice hides that step.'],
+ ['When is a worked example better than solving a problem alone?','For novices. Without schemas, unguided search overloads working memory. The benefit reverses as expertise grows.'],
+ ['Is there evidence that matching teaching to "learning styles" helps?','No. Preferences exist, but meshing instruction to them doesn\'t improve outcomes (Pashler et al., 2008).'],
+];
+if(!S.cards.length){S.cards=STARTER.map(([f,b],i)=>({id:Date.now()+i,f,b,ivl:0,due:today(),reps:0,lapses:0,hist:[]}));save();}
+const nextIvl=c=>c.ivl===0?1:c.ivl===1?3:Math.round(c.ivl*(c.lapses>2?1.8:2.3));
+let queue=[],cur=null,rvStats={ok:0,n:0};
+function renderReview(){const due=S.cards.filter(c=>c.due<=today());$('#dueCount').textContent=`${due.length} card${due.length===1?'':'s'} due today · ${S.cards.length} total`;
+  $('#startReview').disabled=!due.length;
+  const t=$('#cardTable');t.innerHTML='<tr><th>Question</th><th>Interval</th><th>Next due</th><th></th></tr>'+S.cards.map(c=>`<tr><td>${esc(c.f)}</td><td>${c.ivl}d</td><td>${new Date(c.due).toLocaleDateString()}</td><td><button data-del="${c.id}" class="small">Delete</button></td></tr>`).join('');
+  t.querySelectorAll('[data-del]').forEach(b=>b.onclick=()=>{if(confirm('Delete this card?')){S.cards=S.cards.filter(c=>c.id!=b.dataset.del);save();renderReview();}});}
+$('#startReview').onclick=()=>{queue=S.cards.filter(c=>c.due<=today()).sort(()=>Math.random()-.5);rvStats={ok:0,n:0,t0:Date.now()};$('#reviewBox').classList.remove('hidden');nextCard();};
+function nextCard(){cur=queue.shift();$('#rvAnswerWrap').classList.add('hidden');const B=$('#rvBtns');B.innerHTML='';
+  if(!cur){$('#rvFront').innerHTML=`Done. ${rvStats.ok}/${rvStats.n} correct (${rvStats.n?Math.round(rvStats.ok/rvStats.n*100):0}%).`;$('#rvMeta').textContent='';
+    if(rvStats.n){S.logs.push({date:Date.now(),min:Math.max(1,Math.round((Date.now()-rvStats.t0)/6e4)),type:'Retrieval / review',act:Math.round(rvStats.ok/rvStats.n*100),note:`Review queue, ${rvStats.n} cards`});save();}
+    renderReview();return;}
+  $('#rvMeta').textContent=`${queue.length} left after this · current interval ${cur.ivl}d`;$('#rvFront').textContent=cur.f;
+  const s=el('button',{className:'primary'},'Show answer (after you answered from memory)');s.onclick=()=>{$('#rvBack').textContent=cur.b;$('#rvAnswerWrap').classList.remove('hidden');B.innerHTML='';
+    const miss=el('button',{},'Missed it'),hard=el('button',{},'Got it, with effort'),easy=el('button',{className:'primary'},'Got it, easily');
+    miss.onclick=()=>grade(0);hard.onclick=()=>grade(1);easy.onclick=()=>grade(2);B.append(miss,hard,easy);};
+  B.append(s);}
+function grade(g){rvStats.n++;if(g)rvStats.ok++;
+  if(g===0){cur.lapses++;cur.ivl=1;}else{let n=nextIvl(cur);if(g===1)n=Math.max(1,Math.round(n*.7));cur.ivl=n;}
+  cur.reps++;cur.hist.push({d:Date.now(),g});cur.due=today()+cur.ivl*DAY;save();nextCard();}
+$('#addCard').onclick=()=>{const f=$('#cFront').value.trim(),b=$('#cBack').value.trim();if(!f||!b)return;
+  S.cards.push({id:Date.now(),f,b,ivl:0,due:today(),reps:0,lapses:0,hist:[]});save();$('#cFront').value='';$('#cBack').value='';renderReview();};
+
+/* ---------- dashboard ---------- */
+function renderDash(){const L=S.logs;const mins=L.reduce((s,x)=>s+(+x.min||0),0);
+  const cal=L.filter(x=>x.pred!=null&&x.pred!==''&&x.act!=null&&x.act!=='');
+  const gap=cal.length?Math.round(cal.reduce((s,x)=>s+(x.pred-x.act),0)/cal.length):null;
+  const reviews=S.cards.flatMap(c=>c.hist);const late=S.cards.flatMap(c=>c.hist.filter((h,i)=>i>0));
+  const ret=late.length?Math.round(late.filter(h=>h.g>0).length/late.length*100):null;
+  const days=new Set(L.map(x=>new Date(x.date).toDateString())).size;
+  const mature=S.cards.filter(c=>c.ivl>=21).length;
+  $('#stats').innerHTML=[[Math.round(mins/6)/10+'h','Focused study logged'],[days,'Days studied'],[ret==null?'–':ret+'%','Retention on spaced reviews'],[gap==null?'–':(gap>0?'+':'')+gap,'Avg calibration gap (pts)'],[mature,'Mature cards (≥21-day interval)'],[mins?Math.round(mature/(mins/60)*10)/10:'–','Mature cards per study hour']].map(([b,s])=>`<div class="stat"><b>${b}</b><span>${s}</span></div>`).join('');
+  // curve
+  const r=S.ex.reads.slice().sort((a,b)=>a.day-b.day);const C=$('#curve');
+  if(!r.length){C.innerHTML='<p class="muted small">Complete Exercise 1 to start your curve.</p>'}else{
+    const W=600,H=220,px=d=>50+Math.log(d+1)/Math.log(31)*(W-70),py=v=>H-30-v/12*(H-50);
+    const pts=r.map(x=>`${px(x.day)},${py(x.score)}`).join(' ');
+    C.innerHTML=`<svg viewBox="0 0 ${W} ${H}" width="100%" role="img" aria-label="Recall score by day"><line x1="50" y1="${H-30}" x2="${W-20}" y2="${H-30}" stroke="var(--border)"/>${[0,6,12].map(v=>`<line x1="50" x2="${W-20}" y1="${py(v)}" y2="${py(v)}" stroke="var(--border)" stroke-dasharray="3 4"/><text x="40" y="${py(v)+4}" text-anchor="end">${v}</text>`).join('')}${[0,1,3,7,30].map(d=>`<text x="${px(d)}" y="${H-10}" text-anchor="middle">day ${d}</text>`).join('')}<polyline points="${pts}" fill="none" stroke="var(--accent)" stroke-width="2.5"/>${r.map(x=>`<circle cx="${px(x.day)}" cy="${py(x.score)}" r="5" fill="var(--accent)"><title>Day ${x.day}: ${x.score}/12</title></circle><circle cx="${px(x.day)}" cy="${py(x.pred)}" r="4" fill="none" stroke="var(--warn)" stroke-width="2"><title>Predicted ${x.pred}/12</title></circle>`).join('')}</svg><p class="small muted">Filled dots show your actual recall (out of 12). Hollow orange dots show what you predicted.</p>`;}
+  // calibration
+  const K=$('#calib');if(!cal.length&&!S.diag){K.innerHTML='<p class="muted small">Enter predicted and actual scores when you log sessions.</p>'}else{
+    const rows=(S.diag?[{date:S.diag.date,note:'Diagnostic',pred:S.diag.conf,act:S.diag.score}]:[]).concat(cal);
+    K.innerHTML='<div class="tablewrap"><table><tr><th>Date</th><th>Test</th><th>Predicted</th><th>Actual</th><th>Gap</th></tr>'+rows.map(x=>`<tr><td>${new Date(x.date).toLocaleDateString()}</td><td>${esc(x.note||x.type)}</td><td>${x.pred}%</td><td>${x.act}%</td><td>${x.pred-x.act>0?'+':''}${x.pred-x.act}</td></tr>`).join('')+'</table></div>';}
+  $('#logTable').innerHTML='<tr><th>Date</th><th>Type</th><th>Min</th><th>Pred</th><th>Actual</th><th>Notes</th></tr>'+L.slice().reverse().map(x=>`<tr><td>${new Date(x.date).toLocaleDateString()}</td><td>${esc(x.type)}</td><td>${x.min}</td><td>${x.pred??''}</td><td>${x.act??''}</td><td>${esc(x.note)}</td></tr>`).join('');
+}
+$('#addLog').onclick=()=>{const v=id=>$(id).value;S.logs.push({date:Date.now(),min:+v('#lgMin')||0,type:v('#lgType'),pred:v('#lgPred')===''?null:+v('#lgPred'),act:v('#lgAct')===''?null:+v('#lgAct'),note:v('#lgNote')});save();['#lgPred','#lgAct','#lgNote'].forEach(i=>$(i).value='');renderDash();};
+$('#exportBtn').onclick=()=>{const a=el('a',{href:URL.createObjectURL(new Blob([JSON.stringify(S,null,1)],{type:'application/json'})),download:'learning-mastery-data.json'});a.click();};
+$('#importFile').onchange=e=>{const f=e.target.files[0];if(!f)return;f.text().then(t=>{try{S=Object.assign(blank(),JSON.parse(t));save();location.reload()}catch(err){alert('Could not read that file.')}})};
+$('#resetBtn').onclick=()=>{if(confirm('Erase all progress in this browser? This cannot be undone.')){S=blank();save();location.reload();}};
+
+/* ---------- roadmap ---------- */
+const PH=[
+ ['Phase 1 · Foundations','Weeks 1–3',
+  'Understand memory, attention and metacognition. Establish your baseline and a daily retrieval habit.',
+  ['W1: diagnostic, Exercise 1 baseline, memory model (see Week 1 tab)','W2: learn a new 12-idea passage with retrieval + spacing, and compare its curve to Exercise 1. Daily focus blocks with an urge tally.','W3: learn a 1,500-word technical article. Write one Feynman explanation per day. Practice error analysis: classify each miss as knowledge gap, misconception, or careless.'],
+  'Retake the diagnostic at the end of W3. Exercise 1 at day 7 and day 30. Weekly cumulative test.',
+  'Review queue done on ≥6 of 7 days for 3 weeks. Diagnostic ≥10/12. Calibration gap within ±15. Week-2 passage day-7 recall clearly above your Exercise 1 day-7 recall.'],
+ ['Phase 2 · Technique mastery','Weeks 4–6',
+  'Use active recall, spacing, interleaving, deliberate practice and Feynman explanations independently, without these prompts.',
+  ['W4: write your own cards for a new topic. Card quality check: one idea, a question form, a "why" question.','W5: interleaving. Pick a subject with ≥3 problem types and solve 30 problems mixed vs 30 blocked, then compare delayed scores.','W6: deliberate practice. Find your 2 weakest sub-skills from logs, then design drills with immediate feedback that get progressively harder.'],
+  'Blind transfer task: given an unfamiliar 2,000-word text, design and run your own 1-week learning plan, then test at day 7.',
+  'Self-designed plan produces ≥70% day-7 recall. ≥90% retention on mature cards. You can explain why each technique works without notes.'],
+ ['Phase 3 · Accelerated application','Weeks 7–9',
+  'Apply the system to a genuinely difficult subject (the one in your profile). Measure speed, retention and independent problem solving.',
+  ['W7: prerequisite map. List what the subject assumes, test yourself on each, and fill gaps first. Worked examples → faded examples → independent problems.','W8: chunking. Build a one-page concept map from memory each week and compare it with an expert source. Interleaved problem sets.','W9: independence. Solve problems without tutorials. Use a hint ladder (re-read the problem → recall a similar one → check notes → look at the solution) and log which rung you needed.'],
+  'Weekly: an unseen problem set (application), novel-context questions (transfer), and day 1/7/30 retention on core cards.',
+  '≥70% on unseen problems without help. Hint-ladder use shifting toward the first two rungs. Calibration gap within ±10.'],
+ ['Phase 4 · Optimization & autonomy','Weeks 10–12',
+  'Find which strategies give you the most durable mastery per hour, drop low-yield habits, and write your personal operating system.',
+  ['W10: A/B test. Learn two comparable chunks with different methods (e.g. Feynman vs flashcards) and compare day-7 results.','W11: transfer. Explain how 3 principles from your Phase 3 subject apply in a different field. Teach a lesson to someone.','W12: write your Learning Operating System: daily routine, card rules, weekly test format, recovery rules, and the evidence for each choice.'],
+  'Retake the diagnostic, final Exercise-style recall test on new material, and a full review of your dashboard trends vs week 1.',
+  'Clear improvement on delayed retention vs week 1 baseline, calibration within ±10, and a written system you have actually run for 2 weeks.'],
+];
+$('#phases').innerHTML=PH.map(([t,w,obj,ex,asmt,gate])=>`<div class="card phase"><p class="small muted" style="margin:0">${w}</p><h2 style="margin-top:.2em">${t}</h2><p><b>Objective.</b> ${obj}</p><b>Exercises</b><ul>${ex.map(x=>`<li>${x}</li>`).join('')}</ul><p><b>Assessment.</b> ${asmt}</p><div class="callout" style="margin:0"><b>Gate to advance:</b> ${gate}</div></div>`).join('');
+
+/* ---------- principles ---------- */
+const PR=[
+ ['Active recall (retrieval practice)','strong','Pull information out of memory instead of putting it in again.','Close the source. Write or say everything you know, or answer questions. Only then check.','Each retrieval strengthens the memory and the routes to it. It also shows you exactly what you don\'t know.','Delayed (≥1 day) recall % vs rereading.'],
+ ['Spaced repetition','strong','Review at expanding intervals, just as you\'re about to forget.','Use the review queue daily. Intervals grow on success and reset on failure.','Effortful retrieval after some forgetting gives a larger gain. The optimal gap scales with how long you need to remember.','Retention on reviews ≥ 85–90%. If it\'s lower, intervals are too long; if it\'s near 100%, they may be too short.'],
+ ['Interleaving','strong','Mix related problem types or concepts within a session.','Only after you can do each type alone. Then shuffle, and name the type before solving.','Trains discrimination: knowing <i>which</i> method applies. Strongest evidence is in math and category learning.','Delayed mixed-test score vs blocked practice.'],
+ ['Worked examples → fading','strong','Novices study solved examples, then progressively complete more steps themselves.','Study an example, cover it, reproduce it, then solve a near-twin, then a far variant.','Reduces load while schemas form (cognitive load theory). Fade the support as skill grows (expertise reversal).','Steps completed without looking.'],
+ ['Feynman technique / self-explanation','mixed','Explain a concept simply, find where you stall, fix it, simplify again.','Write for a smart 12-year-old. Mark jargon and hand-waving as gaps.','Self-explanation and generation have good support. "Feynman" itself is a popular label, not a tested protocol.','Gaps found per explanation, falling over time.'],
+ ['Deliberate practice','mixed','Focused practice on specific weaknesses, with immediate feedback and rising difficulty.','Pick one sub-skill, set a measurable target, get feedback after each attempt.','Clearly beats mindless repetition. But Macnamara et al. (2014) found it explains far less performance variance than once claimed, and other factors matter too.','Error rate on the targeted sub-skill.'],
+ ['Metacognition & calibration','strong','Accurately judging what you know.','Predict your score before every test, compare, and log the gap.','Learners who misjudge their knowledge stop studying too early. Delayed judgments are more accurate than immediate ones.','Calibration gap trending toward 0.'],
+ ['Desirable difficulties','strong','Conditions that slow learning now but improve retention or transfer.','Spacing, retrieval, interleaving, varied practice. Keep success rates reachable, around 70–85%.','Effortful processing makes for durable encoding. Too hard and nothing gets encoded.','Long-term scores rise even when practice feels worse.'],
+ ['Chunking & mental models','strong','Group elements into meaningful units and organize them into structures.','Concept maps from memory. Ask "what is this an instance of?"','Chunks bypass working-memory limits. Organized knowledge is what separates experts from novices.','Can you rebuild the map from memory?'],
+ ['Elaborative interrogation','mixed','Ask "why is this true?" and "how does it connect?"','Turn facts into why-questions on your cards.','Rated moderate utility by Dunlosky et al. Works best when you have some prior knowledge.','Quality of your why-answers.'],
+ ['Pretesting','mixed','Attempt questions before learning the material.','Guess answers to section headings before reading.','Errors followed by feedback improve later learning. The evidence is growing but conditions matter.','Compare pretested vs non-pretested topics.'],
+];
+const lab={strong:['t-strong','Strong'],mixed:['t-mixed','Promising']};
+$('#principleList').innerHTML=PR.map(([n,l,w,h,y,m])=>`<details><summary>${n} <span class="tag ${lab[l][0]}" style="margin-left:6px">${lab[l][1]}</span></summary><div class="body"><dl class="wh"><dt>What</dt><dd>${w}</dd><dt>How</dt><dd>${h}</dd><dt>Why it works</dt><dd>${y}</dd><dt>Measure</dt><dd>${m}</dd></dl></div></details>`).join('');
+const MY=[
+ ['Learning styles (visual/auditory/kinesthetic)','No evidence that matching instruction to a preferred style improves learning. Use the format the content needs: diagrams for spatial ideas, words for arguments.'],
+ ['Rereading and highlighting are effective study','They feel productive but are low-utility. Use them only as a first pass before retrieval.'],
+ ['"We only use 10% of our brain"','False. Imaging shows activity across the whole brain.'],
+ ['Brain-training games make you smarter overall','Gains mostly stay with the trained task. Far transfer to general intelligence is not supported.'],
+ ['Speed reading lets you read 1,000+ wpm with full comprehension','Comprehension falls as speed rises past normal reading rates. Skimming is useful, but it\'s skimming.'],
+ ['The 10,000-hour rule','A popularization. Hours vary hugely by field and person, and the quality of practice matters more than the count.'],
+ ['Multitasking while studying is fine for some people','Task switching has costs for nearly everyone, and heavy multitaskers are often worse at filtering distractions.'],
+];
+$('#mythList').innerHTML=MY.map(([n,t])=>`<details><summary>${n} <span class="tag t-myth" style="margin-left:6px">Myth</span></summary><div class="body"><p style="margin:0">${t}</p></div></details>`).join('');
+
+/* ---------- science ---------- */
+const SC=[
+ ['Working memory and its limits','A workbench that holds only about four items. Anything else falls off the edge.','Working memory holds and manipulates information right now. It holds about 4 chunks (Cowan, 2001) for seconds unless rehearsed (Baddeley\'s model: phonological loop, visuospatial sketchpad, episodic buffer, central executive). It\'s the bottleneck for all new learning. The limit applies to <i>new</i> elements: knowledge in long-term memory can be loaded as a single chunk, which is why experts seem to have bigger workbenches.'],
+ ['Long-term memory and retrieval','A huge library where the problem isn\'t space but finding the book. Every retrieval lays down a better path to the shelf.','Long-term memory capacity is effectively unlimited. Forgetting is mostly retrieval failure plus interference. Bjork\'s "new theory of disuse" separates <b>storage strength</b> (how well learned) from <b>retrieval strength</b> (how accessible now). Retrieving something when retrieval strength is low gives the biggest gain in storage strength, which is the mechanism behind spacing and testing.'],
+ ['Cognitive load theory','Your workbench has three loads: the task itself, clutter, and building the structure. Remove clutter so there\'s room to build.','Sweller distinguishes <b>intrinsic</b> load (element interactivity of the material), <b>extraneous</b> load (from poor presentation: split attention, redundancy, unguided search), and germane processing (schema building). Reduce extraneous load: integrate text with diagrams, use worked examples for novices, and break material into parts. Expertise reversal: supports that help novices become extraneous for experts.'],
+ ['Encoding, consolidation, forgetting','Writing in wet cement: encoding is the writing, consolidation is the setting, forgetting is weathering, and retrieval re-traces the letters.','<b>Encoding</b> depends on depth of processing: meaning beats surface features. <b>Consolidation</b> stabilizes traces over hours to years, with the hippocampus gradually handing memories over to the neocortex. <b>Forgetting</b> follows a roughly power-law curve. <b>Reconsolidation</b>: retrieved memories become briefly modifiable, which allows updating and correction.'],
+ ['Attention and executive control','A spotlight with a dimmer. Wherever it points gets encoded, and everything else barely registers.','Attention is selective and limited. Unattended information is poorly encoded. Executive functions (inhibition, shifting, updating) manage goals against distraction. Task switching costs time and accuracy. Practical rules: one task at a time, remove cues for distraction from the environment, and use blocks short enough to sustain full focus (25–50 min) with real breaks.'],
+ ['Sleep, exercise, recovery','The day is for taking in deliveries. Sleep is the night shift that shelves and organizes them.','Sleep after learning supports consolidation (slow-wave sleep and hippocampal replay for facts, with evidence for REM in some kinds of integration). Sleep deprivation impairs next-day encoding. Aerobic exercise improves mood and attention and is linked to hippocampal health. Its acute effects on learning are real but modest. Rest days protect consistency, which is what compounds.'],
+ ['Recognition vs recall vs mastery','Recognizing a face, recalling a name, and holding a conversation with the person are three different levels.','<b>Recognition</b>: "I\'ve seen this" (multiple choice, rereading). It\'s easy, and it inflates confidence. <b>Recall</b>: producing the information with no cues. <b>Mastery</b>: using it flexibly on new problems and explaining <i>why</i> (application and transfer). Test at the level you need. Most real performance needs recall and above.'],
+ ['How expertise changes processing','Novices see 20 separate letters. Experts see 4 words.','Experts have large, organized, domain-specific knowledge (chunks and schemas), so they perceive meaningful patterns, categorize problems by deep structure rather than surface features (Chi et al., 1981), and work forward from principles. This is mostly domain-specific, so expertise transfers far less than people assume. That\'s why transfer has to be trained deliberately, by comparing examples and stating principles explicitly.'],
+];
+$('#sciList').innerHTML=SC.map(([t,a,d])=>`<details><summary>${t}</summary><div class="body"><p><b>Analogy.</b> ${a}</p><p style="margin:0"><b>Technical.</b> ${d}</p></div></details>`).join('');
+
+/* ---------- init ---------- */
+loadIntake();renderDiag();renderEx();renderWeek1();renderReview();
+let first='start';try{first=localStorage.getItem(KEY+'-tab')||'start'}catch(e){}
+show(document.getElementById(first)?first:'start');
+</script>
+</body>
+</html>
