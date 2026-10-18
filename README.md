@@ -13,6 +13,16 @@ The **My classes** tab has multiple-choice practice for Biology, C++, Discrete M
 
 Modes: Smart mix, Weak topics, My mistakes, Exam simulation.
 
+**Adaptive difficulty:** each topic has its own level (Recall → Understand → Apply). Two correct answers in a row (not marked as guesses) move that topic up a level, and two misses in a row move it back down.
+
+**Analytics** (My classes › Analytics) shows:
+- coverage, accuracy and mastery for every class
+- recommended topics to practice next
+- daily accuracy over the last 30 days
+- accuracy by difficulty level and how often your guesses were right
+- a sortable topic table with status and current level
+- your most-missed questions
+
 To update the questions, edit `classes/*.json` and run `python build_classes.py`. That validates the banks and regenerates `classes/data.js`.
 
 ## What's inside

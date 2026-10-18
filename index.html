@@ -107,6 +107,11 @@ pre.code{background:var(--surface-2);border:1px solid var(--border);border-radiu
 .topicgrid label{font-weight:400;display:flex;gap:8px;align-items:center;margin:4px 0}
 .segs{display:flex;gap:6px;flex-wrap:wrap}
 .segs button[aria-pressed="true"]{border-color:var(--accent);background:var(--accent-soft);font-weight:600}
+.tag.lvl{background:var(--surface-2);color:var(--text);text-transform:none;letter-spacing:0;font-size:.75rem}
+.chart{width:100%;height:auto;display:block}
+.chart .grid line{stroke:var(--border)}
+.chart .hit:hover+.dot,.chart .dot:hover{r:6}
+.weak{color:var(--bad);font-weight:600} .ok{color:var(--good);font-weight:600} .mid{color:var(--warn);font-weight:600}
 footer{border-top:1px solid var(--border);padding:24px 0;color:var(--muted);font-size:.85rem}
 </style>
 </head>
@@ -213,6 +218,7 @@ footer{border-top:1px solid var(--border);padding:24px 0;color:var(--muted);font
 <!-- DASHBOARD -->
 <section class="panel" id="dashboard">
   <h1>Progress dashboard</h1>
+  <div class="callout">Class-by-class analysis (weak topics, coverage, accuracy by difficulty, most-missed questions) is under <a href="#" data-go="classes" onclick="classView='analytics'">My classes › Analytics</a>.</div>
   <p class="lede">Judge progress by these numbers, not by how a session felt. Fluent, easy sessions often produce less durable learning. Data is saved in this browser only; use Export to back it up or move it to another device.</p>
   <div class="grid" id="stats"></div>
   <div class="card"><h3 style="margin-top:0">Retention curve: Exercise 1</h3><div id="curve"></div></div>
@@ -267,7 +273,7 @@ footer{border-top:1px solid var(--border);padding:24px 0;color:var(--muted);font
 <script>
 /* ---------- storage ---------- */
 const KEY='lmp-v1';
-const blank=()=>({intake:null,diag:null,ex:{reads:[]},cards:[],logs:[],theme:null,qs:{},custom:{},pcfg:{}});
+const blank=()=>({intake:null,diag:null,ex:{reads:[]},cards:[],logs:[],theme:null,qs:{},custom:{},pcfg:{},ans:[],tier:{}});
 let S=blank();
 try{const raw=localStorage.getItem(KEY); if(raw) S=Object.assign(blank(),JSON.parse(raw));}catch(e){}
 /* optional auto-backup to a real file on disk (Chrome/Edge File System Access API) */
@@ -586,9 +592,19 @@ const shuffle=a=>{a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.random(
 const allQ=c=>c.questions.concat(S.custom[c.id]||[]);
 const qs=id=>S.qs[id]||(S.qs[id]={n:0,ok:0,box:0,due:0,last:0,miss:0});
 const cfgOf=c=>S.pcfg[c.id]||(S.pcfg[c.id]={mode:'smart',n:20,topics:c.topics.map(t=>t.id)});
-function tStats(c,tid){const Q=allQ(c).filter(q=>q.topic===tid);let seen=0,n=0,ok=0,last=0,m=0,due=0;const now=Date.now();
-  Q.forEach(q=>{const s=S.qs[q.id];if(s&&s.n){seen++;n+=s.n;ok+=s.ok;last=Math.max(last,s.last);m+=Math.min(s.box,4)/4;if(s.due<=now)due++}});
-  return{total:Q.length,seen,acc:n?ok/n:null,last,mastery:Q.length?m/Q.length:0,due};}
+function tStats(c,tid){const Q=allQ(c).filter(q=>q.topic===tid);let seen=0,n=0,ok=0,last=0,m=0,due=0,miss=0;const now=Date.now();
+  Q.forEach(q=>{const s=S.qs[q.id];if(s&&s.n){seen++;n+=s.n;ok+=s.ok;last=Math.max(last,s.last);m+=Math.min(s.box,4)/4;if(s.due<=now)due++;if(s.miss>0&&s.box<3)miss++}});
+  return{total:Q.length,seen,n,acc:n?ok/n:null,last,mastery:Q.length?m/Q.length:0,due,miss};}
+/* adaptive difficulty: each topic has a level (Recall → Understand → Apply).
+   2 correct in a row at or above it → level up; 2 misses in a row at or below it → level down. */
+const LV=['recall','understand','apply'],LVN=['Recall','Understand','Apply'];
+const lvIdx=q=>Math.max(0,LV.indexOf(q.level||'recall'));
+function topicLevels(c,tid){return allQ(c).filter(q=>q.topic===tid).map(lvIdx)}
+function tierOf(c,tid){const T=(S.tier[c.id]=S.tier[c.id]||{});if(!T[tid]){const l=topicLevels(c,tid);T[tid]={lv:l.length?Math.min(...l):0,up:0,down:0}}return T[tid];}
+function updateTier(c,q,ok,guess){const t=tierOf(c,q.topic),ql=lvIdx(q),L=topicLevels(c,q.topic),name=(c.topics.find(x=>x.id===q.topic)||{}).name||q.topic;
+  if(ok&&!guess){t.down=0;if(ql>=t.lv&&++t.up>=2){const nx=L.filter(l=>l>t.lv);t.up=0;if(nx.length){t.lv=Math.min(...nx);return`Level up: ${name} now gives you ${LVN[t.lv]} questions.`}}}
+  else if(!ok){t.up=0;if(ql<=t.lv&&++t.down>=2){const pv=L.filter(l=>l<t.lv);t.down=0;if(pv.length){t.lv=Math.max(...pv);return`${name} steps back to ${LVN[t.lv]} questions to rebuild the foundation.`}}}
+  return'';}
 function priority(q){const s=S.qs[q.id],now=Date.now();
   if(!s||!s.n)return 1;                       // never seen
   if(s.due<=now)return s.box===0?0:2;          // missed & due first, then due reviews
@@ -603,15 +619,21 @@ function buildSession(c,cfg){
     const per={};pool.forEach(q=>(per[q.topic]=per[q.topic]||[]).push(q));
     const out=[];Object.values(per).forEach(a=>out.push(...shuffle(a).slice(0,Math.max(1,Math.round(cfg.n*a.length/pool.length)))));
     return shuffle(out).slice(0,cfg.n);}
-  let tids=topics.slice();
-  if(cfg.mode==='weak')tids=tids.map(t=>[t,tStats(c,t)]).sort((a,b)=>a[1].mastery-b[1].mastery).slice(0,Math.min(3,tids.length)).map(x=>x[0]);
-  // order topics: least mastered and least recently practiced first
+  // smart / weak: adaptive. Questions are picked one at a time (see pickNext) so difficulty follows your answers.
+  const used=new Set(),out=[],tids=topicOrder(c,cfg,topics);let tp=0;
+  while(out.length<cfg.n){const q=pickNext(c,tids,tp,used);if(!q)break;tp=q._tp;out.push(q.q)}
+  return out;}
+function topicOrder(c,cfg,topics){let tids=topics.slice();
+  if(cfg.mode==='weak')tids=tids.map(t=>[t,weakScore(tStats(c,t))]).sort((a,b)=>a[1]-b[1]).slice(0,Math.min(3,tids.length)).map(x=>x[0]);
+  // least mastered and least recently practiced first; round-robin over this order interleaves topics
   const st=Object.fromEntries(tids.map(t=>[t,tStats(c,t)]));
-  tids.sort((a,b)=>(st[a].mastery-st[b].mastery)*2+(st[a].last-st[b].last)/(7*DAY)+(Math.random()-.5)*.2);
-  const queues=Object.fromEntries(tids.map(t=>[t,shuffle(pool.filter(q=>q.topic===t)).sort((a,b)=>priority(a)-priority(b))]));
-  const out=[];let added=true;
-  while(out.length<cfg.n&&added){added=false;for(const t of tids){if(out.length>=cfg.n)break;const q=queues[t].shift();if(q){out.push(q);added=true}}}
-  return out;} // round-robin = interleaved topics, every topic gets its turn
+  return tids.sort((a,b)=>(st[a].mastery-st[b].mastery)*2+(st[a].last-st[b].last)/(7*DAY)+(Math.random()-.5)*.2);}
+const weakScore=s=>s.n<3?0.35+s.mastery*.1:(s.acc*.6+s.mastery*.4); // low = weak; untested topics sit mid-pack
+function pickFrom(c,tid,used){const t=tierOf(c,tid),pool=allQ(c).filter(q=>q.topic===tid&&!used.has(q.id));if(!pool.length)return null;
+  const sc=q=>{const p=priority(q);if(p===0)return -10+Math.random();          // missed & due always comes back first
+    const d=lvIdx(q)-t.lv;return Math.abs(d)*3+(d<0?1:0)+Math.min(p,6)+Math.random()*.5};
+  let best=null,bv=1e9;pool.forEach(q=>{const v=sc(q);if(v<bv){bv=v;best=q}});return best;}
+function pickNext(c,tids,tp,used){for(let k=0;k<tids.length;k++){const tid=tids[(tp+k)%tids.length],q=pickFrom(c,tid,used);if(q){used.add(q.id);return{q,_tp:tp+k+1}}}return null;}
 
 function renderClassPick(){const P=$('#classPick');P.innerHTML='';
   CLS.forEach(c=>{const b=el('button',{},esc(c.name));b.setAttribute('aria-pressed',curClass===c);b.onclick=()=>{if(sess&&!sess.done&&!confirm('Leave the current session? Answers so far are saved.'))return;sess=null;curClass=c;try{localStorage.setItem(KEY+'-class',c.id)}catch(e){}renderClassPick();renderClass()};P.append(b)});}
@@ -619,25 +641,27 @@ function renderClass(){const A=$('#classArea');A.innerHTML='';
   if(!CLS.length){A.innerHTML='<div class="card">No class question banks are loaded yet.</div>';return}
   if(!curClass){A.innerHTML='<p class="muted">Pick a class above.</p>';return}
   if(sess)return renderQ();
+  A.append(viewToggle());
+  if(classView==='analytics')return renderAnalytics(curClass);
   const c=curClass,cfg=cfgOf(c),Q=allQ(c);
   const st=c.topics.map(t=>[t,tStats(c,t.id)]);
   const seen=st.reduce((s,x)=>s+x[1].seen,0),mast=Q.length?st.reduce((s,x)=>s+x[1].mastery*x[1].total,0)/Q.length:0,due=st.reduce((s,x)=>s+x[1].due,0);
   const misses=Q.filter(q=>{const s=S.qs[q.id];return s&&s.miss>0&&s.box<3}).length;
-  A.innerHTML=`<div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(180px,1fr))"><div class="stat"><b>${Math.round(mast*100)}%</b><span>Mastery</span></div><div class="stat"><b>${seen}/${Q.length}</b><span>Questions seen</span></div><div class="stat"><b>${due}</b><span>Reviews due now</span></div><div class="stat"><b>${misses}</b><span>Mistakes still to fix</span></div></div>
+  A.insertAdjacentHTML('beforeend',`<div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(180px,1fr))"><div class="stat"><b>${Math.round(mast*100)}%</b><span>Mastery</span></div><div class="stat"><b>${seen}/${Q.length}</b><span>Questions seen</span></div><div class="stat"><b>${due}</b><span>Reviews due now</span></div><div class="stat"><b>${misses}</b><span>Mistakes still to fix</span></div></div>
   <div class="card" style="margin-top:16px"><h3 style="margin-top:0">New session</h3>
    <label>Mode</label><div class="segs" id="segMode">${[['smart','Smart mix'],['weak','Weak topics'],['mistakes','My mistakes'],['exam','Exam simulation']].map(([v,t])=>`<button data-v="${v}" aria-pressed="${cfg.mode===v}">${t}</button>`).join('')}</div>
    <p class="small muted" id="modeHelp" style="margin:8px 0 0"></p>
    <label>Questions</label><div class="segs" id="segN">${[10,20,30,50].map(v=>`<button data-v="${v}" aria-pressed="${cfg.n===v}">${v}</button>`).join('')}</div>
    <label>Topics <span class="small muted">(<a href="#" id="tAll">all</a> · <a href="#" id="tNone">none</a>)</span></label>
    <div class="topicgrid grid" style="gap:0 16px">${c.topics.map(t=>`<label><input type="checkbox" value="${t.id}" ${cfg.topics.includes(t.id)?'checked':''}><span>${esc(t.name)} <span class="muted small">${esc(t.unit||'')}</span></span></label>`).join('')}</div>
+   <p class="small muted" style="margin:14px 0 0">Difficulty adapts per topic: questions start at Recall, and 2 correct in a row moves that topic up to Understand, then Apply. 2 misses in a row moves it back down.</p>
    <div class="row" style="margin-top:16px"><button class="primary" id="goSess">Start</button><span class="small muted backupStatus"></span></div></div>
-  <div class="card"><h3 style="margin-top:0">Topics</h3><div class="tablewrap"><table><tr><th>Topic</th><th>Mastery</th><th>Seen</th><th>Accuracy</th><th>Last practiced</th></tr>${st.map(([t,s])=>`<tr><td>${esc(t.name)}<div class="small muted">${esc(t.unit||'')}</div></td><td><div class="bar" title="${Math.round(s.mastery*100)}%"><i style="width:${s.mastery*100}%"></i></div></td><td>${s.seen}/${s.total}</td><td>${s.acc==null?'–':Math.round(s.acc*100)+'%'}</td><td>${s.last?new Date(s.last).toLocaleDateString():'<span class="muted">never</span>'}</td></tr>`).join('')}</table></div></div>
   <details><summary>Add your own question</summary><div class="body">
    <label for="cqT">Topic</label><select id="cqT">${c.topics.map(t=>`<option value="${t.id}">${esc(t.name)}</option>`).join('')}</select>
    <label for="cqQ">Question</label><input type="text" id="cqQ">
    ${[0,1,2,3].map(i=>`<label for="cqC${i}">${i?'Wrong choice '+i:'Correct answer'}</label><input type="text" id="cqC${i}">`).join('')}
    <label for="cqE">Explanation (optional)</label><input type="text" id="cqE">
-   <div class="row" style="margin-top:10px"><button class="primary" id="cqAdd">Add question</button></div></div></details>`;
+   <div class="row" style="margin-top:10px"><button class="primary" id="cqAdd">Add question</button></div></div></details>`);
   const help={smart:'Rotates through every selected topic (least-mastered and least-recent first). Missed questions come back when due. Unseen questions before repeats.',weak:'Only your 3 lowest-mastery topics from the selection.',mistakes:'Only questions you\'ve gotten wrong and haven\'t fixed yet (fixed = right 3 times in a row on spaced repeats).',exam:'Random sample across the selected topics in proportion to their size. No feedback until the end, like the real thing.'};
   const setMode=()=>{$('#modeHelp').textContent=help[cfg.mode]};setMode();
   A.querySelectorAll('#segMode button').forEach(b=>b.onclick=()=>{cfg.mode=b.dataset.v;save();A.querySelectorAll('#segMode button').forEach(x=>x.setAttribute('aria-pressed',x===b));setMode()});
@@ -646,36 +670,92 @@ function renderClass(){const A=$('#classArea');A.innerHTML='';
   boxes.forEach(x=>x.onchange=sync);
   $('#tAll').onclick=e=>{e.preventDefault();boxes.forEach(x=>x.checked=true);sync()};$('#tNone').onclick=e=>{e.preventDefault();boxes.forEach(x=>x.checked=false);sync()};
   $('#goSess').onclick=()=>{if(!cfg.topics.length){alert('Pick at least one topic.');return}
-    const list=buildSession(c,cfg);if(!list.length){alert(cfg.mode==='mistakes'?'No unfixed mistakes in these topics. Nice.':'No questions in these topics.');return}
-    sess={c,mode:cfg.mode,list:list.map(q=>({q,perm:shuffle([0,1,2,3].slice(0,q.choices.length)),pick:null,guess:false})),i:0,t0:Date.now(),done:false};renderQ()};
+    startSession(c,cfg)};
   $('#cqAdd').onclick=()=>{const v=id=>$(id).value.trim();const ch=[0,1,2,3].map(i=>v('#cqC'+i));if(!v('#cqQ')||ch.some(x=>!x)){alert('Fill in the question and all four choices.');return}
     (S.custom[c.id]=S.custom[c.id]||[]).push({id:`${c.id}-custom-${Date.now()}`,topic:v('#cqT'),level:'recall',q:v('#cqQ'),choices:ch,answer:0,explain:v('#cqE'),custom:true});save();renderClass()};
   if(fileHandle)setBackupStatus(`Auto-saving to ${fileHandle.name}`);
 }
-function record(item){const s=qs(item.q.id),ok=item.pick!=null&&item.perm[item.pick]===item.q.answer;
+/* ---------- class analytics ---------- */
+let classView='practice';
+try{classView=localStorage.getItem(KEY+'-view')||'practice'}catch(e){}
+function viewToggle(){const d=el('div',{className:'segs'});d.style.margin='0 0 16px';
+  [['practice','Practice'],['analytics','Analytics']].forEach(([v,t])=>{const b=el('button',{},t);b.setAttribute('aria-pressed',classView===v);
+    b.onclick=()=>{classView=v;try{localStorage.setItem(KEY+'-view',v)}catch(e){}renderClass()};d.append(b)});return d;}
+const pct=v=>v==null?'–':Math.round(v*100)+'%';
+function status(s){if(!s.seen)return['Not started','muted'];if(s.n<3)return['Too little data','muted'];const w=weakScore(s);return w<.6?['Weak','weak']:w<.8?['Building','mid']:['Strong','ok'];}
+function classSummary(c){const st=c.topics.map(t=>tStats(c,t.id)),Q=allQ(c).length;const n=st.reduce((a,s)=>a+s.n,0),ok=st.reduce((a,s)=>a+(s.acc||0)*s.n,0);
+  return{seen:st.reduce((a,s)=>a+s.seen,0),total:Q,acc:n?ok/n:null,mast:Q?st.reduce((a,s)=>a+s.mastery*s.total,0)/Q:0,week:S.ans.filter(a=>a.c===c.id&&a.t>Date.now()-7*DAY).length};}
+function trendChart(c){const days=30,start=today()-(days-1)*DAY,by={};
+  S.ans.filter(a=>a.c===c.id&&a.t>=start).forEach(a=>{const d=Math.floor((new Date(a.t).setHours(0,0,0,0)-start)/DAY);(by[d]=by[d]||[0,0])[0]+=a.ok;by[d][1]++});
+  const pts=Object.keys(by).map(Number).sort((a,b)=>a-b).map(d=>({d,acc:by[d][0]/by[d][1],n:by[d][1]}));
+  if(pts.length<2)return`<p class="small muted">Answer questions on at least 2 different days to see your trend. ${pts.length?`So far: ${pct(pts[0].acc)} on ${pts[0].n} answers.`:''}</p>`;
+  const W=640,H=210,l=40,r=14,t=14,b=30,x=d=>l+d/(days-1)*(W-l-r),y=v=>t+(1-v)*(H-t-b),dl=d=>new Date(start+d*DAY).toLocaleDateString(undefined,{month:'short',day:'numeric'});
+  return`<svg class="chart" viewBox="0 0 ${W} ${H}" role="img" aria-label="Daily accuracy, last 30 days">
+   <g class="grid">${[0,.5,1].map(v=>`<line x1="${l}" x2="${W-r}" y1="${y(v)}" y2="${y(v)}" ${v?'stroke-dasharray="3 4"':''}/><text x="${l-8}" y="${y(v)+4}" text-anchor="end">${v*100}%</text>`).join('')}</g>
+   ${[0,15,29].map(d=>`<text x="${x(d)}" y="${H-8}" text-anchor="${d?d===29?'end':'middle':'start'}">${dl(d)}</text>`).join('')}
+   <polyline points="${pts.map(p=>`${x(p.d)},${y(p.acc)}`).join(' ')}" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linejoin="round"/>
+   ${pts.map(p=>`<g><circle class="dot" cx="${x(p.d)}" cy="${y(p.acc)}" r="4" fill="var(--accent)" stroke="var(--surface)" stroke-width="2"/><circle cx="${x(p.d)}" cy="${y(p.acc)}" r="14" fill="transparent"><title>${dl(p.d)}: ${pct(p.acc)} correct of ${p.n} answers</title></circle></g>`).join('')}</svg>`;}
+function levelChart(c){const agg=[[0,0],[0,0],[0,0]];allQ(c).forEach(q=>{const s=S.qs[q.id];if(s&&s.n){agg[lvIdx(q)][0]+=s.ok;agg[lvIdx(q)][1]+=s.n}});
+  return LVN.map((name,i)=>{const[ok,n]=agg[i],v=n?ok/n:0;return`<div style="display:grid;grid-template-columns:128px 1fr 130px;gap:10px;align-items:center;margin:8px 0" title="${name}: ${n?pct(v)+' of '+n+' answers':'no answers yet'}"><span style="white-space:nowrap">${'●'.repeat(i+1)}${'○'.repeat(2-i)} ${name}</span><div style="height:10px;background:var(--surface-2);border-radius:4px"><div style="height:100%;width:${v*100}%;background:var(--accent);border-radius:4px"></div></div><span class="small muted">${n?`${pct(v)} · ${n} answers`:'no answers yet'}</span></div>`}).join('');}
+function renderAnalytics(c){const A=$('#classArea'),cs=classSummary(c);
+  const st=c.topics.map((t,i)=>({t,i,s:tStats(c,t.id),lv:tierOf(c,t.id).lv}));
+  const notStarted=st.filter(x=>!x.s.seen),weak=st.filter(x=>x.s.n>=3).sort((a,b)=>weakScore(a.s)-weakScore(b.s)).filter(x=>weakScore(x.s)<.8).slice(0,3);
+  const rec=weak.concat(notStarted.slice(0,Math.max(0,5-weak.length)));
+  const myAns=S.ans.filter(a=>a.c===c.id),guesses=myAns.filter(a=>a.g),missed=allQ(c).map(q=>[q,S.qs[q.id]]).filter(([q,s])=>s&&s.miss>0).sort((a,b)=>b[1].miss-a[1].miss||a[1].box-b[1].box).slice(0,10);
+  const sortKey=S.pcfg[c.id+'-sort']||'weak';
+  const sorted=st.slice().sort(sortKey==='unit'?(a,b)=>a.i-b.i:sortKey==='coverage'?(a,b)=>a.s.seen/a.s.total-b.s.seen/b.s.total:(a,b)=>(a.s.n<3)-(b.s.n<3)||weakScore(a.s)-weakScore(b.s));
+  A.insertAdjacentHTML('beforeend',`
+  <div class="card"><h3 style="margin-top:0">All classes</h3><div class="tablewrap"><table><tr><th>Class</th><th>Covered</th><th>Accuracy</th><th>Mastery</th><th>Answers (7 days)</th></tr>${CLS.map(k=>{const s=classSummary(k);return`<tr><td>${k===c?'<b>'+esc(k.name)+'</b>':`<a href="#" data-cls="${k.id}">${esc(k.name)}</a>`}</td><td>${s.seen}/${s.total} (${pct(s.seen/s.total)})</td><td>${pct(s.acc)}</td><td>${pct(s.mast)}</td><td>${s.week}</td></tr>`}).join('')}</table></div></div>
+  <div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(160px,1fr))">
+   <div class="stat"><b>${pct(cs.seen/cs.total)}</b><span>Covered (${cs.seen}/${cs.total} questions seen)</span></div>
+   <div class="stat"><b>${pct(cs.acc)}</b><span>Accuracy, all answers</span></div>
+   <div class="stat"><b>${pct(cs.mast)}</b><span>Mastery</span></div>
+   <div class="stat"><b>${st.length-notStarted.length}/${st.length}</b><span>Topics started</span></div>
+   <div class="stat"><b>${cs.week}</b><span>Answers in last 7 days</span></div></div>
+  <div class="card" style="margin-top:16px"><h3 style="margin-top:0">What to practice next</h3>${rec.length?`<ul style="margin:0 0 12px">${rec.map(x=>`<li><b>${esc(x.t.name)}</b>: ${x.s.seen?`${pct(x.s.acc)} accuracy over ${x.s.n} answer${x.s.n===1?'':'s'}, ${pct(x.s.mastery)} mastered`:'not started yet'}</li>`).join('')}</ul><button class="primary" id="recGo">Practice these now (20 questions)</button>`:'<p class="muted" style="margin:0">Nothing weak right now. Keep doing Smart mix so spaced reviews stay on schedule.</p>'}</div>
+  <div class="card"><h3 style="margin-top:0">Accuracy by day <span class="small muted">· last 30 days</span></h3>${trendChart(c)}</div>
+  <div class="card"><h3 style="margin-top:0">Accuracy by difficulty</h3><p class="small muted" style="margin:0 0 6px">If Apply is much lower than Recall, you know the facts but can't use them yet. Spend more time on worked problems and scenarios.</p>${levelChart(c)}
+   ${guesses.length?`<p class="small" style="margin:12px 0 0">You marked <b>${guesses.length}</b> answers as guesses, and <b>${pct(guesses.filter(a=>a.ok).length/guesses.length)}</b> of those were right. Guesses never count toward mastery.</p>`:''}</div>
+  <div class="card"><div class="row" style="justify-content:space-between"><h3 style="margin:0">Topics</h3><label class="small" style="margin:0;display:flex;gap:8px;align-items:center">Sort <select id="tSort" style="width:auto">${[['weak','Weakest first'],['coverage','Least covered'],['unit','Course order']].map(([v,t])=>`<option value="${v}" ${sortKey===v?'selected':''}>${t}</option>`).join('')}</select></label></div>
+   <div class="tablewrap" style="margin-top:10px"><table><tr><th>Topic</th><th>Status</th><th>Covered</th><th>Accuracy</th><th>Mastery</th><th>Level</th><th>Last practiced</th></tr>${sorted.map(({t,s,lv})=>{const[lab,cls]=status(s);return`<tr><td>${esc(t.name)}<div class="small muted">${esc(t.unit||'')}</div></td><td class="${cls}">${lab}</td><td><div class="bar" title="${s.seen} of ${s.total} seen"><i style="width:${s.seen/s.total*100}%"></i></div><span class="small muted">${s.seen}/${s.total}</span></td><td>${pct(s.acc)}${s.n?`<div class="small muted">${s.n} answer${s.n===1?'':'s'}</div>`:''}</td><td>${pct(s.mastery)}</td><td class="small" style="white-space:nowrap">${'●'.repeat(lv+1)}${'○'.repeat(2-lv)} ${LVN[lv]}</td><td class="small">${s.last?new Date(s.last).toLocaleDateString():'<span class="muted">never</span>'}</td></tr>`}).join('')}</table></div></div>
+  <div class="card"><h3 style="margin-top:0">Most-missed questions</h3>${missed.length?missed.map(([q,s])=>`<details><summary>${esc(q.q.slice(0,100))}${q.q.length>100?'…':''} <span class="small muted">· missed ${s.miss}× · ${s.box>=3?'fixed':'not fixed yet'}</span></summary><div class="body">${q.code?`<pre class="code">${esc(q.code)}</pre>`:''}<p><b>Answer: ${esc(q.choices[q.answer])}</b></p><p class="muted" style="margin:0">${esc(q.explain||'')}</p></div></details>`).join(''):'<p class="muted small" style="margin:0">No misses yet.</p>'}</div>`);
+  A.querySelectorAll('[data-cls]').forEach(a=>a.onclick=e=>{e.preventDefault();curClass=CLS.find(k=>k.id===a.dataset.cls);try{localStorage.setItem(KEY+'-class',curClass.id)}catch(err){}renderClassPick();renderClass()});
+  $('#tSort').onchange=e=>{S.pcfg[c.id+'-sort']=e.target.value;save();renderClass()};
+  const g=$('#recGo');if(g)g.onclick=()=>startSession(c,{mode:'smart',n:20,topics:rec.map(x=>x.t.id)});}
+const mkItem=q=>({q,perm:shuffle([0,1,2,3].slice(0,q.choices.length)),pick:null,guess:false});
+function startSession(c,cfg){const topics=cfg.topics.filter(t=>c.topics.some(x=>x.id===t));
+  sess={c,mode:cfg.mode,list:[],i:0,t0:Date.now(),done:false,total:cfg.n};
+  if(cfg.mode==='smart'||cfg.mode==='weak'){Object.assign(sess,{adaptive:true,tids:topicOrder(c,cfg,topics),tp:0,used:new Set()});if(!pushNext()){sess=null;alert('No questions in these topics.');return}}
+  else{const list=buildSession(c,cfg);if(!list.length){sess=null;alert(cfg.mode==='mistakes'?'No unfixed mistakes in these topics. Nice.':'No questions in these topics.');return}sess.list=list.map(mkItem);sess.total=list.length}
+  renderQ();}
+function pushNext(){const r=pickNext(sess.c,sess.tids,sess.tp,sess.used);if(!r)return false;sess.tp=r._tp;sess.list.push(mkItem(r.q));return true;}
+function record(item,c){const s=qs(item.q.id),ok=item.pick!=null&&item.perm[item.pick]===item.q.answer;
   s.n++;s.last=Date.now();
   if(ok){s.ok++;if(!item.guess)s.box=Math.min(s.box+1,INT.length-1);s.due=Date.now()+(item.guess?1:INT[s.box])*DAY;}
   else{s.miss++;s.box=0;s.due=Date.now()+12*36e5;}
+  S.ans.push({t:Date.now(),c:c.id,q:item.q.id,tp:item.q.topic,lv:lvIdx(item.q),ok:ok?1:0,g:item.guess?1:0});
+  item.tierMsg=updateTier(c,item.q,ok,item.guess);
   save();return ok;}
 function renderQ(){const A=$('#classArea'),it=sess.list[sess.i];
   if(sess.done)return renderSummary();
   const q=it.q,exam=sess.mode==='exam',answered=it.pick!=null&&!exam,topic=sess.c.topics.find(t=>t.id===q.topic);
-  A.innerHTML=`<div class="progress"><i style="width:${sess.i/sess.list.length*100}%"></i></div>
-  <div class="card"><div class="row" style="justify-content:space-between"><span class="small muted">${sess.i+1} / ${sess.list.length} · ${esc(topic?topic.name:q.topic)}${q.custom?' · your question':''}</span><button class="small" id="qQuit">End session</button></div>
+  A.innerHTML=`<div class="progress"><i style="width:${sess.i/sess.total*100}%"></i></div>
+  <div class="card"><div class="row" style="justify-content:space-between"><span class="small muted">${sess.i+1} / ${sess.total} · ${esc(topic?topic.name:q.topic)} · <span class="tag lvl" title="Question difficulty">${'●'.repeat(lvIdx(q)+1)}${'○'.repeat(2-lvIdx(q))} ${LVN[lvIdx(q)]}</span>${q.custom?' · your question':''}</span><button class="small" id="qQuit">End session</button></div>
    <p style="font-size:1.08rem;margin-top:10px;white-space:pre-wrap">${esc(q.q)}</p>${q.code?`<pre class="code">${esc(q.code)}</pre>`:''}
    <div id="chs">${it.perm.map((ci,i)=>{let cls='';if(answered){if(ci===q.answer)cls='right';else if(i===it.pick)cls='wrong'}else if(exam&&i===it.pick)cls='picked';
      return `<button class="choice ${cls}" data-i="${i}" ${answered?'disabled':''}><kbd>${i+1}</kbd> ${esc(q.choices[ci])}</button>`}).join('')}</div>
-   ${answered?`<div class="callout" style="margin:12px 0 0"><b>${it.perm[it.pick]===q.answer?'Correct.':'Not quite.'}</b> ${esc(q.explain||'')}</div>`:`<label style="font-weight:400;display:flex;gap:8px;align-items:center"><input type="checkbox" id="qGuess" ${it.guess?'checked':''}> I'm guessing <span class="small muted">(a lucky guess won't count as mastered)</span></label>`}
-   <div class="row" style="margin-top:14px">${exam&&sess.i>0?'<button id="qPrev">Back</button>':''}${answered||exam?`<button class="primary" id="qNext">${sess.i+1<sess.list.length?'Next':exam?'Submit exam':'Finish'} <span class="small">↵</span></button>`:''}</div></div>`;
+   ${answered?`<div class="callout" style="margin:12px 0 0"><b>${it.perm[it.pick]===q.answer?'Correct.':'Not quite.'}</b> ${esc(q.explain||'')}</div>${it.tierMsg?`<p class="small" style="margin:10px 0 0"><b>${it.tierMsg.startsWith('Level up')?'▲':'▼'} ${esc(it.tierMsg)}</b></p>`:''}`:`<label style="font-weight:400;display:flex;gap:8px;align-items:center"><input type="checkbox" id="qGuess" ${it.guess?'checked':''}> I'm guessing <span class="small muted">(a lucky guess won't count as mastered)</span></label>`}
+   <div class="row" style="margin-top:14px">${exam&&sess.i>0?'<button id="qPrev">Back</button>':''}${answered||exam?`<button class="primary" id="qNext">${sess.i+1<sess.total?'Next':exam?'Submit exam':'Finish'} <span class="small">↵</span></button>`:''}</div></div>`;
   A.querySelectorAll('#chs .choice').forEach(b=>b.onclick=()=>choose(+b.dataset.i));
   const g=$('#qGuess');if(g)g.onchange=()=>it.guess=g.checked;
   const n=$('#qNext');if(n)n.onclick=next;const p=$('#qPrev');if(p)p.onclick=()=>{sess.i--;renderQ()};
   $('#qQuit').onclick=()=>{if(sess.mode==='exam'){if(!confirm('Submit the exam now? Unanswered questions count as wrong.'))return;}sess.done=true;finishSession();renderQ()};
 }
-function choose(i){const it=sess.list[sess.i];if(sess.mode==='exam'){it.pick=i;renderQ();return}if(it.pick!=null)return;it.pick=i;it.ok=record(it);renderQ();}
+function choose(i){const it=sess.list[sess.i];if(sess.mode==='exam'){it.pick=i;renderQ();return}if(it.pick!=null)return;it.pick=i;it.ok=record(it,sess.c);renderQ();}
 function next(){const it=sess.list[sess.i];if(sess.mode==='exam'&&it.pick==null&&!confirm('Skip this question? It counts as wrong if you leave it blank.'))return;
+  if(sess.adaptive&&sess.i+1>=sess.list.length&&sess.list.length<sess.total&&!pushNext())sess.total=sess.list.length;
   if(sess.i+1<sess.list.length){sess.i++;renderQ()}else{sess.done=true;finishSession();renderQ()}}
-function finishSession(){const L=sess.list;if(sess.mode==='exam')L.forEach(it=>{if(it.ok===undefined)it.ok=record(it)});
+function finishSession(){const L=sess.list;if(sess.mode==='exam')L.forEach(it=>{if(it.ok===undefined)it.ok=record(it,sess.c)});
   const done=L.filter(it=>it.ok!==undefined),ok=done.filter(it=>it.ok).length;
   if(done.length)S.logs.push({date:Date.now(),min:Math.max(1,Math.round((Date.now()-sess.t0)/6e4)),type:sess.mode==='exam'?'Weekly assessment':'Problem practice',act:Math.round(ok/done.length*100),note:`${sess.c.name}: ${done.length} questions (${sess.mode})`});save();}
 function renderSummary(){const A=$('#classArea'),L=sess.list.filter(it=>it.ok!==undefined),ok=L.filter(it=>it.ok).length;
