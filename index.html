@@ -94,6 +94,19 @@ th{font-weight:600;color:var(--muted);font-size:.8rem;text-transform:uppercase;l
 .flash{min-height:150px;display:flex;align-items:center;justify-content:center;text-align:center;font-size:1.15rem;padding:24px;background:var(--surface-2);border-radius:8px;margin:12px 0}
 svg text{fill:var(--muted);font:12px Inter,sans-serif}
 .hidden{display:none!important}
+.bar{height:8px;background:var(--surface-2);border-radius:99px;overflow:hidden;min-width:80px}
+.bar>i{display:block;height:100%;background:var(--accent)}
+.choice{display:block;width:100%;text-align:left;padding:12px 14px;margin:8px 0;border-radius:8px;line-height:1.45}
+.choice kbd{display:inline-block;min-width:1.5em;color:var(--muted);font:600 .8rem Inter,sans-serif}
+.choice.right{border-color:var(--good);background:var(--good-soft)}
+.choice.wrong{border-color:var(--bad);background:var(--bad-soft)}
+.choice.picked{border-color:var(--accent);background:var(--accent-soft)}
+pre.code{background:var(--surface-2);border:1px solid var(--border);border-radius:8px;padding:12px 14px;overflow-x:auto;font:14px/1.5 ui-monospace,Consolas,monospace;margin:10px 0}
+.classpick{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 16px}
+.classpick button[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:var(--bg);font-weight:600}
+.topicgrid label{font-weight:400;display:flex;gap:8px;align-items:center;margin:4px 0}
+.segs{display:flex;gap:6px;flex-wrap:wrap}
+.segs button[aria-pressed="true"]{border-color:var(--accent);background:var(--accent-soft);font-weight:600}
 footer{border-top:1px solid var(--border);padding:24px 0;color:var(--muted);font-size:.85rem}
 </style>
 </head>
@@ -105,6 +118,7 @@ footer{border-top:1px solid var(--border);padding:24px 0;color:var(--muted);font
 
 <nav class="tabs" aria-label="Sections"><div class="wrap" role="tablist" id="tablist">
   <button role="tab" data-tab="start">Start here</button>
+  <button role="tab" data-tab="classes">My classes</button>
   <button role="tab" data-tab="diagnostic">1 · Diagnostic</button>
   <button role="tab" data-tab="exercise">2 · First exercise</button>
   <button role="tab" data-tab="week1">3 · Week 1</button>
@@ -143,6 +157,14 @@ footer{border-top:1px solid var(--border);padding:24px 0;color:var(--muted);font
     <div class="row" style="margin-top:14px"><button class="primary" id="saveIntake">Save profile and find obstacles</button></div>
   </div>
   <div id="obstacles"></div>
+</section>
+
+<!-- CLASSES -->
+<section class="panel" id="classes">
+  <h1>Class practice</h1>
+  <p class="lede">Multiple-choice practice built from your own lecture slides, notes and study guides. The picker spreads questions across <b>every</b> topic, brings back the ones you miss on a spaced schedule, never repeats a question in the same session, and shuffles the answer order each time so you can't memorize positions.</p>
+  <div class="classpick" id="classPick"></div>
+  <div id="classArea"></div>
 </section>
 
 <!-- DIAGNOSTIC -->
@@ -207,6 +229,11 @@ footer{border-top:1px solid var(--border);padding:24px 0;color:var(--muted);font
     <div class="row" style="margin-top:10px"><button class="primary" id="addLog">Save session</button></div>
   </div>
   <details><summary>Session log</summary><div class="body tablewrap"><table id="logTable"></table></div></details>
+  <div class="card">
+    <h3 style="margin-top:0">Save on this laptop</h3>
+    <p class="small">Everything saves automatically in this browser as you go, including every answer, so closing the tab or shutting down loses nothing. It only disappears if you clear browsing data or switch browsers. For a real file on your disk as well, connect a backup file. Chrome and Edge will then keep it updated after every answer.</p>
+    <div class="row"><button class="primary connectBackup">Connect backup file</button><span class="small muted backupStatus">No backup file connected.</span></div>
+  </div>
   <div class="row"><button id="exportBtn">Export data</button><label class="btn" style="margin:0;font-weight:400">Import data<input type="file" id="importFile" accept="application/json" class="hidden"></label><button id="resetBtn">Reset everything</button></div>
 </section>
 
@@ -236,13 +263,21 @@ footer{border-top:1px solid var(--border);padding:24px 0;color:var(--muted);font
 </div></main>
 <footer><div class="wrap">Built as a personal training system. Progress data stays in your browser (localStorage). Research basis includes Dunlosky et al. (2013), Roediger &amp; Karpicke (2006), Cepeda et al. (2006, 2008), Rohrer &amp; Taylor (2007), Sweller's cognitive load theory, Ericsson's deliberate practice, and Bjork's desirable difficulties.</div></footer>
 
+<script src="classes/data.js"></script>
 <script>
 /* ---------- storage ---------- */
 const KEY='lmp-v1';
-const blank=()=>({intake:null,diag:null,ex:{reads:[]},cards:[],logs:[],theme:null});
+const blank=()=>({intake:null,diag:null,ex:{reads:[]},cards:[],logs:[],theme:null,qs:{},custom:{},pcfg:{}});
 let S=blank();
 try{const raw=localStorage.getItem(KEY); if(raw) S=Object.assign(blank(),JSON.parse(raw));}catch(e){}
-const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}};
+/* optional auto-backup to a real file on disk (Chrome/Edge File System Access API) */
+let fileHandle=null,fileTimer=null,pendingHandle=null;
+const idbOpen=()=>new Promise((res,rej)=>{const r=indexedDB.open('lmp-fs',1);r.onupgradeneeded=()=>r.result.createObjectStore('h');r.onsuccess=()=>res(r.result);r.onerror=()=>rej(r.error)});
+async function idbGet(){try{const db=await idbOpen();return await new Promise(r=>{const q=db.transaction('h').objectStore('h').get('file');q.onsuccess=()=>r(q.result||null);q.onerror=()=>r(null)})}catch(e){return null}}
+async function idbSet(v){try{const db=await idbOpen();db.transaction('h','readwrite').objectStore('h').put(v,'file')}catch(e){}}
+function setBackupStatus(t){document.querySelectorAll('.backupStatus').forEach(x=>x.textContent=t)}
+async function writeFile(){if(!fileHandle)return;try{const w=await fileHandle.createWritable();await w.write(JSON.stringify(S));await w.close();setBackupStatus(`Auto-saving to ${fileHandle.name} · last saved ${new Date().toLocaleTimeString()}`)}catch(e){pendingHandle=fileHandle;fileHandle=null;setBackupStatus('Backup file paused. Click "Reconnect backup file".')}}
+const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){} if(fileHandle){clearTimeout(fileTimer);fileTimer=setTimeout(writeFile,1200)}};
 const $=s=>document.querySelector(s), el=(t,a={},h='')=>{const e=document.createElement(t);Object.assign(e,a);if(h)e.innerHTML=h;return e};
 const today=()=>{const d=new Date();d.setHours(0,0,0,0);return d.getTime()};
 const DAY=864e5;
@@ -258,7 +293,7 @@ $('#themeBtn').onclick=()=>{const dark=matchMedia('(prefers-color-scheme: dark)'
 function show(id){document.querySelectorAll('.panel').forEach(p=>p.classList.toggle('active',p.id===id));
   document.querySelectorAll('[data-tab]').forEach(b=>b.setAttribute('aria-selected',b.dataset.tab===id));
   try{localStorage.setItem(KEY+'-tab',id)}catch(e){}
-  if(id==='dashboard')renderDash(); if(id==='review')renderReview(); window.scrollTo(0,0);}
+  if(id==='dashboard')renderDash(); if(id==='review')renderReview(); if(id==='classes'&&!sess)renderClass(); window.scrollTo(0,0);}
 document.querySelectorAll('[data-tab]').forEach(b=>b.onclick=()=>show(b.dataset.tab));
 document.addEventListener('click',e=>{const g=e.target.closest('[data-go]');if(g)show(g.dataset.go)});
 
@@ -543,7 +578,127 @@ const SC=[
 ];
 $('#sciList').innerHTML=SC.map(([t,a,d])=>`<details><summary>${t}</summary><div class="body"><p><b>Analogy.</b> ${a}</p><p style="margin:0"><b>Technical.</b> ${d}</p></div></details>`).join('');
 
+/* ---------- class practice ---------- */
+const CLS=window.CLASSES||[];
+const INT=[0,1,3,7,16,35,80]; // days per box after a correct answer
+let curClass=null,sess=null;
+const shuffle=a=>{a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.random()*(i+1)|0;[a[i],a[j]]=[a[j],a[i]]}return a};
+const allQ=c=>c.questions.concat(S.custom[c.id]||[]);
+const qs=id=>S.qs[id]||(S.qs[id]={n:0,ok:0,box:0,due:0,last:0,miss:0});
+const cfgOf=c=>S.pcfg[c.id]||(S.pcfg[c.id]={mode:'smart',n:20,topics:c.topics.map(t=>t.id)});
+function tStats(c,tid){const Q=allQ(c).filter(q=>q.topic===tid);let seen=0,n=0,ok=0,last=0,m=0,due=0;const now=Date.now();
+  Q.forEach(q=>{const s=S.qs[q.id];if(s&&s.n){seen++;n+=s.n;ok+=s.ok;last=Math.max(last,s.last);m+=Math.min(s.box,4)/4;if(s.due<=now)due++}});
+  return{total:Q.length,seen,acc:n?ok/n:null,last,mastery:Q.length?m/Q.length:0,due};}
+function priority(q){const s=S.qs[q.id],now=Date.now();
+  if(!s||!s.n)return 1;                       // never seen
+  if(s.due<=now)return s.box===0?0:2;          // missed & due first, then due reviews
+  return 3+(s.due-now)/DAY;}                    // not yet due: the later, the less likely
+function buildSession(c,cfg){
+  const topics=cfg.topics.filter(t=>c.topics.some(x=>x.id===t));
+  let pool=allQ(c).filter(q=>topics.includes(q.topic));
+  if(cfg.mode==='mistakes'){
+    pool=pool.filter(q=>{const s=S.qs[q.id];return s&&s.miss>0&&s.box<3});
+    return shuffle(pool).sort((a,b)=>qs(a.id).box-qs(b.id).box).slice(0,cfg.n);}
+  if(cfg.mode==='exam'){ // proportional random sample across chosen topics, no feedback until the end
+    const per={};pool.forEach(q=>(per[q.topic]=per[q.topic]||[]).push(q));
+    const out=[];Object.values(per).forEach(a=>out.push(...shuffle(a).slice(0,Math.max(1,Math.round(cfg.n*a.length/pool.length)))));
+    return shuffle(out).slice(0,cfg.n);}
+  let tids=topics.slice();
+  if(cfg.mode==='weak')tids=tids.map(t=>[t,tStats(c,t)]).sort((a,b)=>a[1].mastery-b[1].mastery).slice(0,Math.min(3,tids.length)).map(x=>x[0]);
+  // order topics: least mastered and least recently practiced first
+  const st=Object.fromEntries(tids.map(t=>[t,tStats(c,t)]));
+  tids.sort((a,b)=>(st[a].mastery-st[b].mastery)*2+(st[a].last-st[b].last)/(7*DAY)+(Math.random()-.5)*.2);
+  const queues=Object.fromEntries(tids.map(t=>[t,shuffle(pool.filter(q=>q.topic===t)).sort((a,b)=>priority(a)-priority(b))]));
+  const out=[];let added=true;
+  while(out.length<cfg.n&&added){added=false;for(const t of tids){if(out.length>=cfg.n)break;const q=queues[t].shift();if(q){out.push(q);added=true}}}
+  return out;} // round-robin = interleaved topics, every topic gets its turn
+
+function renderClassPick(){const P=$('#classPick');P.innerHTML='';
+  CLS.forEach(c=>{const b=el('button',{},esc(c.name));b.setAttribute('aria-pressed',curClass===c);b.onclick=()=>{if(sess&&!sess.done&&!confirm('Leave the current session? Answers so far are saved.'))return;sess=null;curClass=c;try{localStorage.setItem(KEY+'-class',c.id)}catch(e){}renderClassPick();renderClass()};P.append(b)});}
+function renderClass(){const A=$('#classArea');A.innerHTML='';
+  if(!CLS.length){A.innerHTML='<div class="card">No class question banks are loaded yet.</div>';return}
+  if(!curClass){A.innerHTML='<p class="muted">Pick a class above.</p>';return}
+  if(sess)return renderQ();
+  const c=curClass,cfg=cfgOf(c),Q=allQ(c);
+  const st=c.topics.map(t=>[t,tStats(c,t.id)]);
+  const seen=st.reduce((s,x)=>s+x[1].seen,0),mast=Q.length?st.reduce((s,x)=>s+x[1].mastery*x[1].total,0)/Q.length:0,due=st.reduce((s,x)=>s+x[1].due,0);
+  const misses=Q.filter(q=>{const s=S.qs[q.id];return s&&s.miss>0&&s.box<3}).length;
+  A.innerHTML=`<div class="grid"><div class="stat"><b>${Math.round(mast*100)}%</b><span>Mastery (answered correctly on spaced repeats)</span></div><div class="stat"><b>${seen}/${Q.length}</b><span>Questions seen</span></div><div class="stat"><b>${due}</b><span>Reviews due now</span></div><div class="stat"><b>${misses}</b><span>Mistakes still to fix</span></div></div>
+  <div class="card" style="margin-top:16px"><h3 style="margin-top:0">New session</h3>
+   <label>Mode</label><div class="segs" id="segMode">${[['smart','Smart mix'],['weak','Weak topics'],['mistakes','My mistakes'],['exam','Exam simulation']].map(([v,t])=>`<button data-v="${v}" aria-pressed="${cfg.mode===v}">${t}</button>`).join('')}</div>
+   <p class="small muted" id="modeHelp" style="margin:8px 0 0"></p>
+   <label>Questions</label><div class="segs" id="segN">${[10,20,30,50].map(v=>`<button data-v="${v}" aria-pressed="${cfg.n===v}">${v}</button>`).join('')}</div>
+   <label>Topics <span class="small muted">(<a href="#" id="tAll">all</a> · <a href="#" id="tNone">none</a>)</span></label>
+   <div class="topicgrid grid" style="gap:0 16px">${c.topics.map(t=>`<label><input type="checkbox" value="${t.id}" ${cfg.topics.includes(t.id)?'checked':''}><span>${esc(t.name)} <span class="muted small">${esc(t.unit||'')}</span></span></label>`).join('')}</div>
+   <div class="row" style="margin-top:16px"><button class="primary" id="goSess">Start</button><span class="small muted backupStatus"></span></div></div>
+  <div class="card"><h3 style="margin-top:0">Topics</h3><div class="tablewrap"><table><tr><th>Topic</th><th>Mastery</th><th>Seen</th><th>Accuracy</th><th>Last practiced</th></tr>${st.map(([t,s])=>`<tr><td>${esc(t.name)}<div class="small muted">${esc(t.unit||'')}</div></td><td><div class="bar" title="${Math.round(s.mastery*100)}%"><i style="width:${s.mastery*100}%"></i></div></td><td>${s.seen}/${s.total}</td><td>${s.acc==null?'–':Math.round(s.acc*100)+'%'}</td><td>${s.last?new Date(s.last).toLocaleDateString():'<span class="muted">never</span>'}</td></tr>`).join('')}</table></div></div>
+  <details><summary>Add your own question</summary><div class="body">
+   <label for="cqT">Topic</label><select id="cqT">${c.topics.map(t=>`<option value="${t.id}">${esc(t.name)}</option>`).join('')}</select>
+   <label for="cqQ">Question</label><input type="text" id="cqQ">
+   ${[0,1,2,3].map(i=>`<label for="cqC${i}">${i?'Wrong choice '+i:'Correct answer'}</label><input type="text" id="cqC${i}">`).join('')}
+   <label for="cqE">Explanation (optional)</label><input type="text" id="cqE">
+   <div class="row" style="margin-top:10px"><button class="primary" id="cqAdd">Add question</button></div></div></details>`;
+  const help={smart:'Rotates through every selected topic (least-mastered and least-recent first). Missed questions come back when due. Unseen questions before repeats.',weak:'Only your 3 lowest-mastery topics from the selection.',mistakes:'Only questions you\'ve gotten wrong and haven\'t fixed yet (fixed = right 3 times in a row on spaced repeats).',exam:'Random sample across the selected topics in proportion to their size. No feedback until the end, like the real thing.'};
+  const setMode=()=>{$('#modeHelp').textContent=help[cfg.mode]};setMode();
+  A.querySelectorAll('#segMode button').forEach(b=>b.onclick=()=>{cfg.mode=b.dataset.v;save();A.querySelectorAll('#segMode button').forEach(x=>x.setAttribute('aria-pressed',x===b));setMode()});
+  A.querySelectorAll('#segN button').forEach(b=>b.onclick=()=>{cfg.n=+b.dataset.v;save();A.querySelectorAll('#segN button').forEach(x=>x.setAttribute('aria-pressed',x===b))});
+  const boxes=[...A.querySelectorAll('.topicgrid input')],sync=()=>{cfg.topics=boxes.filter(x=>x.checked).map(x=>x.value);save()};
+  boxes.forEach(x=>x.onchange=sync);
+  $('#tAll').onclick=e=>{e.preventDefault();boxes.forEach(x=>x.checked=true);sync()};$('#tNone').onclick=e=>{e.preventDefault();boxes.forEach(x=>x.checked=false);sync()};
+  $('#goSess').onclick=()=>{if(!cfg.topics.length){alert('Pick at least one topic.');return}
+    const list=buildSession(c,cfg);if(!list.length){alert(cfg.mode==='mistakes'?'No unfixed mistakes in these topics. Nice.':'No questions in these topics.');return}
+    sess={c,mode:cfg.mode,list:list.map(q=>({q,perm:shuffle([0,1,2,3].slice(0,q.choices.length)),pick:null,guess:false})),i:0,t0:Date.now(),done:false};renderQ()};
+  $('#cqAdd').onclick=()=>{const v=id=>$(id).value.trim();const ch=[0,1,2,3].map(i=>v('#cqC'+i));if(!v('#cqQ')||ch.some(x=>!x)){alert('Fill in the question and all four choices.');return}
+    (S.custom[c.id]=S.custom[c.id]||[]).push({id:`${c.id}-custom-${Date.now()}`,topic:v('#cqT'),level:'recall',q:v('#cqQ'),choices:ch,answer:0,explain:v('#cqE'),custom:true});save();renderClass()};
+  if(fileHandle)setBackupStatus(`Auto-saving to ${fileHandle.name}`);
+}
+function record(item){const s=qs(item.q.id),ok=item.pick!=null&&item.perm[item.pick]===item.q.answer;
+  s.n++;s.last=Date.now();
+  if(ok){s.ok++;if(!item.guess)s.box=Math.min(s.box+1,INT.length-1);s.due=Date.now()+(item.guess?1:INT[s.box])*DAY;}
+  else{s.miss++;s.box=0;s.due=Date.now()+12*36e5;}
+  save();return ok;}
+function renderQ(){const A=$('#classArea'),it=sess.list[sess.i];
+  if(sess.done)return renderSummary();
+  const q=it.q,exam=sess.mode==='exam',answered=it.pick!=null&&!exam,topic=sess.c.topics.find(t=>t.id===q.topic);
+  A.innerHTML=`<div class="progress"><i style="width:${sess.i/sess.list.length*100}%"></i></div>
+  <div class="card"><div class="row" style="justify-content:space-between"><span class="small muted">${sess.i+1} / ${sess.list.length} · ${esc(topic?topic.name:q.topic)}${q.custom?' · your question':''}</span><button class="small" id="qQuit">End session</button></div>
+   <p style="font-size:1.08rem;margin-top:10px;white-space:pre-wrap">${esc(q.q)}</p>${q.code?`<pre class="code">${esc(q.code)}</pre>`:''}
+   <div id="chs">${it.perm.map((ci,i)=>{let cls='';if(answered){if(ci===q.answer)cls='right';else if(i===it.pick)cls='wrong'}else if(exam&&i===it.pick)cls='picked';
+     return `<button class="choice ${cls}" data-i="${i}" ${answered?'disabled':''}><kbd>${i+1}</kbd> ${esc(q.choices[ci])}</button>`}).join('')}</div>
+   ${answered?`<div class="callout" style="margin:12px 0 0"><b>${it.perm[it.pick]===q.answer?'Correct.':'Not quite.'}</b> ${esc(q.explain||'')}</div>`:`<label style="font-weight:400;display:flex;gap:8px;align-items:center"><input type="checkbox" id="qGuess" ${it.guess?'checked':''}> I'm guessing <span class="small muted">(a lucky guess won't count as mastered)</span></label>`}
+   <div class="row" style="margin-top:14px">${exam&&sess.i>0?'<button id="qPrev">Back</button>':''}${answered||exam?`<button class="primary" id="qNext">${sess.i+1<sess.list.length?'Next':exam?'Submit exam':'Finish'} <span class="small">↵</span></button>`:''}</div></div>`;
+  A.querySelectorAll('#chs .choice').forEach(b=>b.onclick=()=>choose(+b.dataset.i));
+  const g=$('#qGuess');if(g)g.onchange=()=>it.guess=g.checked;
+  const n=$('#qNext');if(n)n.onclick=next;const p=$('#qPrev');if(p)p.onclick=()=>{sess.i--;renderQ()};
+  $('#qQuit').onclick=()=>{if(sess.mode==='exam'){if(!confirm('Submit the exam now? Unanswered questions count as wrong.'))return;}sess.done=true;finishSession();renderQ()};
+}
+function choose(i){const it=sess.list[sess.i];if(sess.mode==='exam'){it.pick=i;renderQ();return}if(it.pick!=null)return;it.pick=i;it.ok=record(it);renderQ();}
+function next(){const it=sess.list[sess.i];if(sess.mode==='exam'&&it.pick==null&&!confirm('Skip this question? It counts as wrong if you leave it blank.'))return;
+  if(sess.i+1<sess.list.length){sess.i++;renderQ()}else{sess.done=true;finishSession();renderQ()}}
+function finishSession(){const L=sess.list;if(sess.mode==='exam')L.forEach(it=>{if(it.ok===undefined)it.ok=record(it)});
+  const done=L.filter(it=>it.ok!==undefined),ok=done.filter(it=>it.ok).length;
+  if(done.length)S.logs.push({date:Date.now(),min:Math.max(1,Math.round((Date.now()-sess.t0)/6e4)),type:sess.mode==='exam'?'Weekly assessment':'Problem practice',act:Math.round(ok/done.length*100),note:`${sess.c.name}: ${done.length} questions (${sess.mode})`});save();}
+function renderSummary(){const A=$('#classArea'),L=sess.list.filter(it=>it.ok!==undefined),ok=L.filter(it=>it.ok).length;
+  const by={};L.forEach(it=>{const t=it.q.topic;by[t]=by[t]||[0,0];by[t][1]++;if(it.ok)by[t][0]++});
+  const wrong=L.filter(it=>!it.ok);
+  A.innerHTML=`<div class="card"><h2 style="margin-top:0">${ok} / ${L.length} correct (${L.length?Math.round(ok/L.length*100):0}%)</h2>
+   <div class="tablewrap"><table><tr><th>Topic</th><th>Score</th></tr>${Object.entries(by).map(([t,[a,b]])=>`<tr><td>${esc((sess.c.topics.find(x=>x.id===t)||{}).name||t)}</td><td>${a}/${b}</td></tr>`).join('')}</table></div>
+   <div class="row" style="margin-top:14px"><button class="primary" id="sAgain">New session</button></div></div>
+   ${wrong.length?`<h3>Review your misses</h3><p class="small muted">Before reading each explanation, say out loud why the correct answer is right. These come back in about 12 hours.</p>`+wrong.map(it=>`<details><summary>${esc(it.q.q.slice(0,110))}${it.q.q.length>110?'…':''}</summary><div class="body">${it.q.code?`<pre class="code">${esc(it.q.code)}</pre>`:''}<p>You chose: ${it.pick==null?'<i>(blank)</i>':esc(it.q.choices[it.perm[it.pick]])}<br><b>Answer: ${esc(it.q.choices[it.q.answer])}</b></p><p class="muted" style="margin:0">${esc(it.q.explain||'')}</p></div></details>`).join(''):''}`;
+  $('#sAgain').onclick=()=>{sess=null;renderClass()};}
+document.addEventListener('keydown',e=>{if(!sess||sess.done||!$('#classes').classList.contains('active')||/INPUT|TEXTAREA|SELECT/.test(e.target.tagName))return;
+  const it=sess.list[sess.i];if(/^[1-4]$/.test(e.key)&&+e.key<=it.perm.length){choose(+e.key-1)}else if(e.key==='Enter'&&(it.pick!=null)){e.preventDefault();next()}});
+
+/* ---------- backup file wiring ---------- */
+document.querySelectorAll('.connectBackup').forEach(b=>b.onclick=async()=>{
+  if(pendingHandle){try{if(await pendingHandle.requestPermission({mode:'readwrite'})==='granted'){fileHandle=pendingHandle;pendingHandle=null;b.textContent='Change backup file';writeFile();return}}catch(e){}}
+  if(!window.showSaveFilePicker){alert('Your browser can\'t write files directly. Use Chrome or Edge, or use "Export data" to download a copy.');return}
+  try{const h=await showSaveFilePicker({suggestedName:'learning-mastery-data.json',types:[{description:'JSON',accept:{'application/json':['.json']}}]});fileHandle=h;pendingHandle=null;idbSet(h);b.textContent='Change backup file';writeFile()}catch(e){}});
+idbGet().then(async h=>{if(!h)return;try{if(await h.queryPermission({mode:'readwrite'})==='granted'){fileHandle=h;setBackupStatus(`Auto-saving to ${h.name}`)}else{pendingHandle=h;setBackupStatus(`Backup file ${h.name} needs permission again. Click "Reconnect backup file".`);document.querySelectorAll('.connectBackup').forEach(b=>b.textContent='Reconnect backup file')}}catch(e){}});
+
 /* ---------- init ---------- */
+try{const cid=localStorage.getItem(KEY+'-class');curClass=CLS.find(c=>c.id===cid)||CLS[0]||null}catch(e){curClass=CLS[0]||null}
+renderClassPick();renderClass();
 loadIntake();renderDiag();renderEx();renderWeek1();renderReview();
 let first='start';try{first=localStorage.getItem(KEY+'-tab')||'start'}catch(e){}
 show(document.getElementById(first)?first:'start');

@@ -1,0 +1,3658 @@
+{
+ "id": "cpp",
+ "name": "C++ Programming",
+ "topics": [
+  {
+   "id": "basics",
+   "name": "Basics: types, operators & formatting",
+   "unit": "C++ Basics Review"
+  },
+  {
+   "id": "control-flow",
+   "name": "Control flow: if, switch & loops",
+   "unit": "C++ Basics Review"
+  },
+  {
+   "id": "functions",
+   "name": "Functions: prototypes, returns, defaults & overloading",
+   "unit": "Functions notes"
+  },
+  {
+   "id": "param-scope",
+   "name": "Parameter passing & scope",
+   "unit": "Functions notes"
+  },
+  {
+   "id": "strings",
+   "name": "Strings",
+   "unit": "Complex Data Types notes"
+  },
+  {
+   "id": "arrays",
+   "name": "Arrays",
+   "unit": "Complex Data Types notes / Exam cheat sheet"
+  },
+  {
+   "id": "structs",
+   "name": "Structures (structs)",
+   "unit": "Complex Data Types notes"
+  },
+  {
+   "id": "pointers",
+   "name": "Pointer basics",
+   "unit": "Pointers notes"
+  },
+  {
+   "id": "pointer-arith",
+   "name": "Pointer arithmetic & arrays",
+   "unit": "Pointers notes"
+  },
+  {
+   "id": "dynamic-memory",
+   "name": "Dynamic memory: new, delete & leaks",
+   "unit": "Dynamic Memory Allocation notes"
+  },
+  {
+   "id": "dynamic-classes",
+   "name": "Classes with dynamic data (Rule of Three)",
+   "unit": "Dynamic Memory Allocation notes"
+  },
+  {
+   "id": "classes",
+   "name": "Classes, constructors & destructors",
+   "unit": "Classes notes"
+  },
+  {
+   "id": "encapsulation",
+   "name": "Access, encapsulation, getters/setters & this",
+   "unit": "Classes notes"
+  },
+  {
+   "id": "file-io",
+   "name": "File I/O",
+   "unit": "File I/O notes"
+  },
+  {
+   "id": "searching",
+   "name": "Searching: linear & binary",
+   "unit": "Searching, Sorting and Analysis notes"
+  },
+  {
+   "id": "sorting",
+   "name": "Sorting: selection & insertion",
+   "unit": "Searching, Sorting and Analysis notes"
+  },
+  {
+   "id": "big-o",
+   "name": "Algorithm analysis & Big-O",
+   "unit": "Searching, Sorting and Analysis notes"
+  },
+  {
+   "id": "linux",
+   "name": "Linux, compiling & command-line args",
+   "unit": "Linux Overview / Searching notes"
+  }
+ ],
+ "questions": [
+  {
+   "id": "cpp-basics-001",
+   "topic": "basics",
+   "level": "recall",
+   "q": "Which of these is NOT one of the primitive data types listed in the Basics Review notes?",
+   "choices": [
+    "string",
+    "char",
+    "bool",
+    "double"
+   ],
+   "answer": 0,
+   "explain": "The primitive types are short, int, long, float, double, long double, bool and char. string is a complex type that comes from the string library. char is tempting to rule out because it holds text, but it is a primitive single-character type."
+  },
+  {
+   "id": "cpp-basics-002",
+   "topic": "basics",
+   "level": "apply",
+   "q": "What does this code print?",
+   "code": "int a = 7, b = 2;\ncout << a / b << \" \" << a % b;",
+   "choices": [
+    "3.5 0.5",
+    "3 0",
+    "3 1",
+    "3.5 1"
+   ],
+   "answer": 2,
+   "explain": "Both operands are int, so 7 / 2 truncates to 3, and 7 % 2 is the remainder 1. 3.5 is the trap: integer division never produces a fractional result."
+  },
+  {
+   "id": "cpp-basics-003",
+   "topic": "basics",
+   "level": "apply",
+   "q": "What value does d hold after this line runs?",
+   "code": "double d = 1 / 2 * 10.0;",
+   "choices": [
+    "10",
+    "0.5",
+    "5",
+    "0"
+   ],
+   "answer": 3,
+   "explain": "Evaluation goes left to right: 1 / 2 is integer division and gives 0, and 0 * 10.0 is 0.0. Getting 5 requires writing 1.0 / 2 or 0.5 so the division happens in floating point."
+  },
+  {
+   "id": "cpp-basics-004",
+   "topic": "basics",
+   "level": "apply",
+   "q": "What value is stored in x?",
+   "code": "int x = 2 + 3 * 4 % 5;",
+   "choices": [
+    "14",
+    "2",
+    "4",
+    "0"
+   ],
+   "answer": 2,
+   "explain": "* and % share a precedence level higher than +, and they are evaluated left to right: 3 * 4 = 12, then 12 % 5 = 2, then 2 + 2 = 4. You get 0 only if you add first, (2 + 3) * 4 % 5."
+  },
+  {
+   "id": "cpp-basics-005",
+   "topic": "basics",
+   "level": "understand",
+   "q": "What does this code print?",
+   "code": "double price = 19.99;\nint dollars = static_cast<int>(price);\ncout << dollars;",
+   "choices": [
+    "19",
+    "20",
+    "19.0",
+    "19.99"
+   ],
+   "answer": 0,
+   "explain": "static_cast<int> truncates and drops the fractional part. It does not round, so 19.99 becomes 19, not 20."
+  },
+  {
+   "id": "cpp-basics-006",
+   "topic": "basics",
+   "level": "understand",
+   "q": "Which condition is true exactly when x is strictly between 10 and 20?",
+   "choices": [
+    "x > 10 || x < 20",
+    "10 < x < 20",
+    "x > 10 && x < 20",
+    "x >= 10 && x <= 20"
+   ],
+   "answer": 2,
+   "explain": "Two relational tests must be joined with &&. The chained form 10 < x < 20 compiles, but it evaluates (10 < x) to 0 or 1 first and then compares that to 20, so it is always true. Using || is also always true."
+  },
+  {
+   "id": "cpp-basics-007",
+   "topic": "basics",
+   "level": "apply",
+   "q": "What does this code print?",
+   "code": "bool b = !true || 5 > 3 && 2 == 3;\ncout << b;",
+   "choices": [
+    "true",
+    "0",
+    "1",
+    "false"
+   ],
+   "answer": 1,
+   "explain": "! comes first, so !true is false. Next, 5 > 3 is true and 2 == 3 is false, and && binds tighter than ||: true && false gives false. Then false || false is false. cout prints a bool as 0 or 1 by default, so the output is 0, not the word false."
+  },
+  {
+   "id": "cpp-basics-008",
+   "topic": "basics",
+   "level": "apply",
+   "q": "What does this code print? (Spaces are shown as _ )",
+   "code": "cout << setw(5) << 42 << setw(3) << 7 << endl;",
+   "choices": [
+    "___42__7",
+    "42___7__",
+    "___42___7",
+    "42_7"
+   ],
+   "answer": 0,
+   "explain": "setw(n) right-justifies only the next value in a field n characters wide. 42 is padded to 5 characters (3 spaces), and 7 is padded to 3 characters (2 spaces). The values are not left-justified by default."
+  },
+  {
+   "id": "cpp-basics-009",
+   "topic": "basics",
+   "level": "apply",
+   "q": "What does this code print?",
+   "code": "cout << fixed << setprecision(2);\ncout << 3.14159 << \" \" << 20.0 / 8;",
+   "choices": [
+    "3.14 2.5",
+    "3.14 2",
+    "3.1 2.5",
+    "3.14 2.50"
+   ],
+   "answer": 3,
+   "explain": "fixed with setprecision(2) is sticky and always shows exactly 2 digits after the decimal point. 20.0 / 8 is 2.5, which prints as 2.50. Without fixed you would see 2.5."
+  },
+  {
+   "id": "cpp-basics-010",
+   "topic": "basics",
+   "level": "understand",
+   "q": "What happens with this code?",
+   "code": "const double TAX_RATE = 0.0675;\nTAX_RATE = 0.07;",
+   "choices": [
+    "The compiler warns, and TAX_RATE quietly stays 0.0675",
+    "TAX_RATE becomes 0.07",
+    "The program crashes at runtime",
+    "It does not compile because TAX_RATE is a named constant"
+   ],
+   "answer": 3,
+   "explain": "A const variable cannot be changed after it is initialized, so the assignment is a compile-time error. It is not just a warning, and it is not something that fails at runtime."
+  },
+  {
+   "id": "cpp-basics-011",
+   "topic": "basics",
+   "level": "recall",
+   "q": "Which of these is a character literal?",
+   "choices": [
+    "\"z\"",
+    "7.71e-5",
+    "'z'",
+    "true"
+   ],
+   "answer": 2,
+   "explain": "Character literals use single quotes. \"z\" in double quotes is a string literal, 7.71e-5 is a floating-point literal, and true is a boolean literal."
+  },
+  {
+   "id": "cpp-basics-012",
+   "topic": "basics",
+   "level": "apply",
+   "q": "Suppose a starts as 5 and b as 3. What does this code print?",
+   "code": "int a = 5, b = 3;\na = a * 2 - b;\nb = a % 5 + b;\ncout << a << \" \" << b;",
+   "choices": [
+    "7 3",
+    "10 5",
+    "7 5",
+    "7 2"
+   ],
+   "answer": 2,
+   "explain": "First a = 5 * 2 - 3 = 7. Then b = 7 % 5 + 3 = 2 + 3 = 5. b is computed from the new a, and 7 2 comes from forgetting to add b back in."
+  },
+  {
+   "id": "cpp-basics-013",
+   "topic": "basics",
+   "level": "understand",
+   "q": "What does this code print?",
+   "code": "int number = 10;\ndouble result = number / 4;\ncout << result;",
+   "choices": [
+    "2.50",
+    "3",
+    "2.5",
+    "2"
+   ],
+   "answer": 3,
+   "explain": "number / 4 is int / int, so it truncates to 2 before the result is converted to double. A double holding 2.0 prints as 2. To get 2.5, write number / 4.0."
+  },
+  {
+   "id": "cpp-basics-014",
+   "topic": "basics",
+   "level": "apply",
+   "q": "What does this code print?",
+   "code": "cout << -7 % 3;",
+   "choices": [
+    "1",
+    "2",
+    "-1",
+    "-2"
+   ],
+   "answer": 2,
+   "explain": "In C++ the result of % takes the sign of the left operand: -7 = 3 * (-2) + (-1), so the remainder is -1. The answer 2 is what mathematical modulo would give, but C++ does not work that way."
+  },
+  {
+   "id": "cpp-control-flow-001",
+   "topic": "control-flow",
+   "level": "apply",
+   "q": "What does this code print?",
+   "code": "int x = 2;\nswitch (x)\n{\n    case 1: cout << \"A\";\n    case 2: cout << \"B\";\n    case 3: cout << \"C\"; break;\n    default: cout << \"D\";\n}",
+   "choices": [
+    "D",
+    "B",
+    "BCD",
+    "BC"
+   ],
+   "answer": 3,
+   "explain": "With x == 2, execution jumps to case 2 and prints B. That case has no break, so it falls through into case 3, prints C, and then reaches break. The answer B would only be right if every case ended with a break."
+  },
+  {
+   "id": "cpp-control-flow-002",
+   "topic": "control-flow",
+   "level": "recall",
+   "q": "Which type CANNOT be used as the controlling expression of a switch statement?",
+   "choices": [
+    "char",
+    "an enum type",
+    "int",
+    "string"
+   ],
+   "answer": 3,
+   "explain": "switch works with integer types, char and enumerations. It does not work with floating-point types or strings. char is allowed because it is an integer type underneath."
+  },
+  {
+   "id": "cpp-control-flow-003",
+   "topic": "control-flow",
+   "level": "understand",
+   "q": "What does this code print?",
+   "code": "int i = 10;\ndo\n{\n    cout << i << \" \";\n    i++;\n} while (i < 5);",
+   "choices": [
+    "It loops forever",
+    "Nothing",
+    "10 11",
+    "10"
+   ],
+   "answer": 3,
+   "explain": "A do-while loop always runs its body once before it checks the condition, so 10 is printed. Then i becomes 11, the test 11 < 5 is false, and the loop stops. A while loop would print nothing here."
+  },
+  {
+   "id": "cpp-control-flow-004",
+   "topic": "control-flow",
+   "level": "apply",
+   "q": "What does this code print?",
+   "code": "int n = 1, count = 0;\nwhile (n < 50)\n{\n    n *= 3;\n    count++;\n}\ncout << count << \" \" << n;",
+   "choices": [
+    "4 81",
+    "3 27",
+    "5 243",
+    "4 27"
+   ],
+   "answer": 0,
+   "explain": "n goes 1 -> 3 -> 9 -> 27 -> 81, which is 4 iterations. The condition is checked before each pass, so n = 27 (still < 50) gets one more multiplication. Stopping at 3 27 is an off-by-one in the trace."
+  },
+  {
+   "id": "cpp-control-flow-005",
+   "topic": "control-flow",
+   "level": "apply",
+   "q": "What does this code print? (spaces shown as _ )",
+   "code": "for (int i = 1; i <= 3; i++)\n{\n    for (int j = 1; j <= i; j++)\n        cout << j;\n    cout << \" \";\n}",
+   "choices": [
+    "1_2_3_",
+    "1_12_123_",
+    "123_123_123_",
+    "1_22_333_"
+   ],
+   "answer": 1,
+   "explain": "On row i the inner loop prints 1 up to i, and each row ends with a space. The trap 1 22 333 comes from printing i instead of j."
+  },
+  {
+   "id": "cpp-control-flow-006",
+   "topic": "control-flow",
+   "level": "understand",
+   "q": "What does this code print?",
+   "code": "int x = 12;\nif (x % 4 == 0)\n    if (x % 5 == 0)\n        cout << \"A\";\nelse\n    cout << \"B\";",
+   "choices": [
+    "A",
+    "B",
+    "Nothing",
+    "AB"
+   ],
+   "answer": 1,
+   "explain": "An else pairs with the nearest unmatched if, whatever the indentation suggests. 12 % 4 == 0 is true, 12 % 5 == 0 is false, so the inner if's else runs and prints B. The indentation makes it look like the else belongs to the outer if, which would print nothing."
+  },
+  {
+   "id": "cpp-control-flow-007",
+   "topic": "control-flow",
+   "level": "understand",
+   "q": "What does this code print?",
+   "code": "int x = 3;\nif (x = 5)\n    cout << \"five\";\nelse\n    cout << \"not five\";\ncout << \" \" << x;",
+   "choices": [
+    "not five 5",
+    "not five 3",
+    "five 3",
+    "five 5"
+   ],
+   "answer": 3,
+   "explain": "x = 5 is an assignment, not a comparison. It stores 5 in x and evaluates to 5, which is nonzero and therefore true. So it prints five, and x is now 5. The comparison operator is ==."
+  },
+  {
+   "id": "cpp-control-flow-008",
+   "topic": "control-flow",
+   "level": "apply",
+   "q": "This loop should add up only the odd numbers entered, stopping when 0 is entered. Which pair of blanks is correct?",
+   "code": "int number, sum = 0;\ncin >> number;\nwhile ( ______ )\n{\n    if ( ______ )\n        sum += number;\n    cin >> number;\n}\ncout << sum;",
+   "choices": [
+    "while (number == 0)  and  if (number % 2 != 0)",
+    "while (number != 0)  and  if (number % 2 != 0)",
+    "while (number != 0)  and  if (number % 2 == 0)",
+    "while (number > 0)  and  if (number % 2 == 1)"
+   ],
+   "answer": 1,
+   "explain": "The loop runs until the sentinel 0 is entered, and a number is odd when number % 2 != 0. Testing for != 0 also handles negative odd numbers, where % 2 gives -1. That is why number % 2 == 1 and number > 0 are wrong."
+  },
+  {
+   "id": "cpp-control-flow-009",
+   "topic": "control-flow",
+   "level": "apply",
+   "q": "What does this code print?",
+   "code": "for (int i = 0; i < 10; i++)\n{\n    if (i % 3 == 0) continue;\n    if (i > 7) break;\n    cout << i;\n}",
+   "choices": [
+    "123457",
+    "1245",
+    "124578",
+    "12457"
+   ],
+   "answer": 3,
+   "explain": "Multiples of 3 (0, 3, 6) are skipped by continue. At i = 8 the continue test is false (8 % 3 is 2), and then 8 > 7 triggers break before anything is printed. So 8 never appears."
+  },
+  {
+   "id": "cpp-control-flow-010",
+   "topic": "control-flow",
+   "level": "understand",
+   "q": "What happens when this code runs?",
+   "code": "int i = 0;\nwhile (i < 3)\n    cout << i;\n    i++;",
+   "choices": [
+    "It fails to compile",
+    "It prints 012",
+    "It prints 0 once",
+    "It prints 0 forever (infinite loop)"
+   ],
+   "answer": 3,
+   "explain": "Without braces, only the first statement (cout << i;) belongs to the while loop. i++ is outside the loop and never runs, so i stays 0 and the condition is always true. The indentation is misleading."
+  },
+  {
+   "id": "cpp-control-flow-011",
+   "topic": "control-flow",
+   "level": "apply",
+   "q": "What does this calculator code print when cOperator is '/'?",
+   "code": "char cOperator = '/';\nint num1 = 5, num2 = 12, result = 0;\nswitch (cOperator)\n{\n    case '+': result = num1 + num2; break;\n    case '/': result = num1 / num2;\n    case '%': result = num1 % num2; break;\n    default: cout << \"Enter a valid operator\" << endl;\n}\ncout << \"The result is \" << result << endl;",
+   "choices": [
+    "The result is 17",
+    "The result is 5",
+    "Enter a valid operator",
+    "The result is 0"
+   ],
+   "answer": 1,
+   "explain": "The '/' case sets result = 5 / 12 = 0, but it has no break, so it falls through into the '%' case and overwrites result with 5 % 12 = 5. The answer 0 ignores the fall-through."
+  },
+  {
+   "id": "cpp-control-flow-012",
+   "topic": "control-flow",
+   "level": "apply",
+   "q": "How many times does count++ execute?",
+   "code": "int count = 0;\nfor (int i = 0; i <= 5; i++)\n    count++;",
+   "choices": [
+    "7",
+    "4",
+    "6",
+    "5"
+   ],
+   "answer": 2,
+   "explain": "i takes the values 0, 1, 2, 3, 4, 5, which is 6 values, because <= includes 5. Answering 5 is the classic off-by-one mistake."
+  },
+  {
+   "id": "cpp-control-flow-013",
+   "topic": "control-flow",
+   "level": "apply",
+   "q": "What does this code print?",
+   "code": "int x = 0;\nwhile (x < 10)\n    x += 3;\ncout << x;",
+   "choices": [
+    "12",
+    "15",
+    "10",
+    "9"
+   ],
+   "answer": 0,
+   "explain": "x goes 0, 3, 6, 9, 12. When x is 9 the test 9 < 10 is still true, so 3 is added once more, giving 12. The loop does not stop at 10."
+  },
+  {
+   "id": "cpp-functions-001",
+   "topic": "functions",
+   "level": "understand",
+   "q": "What happens when you compile this program?",
+   "code": "int main()\n{\n    displayHelloWorld();\n}\n\nvoid displayHelloWorld()\n{\n    cout << \"Hello world\" << endl;\n}",
+   "choices": [
+    "It compiles, then crashes at runtime",
+    "It compiles but prints nothing",
+    "Compile error: 'displayHelloWorld' was not declared in this scope",
+    "It prints Hello world"
+   ],
+   "answer": 2,
+   "explain": "The compiler reads from top to bottom, and main calls the function before the compiler has seen any declaration of it. You fix this by adding a prototype above main or by moving the definition up."
+  },
+  {
+   "id": "cpp-functions-002",
+   "topic": "functions",
+   "level": "recall",
+   "q": "A function is defined later in the file as double area(double l, double w) { ... }. Which line is a valid prototype for it?",
+   "choices": [
+    "void area(double l, double w);",
+    "area(double l, double w);",
+    "double area(double l, double w)",
+    "double area(double, double);"
+   ],
+   "answer": 3,
+   "explain": "A prototype gives the return type, the name and the parameter types, and it ends with a semicolon. Parameter names are optional. A prototype with no semicolon is just the start of a function definition."
+  },
+  {
+   "id": "cpp-functions-003",
+   "topic": "functions",
+   "level": "apply",
+   "q": "Given void addNumbers(int iX, int iY = 10), which call is INVALID?",
+   "choices": [
+    "addNumbers();",
+    "addNumbers(5, 6);",
+    "addNumbers(5 + 1);",
+    "addNumbers(5);"
+   ],
+   "answer": 0,
+   "explain": "iX has no default value, so the caller must always supply at least one argument. addNumbers(5 + 1) is fine because an argument can be any expression."
+  },
+  {
+   "id": "cpp-functions-004",
+   "topic": "functions",
+   "level": "understand",
+   "q": "Which function header is ILLEGAL?",
+   "choices": [
+    "void f(int a = 1, int b);",
+    "void f(int a = 1, int b = 2);",
+    "void f(int a, int b = 2, int c = 3);",
+    "void f(int a, int b = 2);"
+   ],
+   "answer": 0,
+   "explain": "Default parameters must be given from right to left. Once a parameter has a default, every parameter after it needs one too, and here b follows a defaulted parameter but has no default."
+  },
+  {
+   "id": "cpp-functions-005",
+   "topic": "functions",
+   "level": "apply",
+   "q": "What does this code print?",
+   "code": "int volume(int l, int w = 2, int h = 3)\n{\n    return l * w * h;\n}\n// in main:\ncout << volume(4) << \" \" << volume(4, 5) << \" \" << volume(4, 5, 6);",
+   "choices": [
+    "24 60 120",
+    "24 20 120",
+    "24 60 60",
+    "4 20 120"
+   ],
+   "answer": 0,
+   "explain": "Arguments fill parameters from the left, and any missing ones use their defaults. volume(4) is 4*2*3 = 24, volume(4,5) is 4*5*3 = 60, and volume(4,5,6) is 120."
+  },
+  {
+   "id": "cpp-functions-006",
+   "topic": "functions",
+   "level": "understand",
+   "q": "Which pair of functions CANNOT both exist in the same program?",
+   "choices": [
+    "int f(int x);  and  double f(int x);",
+    "void f(string s);  and  void f(char c);",
+    "int f(int x);  and  int f(double x);",
+    "int f(int x);  and  int f(int x, int y);"
+   ],
+   "answer": 0,
+   "explain": "Overloads must have different parameter lists, and a different return type alone is not enough. The compiler could not tell which f(5) you meant."
+  },
+  {
+   "id": "cpp-functions-007",
+   "topic": "functions",
+   "level": "apply",
+   "q": "What does this code print?",
+   "code": "void show(int x)    { cout << \"int \"; }\nvoid show(double x) { cout << \"double \"; }\nvoid show(string s) { cout << \"string \"; }\n// in main:\nshow(3);\nshow(3.0);\nshow(string(\"3\"));",
+   "choices": [
+    "int int string",
+    "double double string",
+    "It fails to compile because of ambiguity",
+    "int double string"
+   ],
+   "answer": 3,
+   "explain": "The compiler picks the overload whose parameter type best matches each argument. 3 is an int, 3.0 is a double, and string(\"3\") is a string. There is no ambiguity because each call has an exact match."
+  },
+  {
+   "id": "cpp-functions-008",
+   "topic": "functions",
+   "level": "understand",
+   "q": "What is wrong with this function?",
+   "code": "void calculateArea(double dLength, double dWidth)\n{\n    double dArea = dLength * dWidth;\n    return dArea;\n}",
+   "choices": [
+    "It compiles, but the value it returns is always 0",
+    "It produces a warning only, and the return is ignored",
+    "A void function cannot return a value, so it does not compile",
+    "Nothing. It returns dArea to the caller"
+   ],
+   "answer": 2,
+   "explain": "A void function returns no data. return dArea; there is a compile error (return-statement with a value, in function returning 'void'). To fix it, change the return type to double."
+  },
+  {
+   "id": "cpp-functions-009",
+   "topic": "functions",
+   "level": "understand",
+   "q": "This function is missing its return statement. What happens when it is called?",
+   "code": "int sumNumbers(int iX, int iY)\n{\n    int iResult;\n    iResult = iX + iY;\n}",
+   "choices": [
+    "The returned value is undefined. It might look correct by accident, and -Wreturn-type can warn about it",
+    "It automatically returns iResult",
+    "The compiler refuses to build the program",
+    "It always returns 0"
+   ],
+   "answer": 0,
+   "explain": "If a value-returning function reaches its end without a return, the result is undefined, and sometimes it happens to be the right number. A compiler warning (-Wreturn-type, part of -Wall) can catch this. Because it is usually a warning and not an error, thinking the build always fails is the tempting mistake."
+  },
+  {
+   "id": "cpp-functions-010",
+   "topic": "functions",
+   "level": "apply",
+   "q": "Which assert fails first?",
+   "code": "int toInches(int feet, int inches)\n{\n    return feet * 12 - inches;\n}\n// in main:\nassert(toInches(1, 0) == 12);   // Line A\nassert(toInches(2, 0) == 24);   // Line B\nassert(toInches(0, 3) == 3);    // Line C\nassert(toInches(0, 0) == 0);    // Line D",
+   "choices": [
+    "Line D",
+    "Line A",
+    "Line B",
+    "Line C"
+   ],
+   "answer": 3,
+   "explain": "The function subtracts inches when it should add them. Lines A and B pass inches = 0, so the bug does not show. Line C computes 0*12 - 3 = -3, not 3, so the assertion fails and the program aborts there. Line D would pass."
+  },
+  {
+   "id": "cpp-functions-011",
+   "topic": "functions",
+   "level": "recall",
+   "q": "In the course's function documentation header, what does labeling a parameter I/O mean?",
+   "choices": [
+    "It is only read and never changed",
+    "It comes in with data, and the function modifies that data",
+    "It is a file stream used for input or output",
+    "It starts with no data and is only used to send a result out"
+   ],
+   "answer": 1,
+   "explain": "I means passed in and not modified. O means used only to pass data out. I/O means passed in with data that the function changes. The file-stream reading is a guess based on the letters and does not reflect what the label means."
+  },
+  {
+   "id": "cpp-functions-012",
+   "topic": "functions",
+   "level": "understand",
+   "q": "When main calls displayHelloWorld(), what happens on the call stack?",
+   "choices": [
+    "Nothing happens on the stack, because only variables live there, not function calls",
+    "main's frame is removed and replaced by displayHelloWorld's frame",
+    "A new stack frame for displayHelloWorld (its parameters, locals and return address) is pushed on top of main's frame and popped when it returns",
+    "A frame is added to the bottom of the stack, below main"
+   ],
+   "answer": 2,
+   "explain": "Each call pushes a frame onto the top of the stack, and returning pops it so control goes back to main. main's frame stays underneath the whole time; it is never replaced."
+  },
+  {
+   "id": "cpp-functions-013",
+   "topic": "functions",
+   "level": "apply",
+   "q": "What does this code print?",
+   "code": "int mystery(int a, int b)\n{\n    if (a > b)\n        return a - b;\n    return b - a + 1;\n}\n// in main:\ncout << mystery(3, 8) << \" \" << mystery(8, 3);",
+   "choices": [
+    "-5 5",
+    "6 5",
+    "6 6",
+    "5 5"
+   ],
+   "answer": 1,
+   "explain": "mystery(3, 8): 3 > 8 is false, so it returns 8 - 3 + 1 = 6. mystery(8, 3): 8 > 3 is true, so it returns 5 and exits immediately. The second return line never runs for that call."
+  },
+  {
+   "id": "cpp-functions-014",
+   "topic": "functions",
+   "level": "understand",
+   "q": "In this call from main, displayMovie(szMovie, dRating); what are szMovie and dRating?",
+   "choices": [
+    "Arguments: values supplied in the function call",
+    "Prototypes",
+    "Parameters: variables declared in the function definition",
+    "Return values"
+   ],
+   "answer": 0,
+   "explain": "Arguments are what you pass at the call site. Parameters are the variables listed in the function's definition, and they receive copies of (or references to) the arguments. People often mix the two words up."
+  },
+  {
+   "id": "cpp-functions-015",
+   "topic": "functions",
+   "level": "understand",
+   "q": "displayMovie is defined as void displayMovie(string szMovie, double dRating). What happens with the call displayMovie(dRating, szMovie); ?",
+   "choices": [
+    "It runs and prints the values in reverse order",
+    "Compile error: the arguments are in the wrong order, and a double cannot be converted to a string",
+    "It compiles, but szMovie becomes an empty string",
+    "It works, because C++ matches arguments to parameters by name"
+   ],
+   "answer": 1,
+   "explain": "Arguments are matched to parameters by position, not by name. The first parameter expects a string, and a double cannot be converted to one, so the compiler rejects the call."
+  },
+  {
+   "id": "cpp-param-scope-001",
+   "topic": "param-scope",
+   "level": "apply",
+   "q": "What does this program print?",
+   "code": "void bump(int a, int b)\n{\n    a += 5;\n    b += 5;\n    cout << a << \" \" << b << \" \";\n}\nint main()\n{\n    int a = 1, b = 2;\n    bump(a, b);\n    cout << a << \" \" << b;\n}",
+   "choices": [
+    "6 7 1 7",
+    "1 2 1 2",
+    "6 7 6 7",
+    "6 7 1 2"
+   ],
+   "answer": 3,
+   "explain": "Pass by value gives the function its own copies. It changes and prints the copies (6 7), and main's a and b remain 1 and 2."
+  },
+  {
+   "id": "cpp-param-scope-002",
+   "topic": "param-scope",
+   "level": "apply",
+   "q": "After this \"swap\" call, what are iX and iY in main?",
+   "code": "void swap(int& iA, int iB)\n{\n    int iTemp = iA;\n    iA = iB;\n    iB = iTemp;\n}\n// in main:\nint iX = 4, iY = 9;\nswap(iX, iY);",
+   "choices": [
+    "iX = 9, iY = 9",
+    "iX = 4, iY = 4",
+    "iX = 4, iY = 9",
+    "iX = 9, iY = 4"
+   ],
+   "answer": 0,
+   "explain": "Only iA is a reference. iA = iB copies 9 into iX. iB is a copy, so changing it does not affect iY, which stays 9. Both end up as 9, so this is not a working swap; the & is missing on iB."
+  },
+  {
+   "id": "cpp-param-scope-003",
+   "topic": "param-scope",
+   "level": "apply",
+   "q": "What does this code print?",
+   "code": "void f(int x, int& y)\n{\n    x *= 2;\n    y *= 2;\n}\n// in main:\nint a = 3, b = 5;\nf(a, b);\ncout << a << \" \" << b;",
+   "choices": [
+    "3 5",
+    "6 10",
+    "6 5",
+    "3 10"
+   ],
+   "answer": 3,
+   "explain": "x is passed by value, so doubling it changes only the copy, and a stays 3. y is a reference to b, so b becomes 10."
+  },
+  {
+   "id": "cpp-param-scope-004",
+   "topic": "param-scope",
+   "level": "understand",
+   "q": "Why do the notes recommend passing a large string to a function by reference?",
+   "choices": [
+    "Strings cannot be passed by value in C++",
+    "Pass by reference makes the function run in constant time",
+    "It avoids copying the whole string, and it lets the function modify the caller's string if needed",
+    "References make the string read-only automatically"
+   ],
+   "answer": 2,
+   "explain": "Pass by value copies every character, while a reference just aliases the original. Strings can be passed by value; it is only less efficient. To prevent modification you would add const, which a plain reference does not do."
+  },
+  {
+   "id": "cpp-param-scope-005",
+   "topic": "param-scope",
+   "level": "understand",
+   "q": "What does this program print?",
+   "code": "int x = 5;\nvoid f()\n{\n    int x = 10;\n    x++;\n}\nint main()\n{\n    f();\n    cout << x;\n}",
+   "choices": [
+    "6",
+    "10",
+    "11",
+    "5"
+   ],
+   "answer": 3,
+   "explain": "The x inside f is a separate local variable that hides the global x, so x++ changes only the local copy. main prints the global x, which is still 5."
+  },
+  {
+   "id": "cpp-param-scope-006",
+   "topic": "param-scope",
+   "level": "apply",
+   "q": "What does this program print?",
+   "code": "int count = 0;\nvoid inc() { count++; }\nint main()\n{\n    inc();\n    inc();\n    int count = 7;\n    inc();\n    cout << count;\n}",
+   "choices": [
+    "3",
+    "10",
+    "7",
+    "8"
+   ],
+   "answer": 2,
+   "explain": "inc() always increments the global count, which ends at 3. When main prints count, its local count (7) hides the global one, so 7 is printed. Answering 8 assumes inc() changed the local variable."
+  },
+  {
+   "id": "cpp-param-scope-007",
+   "topic": "param-scope",
+   "level": "understand",
+   "q": "What happens with this code?",
+   "code": "for (int i = 0; i < 3; i++)\n{\n    int sq = i * i;\n}\ncout << sq;",
+   "choices": [
+    "It prints 4",
+    "Compile error: sq is not declared in this scope",
+    "It prints 0",
+    "It prints a garbage value"
+   ],
+   "answer": 1,
+   "explain": "sq is declared inside the loop body's block, so it stops existing when that block ends. Using it after the loop is a scope error that the compiler catches; it is not something that happens at runtime."
+  },
+  {
+   "id": "cpp-param-scope-008",
+   "topic": "param-scope",
+   "level": "understand",
+   "q": "Given void doubleIt(int& n) { n *= 2; }, what happens with the call doubleIt(5); ?",
+   "choices": [
+    "It compiles, and the call does nothing",
+    "Compile error: a non-const reference must refer to a variable, not a literal",
+    "It returns 10",
+    "5 becomes 10 everywhere in the program"
+   ],
+   "answer": 1,
+   "explain": "A non-const reference parameter must bind to a variable whose memory the function can modify. A literal such as 5 has no such memory, so the compiler rejects the call."
+  },
+  {
+   "id": "cpp-param-scope-009",
+   "topic": "param-scope",
+   "level": "apply",
+   "q": "What does this code print?",
+   "code": "void shout(string s)\n{\n    for (unsigned int i = 0; i < s.size(); i++)\n        s.at(i) = toupper(s.at(i));\n}\n// in main:\nstring w = \"hi\";\nshout(w);\ncout << w;",
+   "choices": [
+    "It does not compile",
+    "hi",
+    "Hi",
+    "HI"
+   ],
+   "answer": 1,
+   "explain": "s is passed by value, so the function uppercases its own copy. To change w, the parameter would need to be string& s."
+  },
+  {
+   "id": "cpp-param-scope-010",
+   "topic": "param-scope",
+   "level": "understand",
+   "q": "A function must give back both a quotient and a remainder. Which header follows the course's approach?",
+   "choices": [
+    "int, int divide(int a, int b)",
+    "int divide(int a, int b, int q, int r)",
+    "void divide(int a, int b, int& q, int& r)",
+    "void divide(int a, int b, int q, int r)"
+   ],
+   "answer": 2,
+   "explain": "A return statement can send back only one value, so the extra results go out through reference parameters (documented as O). Value parameters q and r would be local copies that the caller never sees."
+  },
+  {
+   "id": "cpp-param-scope-011",
+   "topic": "param-scope",
+   "level": "recall",
+   "q": "Where can a function's parameters be used?",
+   "choices": [
+    "Anywhere in the same file",
+    "In main and the function itself",
+    "Anywhere in the program after the function is called",
+    "Only inside that function's body"
+   ],
+   "answer": 3,
+   "explain": "Parameters have function scope. They are created when the function is called and destroyed when it returns."
+  },
+  {
+   "id": "cpp-param-scope-012",
+   "topic": "param-scope",
+   "level": "apply",
+   "q": "What does this code print?",
+   "code": "int a = 5;\nint& r = a;\nr += 3;\na *= 2;\ncout << a << \" \" << r;",
+   "choices": [
+    "8 16",
+    "10 16",
+    "16 8",
+    "16 16"
+   ],
+   "answer": 3,
+   "explain": "r is another name for a. r += 3 makes a = 8, then a *= 2 makes it 16. Reading r reads the same memory, so it is also 16."
+  },
+  {
+   "id": "cpp-param-scope-013",
+   "topic": "param-scope",
+   "level": "understand",
+   "q": "In void countWords(ifstream& fin, int& iCount), iCount holds no meaningful value when the function is called, and the function stores the result in it. How should iCount be labeled in the doc header?",
+   "choices": [
+    "I",
+    "I/O",
+    "O",
+    "It needs no label because it is a reference"
+   ],
+   "answer": 2,
+   "explain": "O means the parameter is used only to pass data out. I/O would be correct only if the function also used the value that came in. Every parameter gets a label, including references."
+  },
+  {
+   "id": "cpp-strings-001",
+   "topic": "strings",
+   "level": "recall",
+   "q": "How many bytes are needed to store the characters of \"Hello World\", including the null byte?",
+   "choices": [
+    "13",
+    "12",
+    "11",
+    "10"
+   ],
+   "answer": 1,
+   "explain": "\"Hello World\" has 11 characters (the space counts), plus 1 for the terminating null byte, for 12 in total. Answering 11 forgets the \\0."
+  },
+  {
+   "id": "cpp-strings-002",
+   "topic": "strings",
+   "level": "apply",
+   "q": "What does this code print?",
+   "code": "string s = \"Toy Story\";\ncout << s.size();",
+   "choices": [
+    "10",
+    "9",
+    "2",
+    "8"
+   ],
+   "answer": 1,
+   "explain": "size() returns the number of characters, including the space but not the null terminator: T-o-y-space-S-t-o-r-y is 9. The answer 10 is the storage count that includes \\0."
+  },
+  {
+   "id": "cpp-strings-003",
+   "topic": "strings",
+   "level": "understand",
+   "q": "What happens when this code runs?",
+   "code": "string szMovie = \"Toy story\";\nchar cLetter = szMovie.at(11);",
+   "choices": [
+    "It does not compile",
+    "cLetter gets a random garbage value",
+    "cLetter gets '\\0'",
+    "It throws a std::out_of_range exception, which terminates the program"
+   ],
+   "answer": 3,
+   "explain": "at() is bounds-checked. Index 11 is not less than size() (9), so it throws out_of_range. The garbage-value outcome is what can happen with unchecked [] access."
+  },
+  {
+   "id": "cpp-strings-004",
+   "topic": "strings",
+   "level": "understand",
+   "q": "Why do the notes call szMovie[11] the \"bad way\" when szMovie is \"Toy story\"?",
+   "choices": [
+    "[] always throws an exception",
+    "[] uses 1-based indexing",
+    "[] cannot be used with strings at all",
+    "[] does no bounds checking, so an out-of-range index silently reads garbage (undefined behavior)"
+   ],
+   "answer": 3,
+   "explain": "Square-bracket access trusts the index, so going past the end is undefined behavior and does not produce a clean error. at() checks the index and throws instead."
+  },
+  {
+   "id": "cpp-strings-005",
+   "topic": "strings",
+   "level": "apply",
+   "q": "What does the expression evaluate to?",
+   "code": "string code = \"mx42\";\ncode.at(0) >= 65 && code.at(0) <= 90",
+   "choices": [
+    "true, because 65 <= 109",
+    "true, because 'm' is a letter",
+    "It does not compile, because you cannot compare a char to an int",
+    "false, because 'm' is ASCII 109, outside the uppercase range 65-90"
+   ],
+   "answer": 3,
+   "explain": "Characters compare by their ASCII codes. Uppercase letters are 65-90, and lowercase 'm' is 109, so the second test fails. Comparing a char with an int is perfectly legal."
+  },
+  {
+   "id": "cpp-strings-006",
+   "topic": "strings",
+   "level": "understand",
+   "q": "The user types 20, presses Enter, then types Sam Lee and presses Enter. What does name contain?",
+   "code": "int age;\nstring name;\ncin >> age;\ngetline(cin, name);",
+   "choices": [
+    "An empty string",
+    "20",
+    "Sam",
+    "Sam Lee"
+   ],
+   "answer": 0,
+   "explain": "cin >> age leaves the newline in the input buffer. getline then reads up to that newline right away and gets an empty string. Calling cin.ignore() before getline fixes this."
+  },
+  {
+   "id": "cpp-strings-007",
+   "topic": "strings",
+   "level": "apply",
+   "q": "What does this code print?",
+   "code": "string line = \"42 apples and pears\";\nistringstream ss(line);\nint n;\nstring a, b;\nss >> n >> a >> b;\ncout << b << n;",
+   "choices": [
+    "apples42",
+    "42and",
+    "pears42",
+    "and42"
+   ],
+   "answer": 3,
+   "explain": "The >> operator on an istringstream pulls whitespace-separated tokens in order: n = 42, a = \"apples\", b = \"and\". The code prints b followed by n."
+  },
+  {
+   "id": "cpp-strings-008",
+   "topic": "strings",
+   "level": "apply",
+   "q": "What does this code print?",
+   "code": "string s = \"banana\";\ncout << s.find(\"na\");",
+   "choices": [
+    "3",
+    "2",
+    "4",
+    "1"
+   ],
+   "answer": 1,
+   "explain": "find returns the 0-based index where the first match starts. In b-a-n-a-n-a, \"na\" first begins at index 2. The answer 4 is the second occurrence."
+  },
+  {
+   "id": "cpp-strings-009",
+   "topic": "strings",
+   "level": "apply",
+   "q": "What does this code print?",
+   "code": "string first = \"Ada\", last = \"Lovelace\";\nstring full = first + \" \" + last;\nfull += \"!\";\ncout << full.size();",
+   "choices": [
+    "13",
+    "14",
+    "11",
+    "12"
+   ],
+   "answer": 0,
+   "explain": "\"Ada\" (3) + \" \" (1) + \"Lovelace\" (8) = 12, and += \"!\" adds 1 more, giving 13. size() never counts the null byte."
+  },
+  {
+   "id": "cpp-strings-010",
+   "topic": "strings",
+   "level": "apply",
+   "q": "This loop is meant to print the characters at even indices of movie. With movie = \"Jaws\", what happens?",
+   "code": "for (int i = 0; i <= movie.length(); i = i + 2)\n    cout << movie.at(i);",
+   "choices": [
+    "It prints aw",
+    "It prints Jws",
+    "It prints Jw, then at(4) throws out_of_range",
+    "It prints Jw"
+   ],
+   "answer": 2,
+   "explain": "i takes the values 0, 2, 4. Because the condition uses <=, i = 4 is allowed, but the valid indices are only 0-3. The fix is i < movie.length()."
+  },
+  {
+   "id": "cpp-strings-011",
+   "topic": "strings",
+   "level": "apply",
+   "q": "What does this code print?",
+   "code": "string s = \"R2-D2 & C-3PO\";\nint count = 0;\nfor (unsigned int i = 0; i < s.size(); i++)\n    if (isdigit(s.at(i)))\n        count++;\ncout << count;",
+   "choices": [
+    "2",
+    "4",
+    "3",
+    "13"
+   ],
+   "answer": 2,
+   "explain": "The digit characters in \"R2-D2 & C-3PO\" are 2, 2 and 3, so the count is 3. The answer 13 is the string's total length."
+  },
+  {
+   "id": "cpp-strings-012",
+   "topic": "strings",
+   "level": "understand",
+   "q": "Which statement about the null byte at the end of a string is correct?",
+   "choices": [
+    "It is a space character, ASCII 32",
+    "It is included in the value returned by size()",
+    "It is the character '0'",
+    "Its ASCII value is 0. It is not the character '0', which is ASCII 48"
+   ],
+   "answer": 3,
+   "explain": "The terminator \\0 has numeric value 0. The digit character '0' is a different character, with code 48, and size() does not count the terminator."
+  },
+  {
+   "id": "cpp-strings-013",
+   "topic": "strings",
+   "level": "apply",
+   "q": "What does this code print?",
+   "code": "char c = 'D';\nc = c + 32;\ncout << c;",
+   "choices": [
+    "D",
+    "100",
+    "d",
+    "68"
+   ],
+   "answer": 2,
+   "explain": "'D' is 68, and adding 32 gives 100, which is 'd'. Because c is a char, cout prints the character, not the number."
+  },
+  {
+   "id": "cpp-arrays-001",
+   "topic": "arrays",
+   "level": "apply",
+   "q": "What does this code print?",
+   "code": "int scores[6] = {3, 5, 7, 9, 11, 13};\nint sum = 0;\nfor (int i = 1; i < 6; i += 2)\n    sum += scores[i];\ncout << sum;",
+   "choices": [
+    "15",
+    "21",
+    "48",
+    "27"
+   ],
+   "answer": 3,
+   "explain": "i takes the values 1, 3, 5, so the sum is scores[1] + scores[3] + scores[5] = 5 + 9 + 13 = 27. The answer 21 comes from starting at index 0 (3 + 7 + 11)."
+  },
+  {
+   "id": "cpp-arrays-002",
+   "topic": "arrays",
+   "level": "apply",
+   "q": "What does this code print?",
+   "code": "int b[5] = {1, 2};\ncout << b[2] + b[1];",
+   "choices": [
+    "3",
+    "A garbage value",
+    "2",
+    "It does not compile"
+   ],
+   "answer": 2,
+   "explain": "In a partially initialized array, the elements that are not listed are set to 0. So b[2] is 0 and b[1] is 2, which gives 2."
+  },
+  {
+   "id": "cpp-arrays-003",
+   "topic": "arrays",
+   "level": "understand",
+   "q": "What does this code print?",
+   "code": "void zeroFirst(int arr[], int size)\n{\n    arr[0] = 0;\n}\n// in main:\nint a[3] = {7, 8, 9};\nzeroFirst(a, 3);\ncout << a[0];",
+   "choices": [
+    "It does not compile",
+    "0",
+    "8",
+    "7"
+   ],
+   "answer": 1,
+   "explain": "An array argument is passed as the address of its first element, so the function works on the caller's actual array. That is why arrays behave as if passed by reference."
+  },
+  {
+   "id": "cpp-arrays-004",
+   "topic": "arrays",
+   "level": "understand",
+   "q": "Why do functions that take an array parameter almost always take a separate size parameter too?",
+   "choices": [
+    "Without the size, the function would get a copy of only the first element",
+    "The size makes the array be passed by value",
+    "C++ requires every array parameter to be followed by an int",
+    "Inside the function the array parameter is really just a pointer to the first element, so the function cannot tell how many elements there are"
+   ],
+   "answer": 3,
+   "explain": "The array decays to a pointer, so the length information is lost. You must pass the size yourself, or the loops cannot know where to stop."
+  },
+  {
+   "id": "cpp-arrays-005",
+   "topic": "arrays",
+   "level": "understand",
+   "q": "What is the problem with this code?",
+   "code": "int a[5];\na[5] = 10;",
+   "choices": [
+    "Index 5 is out of bounds (valid indices are 0-4). C++ does not check it, so this is undefined behavior",
+    "It does not compile, because the compiler checks array bounds",
+    "It throws std::out_of_range",
+    "Nothing. It quietly grows the array to 6 elements"
+   ],
+   "answer": 0,
+   "explain": "Built-in arrays have no bounds checking, so the write lands in memory the array does not own. It usually compiles without complaint, and neither throwing nor resizing ever happens with a raw array."
+  },
+  {
+   "id": "cpp-arrays-006",
+   "topic": "arrays",
+   "level": "apply",
+   "q": "What does this code print?",
+   "code": "int a[5] = {4, -2, 9, 9, 1};\nint idx = 0;\nfor (int i = 1; i < 5; i++)\n    if (a[i] > a[idx])\n        idx = i;\ncout << idx;",
+   "choices": [
+    "2",
+    "9",
+    "3",
+    "4"
+   ],
+   "answer": 0,
+   "explain": "idx tracks the position of the largest value. a[2] = 9 becomes the max, and the comparison at a[3] is 9 > 9, which is false, so idx stays 2. Printing 9 would be printing the value, not the index."
+  },
+  {
+   "id": "cpp-arrays-007",
+   "topic": "arrays",
+   "level": "recall",
+   "q": "For double temps[8], what is the range of valid indices?",
+   "choices": [
+    "1 to 8",
+    "0 to 8",
+    "1 to 7",
+    "0 to 7"
+   ],
+   "answer": 3,
+   "explain": "Arrays are 0-indexed, so an 8-element array has indices 0 through size - 1 = 7."
+  },
+  {
+   "id": "cpp-arrays-008",
+   "topic": "arrays",
+   "level": "apply",
+   "q": "What does this code print?",
+   "code": "int a[4] = {1, 2, 3, 4};\nfor (int i = 3; i >= 0; i -= 2)\n    cout << a[i];",
+   "choices": [
+    "42",
+    "31",
+    "4321",
+    "43"
+   ],
+   "answer": 0,
+   "explain": "i starts at 3 and goes down by 2, visiting indices 3 and 1, which print a[3] = 4 and a[1] = 2. The answer 31 confuses indices with values."
+  },
+  {
+   "id": "cpp-arrays-009",
+   "topic": "arrays",
+   "level": "apply",
+   "q": "What does this code print?",
+   "code": "int a[5] = {1, 2, 3, 4, 5};\nfor (int i = 1; i < 5; i++)\n    a[i] = a[i] + a[i - 1];\ncout << a[4];",
+   "choices": [
+    "9",
+    "14",
+    "5",
+    "15"
+   ],
+   "answer": 3,
+   "explain": "Each element becomes itself plus the already-updated previous element (a running total): 1, 3, 6, 10, 15. The answer 9 would come from using the original a[3] = 4."
+  },
+  {
+   "id": "cpp-arrays-010",
+   "topic": "arrays",
+   "level": "understand",
+   "q": "What happens with the last line?",
+   "code": "int a[3] = {1, 2, 3};\nint b[3];\nb = a;",
+   "choices": [
+    "b becomes an alias for a",
+    "Compile error: you cannot assign one whole array to another",
+    "b becomes a copy of a",
+    "Only b[0] is copied"
+   ],
+   "answer": 1,
+   "explain": "An array name is a constant pointer to its first element and cannot be assigned to. To copy an array you need a loop that copies each element."
+  },
+  {
+   "id": "cpp-arrays-011",
+   "topic": "arrays",
+   "level": "understand",
+   "q": "Given Student roster[30]; where Student has a dGPA member, how do you access the GPA of the third student?",
+   "choices": [
+    "roster.dGPA[2]",
+    "roster[2].dGPA",
+    "roster[3].dGPA",
+    "roster(2).dGPA"
+   ],
+   "answer": 1,
+   "explain": "First index the array to get one Student (index 2 is the third), then use the dot operator on it. roster[3] is off by one."
+  },
+  {
+   "id": "cpp-arrays-012",
+   "topic": "arrays",
+   "level": "understand",
+   "q": "What does the const in this parameter do?",
+   "code": "int sumArray(const int arr[], int n);",
+   "choices": [
+    "It makes the function copy the array",
+    "It makes the array's size fixed",
+    "It makes n read-only",
+    "It stops the function from modifying the array's elements. arr[0] = 1; inside it would not compile"
+   ],
+   "answer": 3,
+   "explain": "const int arr[] means the elements are read-only inside the function. It documents intent and protects the caller's data. It does not affect the separate parameter n."
+  },
+  {
+   "id": "cpp-arrays-013",
+   "topic": "arrays",
+   "level": "apply",
+   "q": "What does this code print?",
+   "code": "int a[6] = {2, 7, 2, 5, 2, 7};\nint count = 0;\nfor (int i = 0; i < 6; i++)\n    if (a[i] == a[0])\n        count++;\ncout << count;",
+   "choices": [
+    "3",
+    "1",
+    "2",
+    "6"
+   ],
+   "answer": 0,
+   "explain": "The loop counts how many elements equal a[0] (which is 2), and a[0] counts itself: indices 0, 2 and 4, so 3. Answering 2 forgets that a[0] matches itself."
+  },
+  {
+   "id": "cpp-structs-001",
+   "topic": "structs",
+   "level": "recall",
+   "q": "In struct Student { string szName; int iID; };, what is the name Student called?",
+   "choices": [
+    "The structure's tag",
+    "A namespace",
+    "A constructor",
+    "A data member"
+   ],
+   "answer": 0,
+   "explain": "A structure has a tag (its name) and data members (the items inside it, such as szName and iID)."
+  },
+  {
+   "id": "cpp-structs-002",
+   "topic": "structs",
+   "level": "understand",
+   "q": "Why does this code fail to compile?",
+   "code": "struct Point\n{\n    double x;\n    double y;\n}\n\nint main() { Point p; }",
+   "choices": [
+    "Data members must be initialized",
+    "Structs cannot contain double members",
+    "The struct definition is missing the semicolon after its closing brace",
+    "Point should be lowercase"
+   ],
+   "answer": 2,
+   "explain": "A struct (or class) definition must end with };. Leaving out that semicolon is one of the most common beginner compile errors."
+  },
+  {
+   "id": "cpp-structs-003",
+   "topic": "structs",
+   "level": "apply",
+   "q": "What does this code print?",
+   "code": "struct Item\n{\n    string name;\n    int qty = 1;\n    double weight = 0.5;\n};\nItem it = {\"Potion\"};\ncout << it.name << \" \" << it.qty << \" \" << it.weight;",
+   "choices": [
+    "Potion 0 0",
+    "Potion 1 0.5",
+    "Potion followed by garbage values",
+    "It does not compile"
+   ],
+   "answer": 1,
+   "explain": "A partial initializer list fills members in order. Members that are not listed keep their default values from the struct definition, so qty = 1 and weight = 0.5."
+  },
+  {
+   "id": "cpp-structs-004",
+   "topic": "structs",
+   "level": "understand",
+   "q": "Student's first member is szStudentID and its fifth member is szMajor. What does Student s = {\"Computer Science\"}; do?",
+   "choices": [
+    "It compiles, but \"Computer Science\" goes into the first member, szStudentID",
+    "It stores \"Computer Science\" in szMajor because the types match",
+    "It sets every string member to \"Computer Science\"",
+    "It fails to compile"
+   ],
+   "answer": 0,
+   "explain": "Initializer values are assigned strictly in member order, and you cannot skip members. Because the types match, the code compiles, but the value ends up in the wrong member."
+  },
+  {
+   "id": "cpp-structs-005",
+   "topic": "structs",
+   "level": "understand",
+   "q": "What happens with cout << studentA; where studentA is a struct Student?",
+   "choices": [
+    "It prints the struct's memory address",
+    "It prints only the first member",
+    "Compile error: there is no operator<< that knows how to print a Student",
+    "It prints every member separated by spaces"
+   ],
+   "answer": 2,
+   "explain": "C++ has no built-in way to print a whole struct. You either print each member yourself or overload operator<<."
+  },
+  {
+   "id": "cpp-structs-006",
+   "topic": "structs",
+   "level": "apply",
+   "q": "Given these structs and Person p;, which expression is p's zip code?",
+   "code": "struct Address { string city; int zip; };\nstruct Person  { string name; Address home; };",
+   "choices": [
+    "home.p.zip",
+    "p.Address.zip",
+    "p.home.zip",
+    "p.zip"
+   ],
+   "answer": 2,
+   "explain": "Chain the dot operator through the nested member: p, then its home member (an Address), then zip. You use the member's name (home), not the type name (Address)."
+  },
+  {
+   "id": "cpp-structs-007",
+   "topic": "structs",
+   "level": "apply",
+   "q": "What does this code print?",
+   "code": "struct Point { int x; int y; };\nPoint a = {1, 2};\nPoint b = a;\nb.x = 10;\ncout << a.x << \" \" << b.x;",
+   "choices": [
+    "10 10",
+    "1 1",
+    "1 10",
+    "10 1"
+   ],
+   "answer": 2,
+   "explain": "Assigning one struct to another copies every member, so b is independent of a. Changing b.x does not affect a."
+  },
+  {
+   "id": "cpp-structs-008",
+   "topic": "structs",
+   "level": "understand",
+   "q": "What does this code print?",
+   "code": "struct Point { int x; int y; };\nvoid grow(Point p) { p.x *= 2; }\n// in main:\nPoint a = {3, 4};\ngrow(a);\ncout << a.x;",
+   "choices": [
+    "4",
+    "3",
+    "8",
+    "6"
+   ],
+   "answer": 1,
+   "explain": "The struct is passed by value, so grow doubles a copy. To change a, the parameter should be Point& p."
+  },
+  {
+   "id": "cpp-structs-009",
+   "topic": "structs",
+   "level": "understand",
+   "q": "Why does *pp.y = 9; fail when pp is a Point*?",
+   "choices": [
+    "pp must first be converted to a reference",
+    "You cannot change a struct through a pointer",
+    "* must come after the member name",
+    "The dot operator binds tighter than *, so this means *(pp.y), and a pointer has no member y"
+   ],
+   "answer": 3,
+   "explain": "Because of precedence, pp.y is evaluated first, which is invalid on a pointer. Write (*pp).y = 9; or, more simply, pp->y = 9;."
+  },
+  {
+   "id": "cpp-structs-010",
+   "topic": "structs",
+   "level": "apply",
+   "q": "What does this code print?",
+   "code": "struct Song { string title; int plays; };\nSong lib[3] = {{\"A\", 5}, {\"B\", 12}, {\"C\", 8}};\nint total = 0;\nfor (int i = 0; i < 3; i++)\n    if (lib[i].plays > 6)\n        total += lib[i].plays;\ncout << total;",
+   "choices": [
+    "25",
+    "20",
+    "12",
+    "2"
+   ],
+   "answer": 1,
+   "explain": "Only songs with more than 6 plays are added: B (12) and C (8), giving 20. A with 5 plays is skipped. The answer 2 counts the matching songs instead of summing their plays."
+  },
+  {
+   "id": "cpp-structs-011",
+   "topic": "structs",
+   "level": "understand",
+   "q": "According to the Classes notes, what is a downside of using a struct to group data?",
+   "choices": [
+    "Structs cannot hold string members",
+    "There is no way to restrict who can modify its data members",
+    "Struct members cannot have default values",
+    "Structs cannot be nested inside other structs"
+   ],
+   "answer": 1,
+   "explain": "Every member of a plain struct can be read and changed by any code, so it gives no encapsulation. Classes fix this with private members. The other options are false: structs can hold strings, have default values and be nested."
+  },
+  {
+   "id": "cpp-structs-012",
+   "topic": "structs",
+   "level": "understand",
+   "q": "What happens with this code?",
+   "code": "struct Point { int x; int y; };\nPoint a = {1, 2}, b = {1, 2};\nif (a == b) cout << \"same\";\nelse cout << \"different\";",
+   "choices": [
+    "Compile error: == is not defined for Point unless you overload it",
+    "It prints different, because they are separate objects",
+    "It compares only the first members",
+    "It prints same"
+   ],
+   "answer": 0,
+   "explain": "C++ does not generate comparison operators for structs. You either compare the members yourself or write an operator== overload."
+  },
+  {
+   "id": "cpp-structs-013",
+   "topic": "structs",
+   "level": "apply",
+   "q": "What does this code print?",
+   "code": "struct Student\n{\n    string szName;\n    double dGPA = 4;\n};\nStudent s;\ncout << s.dGPA;",
+   "choices": [
+    "4",
+    "It does not compile",
+    "0",
+    "A garbage value"
+   ],
+   "answer": 0,
+   "explain": "dGPA has a default value in the struct definition, so any Student created without an initializer for it starts with 4. Members without defaults, such as lCreditHours in other examples, are a different case."
+  },
+  {
+   "id": "cpp-pointers-001",
+   "topic": "pointers",
+   "level": "apply",
+   "q": "What does this code print?",
+   "code": "int a = 3, b = 7;\nint* p = &a;\n*p = *p + b;\np = &b;\n*p = *p * 2;\ncout << a << \" \" << b;",
+   "choices": [
+    "20 14",
+    "10 7",
+    "10 14",
+    "3 14"
+   ],
+   "answer": 2,
+   "explain": "p first points to a: *p = 3 + 7 stores 10 in a. Then p is moved to b, and *p = 7 * 2 stores 14 in b."
+  },
+  {
+   "id": "cpp-pointers-002",
+   "topic": "pointers",
+   "level": "understand",
+   "q": "Given int iX = 10; int* pi = &iX;, what does cout << &pi; print?",
+   "choices": [
+    "10",
+    "The address of the pointer variable pi itself",
+    "The address of the address of iX, which is always 0",
+    "The address of iX"
+   ],
+   "answer": 1,
+   "explain": "pi holds iX's address, and *pi is 10. &pi is where pi itself is stored in memory, which is a different location. Saying it prints iX's address confuses pi with &pi."
+  },
+  {
+   "id": "cpp-pointers-003",
+   "topic": "pointers",
+   "level": "understand",
+   "q": "What is wrong with this code?",
+   "code": "int* p;\n*p = 5;",
+   "choices": [
+    "p is uninitialized, so writing through it is undefined behavior",
+    "It does not compile, because pointers cannot be dereferenced",
+    "p automatically points to nullptr, so this safely does nothing",
+    "Nothing. It stores 5 in a new int"
+   ],
+   "answer": 0,
+   "explain": "An uninitialized local pointer holds a garbage address, and writing there can crash or corrupt memory. Local pointers are not set to nullptr automatically."
+  },
+  {
+   "id": "cpp-pointers-004",
+   "topic": "pointers",
+   "level": "recall",
+   "q": "Which is the preferred way to make a pointer point at nothing in modern C++?",
+   "choices": [
+    "int* p;",
+    "int* p = nullptr;",
+    "int* p = NULL;",
+    "int* p = 0;"
+   ],
+   "answer": 1,
+   "explain": "nullptr (C++11) is type-safe and is the preferred choice. NULL and 0 are legacy forms, and an uninitialized pointer does not point at nothing; it holds garbage."
+  },
+  {
+   "id": "cpp-pointers-005",
+   "topic": "pointers",
+   "level": "understand",
+   "q": "Assuming iCount is an int variable, which of these compiles without a cast?",
+   "choices": [
+    "int* p = iCount;",
+    "double* p = &iCount;",
+    "int* p = 1;",
+    "int* p = 0;"
+   ],
+   "answer": 3,
+   "explain": "0 is the only integer that can be assigned to a pointer without a cast, and it means null. A nonzero int is not an address, and an int's address cannot be stored in a double*."
+  },
+  {
+   "id": "cpp-pointers-006",
+   "topic": "pointers",
+   "level": "understand",
+   "q": "Which statement about references and pointers is TRUE?",
+   "choices": [
+    "A pointer must always be initialized when it is declared",
+    "A reference must be initialized when it is declared, and a pointer does not have to be",
+    "You can declare an array of references",
+    "A reference can later be changed to refer to a different variable"
+   ],
+   "answer": 1,
+   "explain": "A reference is permanently bound to one variable from the moment it is declared. A pointer can be declared first, assigned later and reassigned. You can have arrays of pointers but not arrays of references."
+  },
+  {
+   "id": "cpp-pointers-007",
+   "topic": "pointers",
+   "level": "apply",
+   "q": "What does this code print?",
+   "code": "int v = 5;\nint* p = &v;\nint** pp = &p;\n**pp = 8;\ncout << v << \" \" << *p;",
+   "choices": [
+    "It prints an address followed by 8",
+    "8 8",
+    "8 5",
+    "5 8"
+   ],
+   "answer": 1,
+   "explain": "pp points to p, and p points to v, so **pp is v itself. Setting it to 8 changes v, and *p reads the same memory."
+  },
+  {
+   "id": "cpp-pointers-008",
+   "topic": "pointers",
+   "level": "understand",
+   "q": "Given const int* p = &x;, which statement does NOT compile?",
+   "choices": [
+    "p = &y;",
+    "*p = 5;",
+    "int z = *p;",
+    "cout << *p;"
+   ],
+   "answer": 1,
+   "explain": "const int* is a pointer to a constant: you cannot change the value through it, but you can point it somewhere else. A constant pointer is written int* const p, and that is the one that cannot be reassigned."
+  },
+  {
+   "id": "cpp-pointers-009",
+   "topic": "pointers",
+   "level": "understand",
+   "q": "What does the const in this prototype promise?",
+   "code": "int findMax(const int* piNumArr, int iSize);",
+   "choices": [
+    "The returned max value is constant",
+    "findMax will not change which array the pointer refers to in main",
+    "piNumArr can never be nullptr",
+    "findMax will not modify the array elements through piNumArr"
+   ],
+   "answer": 3,
+   "explain": "A pointer-to-const parameter lets the function read the data but not change it, which protects the caller's array. It says nothing about null."
+  },
+  {
+   "id": "cpp-pointers-010",
+   "topic": "pointers",
+   "level": "understand",
+   "q": "What is the problem with this function?",
+   "code": "int* createPointer()\n{\n    int x = 42;\n    return &x;\n}",
+   "choices": [
+    "It leaks memory",
+    "It returns the address of a local variable, which is destroyed when the function returns, leaving a dangling pointer",
+    "It should return *x",
+    "Functions cannot return pointers"
+   ],
+   "answer": 1,
+   "explain": "x lives in the function's stack frame. After the return, the pointer refers to dead memory. Allocating with new int(42) instead gives memory that outlives the call. There is no leak here, because nothing was allocated with new."
+  },
+  {
+   "id": "cpp-pointers-011",
+   "topic": "pointers",
+   "level": "apply",
+   "q": "Which line causes a compile error?",
+   "code": "int* pi;                 // Line 1\ndouble dNumber = 6.2;    // Line 2\npi = &dNumber;           // Line 3\nvoid* pv = &dNumber;     // Line 4",
+   "choices": [
+    "Line 2",
+    "Line 3",
+    "Line 4",
+    "Line 1"
+   ],
+   "answer": 1,
+   "explain": "An int* can only hold the address of an int, so pi = &dNumber is a type mismatch. A void* (line 4) may hold the address of any type, but it must be cast back before it is dereferenced."
+  },
+  {
+   "id": "cpp-pointers-012",
+   "topic": "pointers",
+   "level": "apply",
+   "q": "What does this code print?",
+   "code": "void doubleNumber(int* piNumber)\n{\n    *piNumber = *piNumber * 2;\n}\n// in main:\nint n = 6;\ndoubleNumber(&n);\ndoubleNumber(&n);\ncout << n;",
+   "choices": [
+    "6",
+    "12",
+    "24",
+    "36"
+   ],
+   "answer": 2,
+   "explain": "Passing &n lets the function change n directly. Each call doubles it: 6 -> 12 -> 24."
+  },
+  {
+   "id": "cpp-pointers-013",
+   "topic": "pointers",
+   "level": "recall",
+   "q": "pStudent is a Student*. Which expression is equivalent to pStudent->szName?",
+   "choices": [
+    "&pStudent.szName",
+    "*pStudent.szName",
+    "pStudent.szName",
+    "(*pStudent).szName"
+   ],
+   "answer": 3,
+   "explain": "-> dereferences the pointer and then accesses the member. The parentheses are required because the dot operator has higher precedence than *."
+  },
+  {
+   "id": "cpp-pointers-014",
+   "topic": "pointers",
+   "level": "apply",
+   "q": "What does this code print?",
+   "code": "int* getLarger(int* piA, int* piB)\n{\n    if (piA && piB)\n        return (*piA > *piB) ? piA : piB;\n    return nullptr;\n}\n// in main:\nint x = 4, y = 9;\nint* r = getLarger(&x, &y);\n*r = 0;\ncout << x << \" \" << y;",
+   "choices": [
+    "4 9",
+    "4 0",
+    "0 9",
+    "0 0"
+   ],
+   "answer": 1,
+   "explain": "*a = 4 and *b = 9, so getLarger returns b, which is &y. Writing *r = 0 changes y, and x stays 4."
+  },
+  {
+   "id": "cpp-pointer-arith-001",
+   "topic": "pointer-arith",
+   "level": "apply",
+   "q": "What does this code print?",
+   "code": "int a[4] = {10, 20, 30, 40};\nint* p = a;\np++;\ncout << *p + 1 << \" \" << *(p + 1);",
+   "choices": [
+    "21 40",
+    "21 30",
+    "30 30",
+    "11 20"
+   ],
+   "answer": 1,
+   "explain": "After p++, p points to a[1] (20). *p + 1 dereferences first and then adds, giving 21. *(p + 1) is a[2], which is 30."
+  },
+  {
+   "id": "cpp-pointer-arith-002",
+   "topic": "pointer-arith",
+   "level": "understand",
+   "q": "An int* p holds address 0x1000, and an int is 4 bytes. What address does p + 3 hold?",
+   "choices": [
+    "0x1030",
+    "0x1003",
+    "0x1012",
+    "0x100C"
+   ],
+   "answer": 3,
+   "explain": "Adding n to a pointer moves it n * sizeof(type) bytes: 3 * 4 = 12 bytes, and 12 is 0xC in hex. The answer 0x1003 treats the pointer like a plain integer, and 0x1012 adds 12 as if it were already hex."
+  },
+  {
+   "id": "cpp-pointer-arith-003",
+   "topic": "pointer-arith",
+   "level": "understand",
+   "q": "A double* pd holds address 0x2000, and a double is 8 bytes. What does pd hold after pd += 2; ?",
+   "choices": [
+    "0x2010",
+    "0x2016",
+    "0x2008",
+    "0x2002"
+   ],
+   "answer": 0,
+   "explain": "2 * 8 = 16 bytes, which is 0x10 in hex, so the result is 0x2010. The answer 0x2016 adds decimal 16 as if it were hex digits, and 0x2008 is a single step."
+  },
+  {
+   "id": "cpp-pointer-arith-004",
+   "topic": "pointer-arith",
+   "level": "understand",
+   "q": "What happens with this code?",
+   "code": "int a[3] = {1, 2, 3};\na++;",
+   "choices": [
+    "Every element of a is incremented",
+    "Compile error: an array name is a constant pointer and cannot be incremented",
+    "It compiles but causes undefined behavior",
+    "a now points to a[1]"
+   ],
+   "answer": 1,
+   "explain": "An array name acts like a constant pointer to its first element, so it cannot be changed. Copy it into a pointer variable first (int* p = a; p++;)."
+  },
+  {
+   "id": "cpp-pointer-arith-005",
+   "topic": "pointer-arith",
+   "level": "apply",
+   "q": "Given int a[5] = {10, 20, 30, 40, 50}; int* p = a;, which expression does NOT give the value of a[2] (30)?",
+   "choices": [
+    "p[2]",
+    "*(2 + p)",
+    "*(a + 2)",
+    "*a + 2"
+   ],
+   "answer": 3,
+   "explain": "*a + 2 dereferences first (a[0] is 10) and then adds 2, giving 12. The other three all compute the address of element 2 and then dereference it, which is what a[i] == *(a + i) describes. Even *(2 + p) works, because addition is commutative."
+  },
+  {
+   "id": "cpp-pointer-arith-006",
+   "topic": "pointer-arith",
+   "level": "apply",
+   "q": "What does this code print?",
+   "code": "int a[6] = {1, 3, 5, 7, 9, 11};\nint sum = 0;\nfor (int* p = a; p < a + 6; p += 2)\n    sum += *p;\ncout << sum;",
+   "choices": [
+    "16",
+    "9",
+    "15",
+    "36"
+   ],
+   "answer": 2,
+   "explain": "p visits a[0], a[2] and a[4] (1 + 5 + 9 = 15). It then reaches a + 6, the one-past-the-end position, where p < a + 6 is false. The answer 36 is the sum of all six elements."
+  },
+  {
+   "id": "cpp-pointer-arith-007",
+   "topic": "pointer-arith",
+   "level": "apply",
+   "q": "What does this code print?",
+   "code": "int a[3] = {5, 8, 2};\nint* p = a;\ncout << *p++ << \" \";\ncout << *p;",
+   "choices": [
+    "5 8",
+    "8 2",
+    "6 6",
+    "6 8"
+   ],
+   "answer": 0,
+   "explain": "Postfix ++ applies to the pointer, not to the value: *p++ gives the current value (5) and then moves p to a[1]. The next line prints 8. The answer 6 assumes the value was incremented."
+  },
+  {
+   "id": "cpp-pointer-arith-008",
+   "topic": "pointer-arith",
+   "level": "apply",
+   "q": "What does this code print?",
+   "code": "int a[3] = {5, 8, 2};\nint* p = a + 1;\n(*p)++;\ncout << a[0] << a[1] << a[2];",
+   "choices": [
+    "692",
+    "583",
+    "582",
+    "592"
+   ],
+   "answer": 3,
+   "explain": "p points to a[1]. (*p)++ increments the value stored there, so 8 becomes 9, and the pointer itself does not move. The array is now 5, 9, 2."
+  },
+  {
+   "id": "cpp-pointer-arith-009",
+   "topic": "pointer-arith",
+   "level": "understand",
+   "q": "What does this code print?",
+   "code": "int a[5] = {0};\nint* p1 = &a[1];\nint* p2 = &a[3];\nif (p1 == p2)\n    cout << \"same\";\nelse if (p1 > p2)\n    cout << \"1st after\";\nelse\n    cout << \"2nd after\";",
+   "choices": [
+    "1st after",
+    "2nd after",
+    "Nothing, because comparing pointers is a compile error",
+    "same"
+   ],
+   "answer": 1,
+   "explain": "Pointers into the same array can be compared with == and > just like addresses. &a[3] is at a higher address than &a[1], so p2 comes after p1."
+  },
+  {
+   "id": "cpp-pointer-arith-010",
+   "topic": "pointer-arith",
+   "level": "apply",
+   "q": "Given int a[5]; int* p = &a[1]; int* q = &a[4];, what does cout << q - p; print?",
+   "choices": [
+    "3",
+    "4",
+    "12",
+    "0xC"
+   ],
+   "answer": 0,
+   "explain": "Subtracting two pointers into the same array gives the distance in elements, not bytes. The answer 12 is the byte difference for 4-byte ints."
+  },
+  {
+   "id": "cpp-pointer-arith-011",
+   "topic": "pointer-arith",
+   "level": "understand",
+   "q": "What is the result of this code?",
+   "code": "int a[3] = {1, 2, 3};\nint* p = a + 3;\ncout << *p;",
+   "choices": [
+    "It prints 3",
+    "Undefined behavior: p points one past the last element, and dereferencing it is invalid",
+    "It prints 0",
+    "It prints 1, because the pointer wraps around to the start"
+   ],
+   "answer": 1,
+   "explain": "a + 3 is a valid address to compute (one past the end), but there is no element there to read. Pointers never wrap around."
+  },
+  {
+   "id": "cpp-pointer-arith-012",
+   "topic": "pointer-arith",
+   "level": "apply",
+   "q": "What does this code print?",
+   "code": "struct Item { string name; double weight; };\nItem inv[3] = {{\"Sword\", 6.5}, {\"Shield\", 9.0}, {\"Rope\", 7.2}};\nItem* last = nullptr;\nfor (int i = 0; i < 3; i++)\n{\n    Item* cur = inv + i;\n    if (cur->weight > 7.0)\n        last = cur;\n}\ncout << last->name;",
+   "choices": [
+    "Sword",
+    "Rope",
+    "Shield",
+    "It does not compile"
+   ],
+   "answer": 1,
+   "explain": "inv + i points at element i, and -> reads its weight. Shield (9.0) and Rope (7.2) are both over 7.0. The loop keeps overwriting last, so it ends on Rope, the last match."
+  },
+  {
+   "id": "cpp-pointer-arith-013",
+   "topic": "pointer-arith",
+   "level": "apply",
+   "q": "What does this code print?",
+   "code": "char word[] = \"hello\";\nchar* p = word;\nint n = 0;\nwhile (*p != '\\0')\n{\n    n++;\n    p++;\n}\ncout << n;",
+   "choices": [
+    "4",
+    "6",
+    "Nothing, because the loop never ends",
+    "5"
+   ],
+   "answer": 3,
+   "explain": "The loop moves p one char at a time, counting until it reaches the terminating '\\0'. That gives the 5 letters of \"hello\", and the null byte itself is not counted. Note that the code compares *p, not p, to '\\0'."
+  },
+  {
+   "id": "cpp-dynamic-memory-001",
+   "topic": "dynamic-memory",
+   "level": "recall",
+   "q": "Where does memory created with new come from?",
+   "choices": [
+    "The CPU registers",
+    "The heap, at runtime",
+    "The stack, at compile time",
+    "The global data area"
+   ],
+   "answer": 1,
+   "explain": "new allocates anonymous memory on the heap while the program runs. Ordinary local variables live on the stack, and their sizes are fixed when the program is compiled."
+  },
+  {
+   "id": "cpp-dynamic-memory-002",
+   "topic": "dynamic-memory",
+   "level": "understand",
+   "q": "Which allocation is guaranteed to start with the value 0?",
+   "choices": [
+    "new int[1]",
+    "new int(1)",
+    "new int",
+    "new int()"
+   ],
+   "answer": 3,
+   "explain": "The empty parentheses value-initialize the int to 0. Plain new int and new int[1] leave garbage in the memory, and new int(1) starts at 1."
+  },
+  {
+   "id": "cpp-dynamic-memory-003",
+   "topic": "dynamic-memory",
+   "level": "apply",
+   "q": "What does this code print?",
+   "code": "int* a = new int[3]{10, 20, 30};\na[1] += a[2];\ncout << a[1];\ndelete[] a;",
+   "choices": [
+    "50",
+    "20",
+    "30",
+    "It does not compile"
+   ],
+   "answer": 0,
+   "explain": "List initialization sets the elements to 10, 20, 30. Then a[1] += a[2] makes a[1] = 20 + 30 = 50."
+  },
+  {
+   "id": "cpp-dynamic-memory-004",
+   "topic": "dynamic-memory",
+   "level": "understand",
+   "q": "What is wrong with this code?",
+   "code": "int* p = new int(42);\np = new int(99);\ndelete p;",
+   "choices": [
+    "It deletes the same memory twice",
+    "Nothing. delete p frees both allocations",
+    "p is a dangling pointer on the second line",
+    "The int holding 42 is leaked: its only pointer was overwritten before it was deleted"
+   ],
+   "answer": 3,
+   "explain": "Once p is overwritten, nothing points at the first allocation, so it can never be freed. delete p frees only the memory p currently points to, which is the 99."
+  },
+  {
+   "id": "cpp-dynamic-memory-005",
+   "topic": "dynamic-memory",
+   "level": "understand",
+   "q": "Given double* d = new double[n];, how should the memory be released?",
+   "choices": [
+    "delete[] d;",
+    "free d;",
+    "delete d[n];",
+    "delete d;"
+   ],
+   "answer": 0,
+   "explain": "Memory allocated with new[] must be released with delete[]. Using plain delete on an array is undefined behavior."
+  },
+  {
+   "id": "cpp-dynamic-memory-006",
+   "topic": "dynamic-memory",
+   "level": "understand",
+   "q": "Which line causes undefined behavior?",
+   "code": "int* p = new int(42);   // Line 1\ndelete p;               // Line 2\n*p = 33;                // Line 3",
+   "choices": [
+    "Line 1",
+    "Line 2",
+    "Line 3",
+    "Line 2 and Line 3 are both fine because delete sets p to nullptr"
+   ],
+   "answer": 2,
+   "explain": "After delete, p still holds the old address but no longer owns that memory, so it is a dangling pointer. Writing through it on line 3 is undefined behavior. delete does not set p to nullptr for you."
+  },
+  {
+   "id": "cpp-dynamic-memory-007",
+   "topic": "dynamic-memory",
+   "level": "understand",
+   "q": "What is the problem with this code?",
+   "code": "int* p = new int(5);\nint* q = p;\ndelete p;\ndelete q;",
+   "choices": [
+    "q still owns its own copy of the int, so this is fine",
+    "There is a memory leak, because q was never allocated",
+    "The same memory is deleted twice, because q is just another copy of the same address",
+    "delete q does not compile because q was not created with new"
+   ],
+   "answer": 2,
+   "explain": "q = p copies the address, not the int. Both pointers refer to one allocation, so the second delete is a double deletion and undefined behavior."
+  },
+  {
+   "id": "cpp-dynamic-memory-008",
+   "topic": "dynamic-memory",
+   "level": "recall",
+   "q": "Which command runs a program under Valgrind with full leak checking?",
+   "choices": [
+    "valgrind --leak-check=full ./program",
+    "valgrind -Wall ./program",
+    "./program --valgrind",
+    "g++ --leak-check=full program.cpp"
+   ],
+   "answer": 0,
+   "explain": "Valgrind is a separate tool that wraps the running executable and reports leaks, use of uninitialized memory, out-of-bounds access and double deletes. -Wall is a g++ warning flag, not a Valgrind option."
+  },
+  {
+   "id": "cpp-dynamic-memory-009",
+   "topic": "dynamic-memory",
+   "level": "understand",
+   "q": "Why is it good practice to write p = nullptr; right after delete p; ?",
+   "choices": [
+    "delete does not actually free the memory until p is set to nullptr",
+    "It prevents accidental use of a dangling pointer, because the null value can be checked, and deleting nullptr again is harmless",
+    "It makes the delete happen automatically at the end of scope",
+    "It returns the memory to the operating system faster"
+   ],
+   "answer": 1,
+   "explain": "The memory is freed by delete itself. Setting the pointer to nullptr just marks it as not pointing anywhere, so later null checks work and an accidental second delete does nothing."
+  },
+  {
+   "id": "cpp-dynamic-memory-010",
+   "topic": "dynamic-memory",
+   "level": "understand",
+   "q": "What is wrong with this code?",
+   "code": "int x = 5;\nint* p = &x;\ndelete p;",
+   "choices": [
+    "It only fails if x is uninitialized",
+    "Nothing. It frees x's memory early",
+    "It leaks x",
+    "x was not allocated with new, so deleting it is undefined behavior"
+   ],
+   "answer": 3,
+   "explain": "delete may be used only on memory that came from new. x is a stack variable, and the system cleans it up automatically."
+  },
+  {
+   "id": "cpp-dynamic-memory-011",
+   "topic": "dynamic-memory",
+   "level": "apply",
+   "q": "This growth logic is from the inventory program. What does it print?",
+   "code": "int capacity = 1;\ndouble growthRate = 0.5;\nint newCapacity = capacity + static_cast<int>(capacity * growthRate);\nif (newCapacity <= capacity)\n    newCapacity = capacity + 1;\ncout << newCapacity;",
+   "choices": [
+    "1",
+    "It does not compile, because you cannot multiply an int by a double",
+    "2",
+    "3"
+   ],
+   "answer": 2,
+   "explain": "1 * 0.5 = 0.5, and static_cast<int> truncates that to 0, so newCapacity starts at 1. The guard sees that 1 <= 1 and bumps it to 2. Without the guard the array would never grow."
+  },
+  {
+   "id": "cpp-dynamic-memory-012",
+   "topic": "dynamic-memory",
+   "level": "understand",
+   "q": "This function doubles a dynamic array's capacity. What is the bug?",
+   "code": "void grow(int*& arr, int& cap)\n{\n    int* bigger = new int[cap * 2];\n    for (int i = 0; i < cap; i++)\n        bigger[i] = arr[i];\n    arr = bigger;\n    cap *= 2;\n}",
+   "choices": [
+    "Copying should happen after arr = bigger",
+    "cap *= 2 should come first",
+    "The old array is never deleted, so it leaks",
+    "bigger should be declared as a reference"
+   ],
+   "answer": 2,
+   "explain": "The function needs delete[] arr; after copying and before arr = bigger. Otherwise the old block becomes unreachable. The order allocate new, copy, delete old, repoint is otherwise correct."
+  },
+  {
+   "id": "cpp-dynamic-memory-013",
+   "topic": "dynamic-memory",
+   "level": "understand",
+   "q": "In the inventory program, resizeInventory takes Item*& inventory. What would go wrong if the parameter were just Item* inventory and the function did delete[] inventory; inventory = newInventory;?",
+   "choices": [
+    "The caller's pointer would still hold the old, now-deleted address (a dangling pointer), and the new array would leak",
+    "It would not compile, because pointers cannot be parameters",
+    "Nothing, because pointers are always passed by reference",
+    "The new array would be deleted instead of the old one"
+   ],
+   "answer": 0,
+   "explain": "Without &, the function changes only its own copy of the pointer. main keeps the freed address, and newInventory's address is lost when the function returns."
+  },
+  {
+   "id": "cpp-dynamic-memory-014",
+   "topic": "dynamic-memory",
+   "level": "apply",
+   "q": "What does this program print?",
+   "code": "class Book\n{\npublic:\n    Book()  { cout << \"C\"; }\n    ~Book() { cout << \"D\"; }\n};\nint main()\n{\n    Book* b = new Book;\n    Book* c = new Book;\n    delete b;\n    return 0;\n}",
+   "choices": [
+    "CDCD",
+    "CD",
+    "CCD",
+    "CCDD"
+   ],
+   "answer": 2,
+   "explain": "Two objects are created with new, so the constructor runs twice. Only b is deleted, so the destructor runs once. The object c is never deleted; its destructor never runs and its memory leaks. Heap objects are not cleaned up automatically at the end of main."
+  },
+  {
+   "id": "cpp-dynamic-classes-001",
+   "topic": "dynamic-classes",
+   "level": "understand",
+   "q": "A class holds a char* allocated with new[] and relies on the compiler-provided copy constructor. What goes wrong when an object is copied?",
+   "choices": [
+    "The copy gets a nullptr instead of the buffer",
+    "The compiler refuses to copy objects that contain pointers",
+    "The buffer is deep-copied automatically, so nothing goes wrong",
+    "Only the pointer is copied (a shallow copy), so both objects share one buffer, and the second destructor deletes it again"
+   ],
+   "answer": 3,
+   "explain": "The default copy constructor copies each member as it is, so the copy gets the same address. Changes through one object show up in the other, and when both destructors call delete[] on the same block you get a double deletion."
+  },
+  {
+   "id": "cpp-dynamic-classes-002",
+   "topic": "dynamic-classes",
+   "level": "recall",
+   "q": "According to the Rule of Three, a class that needs a custom destructor probably also needs which two members?",
+   "choices": [
+    "A copy constructor and a copy assignment operator",
+    "A static counter and a private helper",
+    "A default constructor and a getter",
+    "A move constructor and a move assignment operator"
+   ],
+   "answer": 0,
+   "explain": "The three are the destructor, the copy constructor and operator=. All of them deal with owning dynamic memory. Move operations are what the Rule of Five adds on top."
+  },
+  {
+   "id": "cpp-dynamic-classes-003",
+   "topic": "dynamic-classes",
+   "level": "understand",
+   "q": "Why does the assignment operator check if (this != &other) before doing anything?",
+   "choices": [
+    "For a = a, it would otherwise delete[] its own data and then try to copy from the memory it just freed",
+    "To make the assignment run faster when the objects are different",
+    "Because this is a nullptr when the object is first being assigned",
+    "To avoid comparing two different classes"
+   ],
+   "answer": 0,
+   "explain": "With self-assignment, other is the same object. Freeing pszData first would destroy the source before it is copied. The check skips all the work when the two are the same object."
+  },
+  {
+   "id": "cpp-dynamic-classes-004",
+   "topic": "dynamic-classes",
+   "level": "understand",
+   "q": "Why does operator= end with return *this; and return SimpleString& ?",
+   "choices": [
+    "It returns the assigned object by reference so assignments can be chained, as in a = b = c",
+    "*this deletes the temporary copy",
+    "Returning is required to free the old memory",
+    "It returns the other object so the caller can check it"
+   ],
+   "answer": 0,
+   "explain": "this is a pointer to the current object, and *this is the object itself. Returning it by reference supports chaining the same way built-in assignment does, without making an extra copy."
+  },
+  {
+   "id": "cpp-dynamic-classes-005",
+   "topic": "dynamic-classes",
+   "level": "apply",
+   "q": "What does this code print?",
+   "code": "class Box\n{\npublic:\n    int* p;\n    Box(int v) { p = new int(v); }\n};\n// in main:\nBox a(5);\nBox b = a;\n*b.p = 9;\ncout << *a.p;",
+   "choices": [
+    "5",
+    "9",
+    "It does not compile",
+    "A garbage value"
+   ],
+   "answer": 1,
+   "explain": "Box has no copy constructor of its own, so Box b = a copies the pointer value. a.p and b.p point at the same int, and writing 9 through b changes what a sees."
+  },
+  {
+   "id": "cpp-dynamic-classes-006",
+   "topic": "dynamic-classes",
+   "level": "apply",
+   "q": "What does this code print?",
+   "code": "class Box\n{\npublic:\n    int* p;\n    Box(int v) { p = new int(v); }\n    Box(const Box& o) { p = new int(*o.p); }\n    ~Box() { delete p; }\n};\n// in main:\nBox a(5);\nBox b = a;\n*b.p = 9;\ncout << *a.p << *b.p;",
+   "choices": [
+    "59",
+    "95",
+    "99",
+    "55"
+   ],
+   "answer": 0,
+   "explain": "The custom copy constructor allocates a new int holding a copy of the value, which is a deep copy. Changing *b.p therefore leaves *a.p at 5."
+  },
+  {
+   "id": "cpp-dynamic-classes-007",
+   "topic": "dynamic-classes",
+   "level": "understand",
+   "q": "Why must a copy constructor take its parameter by reference, as in Student(const Student& other), and not by value?",
+   "choices": [
+    "Passing by value would itself require a copy, which calls the copy constructor again, leading to infinite recursion",
+    "By value would make the copy read-only",
+    "The compiler only allows references to classes",
+    "References are faster, but by value would also work"
+   ],
+   "answer": 0,
+   "explain": "Making a by-value parameter means copying the argument, and copying is exactly what the copy constructor does, so it would call itself forever. const prevents accidental changes to the source."
+  },
+  {
+   "id": "cpp-dynamic-classes-008",
+   "topic": "dynamic-classes",
+   "level": "understand",
+   "q": "A class allocates an array with new[] in its constructor but has no destructor. What happens each time an object goes out of scope?",
+   "choices": [
+    "The array is moved to the stack",
+    "The object's members are destroyed, but the heap array they pointed to is never freed, so memory leaks",
+    "The compiler-generated destructor calls delete[] automatically",
+    "The program crashes immediately"
+   ],
+   "answer": 1,
+   "explain": "The default destructor destroys the pointer member itself but never frees what it points to. You need ~ClassName() { delete[] ptr; } to release it."
+  },
+  {
+   "id": "cpp-dynamic-classes-009",
+   "topic": "dynamic-classes",
+   "level": "understand",
+   "q": "In this constructor, why is the buffer allocated with strlen(str) + 1 characters?",
+   "code": "SimpleString(const char* str)\n{\n    pszData = new char[strlen(str) + 1];\n    strcpy(pszData, str);\n}",
+   "choices": [
+    "To leave room for the terminating null byte, which strcpy also copies",
+    "strlen counts from 1, so +1 corrects for that",
+    "To leave space for one more character to be appended later",
+    "new[] requires an odd size"
+   ],
+   "answer": 0,
+   "explain": "strlen returns the number of visible characters without the '\\0'. strcpy copies the terminator too, so the buffer needs one extra byte, or it overflows."
+  },
+  {
+   "id": "cpp-dynamic-classes-010",
+   "topic": "dynamic-classes",
+   "level": "apply",
+   "q": "Which special member function runs on Line 3 and on Line 4?",
+   "code": "SimpleString a(\"hi\");     // Line 1\nSimpleString b(\"yo\");     // Line 2\nSimpleString c = a;       // Line 3\nb = a;                    // Line 4",
+   "choices": [
+    "Both lines: copy constructor",
+    "Line 3: copy constructor. Line 4: assignment operator",
+    "Both lines: assignment operator",
+    "Line 3: assignment operator. Line 4: copy constructor"
+   ],
+   "answer": 1,
+   "explain": "Line 3 creates a new object from an existing one, which is copy construction, even though it uses =. Line 4 assigns to an object that already exists, so operator= runs."
+  },
+  {
+   "id": "cpp-dynamic-classes-011",
+   "topic": "dynamic-classes",
+   "level": "understand",
+   "q": "If SimpleString's operator= left out the line delete[] pszData;, what would happen on b = a;?",
+   "choices": [
+    "b's old buffer would be leaked when pszData is pointed at the new allocation",
+    "b and a would share a buffer",
+    "Nothing, because the destructor frees the old buffer later",
+    "It would cause a double delete"
+   ],
+   "answer": 0,
+   "explain": "operator= reuses an existing object. Its current buffer must be freed before pszData is overwritten, or no pointer to that buffer remains. The destructor only frees whatever pszData points to at the end."
+  },
+  {
+   "id": "cpp-dynamic-classes-012",
+   "topic": "dynamic-classes",
+   "level": "recall",
+   "q": "The Rule of Five (C++11) adds which two functions to the Rule of Three?",
+   "choices": [
+    "A getter and a setter",
+    "operator== and operator<<",
+    "The move constructor and the move assignment operator",
+    "The default constructor and the destructor"
+   ],
+   "answer": 2,
+   "explain": "Move operations let temporary objects hand over their dynamic memory instead of having it copied. Together with the destructor, copy constructor and copy assignment, that makes five."
+  },
+  {
+   "id": "cpp-dynamic-classes-013",
+   "topic": "dynamic-classes",
+   "level": "apply",
+   "q": "What is the problem when this program runs?",
+   "code": "class Buf\n{\npublic:\n    int* d;\n    Buf()  { d = new int[4]; }\n    ~Buf() { delete[] d; }\n};\nvoid show(Buf b) { }\nint main()\n{\n    Buf x;\n    show(x);\n}",
+   "choices": [
+    "Compile error: objects cannot be passed by value",
+    "Nothing. Passing by value is always safe",
+    "A memory leak, because b's array is never freed",
+    "b is a shallow copy of x, so when show returns, b's destructor frees x's array, and x's destructor later deletes it again (double delete)"
+   ],
+   "answer": 3,
+   "explain": "Without a deep-copying copy constructor, b.d and x.d hold the same address. Each destructor calls delete[] on it, so the second one is undefined behavior. Passing by const Buf& or adding a proper copy constructor fixes it."
+  },
+  {
+   "id": "cpp-dynamic-classes-014",
+   "topic": "dynamic-classes",
+   "level": "apply",
+   "q": "What does this code print?",
+   "code": "class Book\n{\npublic:\n    Book()  { cout << \"C\"; }\n    ~Book() { cout << \"D\"; }\n};\n// in main:\nBook* shelf = new Book[3];\ndelete[] shelf;",
+   "choices": [
+    "CCC",
+    "CCCDDD",
+    "CCCD",
+    "CDCDCD"
+   ],
+   "answer": 1,
+   "explain": "new Book[3] runs the default constructor once for each element. delete[] runs the destructor for every element before freeing the memory. With plain delete, you would not get three D's reliably; it is undefined behavior."
+  },
+  {
+   "id": "cpp-classes-001",
+   "topic": "classes",
+   "level": "recall",
+   "q": "Which statement best describes a class compared with an object?",
+   "choices": [
+    "A class stores data, while an object stores only functions",
+    "A class and an object are the same thing",
+    "A class is a blueprint, and an object is an instance created from it that has its own memory",
+    "An object is a blueprint, and a class is an instance"
+   ],
+   "answer": 2,
+   "explain": "Like a cookie cutter and its cookies, the class definition describes the shape. Each object, such as alice or bob, gets its own copy of the data members."
+  },
+  {
+   "id": "cpp-classes-002",
+   "topic": "classes",
+   "level": "understand",
+   "q": "Which statement about constructors is FALSE?",
+   "choices": [
+    "Constructors can be overloaded",
+    "A constructor must have a return type of void",
+    "A constructor has the same name as the class",
+    "A constructor runs automatically when an object is created"
+   ],
+   "answer": 1,
+   "explain": "Constructors have no return type at all, not even void. They are named after the class, can be overloaded (default, parameterized, copy), and are called automatically when an object is created."
+  },
+  {
+   "id": "cpp-classes-003",
+   "topic": "classes",
+   "level": "apply",
+   "q": "What does this code print?",
+   "code": "class Student\n{\npublic:\n    Student() { cout << \"D\"; }\n    Student(string n, int g) { cout << \"P\"; }\n    Student(const Student& o) { cout << \"C\"; }\n};\n// in main:\nStudent s1;\nStudent s2(\"Al\", 90);\nStudent s3 = s2;\nStudent s4(s1);",
+   "choices": [
+    "DPC",
+    "DPCC",
+    "DPDD",
+    "DPPP"
+   ],
+   "answer": 1,
+   "explain": "s1 uses the default constructor (D), and s2 uses the parameterized one (P). s3 = s2 and s4(s1) both create new objects from existing ones, so each calls the copy constructor (C)."
+  },
+  {
+   "id": "cpp-classes-004",
+   "topic": "classes",
+   "level": "apply",
+   "q": "What does this program print?",
+   "code": "class T\n{\n    string n;\npublic:\n    T(string x) : n(x) { cout << \"+\" << n; }\n    ~T() { cout << \"-\" << n; }\n};\nint main()\n{\n    T a(\"A\");\n    T b(\"B\");\n}",
+   "choices": [
+    "+A+B-A-B",
+    "+A+B",
+    "+A+B-B-A",
+    "+A-A+B-B"
+   ],
+   "answer": 2,
+   "explain": "Both objects are destroyed at the end of main, in the reverse order of construction. b was built last, so it is destroyed first."
+  },
+  {
+   "id": "cpp-classes-005",
+   "topic": "classes",
+   "level": "apply",
+   "q": "What does this program print?",
+   "code": "class T\n{\n    string n;\npublic:\n    T(string x) : n(x) { cout << \"+\" << n; }\n    ~T() { cout << \"-\" << n; }\n};\nint main()\n{\n    T a(\"A\");\n    {\n        T b(\"B\");\n    }\n    T c(\"C\");\n}",
+   "choices": [
+    "+A+B-B+C-C-A",
+    "+A+B+C-A-B-C",
+    "+A+B+C-C-B-A",
+    "+A+B-B+C-A-C"
+   ],
+   "answer": 0,
+   "explain": "b lives only inside the inner braces, so it is destroyed as soon as that block ends, before c is created. At the end of main, c and a are destroyed in reverse order of construction."
+  },
+  {
+   "id": "cpp-classes-006",
+   "topic": "classes",
+   "level": "apply",
+   "q": "What does this program print?",
+   "code": "class Student\n{\n    static int count;\npublic:\n    Student()  { count++; }\n    ~Student() { count--; }\n    static int getCount() { return count; }\n};\nint Student::count = 0;\n\nint main()\n{\n    Student a;\n    {\n        Student b, c;\n        cout << Student::getCount();\n    }\n    cout << Student::getCount();\n}",
+   "choices": [
+    "30",
+    "33",
+    "11",
+    "31"
+   ],
+   "answer": 3,
+   "explain": "The static count is shared by all objects. Inside the block there are a, b and c, so it prints 3. When the block ends, b and c are destroyed and the destructor decrements the count to 1."
+  },
+  {
+   "id": "cpp-classes-007",
+   "topic": "classes",
+   "level": "understand",
+   "q": "A class declares static int iStudentCount; but the line int Student::iStudentCount = 0; is missing. What happens?",
+   "choices": [
+    "It fails to build with an undefined reference to iStudentCount, because static data members must be defined outside the class",
+    "iStudentCount is automatically created and set to 0",
+    "It works, but the count starts at a random value",
+    "Each object gets its own iStudentCount"
+   ],
+   "answer": 0,
+   "explain": "The declaration inside the class does not create the variable. Exactly one definition outside the class is required, and forgetting it is one of the pitfalls listed in the notes."
+  },
+  {
+   "id": "cpp-classes-008",
+   "topic": "classes",
+   "level": "understand",
+   "q": "Why does this member function fail to compile?",
+   "code": "class Student\n{\n    int iGrade;\npublic:\n    static int getGrade() { return iGrade; }\n};",
+   "choices": [
+    "A static member function has no this pointer, so it cannot use the non-static member iGrade",
+    "Static functions cannot return int",
+    "iGrade must be public",
+    "Static functions must be defined outside the class"
+   ],
+   "answer": 0,
+   "explain": "A static function belongs to the class, not to any particular object, so there is no object whose iGrade it could read. It may use only static members."
+  },
+  {
+   "id": "cpp-classes-009",
+   "topic": "classes",
+   "level": "recall",
+   "q": "In void Student::displayStudent() { ... }, what is the :: operator called?",
+   "choices": [
+    "The namespace operator",
+    "The scope resolution operator",
+    "The member access operator",
+    "The dereference operator"
+   ],
+   "answer": 1,
+   "explain": "Student:: tells the compiler that this definition belongs to the Student class, which is required when a member function is defined outside the class body."
+  },
+  {
+   "id": "cpp-classes-010",
+   "topic": "classes",
+   "level": "understand",
+   "q": "What does : szName(szN), iGrade(iG) do in this constructor?",
+   "code": "Student::Student(string szN, int iG) : szName(szN), iGrade(iG)\n{\n}",
+   "choices": [
+    "It calls two other constructors named szName and iGrade",
+    "It declares two new local variables",
+    "It is a member initializer list that initializes the members directly with the parameter values before the body runs",
+    "It passes the members to the parent class"
+   ],
+   "answer": 2,
+   "explain": "An initializer list sets members as they are created. This is more efficient than default-constructing them and then assigning in the body, which is why the notes call it the more efficient version."
+  },
+  {
+   "id": "cpp-classes-011",
+   "topic": "classes",
+   "level": "understand",
+   "q": "When is the destructor of a local (stack) object called?",
+   "choices": [
+    "Automatically, when the object goes out of scope at the end of its block",
+    "Only when the programmer calls it explicitly",
+    "Only when the whole program exits",
+    "Right after the constructor finishes"
+   ],
+   "answer": 0,
+   "explain": "C++ destroys local objects automatically at the closing brace of the block they were declared in. The notes say destructors are never called manually."
+  },
+  {
+   "id": "cpp-classes-012",
+   "topic": "classes",
+   "level": "understand",
+   "q": "This class defines only a parameterized constructor. What happens with Student s; ?",
+   "code": "class Student\n{\n    string szName;\n    int iGrade;\npublic:\n    Student(string n, int g) : szName(n), iGrade(g) {}\n};",
+   "choices": [
+    "s is created with an empty name and grade 0",
+    "The parameterized constructor is called with default arguments",
+    "s is created with garbage values",
+    "Compile error: there is no default constructor, because defining any constructor stops the compiler from generating one"
+   ],
+   "answer": 3,
+   "explain": "Once you write a constructor, the compiler no longer provides the implicit default constructor. You must write Student() yourself or give the parameters default values."
+  },
+  {
+   "id": "cpp-classes-013",
+   "topic": "classes",
+   "level": "apply",
+   "q": "Given a Student class whose default constructor prints *, what does Student roster[3]; print?",
+   "choices": [
+    "*",
+    "It does not compile",
+    "***",
+    "Nothing, because arrays of objects do not call constructors"
+   ],
+   "answer": 2,
+   "explain": "Creating an array of objects default-constructs each element, so the constructor runs 3 times. This requires the class to have a default constructor."
+  },
+  {
+   "id": "cpp-classes-014",
+   "topic": "classes",
+   "level": "recall",
+   "q": "What is an in-line member function?",
+   "choices": [
+    "A function that can only be called on one line",
+    "A member function whose body is written directly inside the class definition",
+    "A static function",
+    "A member function defined outside the class with ::"
+   ],
+   "answer": 1,
+   "explain": "Small functions such as int getGrade() { return iGrade; } are often written right inside the class. Larger ones are usually defined outside with ClassName::."
+  },
+  {
+   "id": "cpp-encapsulation-001",
+   "topic": "encapsulation",
+   "level": "understand",
+   "q": "Which line causes a compile error?",
+   "code": "class Student\n{\nprivate:\n    string szName;\npublic:\n    void setName(string n) { szName = n; }\n    string getName() const { return szName; }\n};\n// in main:\nStudent s;                 // Line 1\ns.szName = \"Alice\";        // Line 2\ns.setName(\"Alice\");        // Line 3\ncout << s.getName();       // Line 4",
+   "choices": [
+    "Line 1",
+    "Line 4",
+    "Line 2",
+    "Line 3"
+   ],
+   "answer": 2,
+   "explain": "szName is private, so code outside the class (main) cannot access it directly. The public setter and getter on lines 3 and 4 are the correct way to reach it."
+  },
+  {
+   "id": "cpp-encapsulation-002",
+   "topic": "encapsulation",
+   "level": "apply",
+   "q": "What does this code print?",
+   "code": "class Student\n{\n    int iGrade = 50;\npublic:\n    void setGrade(int g)\n    {\n        if (g >= 0 && g <= 100) iGrade = g;\n        else cout << \"Invalid! \";\n    }\n    int getGrade() const { return iGrade; }\n};\n// in main:\nStudent s;\ns.setGrade(105);\ns.setGrade(88);\ns.setGrade(-1);\ncout << s.getGrade();",
+   "choices": [
+    "Invalid! Invalid! -1",
+    "Invalid! Invalid! 88",
+    "Invalid! 88",
+    "88"
+   ],
+   "answer": 1,
+   "explain": "The setter rejects 105 and -1 (each prints Invalid!) and accepts only 88. The member keeps the last valid value, 88."
+  },
+  {
+   "id": "cpp-encapsulation-003",
+   "topic": "encapsulation",
+   "level": "understand",
+   "q": "What is the bug in this setter, and how is it fixed?",
+   "code": "class Student\n{\n    int iGrade;\npublic:\n    void setGrade(int iGrade) { iGrade = iGrade; }\n};",
+   "choices": [
+    "There is no bug. C++ knows the left side means the member",
+    "The parameter must be passed by reference",
+    "The parameter hides the member, so iGrade = iGrade assigns the parameter to itself. Write this->iGrade = iGrade;",
+    "The setter must return the new grade"
+   ],
+   "answer": 2,
+   "explain": "Inside the function, the name iGrade refers to the parameter. The this pointer refers to the object, so this->iGrade names the member."
+  },
+  {
+   "id": "cpp-encapsulation-004",
+   "topic": "encapsulation",
+   "level": "understand",
+   "q": "Why should getter functions be marked const, as in string getName() const?",
+   "choices": [
+    "It makes the returned string unchangeable forever",
+    "It promises the function will not modify the object, and it allows the getter to be called on const objects or through const references",
+    "It makes the getter run at compile time",
+    "It is required for any function that returns a string"
+   ],
+   "answer": 1,
+   "explain": "A const member function cannot change data members. Only const member functions can be called on a const object. Return values are a separate matter."
+  },
+  {
+   "id": "cpp-encapsulation-005",
+   "topic": "encapsulation",
+   "level": "apply",
+   "q": "Why does this code fail to compile?",
+   "code": "class P\n{\n    int x = 1;\npublic:\n    int getX() { return x; }\n};\nvoid show(const P& p)\n{\n    cout << p.getX();\n}",
+   "choices": [
+    "p must be passed by value",
+    "You cannot pass objects by reference",
+    "x is private, so getX cannot read it",
+    "getX() is not marked const, so it cannot be called through the const reference p"
+   ],
+   "answer": 3,
+   "explain": "Through a const P&, only const member functions may be called. Changing the declaration to int getX() const fixes it. Private members are always accessible inside the class's own functions."
+  },
+  {
+   "id": "cpp-encapsulation-006",
+   "topic": "encapsulation",
+   "level": "apply",
+   "q": "What does this code print?",
+   "code": "class Counter\n{\n    int n = 0;\npublic:\n    Counter& add(int v) { n += v; return *this; }\n    int get() const { return n; }\n};\n// in main:\nCounter c;\nc.add(2).add(3).add(5);\ncout << c.get();",
+   "choices": [
+    "5",
+    "2",
+    "10",
+    "It does not compile"
+   ],
+   "answer": 2,
+   "explain": "add returns *this by reference, so every chained call works on the same object c: 0 + 2 + 3 + 5 = 10. If add returned Counter by value, the later calls would change temporary copies and c would end at 2."
+  },
+  {
+   "id": "cpp-encapsulation-007",
+   "topic": "encapsulation",
+   "level": "recall",
+   "q": "Inside a member function, what is this?",
+   "choices": [
+    "A reference to the class definition",
+    "A copy of the object",
+    "A pointer to the object that called the function",
+    "The name of the current function"
+   ],
+   "answer": 2,
+   "explain": "this is an implicit pointer. this->member reaches a member, and *this is the object itself, which is useful for disambiguation and for method chaining."
+  },
+  {
+   "id": "cpp-encapsulation-008",
+   "topic": "encapsulation",
+   "level": "understand",
+   "q": "isValidGrade is declared in the private section of Student. Which code can call it?",
+   "choices": [
+    "Only Student's own member functions, such as setGrade",
+    "Any function, as long as it uses a Student object",
+    "No code can call it, because private functions are never callable",
+    "Only main"
+   ],
+   "answer": 0,
+   "explain": "Private helpers are internal tools for the class. A public member such as setGrade may call them, but outside code such as s.isValidGrade(5) in main will not compile."
+  },
+  {
+   "id": "cpp-encapsulation-009",
+   "topic": "encapsulation",
+   "level": "recall",
+   "q": "In this class, what is the access level of name?",
+   "code": "class Dog\n{\n    string name;\npublic:\n    void bark();\n};",
+   "choices": [
+    "global",
+    "public",
+    "private",
+    "protected"
+   ],
+   "answer": 2,
+   "explain": "Members of a class are private by default until an access specifier appears. In a struct, the default is public."
+  },
+  {
+   "id": "cpp-encapsulation-010",
+   "topic": "encapsulation",
+   "level": "apply",
+   "q": "What does this code print?",
+   "code": "class Student\n{\n    string n;\n    int a;\npublic:\n    Student(string x, int y) : n(x), a(y) {}\n    bool operator==(const Student& o) const\n    {\n        return n == o.n && a == o.a;\n    }\n};\n// in main:\nStudent s1(\"Al\", 20), s2(\"Al\", 21), s3(\"Al\", 20);\ncout << (s1 == s2) << (s1 == s3);",
+   "choices": [
+    "10",
+    "11",
+    "00",
+    "01"
+   ],
+   "answer": 3,
+   "explain": "operator== compares both name and age. s1 and s2 differ in age, which prints 0 (false), and s1 and s3 match on both, which prints 1. cout shows bools as 0 or 1."
+  },
+  {
+   "id": "cpp-encapsulation-011",
+   "topic": "encapsulation",
+   "level": "understand",
+   "q": "What is the main benefit of making data members private and exposing setters?",
+   "choices": [
+    "The class controls every change, so it can reject invalid values and keep its data consistent",
+    "Setters make the program run faster",
+    "Private members use less memory",
+    "It lets outside code change the members directly"
+   ],
+   "answer": 0,
+   "explain": "Encapsulation means all modification goes through code you wrote, such as a range check in setGrade. Outside code can no longer put the object into a bad state."
+  },
+  {
+   "id": "cpp-encapsulation-012",
+   "topic": "encapsulation",
+   "level": "apply",
+   "q": "What does this code print?",
+   "code": "class Wallet\n{\n    int cash = 20;\npublic:\n    int getCash() const { return cash; }\n};\n// in main:\nWallet w;\nint c = w.getCash();\nc += 30;\ncout << w.getCash();",
+   "choices": [
+    "30",
+    "50",
+    "20",
+    "It does not compile"
+   ],
+   "answer": 2,
+   "explain": "getCash returns a copy of cash. Changing the local variable c afterward has no effect on the private member inside w."
+  },
+  {
+   "id": "cpp-encapsulation-013",
+   "topic": "encapsulation",
+   "level": "understand",
+   "q": "A class has a public mutator setAge(int a) and an accessor getAge() const. Which description is correct?",
+   "choices": [
+    "Neither can be called from main because they touch private data",
+    "Both functions can change the object",
+    "setAge is a setter that changes private data in a controlled way, and getAge is a getter that reads it without changing it",
+    "setAge reads the data, and getAge changes it"
+   ],
+   "answer": 2,
+   "explain": "Mutators (setters) modify state and often check that the value is valid. Accessors (getters) only return state and are marked const. Being public members, both can be called from main even though the data itself is private."
+  },
+  {
+   "id": "cpp-file-io-001",
+   "topic": "file-io",
+   "level": "recall",
+   "q": "Which header must you include to use ifstream and ofstream?",
+   "choices": [
+    "<filesystem>",
+    "<fstream>",
+    "<iostream>",
+    "<sstream>"
+   ],
+   "answer": 1,
+   "explain": "fstream defines fstream, ifstream and ofstream. iostream gives you only cin, cout and cerr, and sstream is for string streams such as istringstream."
+  },
+  {
+   "id": "cpp-file-io-002",
+   "topic": "file-io",
+   "level": "recall",
+   "q": "Which pairing of stream types and their jobs is correct?",
+   "choices": [
+    "fstream reads, ofstream writes, ifstream is for the keyboard",
+    "ifstream and ofstream both read and write, fstream is for strings",
+    "ifstream writes, ofstream reads, fstream reads only",
+    "ifstream reads, ofstream writes, fstream can do both (with access flags)"
+   ],
+   "answer": 3,
+   "explain": "The i in ifstream stands for input (reading from a file) and the o in ofstream stands for output (writing to a file). fstream is the general-purpose type and needs flags such as ios::in or ios::out."
+  },
+  {
+   "id": "cpp-file-io-003",
+   "topic": "file-io",
+   "level": "understand",
+   "q": "data.txt does not exist. What happens when each of these opens is attempted?",
+   "code": "ifstream fin;\nfin.open(\"data.txt\");\nofstream fout;\nfout.open(\"data.txt\");",
+   "choices": [
+    "Both opens crash the program",
+    "Both opens create the file",
+    "The ifstream open creates the file, and the ofstream open fails",
+    "The ifstream open fails quietly (fail() is true). The ofstream open creates a new empty data.txt"
+   ],
+   "answer": 3,
+   "explain": "Opening a missing file for reading sets the fail state without crashing, so your code must check it. Opening for writing creates the file, or overwrites it if it already exists."
+  },
+  {
+   "id": "cpp-file-io-004",
+   "topic": "file-io",
+   "level": "apply",
+   "q": "numbers.txt contains the text below. What does the program print?",
+   "code": "// numbers.txt:\n// 10 100\n// 5\n\nifstream fin(\"numbers.txt\");\nint n, sum = 0;\nwhile (fin >> n)\n    sum += n;\ncout << sum;",
+   "choices": [
+    "110",
+    "115",
+    "15",
+    "100"
+   ],
+   "answer": 1,
+   "explain": "fin >> n skips all whitespace, including newlines, so all three numbers are read: 10 + 100 + 5 = 115. The loop stops when a read fails at the end of the file."
+  },
+  {
+   "id": "cpp-file-io-005",
+   "topic": "file-io",
+   "level": "apply",
+   "q": "scores.txt contains the text below. What does the program print?",
+   "code": "// scores.txt:\n// 3\n// Ann 90\n// Bob 70\n// Cy 80\n\nifstream fin(\"scores.txt\");\nint n;\nfin >> n;\nstring name;\ndouble score, total = 0;\nfor (int i = 0; i < n; i++)\n{\n    fin >> name >> score;\n    total += score;\n}\ncout << fixed << setprecision(1) << total / n;",
+   "choices": [
+    "80.0",
+    "240.0",
+    "80",
+    "26.7"
+   ],
+   "answer": 0,
+   "explain": "The first number (3) is the count. The scores add up to 240, and 240 / 3 = 80. Because total is a double and fixed with setprecision(1) is set, the output is 80.0."
+  },
+  {
+   "id": "cpp-file-io-006",
+   "topic": "file-io",
+   "level": "apply",
+   "q": "messages.txt contains the text below. What does the program print?",
+   "code": "// messages.txt:\n// Hello there\n// General Kenobi\n\nifstream fin(\"messages.txt\");\nstring a, b;\nfin >> a;\ngetline(fin, b);\ncout << \"[\" << b << \"]\";",
+   "choices": [
+    "[]",
+    "[General Kenobi]",
+    "[Hello there]",
+    "[ there]"
+   ],
+   "answer": 3,
+   "explain": ">> reads only up to the first whitespace, so a gets Hello and the read position stops just before the space. getline then reads the rest of that line, \" there\", including the leading space."
+  },
+  {
+   "id": "cpp-file-io-007",
+   "topic": "file-io",
+   "level": "understand",
+   "q": "What is wrong with this code?",
+   "code": "ofstream fileOutput;\nfileOutput.open(\"data.txt\");\nint number;\nfileOutput >> number;",
+   "choices": [
+    "ofstream is for writing only, so using >> to read from it does not compile",
+    "The file must be opened with a full path",
+    "number must be a string",
+    "Nothing. It reads the first number from data.txt"
+   ],
+   "answer": 0,
+   "explain": "ofstream supports << (output) but not >> (input). To read, use an ifstream, or an fstream opened with ios::in."
+  },
+  {
+   "id": "cpp-file-io-008",
+   "topic": "file-io",
+   "level": "understand",
+   "q": "Why should a file stream be passed to a function by reference, as in void readAll(ifstream& fin)?",
+   "choices": [
+    "References let the function open a different file",
+    "Streams cannot be copied, and the stream's internal state (such as its read position) must stay the same object everywhere",
+    "Passing by value would make the file read-only",
+    "Passing by reference automatically closes the file"
+   ],
+   "answer": 1,
+   "explain": "Copying a stream is not allowed, so a by-value parameter will not compile. Even conceptually, there is one file position and one set of error state bits, and every function should share them."
+  },
+  {
+   "id": "cpp-file-io-009",
+   "topic": "file-io",
+   "level": "recall",
+   "q": "Which open call adds new text to the end of log.txt without erasing what is already there?",
+   "choices": [
+    "f.open(\"log.txt\", ios::in);",
+    "f.open(\"log.txt\");",
+    "f.open(\"log.txt\", ios::out | ios::app);",
+    "f.open(\"log.txt\", ios::out | ios::trunc);"
+   ],
+   "answer": 2,
+   "explain": "ios::app makes every write go to the end of the file. ios::trunc empties the file first, and ios::in opens it for reading only."
+  },
+  {
+   "id": "cpp-file-io-010",
+   "topic": "file-io",
+   "level": "understand",
+   "q": "Why is a loop of the form while (!fin.eof()) { fin >> n; sum += n; } risky?",
+   "choices": [
+    "eof() cannot be used with ifstream",
+    "eof() deletes the file's contents",
+    "eof() becomes true only after a read has tried to go past the end, so if trailing whitespace remains, the loop runs one extra time after a failed read",
+    "eof() always returns true on the first call"
+   ],
+   "answer": 2,
+   "explain": "After the last number, a newline is usually still waiting to be read, so eof() is still false. The next >> fails, and the body still adds n. Testing the read itself, with while (fin >> n), avoids this."
+  },
+  {
+   "id": "cpp-file-io-011",
+   "topic": "file-io",
+   "level": "apply",
+   "q": "A program opens result.txt with an ofstream and writes the line Result is 110. You run the program twice. What does result.txt contain?",
+   "choices": [
+    "Nothing, because the second run fails to open an existing file",
+    "Result is 110Result is 110 on one line",
+    "One line: Result is 110",
+    "Two lines, each Result is 110"
+   ],
+   "answer": 2,
+   "explain": "An ofstream opened without ios::app truncates the existing file, so each run overwrites the last one. Getting two lines would require append mode."
+  },
+  {
+   "id": "cpp-file-io-012",
+   "topic": "file-io",
+   "level": "recall",
+   "q": "Which statement correctly closes an open ifstream named fin?",
+   "choices": [
+    "close(fin);",
+    "fin.close;",
+    "fin.close();",
+    "fin.close(\"in.txt\");"
+   ],
+   "answer": 2,
+   "explain": "close is a member function that takes no arguments, because the stream already knows which file it has open. Leaving off the () does not call it."
+  },
+  {
+   "id": "cpp-file-io-013",
+   "topic": "file-io",
+   "level": "apply",
+   "q": "people.txt contains the text below. How many times does the loop body run?",
+   "code": "// people.txt:\n// 85 Alice\n// 90 Bob\n\nifstream fin(\"people.txt\");\nstring name;\nint score;\nint count = 0;\nwhile (fin >> name >> score)\n    count++;",
+   "choices": [
+    "It loops forever",
+    "0",
+    "2",
+    "1"
+   ],
+   "answer": 1,
+   "explain": "The file stores the number first, but the code reads the name first. name reads \"85\" without trouble, since a string accepts any token, but score then tries to read \"Alice\" as an int, which fails. The condition is false right away. This is the reading-in-the-wrong-order mistake."
+  },
+  {
+   "id": "cpp-file-io-014",
+   "topic": "file-io",
+   "level": "understand",
+   "q": "Right after fin.open(\"input.txt\");, which check correctly detects that the open failed?",
+   "choices": [
+    "if (fin.fail())",
+    "if (fin.eof())",
+    "if (fin.good())",
+    "if (fin.close())"
+   ],
+   "answer": 0,
+   "explain": "fail() returns true when an operation, including open, has failed. if (!fin) is equivalent. good() is true when things are fine, the opposite of what we want to detect, and eof() is about reaching the end of the data."
+  },
+  {
+   "id": "cpp-searching-001",
+   "topic": "searching",
+   "level": "apply",
+   "q": "Using linear search on {5, 9, 3, 7, 2}, how many comparisons are made to find the target 2?",
+   "choices": [
+    "4",
+    "5",
+    "3",
+    "1"
+   ],
+   "answer": 1,
+   "explain": "Linear search checks indices 0, 1, 2, 3 and 4 in order, and 2 is in the last slot, so all 5 elements are compared. This is the worst case."
+  },
+  {
+   "id": "cpp-searching-002",
+   "topic": "searching",
+   "level": "recall",
+   "q": "What does the course's linearSearch return when the target is not in the array?",
+   "choices": [
+    "iSize",
+    "0",
+    "-1",
+    "The index of the closest value"
+   ],
+   "answer": 2,
+   "explain": "-1 can never be a valid index, so it signals not found. Returning 0 would be confused with finding the target at index 0."
+  },
+  {
+   "id": "cpp-searching-003",
+   "topic": "searching",
+   "level": "recall",
+   "q": "What requirement must be met before binary search can be used on an array?",
+   "choices": [
+    "The array must be sorted",
+    "The array must contain no duplicates",
+    "The array must have an even number of elements",
+    "The array must be dynamically allocated"
+   ],
+   "answer": 0,
+   "explain": "Binary search throws away half of the range based on comparisons, which only works if the order is known. Odd or even size and duplicates do not matter."
+  },
+  {
+   "id": "cpp-searching-004",
+   "topic": "searching",
+   "level": "apply",
+   "q": "Using the course's binarySearch on {2, 4, 6, 8, 10, 12, 14} with target 4, which indices are checked as mid?",
+   "choices": [
+    "3, then 5, then 4",
+    "3, then 2, then 1",
+    "3, then 1",
+    "0, then 1"
+   ],
+   "answer": 2,
+   "explain": "low = 0 and high = 6, so mid = 3 (value 8). 4 < 8, so high = 2. Next, mid = (0 + 2) / 2 = 1 (value 4), a match. Starting from index 0 describes linear search."
+  },
+  {
+   "id": "cpp-searching-005",
+   "topic": "searching",
+   "level": "apply",
+   "q": "Using the binarySearch from the notes on {1, 3, 5, 7, 9, 11} with target 6, what are low and high when the loop ends?",
+   "code": "int binarySearch(const int piArr[], int iSize, int iTarget)\n{\n    int iLow = 0;\n    int iHigh = iSize - 1;\n    while (iLow <= iHigh)\n    {\n        int iMid = (iLow + iHigh) / 2;\n        if (piArr[iMid] == iTarget) return iMid;\n        else if (iTarget < piArr[iMid]) iHigh = iMid - 1;\n        else iLow = iMid + 1;\n    }\n    return -1;\n}",
+   "choices": [
+    "low = 4, high = 3",
+    "low = 3, high = 2",
+    "low = 3, high = 3",
+    "low = 2, high = 3"
+   ],
+   "answer": 1,
+   "explain": "Step 1: mid = 2 (value 5), 6 > 5, so low = 3. Step 2: mid = 4 (value 9), 6 < 9, so high = 3. Step 3: mid = 3 (value 7), 6 < 7, so high = 2. Now low > high, the loop exits, and the function returns -1."
+  },
+  {
+   "id": "cpp-searching-006",
+   "topic": "searching",
+   "level": "understand",
+   "q": "What does binarySearch return for target 9 on the UNSORTED array {9, 2, 7, 4, 1}?",
+   "choices": [
+    "It loops forever",
+    "-1, even though 9 is at index 0",
+    "2",
+    "0"
+   ],
+   "answer": 1,
+   "explain": "mid = 2 (value 7): 9 > 7, so the search moves right (low = 3). mid = 3 (value 4) moves right again, then mid = 4 (value 1), then low = 5 > high, so the loop exits. The left side, where 9 actually is, gets discarded. That is why sorting is required."
+  },
+  {
+   "id": "cpp-searching-007",
+   "topic": "searching",
+   "level": "understand",
+   "q": "To make binary search work on an array sorted in DESCENDING order, what must change?",
+   "choices": [
+    "Use mid = (low + high) / 2 + 1",
+    "Nothing. Binary search works the same in either order",
+    "Start mid at the last index",
+    "Reverse the direction: if the target is greater than the middle value, search the LEFT half (high = mid - 1)"
+   ],
+   "answer": 3,
+   "explain": "In descending order, larger values are on the left, so the comparison that picks the half has to be flipped. The loop structure stays the same."
+  },
+  {
+   "id": "cpp-searching-008",
+   "topic": "searching",
+   "level": "understand",
+   "q": "You need to look up one value, once, in a small unsorted array. Which approach do the notes recommend?",
+   "choices": [
+    "Linear search",
+    "Binary search directly",
+    "Selection sort",
+    "Sort first, then binary search"
+   ],
+   "answer": 0,
+   "explain": "Sorting costs at least O(n log n), more than one O(n) scan. Binary search pays off when the data is already sorted and you will search it many times."
+  },
+  {
+   "id": "cpp-searching-009",
+   "topic": "searching",
+   "level": "apply",
+   "q": "About how many comparisons does binary search need in the worst case on a sorted array of 1024 elements?",
+   "choices": [
+    "About 100",
+    "About 1024",
+    "About 512",
+    "About 10"
+   ],
+   "answer": 3,
+   "explain": "Each step halves the range, and log2(1024) = 10, so it takes roughly 10 or 11 steps. The answer 512 assumes each step removes only one element at a time."
+  },
+  {
+   "id": "cpp-searching-010",
+   "topic": "searching",
+   "level": "understand",
+   "q": "What is linear search's best case, and when does it happen?",
+   "choices": [
+    "O(1), when the target is the first element",
+    "O(1), when the target is the last element",
+    "O(n), always, because it scans the whole array",
+    "O(log n), when the array is sorted"
+   ],
+   "answer": 0,
+   "explain": "If the very first comparison matches, the search returns immediately. The worst case, O(n), happens when the target is last or missing."
+  },
+  {
+   "id": "cpp-searching-011",
+   "topic": "searching",
+   "level": "apply",
+   "q": "What does this code print?",
+   "code": "int find(const int a[], int n, int t)\n{\n    int pos = -1;\n    for (int i = 0; i < n; i++)\n        if (a[i] == t)\n            pos = i;\n    return pos;\n}\n// in main:\nint a[6] = {4, 8, 4, 1, 4, 9};\ncout << find(a, 6, 4);",
+   "choices": [
+    "3",
+    "2",
+    "4",
+    "0"
+   ],
+   "answer": 2,
+   "explain": "The function does not return early. It keeps overwriting pos with every match, so it returns the LAST index holding 4, which is index 4. The answer 3 is the number of matches."
+  },
+  {
+   "id": "cpp-searching-012",
+   "topic": "searching",
+   "level": "understand",
+   "q": "A student writes iLow = iMid; instead of iLow = iMid + 1; in binary search. What can happen when searching {1, 3} for 3?",
+   "choices": [
+    "It works correctly, just more slowly",
+    "It returns 0",
+    "It returns -1 immediately",
+    "An infinite loop: mid stays 0, so low never moves past it"
+   ],
+   "answer": 3,
+   "explain": "low = 0 and high = 1 give mid = 0 (value 1). 3 > 1 sets low = mid = 0 again, so nothing changes and the loop never ends. The +1 is what guarantees the range shrinks."
+  },
+  {
+   "id": "cpp-searching-013",
+   "topic": "searching",
+   "level": "apply",
+   "q": "Which condition completes this linear search through an array of Student structs by ID?",
+   "code": "int findById(const Student s[], int n, int id)\n{\n    for (int i = 0; i < n; i++)\n        if ( ______ )\n            return i;\n    return -1;\n}",
+   "choices": [
+    "s[i] == id",
+    "s[id].iID == i",
+    "s.iID[i] == id",
+    "s[i].iID == id"
+   ],
+   "answer": 3,
+   "explain": "Index the array to get one Student, then compare its iID field with the target. Comparing a whole struct to an int does not compile."
+  },
+  {
+   "id": "cpp-sorting-001",
+   "topic": "sorting",
+   "level": "apply",
+   "q": "Ascending selection sort is run on [8, 3, 6, 1, 5]. What does the array look like after the first pass (i = 0)?",
+   "choices": [
+    "[3, 6, 1, 5, 8]",
+    "[1, 3, 6, 8, 5]",
+    "[1, 8, 3, 6, 5]",
+    "[1, 3, 5, 6, 8]"
+   ],
+   "answer": 1,
+   "explain": "The first pass finds the minimum (1, at index 3) and swaps it with index 0, so 8 moves to where 1 was. Shifting everything right, as in [1, 8, 3, 6, 5], is what insertion sort does."
+  },
+  {
+   "id": "cpp-sorting-002",
+   "topic": "sorting",
+   "level": "apply",
+   "q": "Continuing ascending selection sort on [8, 3, 6, 1, 5], what does the array look like after THREE passes (i = 0, 1, 2)?",
+   "choices": [
+    "[1, 3, 5, 6, 8]",
+    "[1, 3, 5, 8, 6]",
+    "[1, 3, 6, 5, 8]",
+    "[1, 5, 3, 8, 6]"
+   ],
+   "answer": 1,
+   "explain": "Pass 0 gives [1, 3, 6, 8, 5]. Pass 1 finds that 3 is already the minimum, so it swaps index 1 with itself. Pass 2 finds 5 at index 4 and swaps it with 6, giving [1, 3, 5, 8, 6]. One more pass is needed to finish."
+  },
+  {
+   "id": "cpp-sorting-003",
+   "topic": "sorting",
+   "level": "apply",
+   "q": "Ascending insertion sort is run on [4, 1, 3, 9, 2]. What does the array look like after the pass with i = 2?",
+   "choices": [
+    "[1, 2, 3, 4, 9]",
+    "[1, 3, 4, 9, 2]",
+    "[1, 3, 4, 2, 9]",
+    "[1, 4, 3, 9, 2]"
+   ],
+   "answer": 1,
+   "explain": "i = 1 inserts 1, giving [1, 4, 3, 9, 2]. i = 2 takes key 3, shifts 4 right and stops at 1, giving [1, 3, 4, 9, 2]. Only the front part has been sorted so far."
+  },
+  {
+   "id": "cpp-sorting-004",
+   "topic": "sorting",
+   "level": "apply",
+   "q": "How many element shifts (piArr[j + 1] = piArr[j]) does insertion sort perform on [4, 3, 2, 1]?",
+   "choices": [
+    "6",
+    "4",
+    "16",
+    "3"
+   ],
+   "answer": 0,
+   "explain": "Reverse order is the worst case: key 3 shifts 1 element, key 2 shifts 2, and key 1 shifts 3, for 1 + 2 + 3 = 6. The answer 3 counts passes, not shifts."
+  },
+  {
+   "id": "cpp-sorting-005",
+   "topic": "sorting",
+   "level": "recall",
+   "q": "Which of the two sorts from the notes is stable, keeping equal elements in their original relative order?",
+   "choices": [
+    "Insertion sort, but only when sorting in descending order",
+    "Selection sort",
+    "Selection sort, because it makes the fewest swaps",
+    "Insertion sort"
+   ],
+   "answer": 3,
+   "explain": "Insertion sort only shifts elements that are strictly greater than the key, so equal elements never jump past each other. Selection sort's long-distance swaps can reorder equal elements."
+  },
+  {
+   "id": "cpp-sorting-006",
+   "topic": "sorting",
+   "level": "understand",
+   "q": "The input array is already sorted. How do the two sorts compare?",
+   "choices": [
+    "Insertion sort does O(n) work, but selection sort still does O(n^2) comparisons",
+    "Selection sort becomes O(n), but insertion sort stays O(n^2)",
+    "Both stay O(n^2)",
+    "Both become O(n)"
+   ],
+   "answer": 0,
+   "explain": "Insertion sort's inner loop stops immediately on sorted data. Selection sort always scans the whole unsorted part to find the minimum, so it does the same work whatever order the data starts in."
+  },
+  {
+   "id": "cpp-sorting-007",
+   "topic": "sorting",
+   "level": "understand",
+   "q": "To make the course's insertion sort sort in DESCENDING order, what change is needed?",
+   "choices": [
+    "Start i at iSize - 1 and count down",
+    "Change j-- to j++",
+    "Change while (j >= 0 && piArr[j] > iKey) to use piArr[j] < iKey",
+    "Swap piArr[j + 1] = piArr[j] for piArr[j] = piArr[j + 1]"
+   ],
+   "answer": 2,
+   "explain": "Going from ascending to descending only flips the comparison: shift while the previous element is smaller than the key. The loop structure stays the same."
+  },
+  {
+   "id": "cpp-sorting-008",
+   "topic": "sorting",
+   "level": "recall",
+   "q": "What is the maximum number of swaps selection sort makes on an array of 50 elements?",
+   "choices": [
+    "2500",
+    "50",
+    "49",
+    "1225"
+   ],
+   "answer": 2,
+   "explain": "Selection sort does one swap per pass, and there are n - 1 passes, so 49. 1225 is the number of comparisons (49 + 48 + ... + 1), not swaps."
+  },
+  {
+   "id": "cpp-sorting-009",
+   "topic": "sorting",
+   "level": "understand",
+   "q": "Writing to storage is very expensive in your situation, so you want as few writes as possible. Which sort do the notes recommend?",
+   "choices": [
+    "Selection sort",
+    "Insertion sort",
+    "Binary sort",
+    "Either one, because they write the same amount"
+   ],
+   "answer": 0,
+   "explain": "Selection sort makes at most n - 1 swaps. Insertion sort can perform many small shifts, each of which is a write."
+  },
+  {
+   "id": "cpp-sorting-010",
+   "topic": "sorting",
+   "level": "understand",
+   "q": "A student reorders the loop condition in insertion sort as shown. What is the problem?",
+   "code": "while (piArr[j] > iKey && j >= 0)\n{\n    piArr[j + 1] = piArr[j];\n    j--;\n}",
+   "choices": [
+    "It sorts in descending order",
+    "Nothing, because && checks both sides at the same time",
+    "It never shifts anything",
+    "When j reaches -1, piArr[-1] is read before j >= 0 is checked, which is out of bounds"
+   ],
+   "answer": 3,
+   "explain": "&& evaluates left to right and stops early, which is called short-circuiting. The original order (j >= 0 first) protects the array access, and the reordered version reads past the start of the array."
+  },
+  {
+   "id": "cpp-sorting-011",
+   "topic": "sorting",
+   "level": "understand",
+   "q": "This selection sort over Student structs compares by iID. What is wrong with its swap?",
+   "code": "if (s[j].iID < s[iMin].iID)\n    iMin = j;\n...\nswap(s[i].iID, s[iMin].iID);",
+   "choices": [
+    "swap cannot be used on ints",
+    "Nothing. Sorting by ID only needs IDs moved",
+    "It should compare szName instead",
+    "Only the IDs are swapped, so names and other fields stay where they were and the records get scrambled"
+   ],
+   "answer": 3,
+   "explain": "When you sort records by a key, the whole struct must move, as in swap(s[i], s[iMin]). Otherwise each ID ends up attached to the wrong student."
+  },
+  {
+   "id": "cpp-sorting-012",
+   "topic": "sorting",
+   "level": "apply",
+   "q": "How many comparisons does selection sort make on an array of 5 elements?",
+   "choices": [
+    "20",
+    "10",
+    "25",
+    "5"
+   ],
+   "answer": 1,
+   "explain": "Each pass compares against every remaining element: 4 + 3 + 2 + 1 = 10, which is n(n-1)/2. 25 (n squared) is only the rough Big-O size, not the exact count."
+  },
+  {
+   "id": "cpp-sorting-013",
+   "topic": "sorting",
+   "level": "understand",
+   "q": "New scores are added one at a time to the end of a list that is already sorted, so the list is nearly sorted. Which sort fits best?",
+   "choices": [
+    "Binary search",
+    "Selection sort",
+    "Insertion sort",
+    "Either one, with identical performance"
+   ],
+   "answer": 2,
+   "explain": "On nearly sorted data, insertion sort does only a few shifts and runs close to O(n). Selection sort still does about n^2/2 comparisons."
+  },
+  {
+   "id": "cpp-big-o-001",
+   "topic": "big-o",
+   "level": "apply",
+   "q": "What is the Big-O of 3n^2 + 5n + 100?",
+   "choices": [
+    "O(n^2)",
+    "O(n)",
+    "O(3n^2)",
+    "O(n^2 + n)"
+   ],
+   "answer": 0,
+   "explain": "Big-O drops constant factors and lower-order terms, keeping only the fastest-growing term. Writing O(3n^2) keeps a constant that Big-O ignores."
+  },
+  {
+   "id": "cpp-big-o-002",
+   "topic": "big-o",
+   "level": "apply",
+   "q": "What is the time complexity of this code?",
+   "code": "for (int i = 0; i < n; i++)\n    sum += a[i];\nfor (int j = 0; j < n; j++)\n    sum -= a[j];",
+   "choices": [
+    "O(n)",
+    "O(n^2)",
+    "O(n log n)",
+    "O(1)"
+   ],
+   "answer": 0,
+   "explain": "These are two separate loops, one after the other, each running n times. That is 2n steps, which is O(n). Loops one after the other add, and only nested loops multiply."
+  },
+  {
+   "id": "cpp-big-o-003",
+   "topic": "big-o",
+   "level": "apply",
+   "q": "What is the time complexity of this code?",
+   "code": "for (int i = 0; i < n; i++)\n    for (int j = 0; j < n; j++)\n        count++;",
+   "choices": [
+    "O(2n)",
+    "O(n)",
+    "O(n^2)",
+    "O(log n)"
+   ],
+   "answer": 2,
+   "explain": "For each of the n values of i, the inner loop runs n times, so count++ runs n * n times."
+  },
+  {
+   "id": "cpp-big-o-004",
+   "topic": "big-o",
+   "level": "apply",
+   "q": "What is the time complexity of this code?",
+   "code": "for (int i = 0; i < n; i++)\n    for (int j = 0; j < 10; j++)\n        count++;",
+   "choices": [
+    "O(n)",
+    "O(log n)",
+    "O(10n^2)",
+    "O(n^2)"
+   ],
+   "answer": 0,
+   "explain": "The inner loop always runs exactly 10 times, which is a constant, so the total is 10n, or O(n). As the notes point out, a nested loop does not automatically mean O(n^2)."
+  },
+  {
+   "id": "cpp-big-o-005",
+   "topic": "big-o",
+   "level": "apply",
+   "q": "What is the time complexity of this loop?",
+   "code": "for (int i = n; i > 1; i /= 2)\n    count++;",
+   "choices": [
+    "O(n)",
+    "O(log n)",
+    "O(1)",
+    "O(n / 2)"
+   ],
+   "answer": 1,
+   "explain": "i is halved on every pass, so the loop runs about log2(n) times. That is the same halving pattern that makes binary search O(log n)."
+  },
+  {
+   "id": "cpp-big-o-006",
+   "topic": "big-o",
+   "level": "apply",
+   "q": "What is the time complexity of this code?",
+   "code": "for (int i = 0; i < n; i++)\n    for (int j = 1; j < n; j *= 2)\n        count++;",
+   "choices": [
+    "O(n)",
+    "O(n^2)",
+    "O(log n)",
+    "O(n log n)"
+   ],
+   "answer": 3,
+   "explain": "The outer loop runs n times. The inner j doubles each time, so it runs about log n times per outer pass. n times log n gives O(n log n)."
+  },
+  {
+   "id": "cpp-big-o-007",
+   "topic": "big-o",
+   "level": "recall",
+   "q": "Which list orders the growth rates from slowest-growing to fastest-growing?",
+   "choices": [
+    "O(1), O(log n), O(n), O(n log n), O(n^2)",
+    "O(log n), O(1), O(n), O(n^2), O(n log n)",
+    "O(1), O(log n), O(n log n), O(n), O(n^2)",
+    "O(1), O(n), O(log n), O(n^2), O(n log n)"
+   ],
+   "answer": 0,
+   "explain": "Constant < logarithmic < linear < n log n < quadratic. For n = 1024, those are 1, 10, 1024, 10240 and about a million."
+  },
+  {
+   "id": "cpp-big-o-008",
+   "topic": "big-o",
+   "level": "apply",
+   "q": "For n = 64, about how many steps does an O(n log n) algorithm take?",
+   "choices": [
+    "384",
+    "4096",
+    "64",
+    "6"
+   ],
+   "answer": 0,
+   "explain": "log2(64) = 6, so n log n = 64 * 6 = 384. 4096 is n^2, and 6 is log n alone."
+  },
+  {
+   "id": "cpp-big-o-009",
+   "topic": "big-o",
+   "level": "understand",
+   "q": "Why does Big-O ignore constant factors such as the 5 in 5n?",
+   "choices": [
+    "Computers run constants in zero time",
+    "For any fixed constant k, n^2 eventually exceeds k*n once n is large enough, so only the growth rate matters for large inputs",
+    "Constants only affect space complexity, not time",
+    "Constants are always smaller than 1"
+   ],
+   "answer": 1,
+   "explain": "Big-O describes how the cost grows as n becomes large. A faster growth rate always overtakes a bigger constant, so the constant does not change the classification."
+  },
+  {
+   "id": "cpp-big-o-010",
+   "topic": "big-o",
+   "level": "recall",
+   "q": "What is the time complexity of reading arr[i] from an array?",
+   "choices": [
+    "O(log n)",
+    "O(n)",
+    "O(i)",
+    "O(1)"
+   ],
+   "answer": 3,
+   "explain": "Array access computes the address directly, as the start address plus i times the element size. It takes the same time whatever i or n is."
+  },
+  {
+   "id": "cpp-big-o-011",
+   "topic": "big-o",
+   "level": "apply",
+   "q": "An O(n^2) algorithm takes 1 second for n = 1000. About how long will it take for n = 2000?",
+   "choices": [
+    "4 seconds",
+    "8 seconds",
+    "2 seconds",
+    "1 second"
+   ],
+   "answer": 0,
+   "explain": "Doubling n multiplies n^2 by 2^2 = 4. The answer 2 seconds is how a linear, O(n), algorithm would scale."
+  },
+  {
+   "id": "cpp-big-o-012",
+   "topic": "big-o",
+   "level": "apply",
+   "q": "The sorted array searched by binary search grows from 1024 to 2048 elements. How does the worst-case number of steps change?",
+   "choices": [
+    "It doubles",
+    "It quadruples",
+    "It increases by about 1",
+    "It stays the same"
+   ],
+   "answer": 2,
+   "explain": "log2(2048) = 11 and log2(1024) = 10. Doubling the input adds just one halving step, which is the strength of O(log n)."
+  },
+  {
+   "id": "cpp-big-o-013",
+   "topic": "big-o",
+   "level": "understand",
+   "q": "Selection sort sorts the array in place, using only a few extra variables (i, j, iMin). What is its extra space complexity?",
+   "choices": [
+    "O(n)",
+    "O(n^2)",
+    "O(1)",
+    "O(log n)"
+   ],
+   "answer": 2,
+   "explain": "Space complexity counts the extra memory used. The number of extra variables does not grow with n, so it is constant, even though the time is O(n^2)."
+  },
+  {
+   "id": "cpp-big-o-014",
+   "topic": "big-o",
+   "level": "apply",
+   "q": "What is the time complexity of this code?",
+   "code": "for (int i = 0; i < n; i++)\n    for (int j = i; j < n; j++)\n        count++;",
+   "choices": [
+    "O(n)",
+    "O(log n)",
+    "O(n log n)",
+    "O(n^2)"
+   ],
+   "answer": 3,
+   "explain": "The inner loop runs n, n-1, ..., 1 times, about n^2/2 in total. After dropping the constant, that is O(n^2). This is the same pattern as selection sort's comparisons."
+  },
+  {
+   "id": "cpp-linux-001",
+   "topic": "linux",
+   "level": "recall",
+   "q": "Which command prints the full path of your current working directory?",
+   "choices": [
+    "cd",
+    "man",
+    "ls",
+    "pwd"
+   ],
+   "answer": 3,
+   "explain": "pwd stands for print working directory. ls lists the contents of a directory, cd changes directory, and man shows manual pages."
+  },
+  {
+   "id": "cpp-linux-002",
+   "topic": "linux",
+   "level": "apply",
+   "q": "What does g++ -Wall -o p0 test.cpp do?",
+   "choices": [
+    "It compiles test.cpp with all common warnings enabled and names the executable p0",
+    "It compiles p0 into test.cpp",
+    "It compiles test.cpp into a.out and then runs p0",
+    "It runs test.cpp with warnings"
+   ],
+   "answer": 0,
+   "explain": "-Wall turns on warnings and -o names the output file. You then run the program with ./p0. Without -o, the executable would be named a.out."
+  },
+  {
+   "id": "cpp-linux-003",
+   "topic": "linux",
+   "level": "apply",
+   "q": "You compile with g++ test.cpp and nothing else. How do you run the result?",
+   "choices": [
+    "g++ ./a.out",
+    "./test",
+    "./a.out",
+    "run test.cpp"
+   ],
+   "answer": 2,
+   "explain": "With no -o option, g++ names the executable a.out. The ./ tells the shell to look in the current directory."
+  },
+  {
+   "id": "cpp-linux-004",
+   "topic": "linux",
+   "level": "apply",
+   "q": "What permissions does chmod 754 file give?",
+   "choices": [
+    "rwxrw-r--",
+    "r-xrwxr--",
+    "rwxr-xr--",
+    "rwxr--r-x"
+   ],
+   "answer": 2,
+   "explain": "Each digit is the sum of r = 4, w = 2 and x = 1, in the order owner, group, others. 7 = rwx, 5 = r-x and 4 = r--."
+  },
+  {
+   "id": "cpp-linux-005",
+   "topic": "linux",
+   "level": "understand",
+   "q": "ls -l shows -rw-r----- for a file. Which statement is correct?",
+   "choices": [
+    "Everyone can read it",
+    "The group can write to it",
+    "The owner can read and write it, the group can only read it, and others have no access",
+    "The owner can execute it"
+   ],
+   "answer": 2,
+   "explain": "After the leading - (regular file), the characters split into three sets: rw- for the owner, r-- for the group and --- for others. No x appears anywhere, so no one can execute it."
+  },
+  {
+   "id": "cpp-linux-006",
+   "topic": "linux",
+   "level": "recall",
+   "q": "Which command lists a directory's contents, including hidden files (names that start with .)?",
+   "choices": [
+    "cd -a",
+    "pwd -a",
+    "ls",
+    "ls -a"
+   ],
+   "answer": 3,
+   "explain": "Plain ls hides dotfiles, and -a means show all. ls -al combines this with the long format, which includes permissions."
+  },
+  {
+   "id": "cpp-linux-007",
+   "topic": "linux",
+   "level": "apply",
+   "q": "You have finished editing a file in vi. Which keys save and quit?",
+   "choices": [
+    "Press Esc, then type :q!",
+    "Ctrl+O",
+    "Ctrl+X",
+    "Press Esc, then type :wq"
+   ],
+   "answer": 3,
+   "explain": ":wq means write and quit. :q! quits WITHOUT saving. Ctrl+O and Ctrl+X are nano's save and exit keys."
+  },
+  {
+   "id": "cpp-linux-008",
+   "topic": "linux",
+   "level": "recall",
+   "q": "What does adding -X to ssh yournetid@eros.cs.txstate.edu do?",
+   "choices": [
+    "It exits after connecting",
+    "It enables X11 forwarding, so graphical programs on the server can show their windows on your machine",
+    "It runs the session as administrator",
+    "It encrypts the connection"
+   ],
+   "answer": 1,
+   "explain": "SSH is always encrypted. -X additionally forwards X Window graphics over that connection."
+  },
+  {
+   "id": "cpp-linux-009",
+   "topic": "linux",
+   "level": "recall",
+   "q": "Which command securely copies file.txt to a remote Linux host?",
+   "choices": [
+    "scp file.txt user@remote_host:/path/to/destination/",
+    "cp file.txt remote_host",
+    "ssh file.txt user@remote_host",
+    "mv file.txt user@remote_host"
+   ],
+   "answer": 0,
+   "explain": "scp (secure copy) transfers files over SSH. rsync is another option. cp and mv work only on the local machine."
+  },
+  {
+   "id": "cpp-linux-010",
+   "topic": "linux",
+   "level": "apply",
+   "q": "A program is run as ./a.out data.txt 5. What are argc and argv[1]?",
+   "choices": [
+    "argc = 2, argv[1] = \"5\"",
+    "argc = 3, argv[1] = \"./a.out\"",
+    "argc = 3, argv[1] = \"data.txt\"",
+    "argc = 2, argv[1] = \"data.txt\""
+   ],
+   "answer": 2,
+   "explain": "argc counts the program name too, so there are 3 words. argv[0] is \"./a.out\", so the first real argument is argv[1]."
+  },
+  {
+   "id": "cpp-linux-011",
+   "topic": "linux",
+   "level": "apply",
+   "q": "This program is run as ./prog in.txt out.txt. What does it print?",
+   "code": "int main(int argc, char* argv[])\n{\n    cout << argc << \" \" << argv[argc - 1];\n}",
+   "choices": [
+    "3 out.txt",
+    "2 out.txt",
+    "3 in.txt",
+    "2 in.txt"
+   ],
+   "answer": 0,
+   "explain": "argc is 3 (the program name plus two arguments), so argv[argc - 1] is argv[2], which is \"out.txt\". Forgetting that argv[0] is the program name leads to argc = 2."
+  },
+  {
+   "id": "cpp-linux-012",
+   "topic": "linux",
+   "level": "recall",
+   "q": "In the Linux file system, what is at the very top of the hierarchy, and where do users' personal directories usually live?",
+   "choices": [
+    "/home is the top, with users under /root",
+    "The root directory /, with user directories under /home",
+    "C:\\, with users under C:\\Users",
+    "~ is the top, with users under /usr"
+   ],
+   "answer": 1,
+   "explain": "Linux has one tree that starts at /. Each user's home directory is normally /home/<username>, and ~ is a shortcut to your own home directory."
+  },
+  {
+   "id": "cpp-linux-013",
+   "topic": "linux",
+   "level": "recall",
+   "q": "Which statement about Linux's history is correct?",
+   "choices": [
+    "Linux is a version of Microsoft Windows",
+    "Linux was first released as Ubuntu in 2004",
+    "Linus Torvalds introduced Linux in 1991 as a free alternative to UNIX",
+    "Dennis Ritchie created Linux in 1972"
+   ],
+   "answer": 2,
+   "explain": "Linux is a flavor of UNIX. Ritchie created the C language in 1972, and Ubuntu (2004) is a later Linux distribution that made Linux easier to use."
+  },
+  {
+   "id": "cpp-linux-014",
+   "topic": "linux",
+   "level": "recall",
+   "q": "What does man pwd do?",
+   "choices": [
+    "It changes into the pwd directory",
+    "It prints the current directory as the manager user",
+    "It displays the manual page for the pwd command",
+    "It makes a new directory named pwd"
+   ],
+   "answer": 2,
+   "explain": "man shows the documentation for a command, including its syntax and options."
+  },
+  {
+   "id": "cpp-linux-015",
+   "topic": "linux",
+   "level": "understand",
+   "q": "In g++ -g -o p0 helloworld.cpp, what does -g do?",
+   "choices": [
+    "It includes debugging information in the executable",
+    "It sets the name of the output file",
+    "It speeds up the program",
+    "It enables all warnings"
+   ],
+   "answer": 0,
+   "explain": "-g adds debug symbols that tools such as debuggers use. -Wall enables warnings, and -o sets the output name."
+  }
+ ]
+}

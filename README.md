@@ -4,6 +4,17 @@ A 12-week, evidence-based training system for learning how to learn. It runs as 
 
 **Live app:** https://eduarduque.github.io/learning-mastery/
 
+## Class practice
+The **My classes** tab has multiple-choice practice for Biology, C++, Discrete Math and Ethics. The questions were written from Fall 2026 lecture materials, and the course files themselves are not included in this repo. How it picks questions:
+- Topics are taken in turn, starting with the least-mastered and least-recently-practiced ones.
+- Questions you haven't seen come before repeats.
+- Missed questions come back after about 12 hours. Correct answers come back at growing intervals: 1, 3, 7, 16, 35 and 80 days.
+- No question repeats within a session, and answer order is reshuffled each time.
+
+Modes: Smart mix, Weak topics, My mistakes, Exam simulation.
+
+To update the questions, edit `classes/*.json` and run `python build_classes.py`. That validates the banks and regenerates `classes/data.js`.
+
 ## What's inside
 - **Intake and obstacles:** your habits and available time, mapped to your three biggest obstacles
 - **Diagnostic:** 12 questions with confidence ratings that measure both knowledge and calibration
@@ -14,4 +25,4 @@ A 12-week, evidence-based training system for learning how to learn. It runs as 
 - **12-week roadmap:** four phases with objectives, exercises, assessments and gate criteria
 - **Principles and science:** methods graded by strength of evidence, common myths, and how memory works
 
-Progress is stored in your browser's localStorage. Use Export on the Dashboard to back it up.
+Progress is saved in your browser after every answer, so it's still there after you close the tab. On the Dashboard, **Connect backup file** (Chrome/Edge) also keeps a JSON file on your disk up to date automatically.
