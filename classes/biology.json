@@ -124,8 +124,8 @@
    "level": "recall",
    "q": "Which of the following is a modern addition to the cell theory?",
    "choices": [
-    "Cells contain hereditary information (DNA) that is passed from cell to cell during division.",
-    "Every cell contains mitochondria to supply its energy.",
+    "Cells contain hereditary information (DNA) passed from cell to cell during division.",
+    "Every prokaryotic and eukaryotic cell contains mitochondria, which supply the ATP needed for division.",
     "Cells are built mainly from carbohydrates rather than proteins.",
     "Viruses are the simplest type of living cell."
    ],
@@ -139,8 +139,8 @@
    "q": "Which set of features is shared by ALL cells, prokaryotic and eukaryotic?",
    "choices": [
     "Plasma membrane, cytoplasm, genetic material, and ribosomes",
-    "Nucleus, ribosomes, cytoplasm, and plasma membrane",
-    "Plasma membrane, cell wall, DNA, and mitochondria",
+    "Nucleus, ribosomes, cytoplasm, genetic material, and plasma membrane",
+    "Plasma membrane, cell wall, DNA, ribosomes, and mitochondria",
     "Ribosomes, endoplasmic reticulum, DNA, and cytoplasm"
    ],
    "answer": 0,
@@ -153,9 +153,9 @@
    "q": "A newly discovered single-celled organism has DNA in a nucleoid region, ribosomes, a cell wall, and a plasma membrane, but no internal membrane-bound organelles. How should it be classified?",
    "choices": [
     "As a prokaryote, because its DNA is not enclosed in a nucleus",
-    "As a eukaryote, because it has ribosomes",
+    "As a eukaryote, because it has ribosomes and a plasma membrane like all eukaryotic cells",
     "As a plant cell, because it has a cell wall",
-    "As a non-living particle, because it lacks mitochondria"
+    "As a non-living particle, because it lacks mitochondria to make its own ATP"
    ],
    "answer": 0,
    "explain": "A nucleoid and no membrane-bound organelles are the defining features of a prokaryote. Ribosomes and cell walls appear in both prokaryotes and some eukaryotes, so they do not identify a eukaryote or a plant."
@@ -166,10 +166,10 @@
    "level": "understand",
    "q": "As a cell grows larger, what happens to its surface area-to-volume ratio, and why does it matter?",
    "choices": [
-    "The ratio increases, so the cell exchanges materials more efficiently.",
+    "The ratio increases, so each unit of cytoplasm is served by more membrane and exchange becomes more efficient.",
     "The ratio stays the same because surface area and volume grow at the same rate.",
-    "The ratio decreases, which speeds up diffusion to the center of the cell.",
-    "The ratio decreases, so the membrane has relatively less area to take in nutrients and export wastes for the cell's volume."
+    "The ratio decreases, which speeds diffusion to the center because molecules have more space to spread through.",
+    "The ratio decreases, leaving relatively less membrane to exchange materials for the cell's volume."
    ],
    "answer": 3,
    "explain": "Volume grows faster (cubed) than surface area (squared), so the ratio falls as cells enlarge. A high ratio is needed for adequate exchange, which is why cells stay small. A falling ratio slows exchange rather than speeding it up."
@@ -181,7 +181,7 @@
    "q": "Two cube-shaped cells are compared: one is 1 µm on a side, the other 10 µm on a side. Which cell is better suited for exchanging materials with its environment?",
    "choices": [
     "The 1 µm cell, because its surface area-to-volume ratio is 10 times higher",
-    "The 10 µm cell, because it has 100 times more surface area",
+    "The 10 µm cell, because it has 100 times more surface area for transport proteins to occupy",
     "Both are equal, because they have the same shape",
     "The 10 µm cell, because its larger volume holds more transport proteins"
    ],
@@ -222,10 +222,10 @@
    "level": "understand",
    "q": "How does the plasma membrane differ from a cell wall?",
    "choices": [
-    "The cell wall is selectively permeable, while the plasma membrane is a rigid support layer.",
-    "Only plant cells have a plasma membrane; animal cells have a cell wall instead.",
+    "The cell wall is a selectively permeable lipid bilayer that controls passage; the plasma membrane is a rigid outer layer made of cellulose.",
+    "Only plant cells have a plasma membrane; animal cells have a cell wall instead, which is why animal cells keep a fixed shape.",
     "They are the same structure described by two different names.",
-    "The plasma membrane is a selectively permeable phospholipid bilayer that controls what enters and leaves; the cell wall is a rigid outer layer that gives support and protection."
+    "The plasma membrane is a selectively permeable lipid bilayer that controls passage; the cell wall is a rigid outer layer for support."
    ],
    "answer": 3,
    "explain": "Every cell has a plasma membrane that regulates transport, signaling, and adhesion. Cell walls (in bacteria, plants, fungi) sit outside the membrane and provide structural support. Animal cells have a plasma membrane but no cell wall."
@@ -279,8 +279,8 @@
    "q": "A strain of bacteria with a thick capsule (glycocalyx) is cleared by the immune system much more slowly than a strain without one. What does this suggest about the glycocalyx?",
    "choices": [
     "It protects the cell and helps it evade the host immune system.",
-    "It is the site where the bacterium makes ATP.",
-    "It lets the bacterium swim away from immune cells.",
+    "It is the site where the bacterium makes ATP, giving it extra energy to resist immune attack.",
+    "It acts as a propeller that lets the bacterium swim away from immune cells.",
     "It stores the cell's genetic material."
    ],
    "answer": 0,
@@ -306,10 +306,10 @@
    "level": "understand",
    "q": "What do the organelles of the endomembrane system have in common?",
    "choices": [
-    "They each contain their own DNA and ribosomes.",
+    "They each contain their own DNA and ribosomes, so each can make the proteins it needs independently.",
     "They are all built from microtubules.",
-    "They are membrane-bound compartments that are connected directly or through vesicles that carry material between them.",
-    "They are all found in prokaryotic cells as well as eukaryotic cells."
+    "They are membrane-bound compartments connected directly or by vesicles that carry material between them.",
+    "They are all found in prokaryotic as well as eukaryotic cells, where they form one continuous membrane network."
    ],
    "answer": 2,
    "explain": "Endomembrane organelles share membranes either by direct continuity (nuclear envelope with ER) or by vesicle transport. Having their own DNA and ribosomes describes mitochondria and chloroplasts, not the endomembrane system."
@@ -334,10 +334,10 @@
    "level": "recall",
    "q": "Which description fits the nuclear envelope?",
    "choices": [
-    "A single membrane where most of the cell's lipids are made",
+    "A single membrane studded with ribosomes where most of the cell's lipids and proteins are made",
     "A network of protein fibers that pulls chromosomes apart",
     "A double membrane with pores that separates the nuclear contents from the cytoplasm",
-    "A region inside the nucleus where ribosomal subunits are assembled"
+    "A region inside the nucleus where ribosomal subunits are assembled from rRNA and proteins"
    ],
    "answer": 2,
    "explain": "The nuclear envelope is a double membrane perforated by nuclear pores that regulate what moves between nucleus and cytoplasm. The nucleolus, not the envelope, assembles ribosomal subunits."
@@ -348,9 +348,9 @@
    "level": "understand",
    "q": "How are chromatin and chromosomes related?",
    "choices": [
-    "Chromatin is made of RNA, while chromosomes are made of DNA.",
-    "They are the same DNA-protein material; chromosomes are a more condensed form seen when a cell prepares to divide.",
-    "Chromatin is found only in prokaryotes, while chromosomes are found only in eukaryotes.",
+    "Chromatin is made of RNA and protein, while chromosomes are made of DNA that is copied from that RNA.",
+    "They are the same DNA-protein material; chromosomes are the condensed form seen when a cell prepares to divide.",
+    "Chromatin is found only in prokaryotes, while chromosomes are the linear DNA molecules found only in eukaryotic nuclei.",
     "Chromosomes contain protein, but chromatin is DNA with no protein."
    ],
    "answer": 1,
@@ -362,9 +362,9 @@
    "level": "understand",
    "q": "Where are ribosomes made, and where do they carry out protein synthesis?",
    "choices": [
-    "They are made in the Golgi apparatus and work inside the nucleus.",
-    "Their subunits are assembled in the nucleolus; they make proteins in the cytosol, either free or bound to the rough ER.",
-    "They are made in the cytosol and work only inside lysosomes.",
+    "They are made in the Golgi apparatus, then shipped in vesicles to the nucleus, where they make proteins.",
+    "Their subunits are assembled in the nucleolus; they make proteins in the cytosol, free or bound to the rough ER.",
+    "Their subunits are assembled in the cytosol; they make proteins only inside the nucleolus or bound to the smooth ER.",
     "They are made by the smooth ER and work inside the nucleolus."
    ],
    "answer": 1,
@@ -392,7 +392,7 @@
    "choices": [
     "Smooth endoplasmic reticulum",
     "Rough endoplasmic reticulum",
-    "Golgi apparatus",
+    "Golgi apparatus and secretory vesicles",
     "Nucleolus"
    ],
    "answer": 0,
@@ -404,10 +404,10 @@
    "level": "apply",
    "q": "Pancreatic cells make and secrete the protein hormone insulin. If a cell's Golgi apparatus stopped working, what would you predict?",
    "choices": [
-    "Insulin would no longer be translated, because the Golgi is where proteins are made.",
-    "Insulin would still be made at the rough ER but would not be properly processed, sorted, and packaged into secretory vesicles, so secretion would drop.",
-    "Insulin would be secreted faster, because it would skip a processing step.",
-    "Insulin would be sent to the nucleus instead of being secreted."
+    "Insulin would no longer be translated, because the Golgi is where ribosomes join the amino acids of secreted proteins.",
+    "Insulin would still be made at the rough ER but would not be properly processed and packaged, so secretion would drop.",
+    "Insulin would be secreted faster, because it would skip the Golgi and go straight from the rough ER to the plasma membrane.",
+    "Insulin would be redirected to the nucleus, because without Golgi sorting signals all proteins default to nuclear import."
    ],
    "answer": 1,
    "explain": "In the secretory pathway, proteins made by ribosomes on the rough ER travel in vesicles to the Golgi, which modifies, sorts, and packages them for secretion. Without the Golgi, synthesis continues but delivery to the plasma membrane fails. The Golgi does not make proteins."
@@ -418,10 +418,10 @@
    "level": "recall",
    "q": "Which sequence correctly traces a secreted protein from synthesis to release from the cell?",
    "choices": [
-    "Golgi apparatus → rough ER → transport vesicle → lysosome → plasma membrane",
+    "Ribosome on rough ER → Golgi apparatus → transport vesicle → ER → lysosome → secretory vesicle → plasma membrane",
     "Free ribosome → nucleus → Golgi apparatus → ER → plasma membrane",
     "Ribosome on rough ER → ER → transport vesicle → Golgi apparatus → secretory vesicle → plasma membrane",
-    "Smooth ER → lysosome → Golgi apparatus → transport vesicle → plasma membrane"
+    "Free ribosome → smooth ER → lysosome → Golgi apparatus → transport vesicle → plasma membrane"
    ],
    "answer": 2,
    "explain": "Secreted proteins enter the ER as they are translated, bud off in transport vesicles to the Golgi, and leave the Golgi in secretory vesicles that fuse with the plasma membrane (exocytosis). The Golgi comes after the ER, not before it."
@@ -447,7 +447,7 @@
    "q": "Lysosomal enzymes are acid hydrolases that work best at about pH 5. If a lysosome's proton pumps failed and its interior rose to about pH 7, what would happen?",
    "choices": [
     "Its digestive enzymes would work poorly, so breakdown of materials would slow.",
-    "Its enzymes would work faster, because pH 7 is neutral.",
+    "Its enzymes would work faster, because pH 7 is closer to the neutral cytosol they evolved in.",
     "The lysosome would start producing ATP instead.",
     "Nothing would change, because lysosomal enzymes are not affected by pH."
    ],
@@ -460,10 +460,10 @@
    "level": "understand",
    "q": "Which statement correctly distinguishes endocytosis from exocytosis?",
    "choices": [
-    "Exocytosis takes material into the cell; endocytosis releases material from the cell.",
-    "Endocytosis takes material into the cell when the plasma membrane folds inward to form a vesicle; exocytosis releases material when a vesicle fuses with the plasma membrane.",
+    "Exocytosis brings material in as the membrane folds inward to form a vesicle; endocytosis releases material as a vesicle fuses with the membrane.",
+    "Endocytosis brings material in as the membrane folds inward to form a vesicle; exocytosis releases material as a vesicle fuses with the membrane.",
     "Both describe small molecules diffusing directly through the lipid bilayer.",
-    "Endocytosis releases waste from the cell, and exocytosis builds new organelles."
+    "Endocytosis releases waste when lysosomes fuse with the plasma membrane, and exocytosis builds new organelles from vesicles."
    ],
    "answer": 1,
    "explain": "Endo- means 'into': the membrane pinches inward around material to form a vesicle. Exo- means 'out of': a vesicle fuses with the membrane and empties its contents outside. Neither one is simple diffusion."
@@ -475,8 +475,8 @@
    "q": "What is a main role of the large central vacuole in a plant cell?",
    "choices": [
     "Storing water and solutes and maintaining turgor pressure that helps support the cell",
-    "Producing ATP using light energy",
-    "Synthesizing proteins for export",
+    "Producing ATP using light energy captured by pigments dissolved in the vacuole's sap",
+    "Synthesizing and folding proteins for export before they are sent to the Golgi apparatus",
     "Forming microtubules during cell division"
    ],
    "answer": 0,
@@ -502,10 +502,10 @@
    "level": "understand",
    "q": "Which description best fits the Golgi apparatus?",
    "choices": [
-    "A double-membrane organelle that makes ATP",
+    "A double-membrane organelle with folded cristae that makes most of the cell's ATP",
     "A network of protein fibers that gives the cell its shape",
-    "Stacks of flattened membrane sacs (cisternae) that modify, sort, and package proteins and lipids received from the ER",
-    "A single sac of acid hydrolases that digests worn-out organelles"
+    "Stacks of flattened membrane sacs (cisternae) that modify, sort, and package proteins and lipids from the ER",
+    "A single membrane sac filled with acid hydrolases that digests worn-out organelles and engulfed food particles"
    ],
    "answer": 2,
    "explain": "The Golgi is made of stacked cisternae that receive ER products in transport vesicles, modify them, and send them to their destinations. The sac of acid hydrolases describes a lysosome."
@@ -516,8 +516,8 @@
    "level": "apply",
    "q": "A protein that is normally secreted is engineered so that its ER signal sequence is deleted. What is the most likely result?",
    "choices": [
-    "It is secreted faster than normal.",
-    "It is automatically sent into the nucleus.",
+    "It is secreted faster than normal, because it no longer has to wait to be translocated into the ER.",
+    "It is automatically sent into the nucleus, because nuclear import is the default for proteins lacking a signal.",
     "It is translated by a free ribosome and stays in the cytosol instead of entering the ER.",
     "It cannot be translated at all."
    ],
@@ -530,7 +530,7 @@
    "level": "recall",
    "q": "Most proteins destined for mitochondria, chloroplasts, the nucleus, and peroxisomes are sorted in which way?",
    "choices": [
-    "Cotranslationally: they are made on the rough ER and delivered through the Golgi.",
+    "Cotranslationally: they are made on the rough ER, then delivered by vesicles through the Golgi to their destination.",
     "They are made inside the Golgi apparatus itself.",
     "Post-translationally: they are completed in the cytosol and then imported, guided by a short sorting sequence.",
     "They are made by the nucleolus and released into the target organelle."
@@ -546,7 +546,7 @@
    "choices": [
     "An outer membrane and a highly folded inner membrane that surrounds a fluid matrix",
     "A single membrane enclosing digestive enzymes",
-    "An inner membrane enclosing stroma with stacks of thylakoids",
+    "A double membrane whose inner membrane encloses stroma containing stacks of thylakoids",
     "Hollow tubes built from tubulin"
    ],
    "answer": 0,
@@ -558,8 +558,8 @@
    "level": "recall",
    "q": "Which description fits chloroplast structure?",
    "choices": [
-    "A single membrane with folds called cristae",
-    "A double membrane; the inner membrane encloses fluid stroma containing grana, which are stacks of thylakoids",
+    "A double membrane whose highly folded inner membrane (cristae) encloses a fluid matrix containing DNA",
+    "A double membrane whose inner membrane encloses fluid stroma containing grana (stacks of thylakoids)",
     "Stacked cisternae that package proteins",
     "A cluster of ribosomes with no membrane"
    ],
@@ -587,7 +587,7 @@
    "q": "Cells in the upper layer of a leaf receive the most sunlight. Which organelle would you predict to be most abundant in them compared with root cells?",
    "choices": [
     "Lysosomes",
-    "Rough ER",
+    "Rough endoplasmic reticulum",
     "Chloroplasts",
     "Centrioles"
    ],
@@ -600,9 +600,9 @@
    "level": "apply",
    "q": "Cells lining the stomach make and secrete large amounts of digestive enzymes, which are proteins. If these cells lost most of their rough ER, which process would fail most directly?",
    "choices": [
-    "Detoxification of drugs and alcohol",
+    "Detoxification of drugs and alcohol absorbed from the stomach",
     "Production of the digestive enzymes they secrete",
-    "Synthesis of steroid hormones",
+    "Synthesis of steroid hormones and membrane phospholipids",
     "Capture of light energy"
    ],
    "answer": 1,
@@ -614,9 +614,9 @@
    "level": "apply",
    "q": "A mutation leaves a muscle cell with very few working mitochondria. What is the most direct consequence?",
    "choices": [
-    "The cell would no longer be able to translate proteins.",
+    "The cell would no longer be able to translate proteins, because ribosomes are made inside mitochondria.",
     "Greatly reduced aerobic ATP production, so the cell would struggle to sustain contraction",
-    "The cell would lose its ability to digest engulfed bacteria.",
+    "The cell would lose its ability to digest engulfed bacteria, since mitochondria supply its digestive enzymes.",
     "The cell's DNA would no longer be enclosed by a nucleus."
    ],
    "answer": 1,
@@ -628,7 +628,7 @@
    "level": "understand",
    "q": "Why are mitochondria and chloroplasts called 'semiautonomous'?",
    "choices": [
-    "They are fully independent organisms that can survive outside the cell.",
+    "They are fully independent organisms that can survive and reproduce outside the host cell indefinitely.",
     "They grow and divide on their own, but depend on the cell to make many of their components.",
     "They cannot divide and must be built new by the ER.",
     "They are found only in prokaryotic cells."
@@ -642,7 +642,7 @@
    "level": "recall",
    "q": "According to the endosymbiosis theory presented in class, what were the ancestors of mitochondria and chloroplasts?",
    "choices": [
-    "Mitochondria came from cyanobacteria; chloroplasts came from purple bacteria.",
+    "Mitochondria came from cyanobacteria (photosynthetic bacteria); chloroplasts came from purple bacteria.",
     "Both came from archaea living in extreme environments.",
     "Mitochondria came from purple bacteria (α-proteobacteria); chloroplasts came from cyanobacteria.",
     "Both formed when pieces of the ER pinched off and became specialized."
@@ -656,7 +656,7 @@
    "level": "understand",
    "q": "Which observation best supports the idea that mitochondria and chloroplasts arose by endosymbiosis?",
    "choices": [
-    "They receive proteins from the ER through vesicles.",
+    "They receive their membrane proteins from the ER through vesicles, like other organelles.",
     "They are present in every prokaryotic cell.",
     "They have their own DNA and ribosomes and divide in a way similar to bacteria.",
     "They are built from tubulin, like microtubules."
@@ -684,10 +684,10 @@
    "level": "understand",
    "q": "A student says plant cells do not need mitochondria because they have chloroplasts. What is the best response?",
    "choices": [
-    "That is correct: chloroplasts replace mitochondria in plants.",
-    "That is wrong: plant cells have both. Chloroplasts use light energy to make sugars, and mitochondria break down sugars to make ATP.",
+    "That is correct: chloroplasts replace mitochondria in plants, carrying out both photosynthesis and respiration.",
+    "That is wrong: plants have both; chloroplasts make sugars with light energy, and mitochondria break sugars down for ATP.",
     "That is wrong: plant cells have mitochondria but not chloroplasts.",
-    "That is correct: plants get all their ATP directly from sunlight in the vacuole."
+    "That is correct: plant cells get all of their ATP directly from the light reactions, so they never need to break down sugar."
    ],
    "answer": 1,
    "explain": "Photosynthesis stores energy in sugar; cells, including plant cells, still need mitochondria to convert that sugar into ATP. Thinking that chloroplasts replace mitochondria is a very common misconception."
@@ -754,9 +754,9 @@
    "level": "recall",
    "q": "Microtubules are best described as which of the following?",
    "choices": [
-    "Rope-like fibers made of keratin that bear tension",
+    "Rope-like fibers made of keratin and similar proteins that bear tension and anchor the nucleus",
     "Long, hollow cylinders built from α- and β-tubulin, with a plus end and a minus end",
-    "Thin, solid fibers made of actin just under the plasma membrane",
+    "Thin, solid fibers made of actin that form a dense network just under the plasma membrane",
     "Flattened membrane sacs that move proteins"
    ],
    "answer": 1,
@@ -769,7 +769,7 @@
    "q": "What does 'dynamic instability' of microtubules mean?",
    "choices": [
     "A single microtubule can switch back and forth between growing and shrinking.",
-    "Microtubules are permanent and never change length once formed.",
+    "Microtubules are permanent and never change length once they are anchored at the centrosome.",
     "Microtubules break apart only when a cell dies.",
     "Microtubules turn into intermediate filaments under stress."
    ],
@@ -782,9 +782,9 @@
    "level": "recall",
    "q": "Which statement about microtubule-organizing centers (MTOCs) is correct?",
    "choices": [
-    "Plant cells use centrioles as their MTOC, but animal cells do not.",
-    "Animal cells use a centrosome containing centrioles as their MTOC; plant cells lack centrosomes and centrioles.",
-    "MTOCs are where actin filaments are assembled from tubulin.",
+    "Plant cells use a centrosome containing centrioles as their MTOC; animal cells organize microtubules without one.",
+    "Animal cells use a centrosome with centrioles as their MTOC; plant cells lack centrosomes and centrioles.",
+    "MTOCs are where actin filaments are assembled from tubulin dimers before they move to the cell cortex.",
     "MTOCs are found only in bacteria."
    ],
    "answer": 1,
@@ -826,7 +826,7 @@
    "choices": [
     "Ribosomes would stop translating mRNA.",
     "Chromosomes could not be moved apart properly, so cell division would stall.",
-    "The plasma membrane would become fully permeable to ions.",
+    "The plasma membrane would become fully permeable to ions, because microtubules form its ion channels.",
     "Mitochondria would begin photosynthesis."
    ],
    "answer": 1,
@@ -852,10 +852,10 @@
    "level": "understand",
    "q": "How do cilia and flagella generally differ?",
    "choices": [
-    "Flagella are short and numerous; cilia are long and usually single.",
+    "Flagella are short and numerous, beating back and forth; cilia are longer, usually single, and move in a whip-like wave.",
     "Cilia are made of actin, while flagella are made of tubulin.",
-    "Cilia are found only in prokaryotes, and flagella only in eukaryotes.",
-    "Cilia are short and usually numerous, beating back and forth; flagella are longer, usually few, and move with a whip-like, wave motion."
+    "Cilia are found only in prokaryotes and rotate like propellers, while flagella are found only in eukaryotes and beat back and forth.",
+    "Cilia are short and usually numerous, beating back and forth; flagella are longer, usually few, and move in a whip-like wave."
    ],
    "answer": 3,
    "explain": "Both are built from microtubules, but cilia are short and many, while flagella are long and few, with a different beating pattern. Saying they are made of different proteins is a common mistake; both use microtubules."
@@ -866,7 +866,7 @@
    "level": "understand",
    "q": "What causes a cilium or eukaryotic flagellum to bend?",
    "choices": [
-    "Actin filaments contract around the base of the cilium.",
+    "Actin filaments contract around the base of the cilium, pulling the microtubules to one side.",
     "Water rushes into the cilium by osmosis.",
     "The motor protein dynein makes neighboring microtubules slide against each other.",
     "Intermediate filaments inside the cilium shorten."
@@ -880,9 +880,9 @@
    "level": "apply",
    "q": "Paramecium is a single-celled organism covered in cilia. The cells lining the human airway are also ciliated. How do the roles of their cilia differ?",
    "choices": [
-    "Paramecium uses cilia to move itself through water; airway cells are anchored in tissue and use cilia to move mucus and particles past them.",
+    "Paramecium uses cilia to move itself through water; anchored airway cells use cilia to move mucus and particles past them.",
     "Both use cilia only to move the whole cell through fluid.",
-    "Airway cilia move the cells through the lungs, while Paramecium cilia move water past a fixed cell.",
+    "Airway cilia move the cells themselves through the lungs, while Paramecium cilia move water past a cell that stays fixed in place.",
     "Neither uses cilia for movement; cilia are used only for sensing."
    ],
    "answer": 0,
@@ -896,8 +896,8 @@
    "choices": [
     "Airway cells would make more ATP.",
     "The cilia cannot beat effectively, so mucus and trapped particles build up in the airways.",
-    "The cilia would beat faster to compensate.",
-    "Airway cells would lose their plasma membranes."
+    "The cilia would beat faster to compensate, using kinesin in place of the defective dynein.",
+    "Airway cells would lose their plasma membranes, because dynein anchors the membrane to the cytoskeleton."
    ],
    "answer": 1,
    "explain": "Without working dynein, microtubules cannot slide, so the cilia cannot bend and clear mucus. That leads to mucus buildup and frequent respiratory infections."
@@ -909,7 +909,7 @@
    "q": "Vesicles carrying proteins from the Golgi to the plasma membrane are moved through the cytoplasm mainly by what?",
    "choices": [
     "Diffusion through nuclear pores",
-    "Contraction of intermediate filaments",
+    "Contraction of intermediate filaments that squeeze vesicles toward the cell surface",
     "Motor proteins that 'walk' along cytoskeletal tracks such as microtubules",
     "Beating of cilia on the cell surface"
    ],
@@ -922,9 +922,9 @@
    "level": "recall",
    "q": "Which statement correctly describes the structure of an atom?",
    "choices": [
-    "Protons (+) and neutrons (no charge) are in the nucleus; electrons (−) occupy shells around it.",
-    "Electrons and protons are in the nucleus; neutrons orbit around it.",
-    "Neutrons are negatively charged and balance the protons.",
+    "Protons (+) and neutrons (no charge) form the nucleus; electrons (−) occupy shells around it.",
+    "Electrons and protons are packed together in the nucleus; neutrons orbit around it in shells.",
+    "Neutrons are negatively charged and sit in the nucleus, balancing the positive protons that orbit it.",
     "Protons occupy shells around a nucleus made of electrons."
    ],
    "answer": 0,
@@ -1022,8 +1022,8 @@
    "choices": [
     "It has no electrons.",
     "Its valence shell is completely filled (2, 8), so it has no vacancies to fill by bonding.",
-    "Its nucleus has no protons.",
-    "It has only one electron in its valence shell."
+    "Its nucleus has no protons, so it cannot attract the electrons of other atoms to form bonds.",
+    "It has only one electron in its valence shell, so it cannot pair up with another atom."
    ],
    "answer": 1,
    "explain": "Atoms are most stable when their outer shell has no vacancies. Neon's 10 electrons fill both the first (2) and second (8) shells, so it has no tendency to react. An atom with a single valence electron, like sodium, is very reactive."
@@ -1037,7 +1037,7 @@
     "It has 4 valence electrons, so it needs 4 more to complete its outer shell.",
     "It has 4 protons in its nucleus.",
     "It has 4 electron shells.",
-    "It has a full outer shell of 4 electrons."
+    "It has a full outer shell of 4 electrons, which it shares to make 4 stable bonds."
    ],
    "answer": 0,
    "explain": "The number of covalent bonds an atom forms is set by how many electrons it needs to fill its valence shell. Carbon (2, 4) needs four more, so it forms four bonds. Carbon has 6 protons, not 4."
@@ -1048,10 +1048,10 @@
    "level": "recall",
    "q": "How many electrons are shared in a single covalent bond and in a double covalent bond?",
    "choices": [
-    "Single: 1 electron; double: 2 electrons",
+    "Single: 1 electron (donated by one atom); double: 2 electrons (one from each atom)",
     "Single: 4 electrons; double: 8 electrons",
     "Single: 2 electrons (one pair); double: 4 electrons (two pairs)",
-    "Single: 2 electrons; double: 3 electrons"
+    "Single: 2 electrons (one pair); double: 3 electrons (one pair plus one)"
    ],
    "answer": 2,
    "explain": "A single covalent bond shares one pair (2 electrons); a double bond shares two pairs (4 electrons). Counting electrons rather than pairs is the usual source of error."
@@ -1062,10 +1062,10 @@
    "level": "understand",
    "q": "What is electronegativity, and how does it affect the kind of bond that forms?",
    "choices": [
-    "It is the number of protons in an atom; atoms with equal electronegativity form ionic bonds.",
-    "It is the charge of an ion; atoms with high electronegativity always form nonpolar bonds.",
-    "It is an atom's ability to attract electrons; the larger the difference between two atoms, the more unequally electrons are shared, up to complete transfer in an ionic bond.",
-    "It is the mass of an atom; heavier atoms always form hydrogen bonds."
+    "It is the number of protons in an atom; atoms with equal electronegativity transfer electrons completely and form ionic bonds.",
+    "It is the charge of an ion; atoms with high electronegativity always share electrons equally, so they form only nonpolar covalent bonds.",
+    "It is an atom's pull on shared electrons; a larger difference between two atoms means more unequal sharing, up to ionic transfer.",
+    "It is the mass of an atom; heavier atoms pull harder on neighbors, so they always form hydrogen bonds instead of covalent bonds."
    ],
    "answer": 2,
    "explain": "Similar electronegativities lead to equal sharing (nonpolar covalent bonds), moderate differences to unequal sharing (polar covalent bonds), and very large differences to electron transfer (ionic bonds). Equal electronegativity gives nonpolar covalent bonds, not ionic ones."
@@ -1091,9 +1091,9 @@
    "q": "Sodium has an electronegativity of 0.93 and chlorine 3.16. What kind of interaction forms between them, and what happens to the electrons?",
    "choices": [
     "A nonpolar covalent bond: the electrons are shared equally.",
-    "A polar covalent bond: the electrons are shared but sit closer to sodium.",
+    "A polar covalent bond: the electrons are shared unequally and sit closer to sodium, giving sodium a partial negative charge.",
     "A hydrogen bond: sodium's partial positive charge is attracted to chlorine.",
-    "An ionic bond: chlorine pulls an electron completely away from sodium, forming Na⁺ and Cl⁻ ions that attract each other."
+    "An ionic bond: chlorine pulls an electron completely away from sodium, forming Na⁺ and Cl⁻ ions that attract."
    ],
    "answer": 3,
    "explain": "The difference (2.23) is greater than 1.7, so the electron is transferred rather than shared, producing a cation and an anion held by opposite charges. In any unequal sharing, the electrons would sit closer to the more electronegative atom (Cl), not to Na."
@@ -1119,9 +1119,9 @@
    "q": "What is a hydrogen bond?",
    "choices": [
     "A covalent bond in which two hydrogen atoms share a pair of electrons",
-    "A weak attraction between a partially positive hydrogen (covalently bonded to O or N) and a partially negative atom elsewhere",
+    "A weak attraction between a partially positive H (bonded to O or N) and a partially negative atom elsewhere",
     "The complete transfer of an electron to a hydrogen atom",
-    "The strong bond that holds hydrogen to oxygen within a single water molecule"
+    "The strong covalent bond that holds each hydrogen to oxygen within a single water molecule, sharing one electron pair"
    ],
    "answer": 1,
    "explain": "Hydrogen bonds come from polar covalent bonds: H bonded to a highly electronegative atom carries δ+, which is attracted to a δ− atom on another molecule or another part of the same molecule. The O–H bond inside a water molecule is a polar covalent bond, not a hydrogen bond."
@@ -1203,7 +1203,7 @@
    "q": "Water climbs a little way up the inside of a narrow glass tube. Which property mainly explains this?",
    "choices": [
     "Adhesion: water molecules are attracted to the polar surface of the glass.",
-    "Cohesion alone: water molecules attract only each other.",
+    "Cohesion alone: water molecules attract only each other, so they pull themselves up the tube.",
     "High specific heat: the tube warms and pulls the water up.",
     "Hydrophobic exclusion: the glass repels the water upward."
    ],
@@ -1216,8 +1216,8 @@
    "level": "recall",
    "q": "What is specific heat?",
    "choices": [
-    "The temperature at which a substance boils",
-    "The amount of heat released when a substance freezes",
+    "The temperature at which a substance boils, which rises as more hydrogen bonds form between its molecules",
+    "The amount of heat released when 1 gram of a substance freezes from liquid to solid",
     "The amount of heat energy needed to raise the temperature of 1 gram of a substance by 1 °C",
     "The density of a substance at room temperature"
    ],
@@ -1230,9 +1230,9 @@
    "level": "apply",
    "q": "Coastal cities usually have milder temperatures than inland cities at the same latitude. Which property of water best explains this?",
    "choices": [
-    "Its low density lets ocean water float above the land.",
+    "Its low density lets warm ocean water float over the land, spreading heat evenly along the coast in every season.",
     "Its adhesion makes the air stick to the coast.",
-    "Its high specific heat lets the ocean absorb and release large amounts of heat with little change in its own temperature.",
+    "Its high specific heat lets the ocean absorb and release a lot of heat with little change in its own temperature.",
     "Its nonpolar nature keeps heat out of the water."
    ],
    "answer": 2,
@@ -1246,7 +1246,7 @@
    "choices": [
     "Hydrogen bonds must be broken for water to evaporate, and that energy is absorbed as heat from the skin.",
     "Sweat contains salts that chemically absorb heat.",
-    "Water forms new covalent bonds with the skin, which releases cold.",
+    "Water forms new covalent bonds with proteins in the skin, and forming those bonds absorbs heat from the body.",
     "Sweat is less dense than skin, so it carries heat upward."
    ],
    "answer": 0,
@@ -1258,10 +1258,10 @@
    "level": "understand",
    "q": "Why does ice float on liquid water, and why does this matter for aquatic life?",
    "choices": [
-    "Ice is denser than water, so lakes freeze from the bottom up and protect fish.",
-    "Hydrogen bonds hold ice in an open lattice that is less dense than liquid water, so ice forms a floating layer that insulates the water beneath.",
+    "Ice is denser than liquid water, so lakes freeze from the bottom up, leaving a layer of liquid water on top for fish.",
+    "Hydrogen bonds hold ice in an open lattice less dense than liquid water, so floating ice insulates the water beneath.",
     "Ice contains trapped air from photosynthesis, so it floats.",
-    "Ice has fewer hydrogen bonds than liquid water, so it is lighter."
+    "Ice has fewer hydrogen bonds than liquid water, so it is lighter and lets sunlight warm the water underneath."
    ],
    "answer": 1,
    "explain": "Water expands as it freezes because hydrogen bonds lock the molecules farther apart. The floating ice insulates liquid water below, so aquatic organisms survive the winter. Ice actually has more stable hydrogen bonds, not fewer."
@@ -1275,7 +1275,7 @@
     "A hydrocarbon made only of C–C and C–H bonds",
     "Table salt (NaCl)",
     "Glucose, which has many –OH groups",
-    "An amino acid with a charged side chain"
+    "An amino acid with a charged side chain such as lysine"
    ],
    "answer": 0,
    "explain": "C–C and C–H bonds are nonpolar, so a hydrocarbon has no partial charges for water to attract, and it does not dissolve. Ions, polar molecules with –OH groups, and charged molecules are hydrophilic."
@@ -1300,10 +1300,10 @@
    "level": "understand",
    "q": "Why is a water molecule polar?",
    "choices": [
-    "Hydrogen is more electronegative than oxygen, so the H atoms are partially negative.",
+    "Hydrogen is more electronegative than oxygen, so the shared electrons sit closer to the H atoms, making them partially negative.",
     "Water is held together by ionic bonds between H⁺ and O²⁻.",
-    "Oxygen is much more electronegative than hydrogen, so shared electrons sit closer to O, making O partially negative and the H atoms partially positive.",
-    "Water's electrons are shared equally, but the molecule carries a net charge."
+    "Oxygen is much more electronegative than hydrogen, so shared electrons sit closer to O, leaving the H atoms partially positive.",
+    "Water's electrons are shared equally between O and H, but the molecule as a whole carries a net negative charge."
    ],
    "answer": 2,
    "explain": "Unequal sharing in the polar covalent O–H bonds gives water partial charges. The molecule as a whole is neutral; it is the uneven distribution of charge that makes it polar."
@@ -1357,8 +1357,8 @@
    "q": "If water could no longer form hydrogen bonds, which change would you predict?",
    "choices": [
     "It would become a better solvent for nonpolar molecules.",
-    "It would become more cohesive.",
-    "Its temperature would rise and fall much more easily, because it would lose its high specific heat.",
+    "It would become more cohesive, because molecules would pack more tightly without hydrogen bonds between them.",
+    "Its temperature would change much more easily, because it would lose its high specific heat.",
     "Ice would become even less dense."
    ],
    "answer": 2,
@@ -1373,7 +1373,7 @@
     "Polymers of amino acids joined by peptide bonds",
     "Carbon-containing compounds found in organisms that are largely nonpolar and hydrophobic",
     "Polymers of nucleotides that store genetic information",
-    "Highly polar molecules that dissolve easily in water"
+    "Highly polar molecules that dissolve easily in water and serve mainly as structural polymers"
    ],
    "answer": 1,
    "explain": "Lipids are defined by being largely nonpolar and hydrophobic, not by having a single type of monomer. Amino acid and nucleotide polymers are proteins and nucleic acids."
@@ -1384,7 +1384,7 @@
    "level": "recall",
    "q": "A triglyceride (fat) is formed from which components, joined by which bond?",
    "choices": [
-    "One glycerol and two fatty acids plus a phosphate, joined by peptide bonds",
+    "One glycerol and two fatty acids plus a phosphate group, joined by peptide bonds through hydrolysis",
     "Three glucose molecules joined by hydrogen bonds",
     "One glycerol and three fatty acids, joined by ester bonds formed through dehydration",
     "Four fused carbon rings joined by ionic bonds"
@@ -1398,9 +1398,9 @@
    "level": "understand",
    "q": "Why are saturated fats usually solid at room temperature while unsaturated fats are usually liquid?",
    "choices": [
-    "Saturated fats contain more double bonds, which lock molecules together.",
+    "Saturated fats contain more double bonds, which make their tails rigid and lock neighboring molecules together into a solid.",
     "Unsaturated fats are heavier, so they flow more easily.",
-    "Saturated fatty acid tails are straight and pack tightly; double bonds in unsaturated tails create kinks that prevent tight packing.",
+    "Saturated tails are straight and pack tightly; double bonds in unsaturated tails create kinks that prevent tight packing.",
     "Saturated fats are polar and form hydrogen bonds with water."
    ],
    "answer": 2,
@@ -1413,7 +1413,7 @@
    "q": "Butter is solid at room temperature, while olive oil is liquid. What is the best explanation?",
    "choices": [
     "Butter is rich in saturated fatty acids, while olive oil is rich in unsaturated fatty acids with cis double bonds.",
-    "Butter is rich in unsaturated fatty acids, while olive oil is rich in saturated ones.",
+    "Butter is rich in unsaturated fatty acids whose double bonds lock molecules together, while olive oil is rich in saturated ones.",
     "Butter is made of phospholipids, while olive oil is made of steroids.",
     "Olive oil contains more hydrogen atoms per carbon than butter."
    ],
@@ -1426,7 +1426,7 @@
    "level": "apply",
    "q": "An enzyme removes hydrogen atoms from a saturated fatty acid tail, creating a C=C double bond (dehydrogenation). How would this change the lipid?",
    "choices": [
-    "It becomes more saturated and more likely to be solid.",
+    "It becomes more saturated, with straighter tails that pack tightly, so it is more likely to be solid.",
     "It turns into a steroid with four fused rings.",
     "It becomes more unsaturated and kinked, and is more likely to be liquid at room temperature.",
     "It becomes polar and fully water-soluble."
@@ -1440,7 +1440,7 @@
    "level": "recall",
    "q": "Which statement about cis and trans fats matches the lecture?",
    "choices": [
-    "Trans fats occur naturally in all plant oils and are considered healthy.",
+    "Trans double bonds occur naturally in all plant oils, and trans fats are considered the healthiest dietary fats.",
     "Cis fats contain no double bonds.",
     "Cis double bonds occur naturally; trans fats are mostly formed artificially and are linked to disease.",
     "Trans and cis fats differ in how many fatty acids are attached to glycerol."
@@ -1454,10 +1454,10 @@
    "level": "understand",
    "q": "How does a phospholipid differ from a fat (triglyceride)?",
    "choices": [
-    "A phospholipid has three fatty acids; a fat has two.",
+    "A phospholipid has glycerol and three fatty acids with no head group; a fat has glycerol, two fatty acids, and a phosphate.",
     "A phospholipid has no glycerol; a fat has two glycerols.",
     "A phospholipid is a steroid ring; a fat is a chain of amino acids.",
-    "A phospholipid has glycerol, two fatty acids, and a phosphate-containing head group; a fat has glycerol and three fatty acids."
+    "A phospholipid has glycerol, two fatty acids, and a phosphate-containing head; a fat has glycerol and three fatty acids."
    ],
    "answer": 3,
    "explain": "Replacing one fatty acid with a polar phosphate group gives the phospholipid a hydrophilic head and two hydrophobic tails, which is why phospholipids form membranes while fats store energy."
@@ -1471,7 +1471,7 @@
     "It is entirely hydrophobic.",
     "It is entirely hydrophilic.",
     "It has both a hydrophilic (polar) region and a hydrophobic (nonpolar) region.",
-    "It can act as both an acid and a base."
+    "It can act as both an acid and a base, donating or accepting H⁺ depending on the pH."
    ],
    "answer": 2,
    "explain": "Phospholipids are the classic amphipathic molecules: the phosphate head is polar and hydrophilic, while the fatty acid tails are nonpolar and hydrophobic."
@@ -1496,8 +1496,8 @@
    "level": "understand",
    "q": "Which describes biological functions of steroids?",
    "choices": [
-    "They act as hormones, such as estrogen and testosterone, and cholesterol helps regulate membrane fluidity.",
-    "They are the main enzymes that catalyze metabolic reactions.",
+    "They act as hormones such as estrogen and testosterone, and cholesterol helps regulate membrane fluidity.",
+    "They are the main enzymes that catalyze metabolic reactions, using their four fused rings as an active site.",
     "They store the genetic code for proteins.",
     "They form the sugar-phosphate backbone of DNA."
    ],
@@ -1510,7 +1510,7 @@
    "level": "apply",
    "q": "A lipid extracted from plant seeds is liquid at 25 °C. What is the most likely description of its fatty acids?",
    "choices": [
-    "Mostly saturated, with no double bonds",
+    "Mostly saturated, with no double bonds in their tails",
     "Mostly steroid rings",
     "Mostly unsaturated, with cis double bonds",
     "Mostly trans fats formed naturally"
@@ -1554,7 +1554,7 @@
    "choices": [
     "They carry a strong positive charge that repels water.",
     "They contain many –OH groups that repel water.",
-    "They are held together by ionic bonds that break in water.",
+    "They are held together by ionic bonds that break apart in water, so the tails are pushed out of solution.",
     "They consist mostly of nonpolar C–H and C–C bonds, so they cannot form hydrogen bonds with water."
    ],
    "answer": 3,
@@ -1566,10 +1566,10 @@
    "level": "understand",
    "q": "In a phospholipid bilayer, why do the fatty acid tails face inward and the phosphate heads face outward?",
    "choices": [
-    "The heads are hydrophobic and hide from water inside the bilayer.",
+    "The heads are hydrophobic and hide from water inside the bilayer, while the tails form hydrogen bonds outside.",
     "The tails are attracted to water and reach toward the cytoplasm.",
-    "The hydrophobic tails avoid water by facing each other, while the hydrophilic heads interact with the water on both sides.",
-    "Covalent bonds between neighboring heads force the tails inward."
+    "The hydrophobic tails avoid water by facing each other, while the hydrophilic heads face the water on both sides.",
+    "Covalent bonds between neighboring phosphate heads pull them into a sheet, which forces the nonpolar tails inward."
    ],
    "answer": 2,
    "explain": "Because phospholipids are amphipathic, in water they arrange themselves so the polar heads touch the watery fluid inside and outside the cell, and the nonpolar tails are tucked away. The bilayer is held together by these hydrophobic effects, not by covalent bonds between lipids."
@@ -1582,7 +1582,7 @@
    "choices": [
     "Storing hereditary information",
     "Catalyzing every chemical reaction in the cell",
-    "Providing rigid structural support like a cell wall",
+    "Providing rigid structural support for the cell, like a cell wall made of cellulose",
     "Acting as a barrier and regulating what enters and leaves"
    ],
    "answer": 3,
@@ -1610,7 +1610,7 @@
    "choices": [
     "Nonpolar amino acids form hydrogen bonds with the phosphate heads.",
     "Polar amino acids are too large to fit in a helix.",
-    "Nonpolar amino acids carry charges that attract the fatty acid tails.",
+    "Nonpolar amino acids carry charges that are attracted to the fatty acid tails in the bilayer core.",
     "The nonpolar side chains interact favorably with the hydrophobic interior of the bilayer."
    ],
    "answer": 3,
@@ -1622,9 +1622,9 @@
    "level": "understand",
    "q": "How often does a phospholipid 'flip-flop' to the opposite leaflet compared with moving laterally?",
    "choices": [
-    "Flip-flop happens constantly, while lateral movement is rare.",
+    "Flip-flop happens constantly because the bilayer interior is fluid, while lateral movement is rare and requires flippase.",
     "Both happen equally often, with no energy required.",
-    "Lateral movement within a leaflet is frequent, but flip-flop is rare and normally requires an ATP-driven enzyme (flippase).",
+    "Lateral movement within a leaflet is frequent; flip-flop is rare and normally needs an ATP-driven enzyme (flippase).",
     "Neither happens; membrane lipids are fixed in place."
    ],
    "answer": 2,
@@ -1637,7 +1637,7 @@
    "q": "Which change would make a membrane MORE fluid?",
    "choices": [
     "Replacing saturated fatty acid tails with shorter, unsaturated tails",
-    "Replacing unsaturated tails with longer, saturated tails",
+    "Replacing unsaturated tails with longer, saturated tails that pack more tightly together",
     "Lowering the temperature",
     "Removing all double bonds from the fatty acid tails"
    ],
@@ -1650,9 +1650,9 @@
    "level": "apply",
    "q": "Two artificial bilayers are made: X with saturated phospholipids and Y with kinked unsaturated phospholipids. Which better serves a cell that needs a low-fluidity barrier that keeps substances from easily passing through?",
    "choices": [
-    "Y, because kinks pack more tightly than straight tails",
+    "Y, because the kinks in unsaturated tails interlock and pack more tightly than straight saturated tails do",
     "Y, because unsaturated tails are polar and block ions",
-    "They would be identical, because fluidity depends only on the heads",
+    "They would be identical, because fluidity depends only on the phosphate heads, not on the tails",
     "X, because straight saturated tails pack tightly, making the membrane less fluid and less permeable"
    ],
    "answer": 3,
@@ -1664,10 +1664,10 @@
    "level": "understand",
    "q": "How does cholesterol affect membrane fluidity at different temperatures?",
    "choices": [
-    "It always increases fluidity, regardless of temperature.",
-    "At high temperatures it stabilizes the membrane and reduces fluidity; at low temperatures it prevents phospholipids from clustering, which keeps the membrane from becoming too rigid.",
-    "It always decreases fluidity, regardless of temperature.",
-    "It has no effect, because it sits outside the bilayer."
+    "It always increases fluidity, regardless of temperature, by wedging between tails and pushing phospholipids apart.",
+    "At high temperature it restrains phospholipid movement and reduces fluidity; at low temperature it prevents tight packing, keeping the membrane fluid.",
+    "It always decreases fluidity, regardless of temperature, because its rigid rings lock the phospholipid tails in place.",
+    "At high temperature it increases fluidity by pushing phospholipid tails apart; at low temperature it packs them together and makes the membrane rigid."
    ],
    "answer": 1,
    "explain": "Cholesterol is a two-way buffer of fluidity, embedded among the phospholipid tails. Answering 'always increases' or 'always decreases' misses the temperature-dependent role, which the study guide stresses."
@@ -1680,7 +1680,7 @@
    "choices": [
     "Movement increases; adding cholesterol would restrain that movement and stabilize the membrane.",
     "Movement decreases; cholesterol would increase it further.",
-    "Movement increases; cholesterol would make the membrane even more fluid.",
+    "Movement increases; adding cholesterol would make the membrane even more fluid by spacing the tails apart.",
     "Movement is unaffected by temperature; cholesterol would dissolve the membrane."
    ],
    "answer": 0,
@@ -1721,8 +1721,8 @@
    "q": "Why is the plasma membrane described as a 'fluid mosaic'?",
    "choices": [
     "It is liquid water held in place by a protein mosaic.",
-    "Lipids and many proteins can move laterally within the membrane (fluid), and the membrane is a mix of different lipids, proteins, and carbohydrates (mosaic).",
-    "Its proteins are fixed in a rigid pattern, like tiles, that never moves.",
+    "Lipids and many proteins drift laterally within it (fluid), and it is a mix of lipids, proteins, and carbohydrates (mosaic).",
+    "Its proteins are fixed in a rigid pattern like mosaic tiles (mosaic), while the water around the membrane flows freely past them (fluid).",
     "It is made only of phospholipids arranged in a repeating pattern."
    ],
    "answer": 1,
@@ -1737,7 +1737,7 @@
     "Storing the cell's hereditary information",
     "Transport",
     "Acting as receptors for signals",
-    "Cell adhesion and recognition"
+    "Cell adhesion and recognition between neighboring cells"
    ],
    "answer": 0,
    "explain": "Membrane proteins act as transporters, enzymes, receptors, and recognition and adhesion molecules. Hereditary information is stored in DNA."
@@ -1748,8 +1748,8 @@
    "level": "apply",
    "q": "When phospholipids are mixed into water, they spontaneously form bilayer sheets or spheres rather than dissolving as single molecules. What is the main driving force?",
    "choices": [
-    "The hydrophobic effect: the nonpolar tails cluster away from water while the polar heads stay in contact with it",
-    "Covalent bonds forming between neighboring phospholipid heads",
+    "The hydrophobic effect: nonpolar tails cluster away from water while polar heads stay in contact with it",
+    "Covalent bonds forming between neighboring phospholipid heads, which lock the molecules into a continuous sheet",
     "Ionic bonds between the fatty acid tails",
     "ATP being used to assemble the bilayer"
    ],
@@ -1777,7 +1777,7 @@
    "q": "What is a concentration gradient?",
    "choices": [
     "The total amount of solvent in a cell",
-    "A protein that moves molecules across the membrane",
+    "A protein that moves molecules across the membrane from one region of concentration to another",
     "A difference in the concentration of a substance between two neighboring regions",
     "The speed at which a substance diffuses"
    ],
@@ -1791,9 +1791,9 @@
    "q": "In simple diffusion, which way do particles move?",
    "choices": [
     "From high to low concentration (down their gradient), with no energy input from the cell",
-    "From low to high concentration, using ATP",
+    "From low to high concentration, using ATP to push particles directly through the bilayer",
     "Only through protein channels, using ATP",
-    "Only when the concentrations on both sides are equal"
+    "Only when concentrations on both sides are equal, so particles spread out at the same rate in all directions"
    ],
    "answer": 0,
    "explain": "Simple diffusion is passive movement down a concentration gradient directly through the bilayer. Movement from low to high concentration requires energy, which is active transport."
@@ -1804,9 +1804,9 @@
    "level": "understand",
    "q": "Which statement correctly compares simple diffusion, facilitated diffusion, and active transport?",
    "choices": [
-    "Simple and facilitated diffusion are both passive and move solutes down their gradient; only active transport uses energy to move solutes against their gradient.",
-    "Facilitated diffusion uses ATP because it needs a protein.",
-    "Simple diffusion moves solutes against their gradient.",
+    "Simple and facilitated diffusion are both passive and move solutes down their gradient; only active transport uses energy to go against it.",
+    "Facilitated diffusion uses ATP because it needs a protein, while simple diffusion and active transport are both passive processes.",
+    "Simple diffusion moves solutes against their gradient through the bilayer, while facilitated diffusion and active transport move them down it.",
     "All three move solutes from low to high concentration."
    ],
    "answer": 0,
@@ -1832,9 +1832,9 @@
    "level": "recall",
    "q": "What is the difference between a channel and a transporter (carrier)?",
    "choices": [
-    "Channels always require ATP, while transporters never do.",
-    "Transporters form open pores, while channels change shape.",
-    "A channel forms an open passageway that solutes diffuse through, often gated; a transporter binds the solute and changes shape to move it across.",
+    "Channels always require ATP to open their gates, while transporters never use energy and only move solutes down their gradients.",
+    "A transporter forms an open, often gated pore that solutes diffuse through; a channel binds the solute and changes shape to carry it across.",
+    "A channel forms an open, often gated pore that solutes diffuse through; a transporter binds the solute and changes shape to move it.",
     "Channels move only water, while transporters move only ions."
    ],
    "answer": 2,
@@ -1846,7 +1846,7 @@
    "level": "recall",
    "q": "A transporter moves Na⁺ into the cell and glucose into the cell at the same time. What type of transporter is it?",
    "choices": [
-    "Uniporter",
+    "Uniporter (carrier protein)",
     "Antiporter",
     "Gated channel",
     "Symporter (cotransporter)"
@@ -1874,10 +1874,10 @@
    "level": "understand",
    "q": "What distinguishes primary active transport from secondary active transport?",
    "choices": [
-    "Primary active transport is passive; secondary active transport uses ATP.",
+    "Primary active transport is passive and uses an existing ion gradient; secondary active transport uses ATP directly to move a second solute.",
     "Secondary active transport moves only water.",
-    "Primary active transport uses energy directly, for example from ATP in a pump; secondary active transport uses an existing ion gradient to drive another solute against its gradient.",
-    "Primary active transport needs no protein; secondary active transport uses channels."
+    "Primary active transport uses ATP directly in a pump; secondary active transport uses an existing ion gradient to move another solute against its gradient.",
+    "Primary active transport needs no protein and moves solutes straight through the bilayer; secondary active transport uses gated channels opened by ATP hydrolysis."
    ],
    "answer": 2,
    "explain": "A pump such as the Na⁺/K⁺-ATPase uses ATP directly. Symporters and antiporters can then harness the Na⁺ or H⁺ gradient that the pump created to move nutrients uphill. That is indirect use of energy."
@@ -1890,7 +1890,7 @@
    "choices": [
     "Uses ATP to pump 3 Na⁺ out of the cell and 2 K⁺ into the cell, against their gradients",
     "Lets Na⁺ and K⁺ diffuse freely down their gradients",
-    "Pumps 3 K⁺ out and 2 Na⁺ in without using energy",
+    "Pumps 3 K⁺ out and 2 Na⁺ in, letting both ions flow down their gradients without using energy",
     "Makes ATP as Na⁺ flows into the cell"
    ],
    "answer": 0,
@@ -1904,7 +1904,7 @@
    "choices": [
     "It increases, because more Na⁺ stays outside the cell.",
     "It decreases, because the Na⁺ gradient that powers the symporters runs down.",
-    "It is unaffected, because symporters do not need any energy source.",
+    "It is unaffected, because symporters do not need any energy source other than the nutrient itself.",
     "It increases, because symporters start using ATP directly."
    ],
    "answer": 1,
@@ -1916,7 +1916,7 @@
    "level": "apply",
    "q": "A cell keeps an amino acid at 10 times higher concentration inside than outside. Which mechanism must it be using to bring in more of that amino acid?",
    "choices": [
-    "Simple diffusion, because amino acids are small",
+    "Simple diffusion, because amino acids are small enough to pass between phospholipids in the bilayer",
     "Facilitated diffusion through a channel",
     "Active transport, because the amino acid must move against its concentration gradient",
     "Osmosis"
@@ -1933,7 +1933,7 @@
     "Storing genetic information in the nucleus",
     "Synthesizing ATP in mitochondria and chloroplasts",
     "Forming peptide bonds on the ribosome",
-    "Making the phospholipid bilayer self-assemble"
+    "Making the phospholipid bilayer self-assemble in water"
    ],
    "answer": 1,
    "explain": "Ion gradients do a lot of work: H⁺ gradients power ATP synthesis and bacterial flagella, Na⁺ and K⁺ gradients power nerve signals, and Ca²⁺ gradients regulate muscle contraction."
@@ -1958,8 +1958,8 @@
    "level": "recall",
    "q": "What is osmosis?",
    "choices": [
-    "The diffusion of water across a selectively permeable membrane from a region of higher water concentration to a region of lower water concentration",
-    "The diffusion of solute across a membrane from low to high solute concentration",
+    "The diffusion of water across a selectively permeable membrane from higher to lower water concentration",
+    "The diffusion of solute across a selectively permeable membrane from lower to higher solute concentration",
     "The active pumping of water using ATP",
     "The movement of any molecule through a protein channel"
    ],
@@ -1972,7 +1972,7 @@
    "level": "understand",
    "q": "Water moves by osmosis toward which side of a membrane?",
    "choices": [
-    "The side with the lower solute concentration",
+    "The side with the lower solute concentration, because solutes repel water molecules",
     "The side with more water already",
     "The side with the higher solute concentration (lower water concentration)",
     "The side with more ATP"
@@ -1986,8 +1986,8 @@
    "level": "understand",
    "q": "How are the terms hypertonic and hypotonic related?",
    "choices": [
-    "Hypertonic always means a 10% solution, and hypotonic means pure water.",
-    "They are relative: if solution A has more solute than solution B, A is hypertonic to B and B is hypotonic to A.",
+    "They are absolute: hypertonic always means above a 10% solution, and hypotonic always means pure water.",
+    "They are relative: if A has more solute than B, A is hypertonic to B and B is hypotonic to A.",
     "Hypertonic means having more water than the other solution.",
     "A solution can be hypertonic only to itself."
    ],
@@ -2000,7 +2000,7 @@
    "level": "apply",
    "q": "A red blood cell with an internal solute concentration of 6% is placed in a 17% salt solution. What happens?",
    "choices": [
-    "The solution is hypotonic, so water enters the cell and it bursts.",
+    "The solution is hypotonic, so water enters the cell and it swells until it bursts.",
     "The solution is hypertonic, so water leaves the cell and the cell shrinks.",
     "The solution is isotonic, so there is no net water movement.",
     "Salt rushes into the cell, and the cell swells."
@@ -2014,7 +2014,7 @@
    "level": "apply",
    "q": "The same red blood cells (6% internal solute) are placed in a 3% solution. What happens?",
    "choices": [
-    "Water moves out of the cells, which shrink, because the solution is hypertonic.",
+    "Water moves out of the cells, which shrink, because a 3% solution is hypertonic to the cells.",
     "Water moves into the cells, which swell and may burst, because the solution is hypotonic.",
     "Nothing changes, because 3% is close to 6%.",
     "The cells actively pump water out using ATP to stay the same size."
@@ -2042,10 +2042,10 @@
    "level": "apply",
    "q": "A shipwrecked sailor drinks seawater. Why does this make dehydration worse?",
    "choices": [
-    "Seawater makes blood hypotonic, so cells swell and burst.",
+    "Seawater makes the blood hypotonic to body cells, so water rushes into the cells until they swell and burst.",
     "Salt molecules carry water out of the body through the lungs.",
     "Seawater has no effect on cells, because salt cannot affect osmosis.",
-    "Seawater raises blood salt concentration, making blood hypertonic to body cells, so water leaves the cells by osmosis."
+    "Seawater raises blood salt concentration, making blood hypertonic to body cells, so water leaves the cells."
    ],
    "answer": 3,
    "explain": "When the extracellular fluid has more solute than the cells, water moves out of the cells into the salty fluid, dehydrating them even though water was swallowed."
@@ -2056,8 +2056,8 @@
    "level": "apply",
    "q": "A U-tube is divided by a membrane permeable to water but not to solute. Side A holds a 2% solution and side B a 20% solution. What happens?",
    "choices": [
-    "Side B is hypotonic, so water moves from B to A.",
-    "Solute moves from B to A until both sides are 11%.",
+    "Side B is hypotonic, so water moves from B to A and the liquid level rises on side A.",
+    "Solute moves from B to A until both sides reach 11%, so the liquid levels stay the same.",
     "Side B is hypertonic, so water moves from A to B and the liquid level rises on side B.",
     "Nothing happens, because the membrane blocks all movement."
    ],
@@ -2070,10 +2070,10 @@
    "level": "understand",
    "q": "What is required for osmosis to cause a change in volume on either side of a membrane?",
    "choices": [
-    "The membrane must be permeable to both water and solute.",
-    "The membrane must be permeable to water but not to the solute, and the solute concentrations on the two sides must differ.",
-    "The cell must use ATP to push water across.",
-    "The solute concentrations must be equal on both sides."
+    "The membrane must be permeable to both water and solute, so that both can move to equalize the two sides.",
+    "The membrane must pass water but not the solute, and the solute concentrations on the two sides must differ.",
+    "The cell must use ATP to push water across through aquaporins, since water cannot cross the membrane on its own.",
+    "The solute concentrations must be equal on both sides, and the membrane must let water but not solute pass through."
    ],
    "answer": 1,
    "explain": "If the solute could cross freely, it would diffuse to equalize concentrations and no net water shift would build up. If the concentrations are equal, the solution is isotonic and there is no net water flow."
@@ -2085,9 +2085,9 @@
    "q": "A red onion cell is placed in a concentrated salt solution, and its plasma membrane pulls away from the cell wall. What is this called, and why does it happen?",
    "choices": [
     "Lysis: the solution is hypotonic, so water enters and the cell bursts.",
-    "Turgor: the solution is hypotonic, so the vacuole swells against the wall.",
-    "Plasmolysis: the solution is hypertonic, so water leaves the central vacuole and cytoplasm by osmosis.",
-    "Plasmolysis: salt enters the cell and pushes the membrane away from the wall."
+    "Turgor: the solution is hypotonic, so the vacuole swells and pushes the membrane against the wall.",
+    "Plasmolysis: the solution is hypertonic, so water leaves the vacuole and cytoplasm by osmosis.",
+    "Plasmolysis: salt rushes into the cell and pushes the plasma membrane away from the cell wall."
    ],
    "answer": 2,
    "explain": "In a hypertonic solution plant cells lose water, the vacuole shrinks, and the membrane detaches from the rigid wall. Higher salt concentrations generally cause more cells to plasmolyze."
@@ -2098,10 +2098,10 @@
    "level": "understand",
    "q": "Why does a plant cell in a hypotonic solution become firm (turgid) rather than bursting like a red blood cell?",
    "choices": [
-    "Plant cells have no aquaporins, so water cannot enter.",
-    "Water enters, but the rigid cell wall pushes back and prevents the cell from expanding until it ruptures.",
-    "Plant cells actively pump all incoming water back out.",
-    "Hypotonic solutions draw water out of plant cells."
+    "Plant cells have no aquaporins in their plasma membrane, so water cannot enter them by osmosis.",
+    "Water enters, but the rigid cell wall pushes back and keeps the cell from expanding until it ruptures.",
+    "Plant cells actively pump all incoming water back out through the contractile vacuole using ATP.",
+    "Hypotonic solutions draw water out of plant cells, so the shrinking membrane presses tightly against the wall."
    ],
    "answer": 1,
    "explain": "Both cell types take in water in a hypotonic solution; the difference is that the wall resists expansion and creates turgor pressure. Animal cells have no wall, so they can lyse."
@@ -2112,10 +2112,10 @@
    "level": "apply",
    "q": "Container A holds 5% salt solution and container B holds 15% salt solution. Which statement is correct?",
    "choices": [
-    "B has the higher concentration of water, so water would move from B into A.",
+    "B has the higher water concentration, so across a water-permeable membrane, water would move from B into A.",
     "Both have the same water concentration, because both are salt solutions.",
-    "A has the higher concentration of water, so if the containers were connected by a water-permeable membrane, water would move from A into B.",
-    "Water would move from A into B because A has more salt."
+    "A has the higher water concentration, so across a water-permeable membrane, water would move from A into B.",
+    "Water would move from A into B because A has more salt and salt pulls water toward itself."
    ],
    "answer": 2,
    "explain": "A 5% salt solution is 95% water, while 15% salt is 85% water. Water diffuses from higher water concentration (A) to lower water concentration (B), which is the same as moving toward more solute."
@@ -2126,8 +2126,8 @@
    "level": "apply",
    "q": "In an onion cell experiment, 0% of cells plasmolyzed in 0.2 M NaCl, 60% in 0.4 M, and 100% in 0.8 M. What is the most reasonable interpretation?",
    "choices": [
-    "0.2 M is close to isotonic for these cells, and solutions become increasingly hypertonic as the concentration rises.",
-    "0.2 M is strongly hypertonic, because it caused no plasmolysis.",
+    "0.2 M is near isotonic for these cells, and the solutions become increasingly hypertonic as concentration rises.",
+    "0.2 M is strongly hypertonic, because it caused no plasmolysis, and higher concentrations become steadily more hypotonic.",
     "0.8 M is hypotonic, so every cell gained water.",
     "Plasmolysis is unrelated to salt concentration."
    ],
@@ -2140,10 +2140,10 @@
    "level": "understand",
    "q": "Which statement about 'concentration' is correct?",
    "choices": [
-    "Concentration is the total volume of a solution, regardless of solute.",
-    "Adding more water increases the concentration of a solute.",
+    "Concentration is the total volume of a solution regardless of solute, so adding solute leaves it unchanged.",
+    "Adding more water increases the concentration of a solute, because the solute has more solvent to dissolve in.",
     "Concentration only applies to gases, not to solutions.",
-    "Concentration is the amount of solute in a given amount of solvent, so adding solute to the same volume increases concentration."
+    "Concentration is the amount of solute per amount of solvent, so adding solute to the same volume raises it."
    ],
    "answer": 3,
    "explain": "Concentration expresses solute per amount of solvent. Diluting with water lowers solute concentration (and raises the concentration of water), which is how hypotonic solutions are made."
@@ -2154,8 +2154,8 @@
    "level": "recall",
    "q": "What are the three components of a nucleotide?",
    "choices": [
-    "An amino group, a carboxyl group, and an R group",
-    "Glycerol, two fatty acids, and a phosphate group",
+    "An amino group, a carboxyl group, and an R group bonded to a central carbon",
+    "Glycerol, two fatty acids, and a phosphate group attached to a nitrogenous base",
     "A phosphate group, a five-carbon (pentose) sugar, and a nitrogenous base",
     "A ribosome, a codon, and an amino acid"
    ],
@@ -2168,10 +2168,10 @@
    "level": "recall",
    "q": "Which bases are purines, and which are pyrimidines?",
    "choices": [
-    "Purines: cytosine and thymine; pyrimidines: adenine and guanine",
-    "Purines: adenine and thymine; pyrimidines: guanine and cytosine",
+    "Purines (single ring): cytosine, thymine, and uracil; pyrimidines (double ring): adenine and guanine",
+    "Purines (double ring): adenine and thymine; pyrimidines (single ring): guanine, cytosine, and uracil",
     "All five bases are purines.",
-    "Purines (double ring): adenine and guanine; pyrimidines (single ring): cytosine, thymine, and uracil"
+    "Purines (double ring): adenine and guanine; pyrimidines (single ring): cytosine, thymine, uracil"
    ],
    "answer": 3,
    "explain": "The structural difference is ring number: purines have two fused rings, and pyrimidines have one. A memory aid is that the shorter word, pyrimidine, has the bigger, double-ring base."
@@ -2182,10 +2182,10 @@
    "level": "understand",
    "q": "Which features distinguish an RNA nucleotide from a DNA nucleotide?",
    "choices": [
-    "RNA has deoxyribose and thymine; DNA has ribose and uracil.",
+    "RNA has deoxyribose (H on the 2′ carbon) and contains thymine; DNA has ribose (–OH on the 2′ carbon) and can contain uracil.",
     "RNA nucleotides lack a phosphate group.",
-    "DNA nucleotides contain amino acids, while RNA nucleotides do not.",
-    "RNA has ribose, with an –OH on the 2′ carbon, and can contain uracil; DNA has deoxyribose, with H on the 2′ carbon, and contains thymine."
+    "DNA nucleotides contain an amino acid attached to the 2′ carbon of the sugar, while RNA nucleotides do not.",
+    "RNA has ribose (–OH on the 2′ carbon) and can contain uracil; DNA has deoxyribose (H on the 2′ carbon) and thymine."
    ],
    "answer": 3,
    "explain": "'Deoxy' means one oxygen is missing: deoxyribose has H instead of OH at the 2′ carbon. Uracil replaces thymine in RNA. Both still have a phosphate attached at the 5′ carbon."
@@ -2196,8 +2196,8 @@
    "level": "understand",
    "q": "Which bonds hold the two strands of a DNA double helix together, and which bonds form each sugar-phosphate backbone?",
    "choices": [
-    "Hydrogen bonds between paired bases hold the strands together; covalent phosphodiester bonds form the backbone.",
-    "Phosphodiester bonds hold the strands together; hydrogen bonds form the backbone.",
+    "Hydrogen bonds between paired bases hold the strands together; phosphodiester bonds form each backbone.",
+    "Covalent phosphodiester bonds between paired bases hold the strands together; hydrogen bonds form each backbone.",
     "Ionic bonds hold the strands together; peptide bonds form the backbone.",
     "Peptide bonds hold the strands together; ester bonds form the backbone."
    ],
@@ -2210,10 +2210,10 @@
    "level": "understand",
    "q": "In a DNA double helix, which parts face the interior and which face the exterior?",
    "choices": [
-    "The sugar-phosphate backbones face the interior; the bases face outward.",
+    "The sugar-phosphate backbones face the interior, paired with each other; the nitrogenous bases face outward.",
     "Phosphates face the interior; sugars and bases face outward.",
     "Everything is randomly arranged.",
-    "The nitrogenous bases face the interior, paired with each other; the sugar-phosphate backbones are on the outside."
+    "The bases face the interior, paired with each other; the sugar-phosphate backbones are on the outside."
    ],
    "answer": 3,
    "explain": "The hydrophilic, charged sugar-phosphate backbone faces the surrounding water, while the flatter, more hydrophobic bases stack and pair inside, like rungs of a twisted ladder."
@@ -2294,9 +2294,9 @@
    "level": "recall",
    "q": "In the DNA nucleotide numbering system, which carbon of the sugar is the base attached to, and which carbon is the phosphate attached to?",
    "choices": [
-    "The base is attached to the 5′ carbon; the phosphate to the 1′ carbon.",
+    "The base is attached to the 5′ carbon; the phosphate is attached to the 1′ carbon.",
     "Both are attached to the 3′ carbon.",
-    "The base is attached to the 2′ carbon; the phosphate to the 3′ carbon.",
+    "The base is attached to the 2′ carbon; the phosphate is attached to the 3′ carbon.",
     "The base is attached to the 1′ carbon; the phosphate is attached to the 5′ carbon."
    ],
    "answer": 3,
@@ -2308,10 +2308,10 @@
    "level": "understand",
    "q": "In Griffith's experiment, mice injected with heat-killed smooth (S) bacteria mixed with live rough (R) bacteria died, and live S bacteria were recovered. What did this show?",
    "choices": [
-    "Heat brings dead bacteria back to life.",
+    "Heat brings dead S bacteria back to life when they are mixed with living R cells.",
     "R bacteria are normally deadly to mice.",
-    "Proteins are definitely the genetic material.",
-    "Genetic material from the dead S cells transformed the R cells, giving them the capsule trait, which their offspring inherited."
+    "Proteins released from the heat-killed S cells are the genetic material that converted the R cells.",
+    "Material from the dead S cells transformed the R cells, giving them a heritable capsule trait."
    ],
    "answer": 3,
    "explain": "Neither heat-killed S nor live R alone killed mice, so a 'transforming principle' must have passed from the dead S cells to the R cells. Griffith could not identify what it was; later work showed it was DNA."
@@ -2322,10 +2322,10 @@
    "level": "understand",
    "q": "What happens chemically when nucleotides are joined into a DNA strand?",
    "choices": [
-    "A hydrolysis reaction adds a water molecule for each bond formed.",
-    "Hydrogen bonds form between adjacent sugars in the same strand.",
+    "A hydrolysis reaction adds a water molecule for each bond formed, creating a phosphodiester linkage.",
+    "Hydrogen bonds form between adjacent sugars in the same strand, linking them through their phosphate groups.",
     "Peptide bonds form between the bases.",
-    "A dehydration reaction removes a water molecule each time a nucleotide is added, forming a phosphodiester bond."
+    "A dehydration reaction removes one water per nucleotide added, forming a phosphodiester bond."
    ],
    "answer": 3,
    "explain": "Polymers are built by dehydration (water removed) and broken down by hydrolysis (water added), and both are catalyzed by enzymes. Hydrogen bonds connect bases on opposite strands, not neighboring nucleotides in one strand."
@@ -2350,8 +2350,8 @@
    "level": "understand",
    "q": "Why do many gene-regulatory proteins bind DNA in the major groove?",
    "choices": [
-    "The major groove is where the strands are covalently linked.",
-    "The major groove is wider, so proteins can contact the edges of the bases and recognize specific sequences.",
+    "The major groove is where the two strands are covalently linked, giving proteins a rigid surface to grip.",
+    "The major groove is wider, so proteins can contact the edges of the bases and read specific sequences.",
     "The major groove contains no bases, only phosphates.",
     "Proteins can only bind single-stranded DNA."
    ],
@@ -2364,10 +2364,10 @@
    "level": "recall",
    "q": "What is a nucleosome?",
    "choices": [
-    "A single histone protein with no DNA",
+    "A single histone H1 protein bound to linker DNA between two coiled 30-nm fibers",
     "A loop of RNA attached to a ribosome",
-    "A region of the nucleus where rRNA is made",
-    "About 146 to 147 bp of DNA wrapped around an octamer of histone proteins, the repeating unit of eukaryotic chromatin"
+    "A dense region of the nucleus where rRNA is made and ribosomal subunits are assembled with proteins",
+    "About 147 bp of DNA wrapped around an octamer of histone proteins; the repeating unit of chromatin"
    ],
    "answer": 3,
    "explain": "Each nucleosome core has two copies each of H2A, H2B, H3, and H4, with DNA wrapped around it; linker DNA connects nucleosomes. The region where rRNA is made is the nucleolus, which has a similar-sounding name."
@@ -2392,7 +2392,7 @@
    "level": "understand",
    "q": "Why must eukaryotic DNA be wrapped around histones and further compacted?",
    "choices": [
-    "To keep DNA from forming hydrogen bonds between its strands.",
+    "To keep DNA from forming hydrogen bonds between its two strands, which would make it too rigid to fit in the nucleus.",
     "To convert DNA into RNA.",
     "Because DNA is too short to function without protein extensions.",
     "A chromosome's DNA can be about a meter long but must fit into a nucleus within a cell only 10 to 100 µm across."
@@ -2406,8 +2406,8 @@
    "level": "understand",
    "q": "How are loop domains formed in chromatin?",
    "choices": [
-    "Ribosomes pull the DNA into loops during translation.",
-    "CTCF proteins bound at specific sites pair with each other, and SMC proteins encircle two DNA segments, folding the 30-nm fiber into loops.",
+    "Ribosomes bind the DNA during translation and pull it into loops, which are then anchored to the nuclear envelope by histones.",
+    "CTCF proteins bound at specific sites pair up, and SMC proteins encircle two DNA segments, folding the fiber into loops.",
     "Histone H1 cuts the DNA into separate loops.",
     "The nuclear envelope folds around each gene."
    ],
@@ -2420,8 +2420,8 @@
    "level": "understand",
    "q": "Can tightly condensed (closed) chromatin be readily transcribed?",
    "choices": [
-    "Yes. Condensed DNA is transcribed fastest because the genes are closer together.",
-    "No. Transcription is difficult or impossible because RNA polymerase and transcription factors cannot easily reach the DNA.",
+    "Yes. Condensed DNA is transcribed fastest because the genes are packed closer together for RNA polymerase.",
+    "No. Transcription is difficult because RNA polymerase and transcription factors cannot easily reach the DNA.",
     "Yes, but only in prokaryotes.",
     "No, because condensed chromatin has no DNA in it."
    ],
@@ -2434,9 +2434,9 @@
    "level": "understand",
    "q": "Which statement correctly contrasts euchromatin with heterochromatin?",
    "choices": [
-    "Euchromatin is more compacted and silenced; heterochromatin is open and active.",
+    "Euchromatin is highly compacted and generally silenced; heterochromatin is less compacted and generally active.",
     "Euchromatin is RNA; heterochromatin is DNA.",
-    "Euchromatin is less compacted and generally transcriptionally active; heterochromatin is highly compacted and generally silenced.",
+    "Euchromatin is less compacted and generally active; heterochromatin is highly compacted and generally silenced.",
     "They differ only in their DNA sequence, not in compaction."
    ],
    "answer": 2,
@@ -2448,10 +2448,10 @@
    "level": "understand",
    "q": "What is the difference between facultative and constitutive heterochromatin?",
    "choices": [
-    "Facultative heterochromatin is found only in prokaryotes.",
+    "Facultative heterochromatin is found only in prokaryotes; constitutive heterochromatin is the compact form found in all eukaryotic cells.",
     "Constitutive heterochromatin is open in every cell type.",
-    "Facultative heterochromatin is located only at telomeres.",
-    "Facultative heterochromatin is compact and silenced in some cell types but open in others; constitutive heterochromatin is compact in all cell types, typically at centromeres and telomeres."
+    "Facultative heterochromatin is located only at telomeres, while constitutive heterochromatin is open and active in every cell type.",
+    "Facultative is compact and silenced in some cell types but open in others; constitutive is compact in all cell types, as at centromeres."
    ],
    "answer": 3,
    "explain": "'Constitutive' means always: those regions, such as centromeres and telomeres, are condensed everywhere. 'Facultative' means optional: the region is silenced in some cell types but active in others. Once formed in development, it is maintained through cell divisions."
@@ -2462,7 +2462,7 @@
    "level": "understand",
    "q": "What does histone acetyltransferase (HAT) do, and how does it affect transcription?",
    "choices": [
-    "It removes acetyl groups from histones, condensing chromatin and repressing transcription.",
+    "It removes acetyl groups from histones, letting them grip DNA more tightly, condensing chromatin and repressing transcription.",
     "It adds methyl groups to cytosine, silencing the gene.",
     "It adds acetyl groups to histones, loosening their grip on DNA so chromatin opens and transcription increases.",
     "It cuts DNA at the linker regions."
@@ -2476,8 +2476,8 @@
    "level": "apply",
    "q": "A drug inhibits histone deacetylase (HDAC). What would you predict for many genes in treated cells?",
    "choices": [
-    "Histones lose their acetyl groups, and transcription stops.",
-    "DNA becomes methylated, and genes are silenced.",
+    "Histones lose their acetyl groups, grip DNA more tightly, and transcription of those genes tends to stop.",
+    "DNA becomes heavily methylated at CpG sites near promoters, and those genes are silenced as a result.",
     "Histones stay acetylated, chromatin stays more open, and transcription of those genes tends to increase.",
     "Nucleosomes are converted into ribosomes."
    ],
@@ -2490,7 +2490,7 @@
    "level": "recall",
    "q": "In DNA methylation in vertebrates, which nucleotide is methylated, and what is the usual effect?",
    "choices": [
-    "Adenine; methylation always activates transcription.",
+    "Adenine, mainly in GATC sites inside gene bodies; methylation always activates transcription.",
     "Cytosine, often in CpG sites near promoters; methylation usually inhibits transcription.",
     "Guanine; methylation has no effect on genes.",
     "Uracil; methylation converts DNA into RNA."
@@ -2504,8 +2504,8 @@
    "level": "apply",
    "q": "In many adults the lactase gene is turned off after weaning because a cytosine in an upstream enhancer becomes methylated. What chain of events explains the silencing?",
    "choices": [
-    "Methylation opens the chromatin, so too much lactase is made and is then degraded.",
-    "Methylation condenses the chromatin, so activator proteins cannot bind the enhancer, and little lactase is transcribed.",
+    "Methylation opens the chromatin, so too much lactase is transcribed, and the excess enzyme is then degraded in the gut.",
+    "Methylation condenses the chromatin, so activators cannot bind the enhancer, and little lactase is transcribed.",
     "Methylation changes the lactase amino acid sequence.",
     "Methylation removes the gene from the chromosome."
    ],
@@ -2518,8 +2518,8 @@
    "level": "apply",
    "q": "Some people carry a C → T mutation at the methylated site in the lactase enhancer and keep digesting milk as adults. Why?",
    "choices": [
-    "The mutation changes the lactase enzyme so it digests lactose faster.",
-    "Without that cytosine, the site cannot be methylated, so the enhancer stays open, activators bind, and the lactase gene stays on.",
+    "The mutation changes the lactase enzyme's amino acid sequence so it digests lactose faster, making up for low expression.",
+    "Without that cytosine the site cannot be methylated, so the enhancer stays open, activators bind, and lactase stays on.",
     "Thymine is methylated more strongly, which activates the gene.",
     "The mutation deletes the enhancer, which turns the gene on."
    ],
@@ -2532,10 +2532,10 @@
    "level": "recall",
    "q": "What are nucleosome-free regions (NFRs)?",
    "choices": [
-    "Regions where DNA is wrapped twice as tightly around histones",
+    "Regions where DNA is wrapped twice as tightly around histones, so that no free nucleosome core particles can be seen",
     "Parts of RNA where ribosomes cannot bind",
-    "Regions of constitutive heterochromatin at the centromere",
-    "Stretches of about 150 bp, often at the start and end of genes, that lack nucleosomes and are flanked by the −1 and +1 nucleosomes"
+    "Regions of constitutive heterochromatin at centromeres, where histones are replaced by CTCF and SMC loop-forming proteins",
+    "Stretches of about 150 bp, often at the start and end of genes, that lack nucleosomes, flanked by −1 and +1 nucleosomes"
    ],
    "answer": 3,
    "explain": "NFRs give transcription machinery access to DNA. They may be required for transcription, but they are not sufficient to activate a gene on their own."
@@ -2546,8 +2546,8 @@
    "level": "understand",
    "q": "Which is one way ATP-dependent chromatin-remodeling complexes can change chromatin?",
    "choices": [
-    "By adding amino acids to the histone tails using ribosomes",
-    "By shifting nucleosome positions, evicting histone octamers, or swapping standard histones for histone variants",
+    "By adding amino acids to the histone tails using ribosomes, which makes the nucleosomes unwind",
+    "By shifting nucleosome positions, evicting histone octamers, or swapping in histone variants",
     "By converting heterochromatin into RNA",
     "By permanently deleting promoters"
    ],
@@ -2560,10 +2560,10 @@
    "level": "understand",
    "q": "What is the 'histone code' hypothesis?",
    "choices": [
-    "The DNA sequence that encodes the histone proteins.",
+    "The DNA sequence that encodes the histone proteins, which is identical in every cell and read before any other gene.",
     "The triplet code that converts mRNA into amino acids.",
-    "The idea that histones carry genetic information instead of DNA.",
-    "Patterns of histone modifications act like a code that is read by proteins, attracting either activators or repressors of transcription."
+    "The idea that histones, not DNA, carry the cell's genetic information, with each histone variant encoding a different protein.",
+    "Patterns of histone modifications act like a code read by proteins that attract activators or repressors of transcription."
    ],
    "answer": 3,
    "explain": "Specific combinations of modifications such as acetylation and methylation on histone tails recruit specific proteins, so one pattern promotes transcription while another inhibits it. It is not the genetic code."
@@ -2574,9 +2574,9 @@
    "level": "recall",
    "q": "What are epigenetic alterations?",
    "choices": [
-    "Point mutations that change a single base pair",
-    "Heritable changes in gene expression that do not change the DNA sequence, such as DNA methylation and histone modifications",
-    "Changes in the amino acid sequence of a protein",
+    "Point mutations that change a single base pair, such as the C-to-T change at a methylated CpG site",
+    "Heritable changes in gene expression that do not alter the DNA sequence, such as DNA methylation",
+    "Changes in a protein's amino acid sequence that are passed on when the cell divides",
     "Deletions of entire chromosomes"
    ],
    "answer": 1,
@@ -2588,7 +2588,7 @@
    "level": "recall",
    "q": "What does the central dogma of molecular biology describe?",
    "choices": [
-    "The flow of information from protein to RNA to DNA",
+    "The flow of genetic information from protein to RNA (translation) to DNA (transcription)",
     "The process by which cells divide",
     "The breakdown of glucose to make ATP",
     "The flow of genetic information from DNA to RNA (transcription) to protein (translation)"
@@ -2602,10 +2602,10 @@
    "level": "understand",
    "q": "How does a gene relate to a chromosome?",
    "choices": [
-    "A gene is a specific region of DNA along a chromosome that carries the information for one protein or functional RNA.",
+    "A gene is a region of DNA on a chromosome that encodes one protein or functional RNA.",
     "A chromosome is a small piece of a gene.",
     "Genes and chromosomes are two names for the same thing.",
-    "Genes are found in the cytoplasm, and chromosomes in the nucleus."
+    "Genes are found in the cytoplasm, while chromosomes stay in the nucleus and store copies of them."
    ],
    "answer": 0,
    "explain": "A chromosome is one long DNA molecule with its proteins, and it carries many genes. Each gene is a discrete region that usually encodes a single protein or RNA."
@@ -2616,10 +2616,10 @@
    "level": "recall",
    "q": "Which match of the three major RNA classes with their functions is correct?",
    "choices": [
-    "mRNA catalyzes peptide bonds; tRNA forms the ribosome; rRNA carries the code.",
-    "mRNA brings amino acids; tRNA carries the code; rRNA is the template for DNA.",
+    "mRNA catalyzes peptide bonds; tRNA forms the ribosome's structure; rRNA carries the coding sequence from the nucleus.",
+    "mRNA brings amino acids to the ribosome; tRNA carries the coding sequence and reads codons; rRNA serves as the template for DNA.",
     "All three carry codons that specify amino acids.",
-    "mRNA carries the coding sequence to the ribosome; tRNA brings amino acids and reads codons; rRNA forms the ribosome and catalyzes peptide bonds."
+    "mRNA carries the coding sequence; tRNA brings amino acids and reads codons; rRNA forms the ribosome and catalyzes peptide bonds."
    ],
    "answer": 3,
    "explain": "Messenger RNA is the template for translation, transfer RNA adapts codons to amino acids, and ribosomal RNA is structural and catalytic (the ribosome is a ribozyme). Only mRNA carries the codons."
@@ -2630,9 +2630,9 @@
    "level": "understand",
    "q": "What is reverse transcription?",
    "choices": [
-    "Copying DNA into RNA in the 3′ to 5′ direction",
+    "Copying DNA into RNA in the 3′ to 5′ direction, as RNA polymerase does at the end of a gene",
     "Translating a protein back into mRNA",
-    "Copying an RNA template into DNA (cDNA), as retroviruses do using reverse transcriptase",
+    "Copying an RNA template into DNA (cDNA), as retroviruses do with reverse transcriptase",
     "Removing introns from pre-mRNA"
    ],
    "answer": 2,
@@ -2645,8 +2645,8 @@
    "q": "What is a codon, and how many different codons are there?",
    "choices": [
     "A sequence of three mRNA nucleotides; there are 64 possible codons.",
-    "A sequence of two nucleotides; there are 16 possible codons.",
-    "A single nucleotide; there are 4 possible codons.",
+    "A sequence of two nucleotides read by tRNA; there are 16 possible codons.",
+    "A single nucleotide; there are 4 possible codons, one for each base",
     "A sequence of three amino acids; there are 20 possible codons."
    ],
    "answer": 0,
@@ -2658,10 +2658,10 @@
    "level": "understand",
    "q": "Why is the genetic code described as redundant (degenerate)?",
    "choices": [
-    "Each codon specifies several different amino acids.",
+    "Each codon specifies several different amino acids, depending on which tRNA happens to bind it.",
     "Every gene is present in many copies.",
-    "Stop codons also code for amino acids.",
-    "Most amino acids are specified by more than one codon, because 61 codons encode only 20 amino acids."
+    "Stop codons also code for amino acids, so every codon in the table specifies at least one amino acid.",
+    "Most amino acids are specified by more than one codon, since 61 codons encode only 20 amino acids."
    ],
    "answer": 3,
    "explain": "Redundancy means many codons code for the same amino acid. The reverse is not true: each codon specifies only one amino acid, which is why the code is also called unambiguous."
@@ -2672,9 +2672,9 @@
    "level": "understand",
    "q": "What does it mean that the genetic code is nearly universal?",
    "choices": [
-    "Every organism has exactly the same genes.",
-    "All proteins contain all 20 amino acids.",
-    "Almost all organisms use the same codons for the same amino acids, which is why a human gene can be expressed in bacteria.",
+    "Every organism has exactly the same set of genes, which is why a human gene can be found in and expressed by bacteria.",
+    "All proteins contain all 20 amino acids, and every organism builds them with the same set of ribosomes.",
+    "Almost all organisms use the same codons for the same amino acids, so a human gene can be expressed in bacteria.",
     "The code changes randomly from cell to cell."
    ],
    "answer": 2,
@@ -2687,9 +2687,9 @@
    "q": "The genetic code is called 'conservative' because codons for the same amino acid often differ only in the third position. What is a consequence?",
    "choices": [
     "Every mutation changes the protein dramatically.",
-    "The third base is never read by the ribosome.",
-    "Only the third base determines the amino acid.",
-    "Many single-base changes at the third position do not change the amino acid, which reduces the impact of mutations."
+    "The third base is never read by the ribosome, so mutations at that position are always skipped during translation.",
+    "Only the third base determines the amino acid, so any change at the third position alters the protein.",
+    "Many single-base changes at the third position leave the amino acid unchanged, reducing the impact of mutations."
    ],
    "answer": 3,
    "explain": "For example, GGU, GGC, GGA, and GGG all code for glycine, so a change at the third base is often 'silent.' The ribosome still reads all three bases; it is the code's layout that buffers the change."
@@ -2714,10 +2714,10 @@
    "level": "recall",
    "q": "What is the role of the stop codons UAA, UAG, and UGA?",
    "choices": [
-    "They code for methionine and start translation.",
+    "They code for methionine and signal the ribosome to start translation at the beginning of a gene.",
     "They mark where introns begin.",
     "They code for the three most common amino acids.",
-    "They signal the end of translation; no tRNA carries an amino acid for them, and release factors bind instead."
+    "They signal the end of translation; no tRNA matches them, and release factors bind instead."
    ],
    "answer": 3,
    "explain": "When a stop codon enters the A site, a release factor binds and the finished polypeptide is released. They are not where introns begin; introns are removed before the mRNA ever reaches the ribosome."
@@ -2770,10 +2770,10 @@
    "level": "apply",
    "q": "A single extra nucleotide is inserted just after the start codon of a gene. What is the most likely effect on the protein?",
    "choices": [
-    "Only one amino acid is added, and the rest of the protein is normal.",
-    "There is no effect, because the code is redundant.",
+    "Only one extra amino acid is added at the insertion site, while the rest of the protein after it is translated as normal.",
+    "There is no effect, because the code is redundant and the ribosome simply skips the extra nucleotide while reading.",
     "The start codon moves, but the protein is unchanged.",
-    "Every codon downstream is shifted, so the amino acid sequence after the insertion is changed (a frameshift), often reaching an early stop codon."
+    "Every downstream codon is shifted, changing the amino acids after it (a frameshift), often hitting an early stop codon."
    ],
    "answer": 3,
    "explain": "Codons are read in consecutive triplets from the start codon, so adding one base changes the grouping of everything after it. Redundancy protects only against some single-base substitutions, not insertions."
@@ -2787,7 +2787,7 @@
     "Glycine is replaced by a stop codon.",
     "The reading frame shifts.",
     "Nothing changes, because both codons specify glycine.",
-    "Glycine is replaced by cysteine."
+    "Glycine is replaced by cysteine, which has a similar small side chain."
    ],
    "answer": 2,
    "explain": "Both are glycine codons, so this is a silent change, which shows the redundancy of the code. A substitution does not shift the reading frame; only insertions or deletions that are not multiples of three do."
@@ -2799,7 +2799,7 @@
    "q": "What is transcription?",
    "choices": [
     "The synthesis of a protein from an mRNA template",
-    "The copying of an entire chromosome before cell division",
+    "The copying of an entire chromosome into a second DNA molecule before cell division",
     "The removal of introns from pre-mRNA",
     "The synthesis of an RNA copy of a gene using one DNA strand as a template"
    ],
@@ -2814,7 +2814,7 @@
    "choices": [
     "Both occur in the nucleus.",
     "Transcription occurs in the nucleus; translation occurs in the cytoplasm on ribosomes.",
-    "Transcription occurs in the cytoplasm; translation occurs in the nucleus.",
+    "Transcription occurs in the cytoplasm on ribosomes; translation occurs in the nucleolus.",
     "Both occur inside the Golgi apparatus."
    ],
    "answer": 1,
@@ -2827,7 +2827,7 @@
    "q": "What is the template strand of DNA?",
    "choices": [
     "The DNA strand that RNA polymerase reads to build a complementary RNA",
-    "The strand whose sequence is identical to the mRNA",
+    "The strand whose sequence is identical to the mRNA, except with T in place of U",
     "The strand that is translated into protein",
     "Both strands, which are always copied at the same time"
    ],
@@ -2841,9 +2841,9 @@
    "q": "In which direction is RNA synthesized, and in which direction is the template read?",
    "choices": [
     "RNA is made 5′ to 3′; the template strand is read 3′ to 5′.",
-    "RNA is made 3′ to 5′; the template is read 5′ to 3′.",
+    "RNA is made 3′ to 5′; the template strand is read 5′ to 3′.",
     "Both run 5′ to 3′.",
-    "It differs randomly from gene to gene."
+    "It differs from gene to gene, depending on which strand is the template."
    ],
    "answer": 0,
    "explain": "RNA polymerase adds nucleotides to the 3′ end of the growing chain, so RNA grows 5′ to 3′ while moving along an antiparallel template. Which DNA strand serves as template varies between genes, but this direction rule never changes."
@@ -2882,10 +2882,10 @@
    "level": "understand",
    "q": "What are the roles of the promoter and the terminator in a gene?",
    "choices": [
-    "The promoter is translated into the first amino acids; the terminator becomes the stop codon.",
+    "The promoter is translated into the first amino acids of the protein; the terminator is transcribed into the stop codon.",
     "The promoter removes introns; the terminator adds the poly-A tail.",
     "Both are sequences inside the mature mRNA that bind ribosomes.",
-    "The promoter is where RNA polymerase (with its factors) binds and transcription begins; the terminator signals where transcription ends."
+    "The promoter is where RNA polymerase and its factors bind to begin transcription; the terminator signals where it ends."
    ],
    "answer": 3,
    "explain": "These are DNA control sequences: the promoter controls when and where transcription starts, and the terminator specifies its end. Neither is translated into protein."
@@ -2925,9 +2925,9 @@
    "q": "What happens during the elongation stage of transcription?",
    "choices": [
     "Ribosomes join amino acids with peptide bonds.",
-    "RNA polymerase moves along the template, adding complementary ribonucleotides to the 3′ end of the growing RNA, while the DNA rewinds behind it.",
-    "RNA polymerase first recognizes the promoter.",
-    "The transcript and polymerase detach from the DNA."
+    "RNA polymerase moves along the template, adding complementary ribonucleotides to the 3′ end of the growing RNA.",
+    "RNA polymerase first recognizes the promoter and unwinds the DNA, then the sigma factor adds the first ribonucleotides.",
+    "The completed transcript and RNA polymerase detach from the DNA once a terminator sequence is reached."
    ],
    "answer": 1,
    "explain": "Elongation is the RNA-building step. Promoter recognition belongs to initiation, release belongs to termination, and peptide bonds belong to translation."
@@ -2939,8 +2939,8 @@
    "q": "A mutation destroys the promoter of a gene. What is the most likely result?",
    "choices": [
     "The mRNA is made but is never spliced.",
-    "RNA polymerase cannot bind and start properly, so little or no mRNA is made from that gene.",
-    "The protein is made with a different first amino acid.",
+    "RNA polymerase cannot bind and start properly, so little or no mRNA is made from the gene.",
+    "The protein is made with a different first amino acid, because the promoter encodes the start codon.",
     "Transcription continues past the end of the gene."
    ],
    "answer": 1,
@@ -2952,10 +2952,10 @@
    "level": "understand",
    "q": "Which statement correctly contrasts transcription in bacteria and eukaryotes?",
    "choices": [
-    "Bacteria transcribe in the nucleus, while eukaryotes transcribe in the cytoplasm.",
-    "Eukaryotic mRNAs are translated immediately, without processing.",
+    "Bacteria transcribe in the nucleus and translate in the cytoplasm, while eukaryotes transcribe and translate together in the cytoplasm.",
+    "Eukaryotic mRNAs are translated immediately as they are made, while bacterial mRNAs must be capped, tailed, and spliced first.",
     "Only bacteria use promoters and terminators.",
-    "Eukaryotic RNA polymerase II needs general transcription factors at the promoter, and the pre-mRNA is processed in the nucleus; bacterial mRNA can be translated right away."
+    "Eukaryotic RNA pol II needs general transcription factors and its pre-mRNA is processed; bacterial mRNA can be translated at once."
    ],
    "answer": 3,
    "explain": "Both use promoters and terminators, but eukaryotic promoters (such as those with a TATA box) are recognized with the help of GTFs, and eukaryotic transcripts are capped, tailed, and spliced before export. Bacteria have no nucleus."
@@ -2980,10 +2980,10 @@
    "level": "recall",
    "q": "What are introns and exons?",
    "choices": [
-    "Exons are removed by splicing; introns are kept and translated.",
+    "Exons are transcribed but spliced out; introns remain in the mature mRNA and are translated into protein.",
     "Introns are DNA sequences that are never transcribed.",
     "Exons are the 5′ cap and poly-A tail.",
-    "Introns are transcribed but removed by splicing; exons are kept in the mature mRNA and carry the coding sequence."
+    "Introns are transcribed but spliced out; exons remain in the mature mRNA and carry the coding sequence."
    ],
    "answer": 3,
    "explain": "Both are present in pre-mRNA; splicing cuts out introns and joins exons. A helpful memory aid: exons are expressed, introns are 'in the way.'"
@@ -3008,9 +3008,9 @@
    "level": "understand",
    "q": "What are the functions of the 5′ cap?",
    "choices": [
-    "It is needed for mRNA export from the nucleus and binding to the ribosome, and it helps protect the mRNA from degradation.",
-    "It marks where transcription should stop.",
-    "It codes for the first amino acid.",
+    "It aids mRNA export from the nucleus and ribosome binding, and helps protect the mRNA from degradation.",
+    "It marks where transcription should stop, signaling RNA polymerase to release the finished pre-mRNA.",
+    "It codes for the first amino acid, methionine, and positions the start codon in the ribosome's P site.",
     "It removes introns from the pre-mRNA."
    ],
    "answer": 0,
@@ -3022,9 +3022,9 @@
    "level": "apply",
    "q": "A eukaryotic mRNA is made without a 5′ cap. What would you predict?",
    "choices": [
-    "It would be poorly exported, degraded quickly, and inefficiently bound by ribosomes, so little protein would be made.",
-    "It would be translated faster because nothing blocks the ribosome.",
-    "It would be read in a different reading frame.",
+    "It would be poorly exported, quickly degraded, and poorly bound by ribosomes, so little protein is made.",
+    "It would be translated faster and more often, because nothing at the 5′ end would block the ribosome.",
+    "It would be read in a different reading frame, because the ribosome would start at the first base instead.",
     "It would be transcribed again automatically."
    ],
    "answer": 0,
@@ -3036,8 +3036,8 @@
    "level": "understand",
    "q": "What is the role of the poly-A tail?",
    "choices": [
-    "It is translated into a string of lysines at the end of every protein.",
-    "It is encoded by a long stretch of T's at the end of each gene.",
+    "It is translated into a string of lysines at the end of every protein, marking it for secretion.",
+    "It is encoded by a long stretch of T's at the end of each gene and transcribed along with the coding sequence.",
     "It increases mRNA stability and lifespan in the cytosol and helps export the mRNA from the nucleus.",
     "It forms the anticodon loop of tRNA."
    ],
@@ -3052,8 +3052,8 @@
    "choices": [
     "Bacterial mRNAs require more processing than eukaryotic mRNAs.",
     "Both bacteria and eukaryotes splice most of their genes.",
-    "Bacterial mRNAs can be translated immediately, while eukaryotic pre-mRNAs must be capped, tailed, and spliced before leaving the nucleus.",
-    "Eukaryotic mRNAs are translated inside the nucleus while being spliced."
+    "Bacterial mRNAs can be translated immediately; eukaryotic pre-mRNAs must be capped, tailed, and spliced before leaving the nucleus.",
+    "Eukaryotic mRNAs are translated inside the nucleus while being spliced, whereas bacterial mRNAs are first exported from the nucleoid."
    ],
    "answer": 2,
    "explain": "In bacteria transcription and translation can be coupled because there is no nucleus, and splicing is essentially absent (0% alternative splicing in E. coli). Eukaryotic mRNAs leave the nucleus only after processing."
@@ -3078,7 +3078,7 @@
    "level": "understand",
    "q": "What is alternative splicing?",
    "choices": [
-    "Splicing introns into the mRNA instead of removing them",
+    "Splicing introns into the mRNA instead of removing them, so the protein gains extra amino acid segments",
     "Adding a different cap to each mRNA",
     "Producing different mature mRNAs from the same pre-mRNA by including or excluding certain exons",
     "Translating one mRNA in all three reading frames"
@@ -3092,10 +3092,10 @@
    "level": "understand",
    "q": "What is the main evolutionary advantage of alternative splicing?",
    "choices": [
-    "It lets one gene encode several related polypeptides, enlarging the proteome without enlarging the genome.",
-    "It removes the need for promoters.",
+    "It lets one gene encode several related polypeptides, expanding the proteome without enlarging the genome.",
+    "It removes the need for promoters, because each exon can start its own transcript independently of the others.",
     "It prevents all mutations.",
-    "It allows proteins to be made without ribosomes."
+    "It allows proteins to be made without ribosomes by joining exon-encoded peptides directly in the nucleus."
    ],
    "answer": 0,
    "explain": "Complex organisms get more protein diversity from a similar number of genes. Humans have about 22,000 genes, yet about 70% of them are alternatively spliced."
@@ -3134,10 +3134,10 @@
    "level": "apply",
    "q": "A mutation destroys the signal that marks the boundary of an intron, so that intron is no longer removed. What would you predict?",
    "choices": [
-    "The intron sequence stays in the mRNA and is read as codons, which usually changes the protein or introduces an early stop codon.",
+    "The intron stays in the mRNA and is read as codons, usually changing the protein or introducing an early stop codon.",
     "The intron is translated but then cut out of the protein.",
     "The mRNA becomes more stable and makes more normal protein.",
-    "Nothing changes, because introns are never translated under any condition."
+    "Nothing changes, because introns are never translated; the ribosome recognizes intron sequences and skips over them."
    ],
    "answer": 0,
    "explain": "Introns are normally removed before translation. If one is retained, the ribosome reads it like any other sequence, often changing the reading frame or hitting a stop codon. Proteins are not trimmed of intron sequences afterward."
@@ -3149,7 +3149,7 @@
    "q": "Is the poly-A tail encoded in the DNA sequence of the gene?",
    "choices": [
     "No. It is added to the 3′ end of the pre-mRNA after transcription.",
-    "Yes. It is transcribed from a run of T's in the template strand.",
+    "Yes. It is transcribed from a long run of T's in the template strand.",
     "Yes. It is part of the promoter sequence.",
     "No. It is added to the 5′ end of the DNA."
    ],
@@ -3162,10 +3162,10 @@
    "level": "recall",
    "q": "What is translation?",
    "choices": [
-    "The synthesis of RNA using a DNA template",
-    "The synthesis of a polypeptide using the codon sequence of an mRNA, carried out by ribosomes",
-    "The processing of pre-mRNA into mature mRNA",
-    "The replication of DNA before cell division"
+    "The synthesis of RNA using a DNA template, carried out by RNA polymerase in the nucleus",
+    "The synthesis of a polypeptide from the codon sequence of an mRNA, carried out by ribosomes",
+    "The processing of pre-mRNA into mature mRNA by capping, tailing, and splicing out the introns",
+    "The replication of DNA before cell division, carried out by DNA polymerase in the nucleus"
    ],
    "answer": 1,
    "explain": "Translation converts the nucleotide 'language' of mRNA into the amino acid 'language' of proteins. Making RNA from DNA is transcription."
@@ -3190,10 +3190,10 @@
    "level": "understand",
    "q": "What are the roles of the ribosome's A, P, and E sites?",
    "choices": [
-    "The A site accepts the incoming aminoacyl-tRNA, the P site holds the tRNA carrying the growing polypeptide, and the E site is where the empty tRNA exits.",
-    "The A site releases empty tRNAs, the P site accepts new tRNAs, and the E site forms peptide bonds.",
+    "The A site accepts the incoming aminoacyl-tRNA, the P site holds the tRNA with the growing chain, and the E site releases empty tRNA.",
+    "The A site releases empty tRNAs, the P site accepts incoming aminoacyl-tRNAs, and the E site is where new peptide bonds are formed.",
     "All three sites bind mRNA codons with no tRNA involved.",
-    "The A site holds the start codon permanently, and the E site holds the stop codon."
+    "The A site holds the start codon throughout translation, the P site holds the mRNA cap, and the E site holds the stop codon."
    ],
    "answer": 0,
    "explain": "A = aminoacyl, P = peptidyl, E = exit. During each elongation cycle, tRNAs move A → P → E as the ribosome shifts along the mRNA."
@@ -3204,10 +3204,10 @@
    "level": "understand",
    "q": "During initiation of translation, which events occur?",
    "choices": [
-    "A release factor binds the stop codon and the subunits separate.",
+    "A release factor binds the stop codon, the polypeptide is released, and the large and small subunits separate from the mRNA.",
     "RNA polymerase binds the promoter and opens the DNA.",
-    "The small subunit binds the mRNA, the initiator tRNA carrying methionine pairs with the AUG start codon, and the large subunit joins.",
-    "Peptidyl transfer moves the chain to the A-site tRNA."
+    "The small subunit binds the mRNA, initiator tRNA (methionine) pairs with the AUG start codon, and the large subunit joins.",
+    "Peptidyl transfer moves the growing chain to the A-site tRNA, and the ribosome then translocates one codon along the mRNA."
    ],
    "answer": 2,
    "explain": "Initiation assembles the complete ribosome at the start codon, with Met-tRNA in the P site. Release factors belong to termination, and RNA polymerase belongs to transcription."
@@ -3218,9 +3218,9 @@
    "level": "understand",
    "q": "What happens during the peptidyl transfer step of elongation?",
    "choices": [
-    "The amino acid in the A site is transferred to the tRNA in the E site.",
+    "The amino acid on the A-site tRNA is transferred to the empty tRNA in the E site, which then carries it out of the ribosome.",
     "The mRNA is transferred from the small subunit to the large subunit.",
-    "The growing polypeptide is transferred from the tRNA in the P site to the amino acid on the tRNA in the A site, forming a new peptide bond.",
+    "The growing polypeptide is transferred from the P-site tRNA to the amino acid on the A-site tRNA, forming a peptide bond.",
     "A release factor transfers the polypeptide to the E site."
    ],
    "answer": 2,
@@ -3233,9 +3233,9 @@
    "q": "What catalyzes peptide bond formation in the ribosome?",
    "choices": [
     "rRNA in the large subunit; the ribosome is a ribozyme",
-    "Aminoacyl-tRNA synthetase",
+    "Aminoacyl-tRNA synthetase bound in the ribosome's A site",
     "RNA polymerase",
-    "The mRNA itself"
+    "The mRNA itself, acting as a catalytic template"
    ],
    "answer": 0,
    "explain": "The catalytic site of the large subunit is made of RNA, so the ribosome is a ribozyme (a catalytic RNA). Aminoacyl-tRNA synthetase charges tRNAs; it does not join amino acids to each other."
@@ -3246,7 +3246,7 @@
    "level": "recall",
    "q": "What does aminoacyl-tRNA synthetase do?",
    "choices": [
-    "It forms peptide bonds between amino acids on the ribosome.",
+    "It forms peptide bonds between amino acids on the ribosome, using energy from GTP to link each new residue.",
     "It adds the 5′ cap to mRNA.",
     "It reads the template strand during transcription.",
     "It attaches the correct amino acid to its matching tRNA; there is one for each of the 20 amino acids."
@@ -3260,9 +3260,9 @@
    "level": "recall",
    "q": "Which structural features do all tRNAs share?",
    "choices": [
-    "A cloverleaf shape with an anticodon on one loop and an acceptor stem where the amino acid attaches",
+    "A cloverleaf shape with an anticodon loop and an acceptor stem where the amino acid attaches",
     "A 5′ cap and a poly-A tail",
-    "A double helix with a sugar-phosphate backbone on the inside",
+    "A linear single strand with a codon at the 5′ end and an amino acid binding site at the 3′ end",
     "A TATA box and a terminator"
    ],
    "answer": 0,
@@ -3274,10 +3274,10 @@
    "level": "understand",
    "q": "What triggers the termination of translation?",
    "choices": [
-    "A tRNA carrying a 'stop' amino acid binds the stop codon.",
+    "A tRNA carrying a special 'stop' amino acid binds the stop codon in the A site, which caps the end of the polypeptide.",
     "The ribosome reaches the poly-A tail and falls off.",
     "RNA polymerase reaches the terminator sequence.",
-    "A stop codon enters the A site, a release factor binds, and the bond between the tRNA and the polypeptide is hydrolyzed, releasing the protein."
+    "A stop codon enters the A site, a release factor binds, and the polypeptide is hydrolyzed off the tRNA and released."
    ],
    "answer": 3,
    "explain": "No tRNA recognizes stop codons; release factor proteins do. After release, the uncharged tRNAs leave and the ribosomal subunits separate. A terminator ends transcription, not translation."
@@ -3288,7 +3288,7 @@
    "level": "apply",
    "q": "During elongation, a tRNA has just moved from the A site to the P site. What happens next?",
    "choices": [
-    "The tRNA in the P site immediately returns to the A site.",
+    "The tRNA in the P site immediately moves back to the A site to pick up the next amino acid.",
     "A new aminoacyl-tRNA whose anticodon matches the next codon enters the empty A site.",
     "The ribosome subunits separate.",
     "The mRNA is spliced to remove the codon just read."
@@ -3302,9 +3302,9 @@
    "level": "apply",
    "q": "A drug blocks translocation, the movement of the ribosome along the mRNA. What is the most direct effect?",
    "choices": [
-    "Elongation stalls after a peptide bond forms, because tRNAs cannot shift and the A site never reopens.",
-    "Transcription of all genes stops.",
-    "tRNAs can no longer be charged with amino acids.",
+    "Elongation stalls after one peptide bond forms, since tRNAs cannot shift and the A site never reopens.",
+    "Transcription of all genes stops, because RNA polymerase depends on moving ribosomes to advance.",
+    "tRNAs can no longer be charged with amino acids, so no aminoacyl-tRNAs reach the ribosome's A site.",
     "The 5′ cap is removed from the mRNA."
    ],
    "answer": 0,
@@ -3345,9 +3345,9 @@
    "q": "Why does each tRNA carry only one specific amino acid, and why does that matter?",
    "choices": [
     "The mRNA chemically attaches the amino acid to the tRNA.",
-    "The ribosome checks each amino acid's R group against the codon.",
-    "Each aminoacyl-tRNA synthetase recognizes a particular tRNA and its amino acid, so the anticodon reliably delivers the amino acid the codon calls for.",
-    "tRNAs carry all 20 amino acids and release the correct one at the A site."
+    "The ribosome checks each amino acid's R group against the codon and rejects any tRNA carrying the wrong amino acid.",
+    "Each synthetase pairs a specific tRNA with its amino acid, so the anticodon reliably delivers the amino acid the codon calls for.",
+    "tRNAs carry all 20 amino acids at once, then release only the correct one at the A site after the anticodon pairs with the codon."
    ],
    "answer": 2,
    "explain": "Accurate pairing between codon and anticodon is useful only if each tRNA was charged correctly. That is the job of the synthetases. The ribosome checks codon-anticodon pairing, not the amino acid."
@@ -3358,10 +3358,10 @@
    "level": "understand",
    "q": "What is a polyribosome?",
    "choices": [
-    "A ribosome with several large subunits",
+    "A single ribosome with several large subunits that translates one mRNA into several polypeptides at once",
     "A tRNA carrying several amino acids",
     "A nucleolus that makes multiple rRNAs",
-    "Several ribosomes translating the same mRNA at the same time, each making its own copy of the polypeptide"
+    "Several ribosomes translating the same mRNA at once, each making its own copy of the polypeptide"
    ],
    "answer": 3,
    "explain": "Many ribosomes can move along one mRNA one after another, which greatly increases how much protein is made from a single transcript."
@@ -3372,9 +3372,9 @@
    "level": "recall",
    "q": "What is gene expression?",
    "choices": [
-    "The copying of DNA before cell division",
-    "The physical appearance of a chromosome",
-    "The process by which the information in a gene is used to make a functional product, such as a protein or RNA",
+    "The copying of a gene's DNA into a second DNA molecule before the cell divides",
+    "The physical appearance of a chromosome, such as how condensed it is during mitosis",
+    "Using a gene's information to make a functional product, such as a protein or RNA",
     "The rate at which a cell divides"
    ],
    "answer": 2,
@@ -3386,8 +3386,8 @@
    "level": "understand",
    "q": "What is the difference between constitutive genes and regulated (inducible) genes?",
    "choices": [
-    "Constitutive genes are never expressed; inducible genes are always on.",
-    "Constitutive genes are expressed at fairly constant levels in all conditions; inducible genes are turned on or up only when needed.",
+    "Constitutive genes are switched on only when an inducer is present; inducible genes are expressed at constant levels in all conditions.",
+    "Constitutive genes are expressed at fairly constant levels in all conditions; inducible genes are turned on only when needed.",
     "Constitutive genes are found only in bacteria.",
     "Inducible genes are expressed only in dead cells."
    ],
@@ -3400,9 +3400,9 @@
    "level": "understand",
    "q": "Muscle cells and nerve cells in the same person have the same genome. Why do they make different proteins?",
    "choices": [
-    "Each cell type has lost the genes it does not use.",
+    "Each cell type has permanently deleted the genes it does not use, leaving only its specialized genes.",
     "Muscle cells have more chromosomes than nerve cells.",
-    "Gene regulation causes each differentiated cell type to express a different subset of genes and amounts of proteins.",
+    "Gene regulation makes each cell type express a different subset of genes and amounts of proteins.",
     "Proteins are inherited directly, not made from genes."
    ],
    "answer": 2,
@@ -3414,10 +3414,10 @@
    "level": "apply",
    "q": "Fetal hemoglobin binds oxygen more tightly than adult hemoglobin, and the genes switch during development. What does this illustrate?",
    "choices": [
-    "Mutation: the fetal gene mutates into the adult gene at birth.",
+    "Mutation: the fetal globin gene mutates into the adult gene in every red blood cell at birth.",
     "Alternative splicing of the same hemoglobin exon.",
     "Post-translational destruction of all hemoglobin at birth.",
-    "Developmental gene regulation: different genes are expressed at different life stages to match changing needs."
+    "Developmental gene regulation: different genes are expressed at different life stages"
    ],
    "answer": 3,
    "explain": "The fetus must pull oxygen from maternal blood, so it expresses a hemoglobin with higher oxygen affinity, and the genes switch later in development. No DNA change is involved."
@@ -3428,10 +3428,10 @@
    "level": "recall",
    "q": "At which levels can eukaryotic gene expression be regulated?",
    "choices": [
-    "Transcription, RNA modification (processing), translation, and post-translation",
+    "Transcription, RNA processing, translation, and post-translation",
     "Only at transcription",
-    "Only at DNA replication",
-    "Only after the protein is degraded"
+    "Only at DNA replication, by changing how many copies of each gene are made",
+    "Only after the protein is made, by controlling how quickly it is degraded"
    ],
    "answer": 0,
    "explain": "Eukaryotes regulate at many steps, with transcriptional control the most common. Bacteria rely mostly on transcriptional control."
@@ -3442,8 +3442,8 @@
    "level": "understand",
    "q": "What is combinatorial control?",
    "choices": [
-    "The expression of a gene depends on the combined action of many factors, including activators, repressors, modulators, chromatin structure, and DNA methylation.",
-    "Each gene is controlled by exactly one protein.",
+    "A gene's expression depends on many factors acting together, such as activators, repressors, chromatin structure, and DNA methylation.",
+    "Each gene is controlled by exactly one protein, either a single activator or a single repressor, whose binding switches it on or off.",
     "Several genes combine into one mRNA.",
     "Codons combine to specify a single amino acid."
    ],
@@ -3456,8 +3456,8 @@
    "level": "recall",
    "q": "What is the TATA box, and what does it do?",
    "choices": [
-    "A sequence in mRNA where ribosomes bind",
-    "A sequence like 5′-TATAAAA-3′ about 25 bp upstream of the transcriptional start site that sets the precise starting point of transcription",
+    "A sequence in the mRNA's 5′ untranslated region where the small ribosomal subunit binds to begin translation",
+    "A sequence like 5′-TATAAAA-3′ about 25 bp upstream of the start site that sets where transcription begins",
     "The stop signal at the end of a gene",
     "A sequence inside introns that is removed by splicing"
    ],
@@ -3470,7 +3470,7 @@
    "level": "understand",
    "q": "Which three features are found in most eukaryotic promoters?",
    "choices": [
-    "A start codon, a stop codon, and a poly-A tail",
+    "A start codon, a stop codon, and a poly-A signal that RNA polymerase reads first",
     "A 5′ cap, introns, and exons",
     "An A site, a P site, and an E site",
     "A TATA box, a transcriptional start site, and regulatory (response) elements"
@@ -3484,8 +3484,8 @@
    "level": "understand",
    "q": "How do enhancers and silencers differ?",
    "choices": [
-    "Enhancers are always inside exons; silencers are always inside introns.",
-    "Enhancers bind activators to increase transcription; silencers bind repressors to prevent transcription when the gene is not needed.",
+    "Enhancers are always located inside exons and silencers inside introns, so splicing decides which one acts.",
+    "Enhancers bind activators to increase transcription; silencers bind repressors to decrease it.",
     "Enhancers stop transcription; silencers start it.",
     "Both are found only in mature mRNA."
    ],
@@ -3500,7 +3500,7 @@
    "choices": [
     "Transcription of the gene increases.",
     "Transcription of that gene is reduced or blocked.",
-    "The gene's mRNA is spliced differently.",
+    "The gene's mRNA is spliced differently, skipping certain exons.",
     "The protein is tagged with ubiquitin."
    ],
    "answer": 1,
@@ -3512,9 +3512,9 @@
    "level": "understand",
    "q": "Which three components are required for regulated transcription of eukaryotic protein-coding genes?",
    "choices": [
-    "DNA polymerase, ligase, and helicase",
+    "DNA polymerase, DNA helicase, and a sigma factor that recognizes the -35 and -10 boxes",
     "Ribosomes, tRNA, and release factors",
-    "Histone deacetylase, ubiquitin, and proteasomes",
+    "Histone deacetylase, ubiquitin, and proteasomes acting at the promoter",
     "RNA polymerase II, general transcription factors (GTFs), and the mediator complex"
    ],
    "answer": 3,
@@ -3526,9 +3526,9 @@
    "level": "understand",
    "q": "What is the role of the mediator complex?",
    "choices": [
-    "It partially wraps around the GTFs and RNA polymerase II and passes signals from activators or repressors bound at enhancers or silencers, controlling how fast transcription begins.",
-    "It binds the TATA box and synthesizes RNA.",
-    "It removes introns from pre-mRNA.",
+    "It relays signals from activators or repressors at enhancers or silencers to RNA polymerase II, controlling how fast transcription starts.",
+    "It binds the TATA box and synthesizes the RNA transcript itself, taking over from RNA polymerase II after the transcription factors assemble.",
+    "It removes introns from pre-mRNA while transcription is underway, linking splicing to the speed of RNA polymerase II.",
     "It attaches amino acids to tRNA."
    ],
    "answer": 0,
@@ -3542,8 +3542,8 @@
    "choices": [
     "Looping cuts the gene out of the chromosome.",
     "Looping converts the enhancer into an intron.",
-    "Looping lets the ribosome translate the DNA directly.",
-    "Looping brings the activator on the enhancer into contact with mediator and the RNA polymerase complex at the promoter."
+    "Looping lets the ribosome translate the DNA directly, skipping the need to make an mRNA from the enhancer.",
+    "Looping brings the activator on the enhancer into contact with mediator and RNA polymerase at the promoter."
    ],
    "answer": 3,
    "explain": "Enhancers can be thousands of bases away, and bending the DNA lets the bound activator physically interact with mediator and the preinitiation complex."
@@ -3554,9 +3554,9 @@
    "level": "recall",
    "q": "What is the preinitiation complex?",
    "choices": [
-    "The assembly of general transcription factors and RNA polymerase II at the TATA box before transcription starts",
+    "General transcription factors and RNA polymerase II assembled at the TATA box before transcription begins",
     "The ribosome bound to the start codon",
-    "A cluster of histones that blocks the promoter",
+    "A cluster of histones and repressors that assembles at the TATA box to block the promoter before transcription",
     "The spliceosome bound to an intron"
    ],
    "answer": 0,
@@ -3568,9 +3568,9 @@
    "level": "understand",
    "q": "Which is an example of post-translational control?",
    "choices": [
-    "Methylating DNA in the promoter",
+    "Methylating DNA in the promoter so that transcription of the gene is permanently reduced",
     "Alternative splicing of pre-mRNA",
-    "Activating a protein by phosphorylation, or tagging it with ubiquitin so a proteasome destroys it",
+    "Activating a protein by phosphorylation, or tagging it with ubiquitin for destruction",
     "Binding of an activator to an enhancer"
    ],
    "answer": 2,
@@ -3582,10 +3582,10 @@
    "level": "apply",
    "q": "A cell keeps an inactive enzyme in storage and activates it within seconds when conditions change. Why might this be better than turning on the enzyme's gene?",
    "choices": [
-    "Activating a gene is faster than modifying a protein.",
+    "Activating a gene is faster than modifying a protein, because transcription takes only a few milliseconds.",
     "Stored enzymes do not need to be folded.",
     "Turning on genes requires a ribozyme.",
-    "Post-translational activation is much faster, because transcription and translation take time."
+    "Post-translational activation is much faster, since transcription and translation take time."
    ],
    "answer": 3,
    "explain": "Regulation after transcription and translation lets cells respond quickly, while making a new protein from scratch requires transcription, processing, and translation first."
@@ -3596,10 +3596,10 @@
    "level": "apply",
    "q": "Lactase is made only by certain cells lining the small intestine. Which is the best explanation for why other cells, such as skin cells, do not make it, even though they carry the lactase gene?",
    "choices": [
-    "In other cell types, the gene's regulatory regions are not bound by the needed activators and its chromatin is kept closed.",
-    "Skin cells have deleted the lactase gene.",
+    "In other cell types, the gene's regulatory regions lack the needed activators and its chromatin is kept closed.",
+    "Skin cells have permanently deleted the lactase gene from their chromosomes during development.",
     "Skin cells cannot carry out transcription.",
-    "The lactase protein is made in skin but immediately splices itself out."
+    "The lactase protein is made in skin cells too, but it immediately splices itself out of the polypeptide chain and is lost."
    ],
    "answer": 0,
    "explain": "All cells have the same genome; cell-type-specific activators and chromatin states determine where a gene is expressed. Deleting genes is not how cells specialize."
@@ -3610,9 +3610,9 @@
    "level": "recall",
    "q": "What is the general structure shared by all amino acids?",
    "choices": [
-    "A central carbon bonded to an amino group, a carboxyl group, a hydrogen atom, and a variable R group (side chain)",
-    "A five-carbon sugar bonded to a phosphate and a base",
-    "Glycerol bonded to three fatty acids",
+    "A central carbon bonded to an amino group, a carboxyl group, a hydrogen, and a variable R group",
+    "A five-carbon sugar bonded to a phosphate group and a variable nitrogenous base (side chain)",
+    "A glycerol backbone bonded to an amino group, a carboxyl group, and two fatty acid side chains",
     "Four fused carbon rings with an –OH group"
    ],
    "answer": 0,
@@ -3640,7 +3640,7 @@
    "choices": [
     "Whether it has an amino group",
     "Whether it has a carboxyl group",
-    "Its position in the polypeptide chain",
+    "Its position in the polypeptide chain and the folding around it",
     "The chemical properties of its R group (side chain)"
    ],
    "answer": 3,
@@ -3652,7 +3652,7 @@
    "level": "apply",
    "q": "In a water-soluble protein, where would you expect most nonpolar amino acids to be located?",
    "choices": [
-    "On the outer surface, in contact with water",
+    "On the outer surface, where they can form hydrogen bonds with water",
     "Buried in the interior of the folded protein, away from water",
     "Only at the two ends of the chain",
     "Randomly distributed, because R groups do not affect folding"
@@ -3666,10 +3666,10 @@
    "level": "understand",
    "q": "How is a peptide bond formed?",
    "choices": [
-    "By hydrolysis, which adds water between two R groups",
+    "By hydrolysis, which adds a water molecule between the R groups of two amino acids so their side chains can link together",
     "By hydrogen bonding between two amino groups",
     "By an ionic bond between two carboxyl groups",
-    "By a dehydration (condensation) reaction between the carboxyl group of one amino acid and the amino group of the next, releasing water"
+    "By a dehydration reaction between the carboxyl group of one amino acid and the amino group of the next, releasing water"
    ],
    "answer": 3,
    "explain": "The carboxyl carbon bonds covalently to the amino nitrogen and one H₂O is released. Hydrolysis is the reverse reaction, which breaks peptide bonds."
@@ -3680,7 +3680,7 @@
    "level": "apply",
    "q": "A protein is digested into its individual amino acids. What type of reaction is this, and what is consumed?",
    "choices": [
-    "Dehydration synthesis; water is released.",
+    "Dehydration synthesis; one water molecule is released for each peptide bond broken.",
     "Hydrolysis; one water molecule is used for each peptide bond broken.",
     "Denaturation; ATP is consumed.",
     "Condensation; amino groups are released."
@@ -3695,9 +3695,9 @@
    "q": "Which bonds or interactions are responsible for each level of protein structure?",
    "choices": [
     "Primary: hydrogen bonds. Secondary: peptide bonds. Tertiary: phosphodiester bonds. Quaternary: ester bonds.",
-    "Primary: peptide bonds. Secondary: hydrogen bonds between backbone atoms. Tertiary: interactions among R groups. Quaternary: interactions between separate polypeptides.",
+    "Primary: peptide bonds. Secondary: backbone hydrogen bonds. Tertiary: R-group interactions. Quaternary: interactions between polypeptides.",
     "All four levels are held together only by peptide bonds.",
-    "Primary: disulfide bonds. Secondary: ionic bonds between R groups. Tertiary: peptide bonds. Quaternary: none."
+    "Primary: disulfide bonds. Secondary: ionic bonds between R groups. Tertiary: peptide bonds. Quaternary: phosphodiester bonds between subunits."
    ],
    "answer": 1,
    "explain": "The sequence (primary) is set by covalent peptide bonds. Helices and sheets (secondary) come from backbone hydrogen bonding, overall 3D folding (tertiary) from side-chain interactions, and multi-subunit assembly from interactions between chains."
@@ -3708,10 +3708,10 @@
    "level": "understand",
    "q": "How do an alpha helix and a beta pleated sheet differ?",
    "choices": [
-    "An alpha helix is held by disulfide bridges; a beta sheet is held by peptide bonds.",
-    "An alpha helix forms between two different polypeptides only; a beta sheet is quaternary structure.",
+    "An alpha helix is a coil held together by disulfide bridges between R groups; a beta sheet is a flat layer of segments joined by peptide bonds.",
+    "An alpha helix forms only between two different polypeptides, while a beta sheet is a quaternary structure of four or more chains.",
     "They are the same structure viewed from different angles.",
-    "An alpha helix is a coil stabilized by hydrogen bonds within one stretch of backbone; a beta sheet forms when separate, extended segments lie side by side and hydrogen bond to each other."
+    "An alpha helix is a coil held by hydrogen bonds within one backbone stretch; a beta sheet is extended segments hydrogen bonded side by side."
    ],
    "answer": 3,
    "explain": "Both are secondary structures based on backbone hydrogen bonds; the difference is the geometry, coiled versus side-by-side strands. Disulfide bridges involve cysteine R groups and contribute to tertiary structure."
@@ -3722,9 +3722,9 @@
    "level": "recall",
    "q": "Which factors promote protein folding and stability in tertiary structure?",
    "choices": [
-    "Hydrogen bonds, ionic bonds, hydrophobic effects, van der Waals forces, and disulfide bridges",
+    "Hydrogen and ionic bonds, hydrophobic effects, van der Waals forces, and disulfide bridges",
     "Only peptide bonds",
-    "Only phosphodiester bonds and ester bonds",
+    "Only phosphodiester and ester bonds, which link distant parts of the backbone into a rigid shape",
     "Only hydrogen bonds between bases"
    ],
    "answer": 0,
@@ -3736,10 +3736,10 @@
    "level": "recall",
    "q": "What is quaternary structure?",
    "choices": [
-    "The association of two or more polypeptide chains (subunits) into one functional protein",
+    "Two or more polypeptide chains (subunits) associating into one functional protein",
     "The amino acid sequence of a single polypeptide",
     "The coiling of a single chain into an alpha helix",
-    "The final 3D folding of a single polypeptide"
+    "The final 3D folding of a single polypeptide, stabilized by interactions among its R groups"
    ],
    "answer": 0,
    "explain": "Tertiary is the final level for one chain; quaternary requires multiple subunits, which can be identical copies or different polypeptides."
@@ -3750,10 +3750,10 @@
    "level": "understand",
    "q": "When a protein is denatured, for example by high heat, what happens?",
    "choices": [
-    "Its peptide bonds break, releasing free amino acids.",
+    "Its peptide bonds are broken by the heat, releasing free amino acids, so it loses its primary structure as well as its function.",
     "Its amino acid sequence is rearranged.",
-    "It becomes more active because it is more flexible.",
-    "Its hydrogen bonds and other interactions that maintain shape are disrupted, so it unfolds and loses function, while peptide bonds and primary structure remain intact."
+    "It becomes more active, because added heat makes the polypeptide more flexible and speeds up the rate of its reactions.",
+    "Hydrogen bonds and other shape-holding interactions break, so it unfolds and loses function, but peptide bonds stay intact."
    ],
    "answer": 3,
    "explain": "Denaturation destroys secondary, tertiary, and quaternary structure, and because shape determines function, activity is lost. Breaking peptide bonds would be hydrolysis, not denaturation."
@@ -3765,7 +3765,7 @@
    "q": "In a mutant insulin, an amino acid with a nonpolar side chain is replaced by one with a polar side chain at a key position, and the overall shape of the hormone changes. What would you predict?",
    "choices": [
     "The mutant insulin may not bind its receptor properly, so it would not lower blood glucose normally.",
-    "It would work normally, because only the primary structure changed.",
+    "It would work normally, because a change in primary structure never affects the hormone's receptor binding.",
     "It would work better, because polar amino acids are always more active.",
     "It would be converted into glycogen."
    ],
@@ -3778,7 +3778,7 @@
    "level": "apply",
    "q": "In a protein, serine (polar, uncharged) is replaced by threonine (also polar, uncharged, and similar in size). What effect would you predict on the overall shape?",
    "choices": [
-    "A complete loss of structure, because any change destroys a protein.",
+    "A complete loss of structure, because any amino acid change destroys a protein's fold.",
     "Conversion of the protein into a lipid.",
     "Little change, because the side chains have similar size and polarity.",
     "Loss of all peptide bonds after the substitution."
@@ -3795,7 +3795,7 @@
     "Storage: carrying genetic information",
     "Enzymes: catalyzing reactions (such as catalase breaking down hydrogen peroxide)",
     "Motor: forming the plasma membrane bilayer",
-    "Transport: catalyzing peptide bond formation in the ribosome"
+    "Transport: catalyzing peptide bond formation between amino acids inside the ribosome"
    ],
    "answer": 1,
    "explain": "Protein roles include enzymes, structure, transport, motors, storage, signaling, receptors, and gene regulation. Genetic information is stored in nucleic acids, the bilayer is made of lipids, and peptide bonds are catalyzed by rRNA."
@@ -3820,10 +3820,10 @@
    "level": "understand",
    "q": "Which statement correctly describes the acid-base behavior of the amino and carboxyl groups?",
    "choices": [
-    "Both groups are nonpolar and do not interact with H⁺.",
-    "The amino group is acidic, and the carboxyl group is basic.",
+    "Both groups are nonpolar and do not interact with H⁺, so they stay uncharged at any pH in the cell.",
+    "The amino group is acidic (can donate H⁺), and the carboxyl group is basic (can accept H⁺).",
     "Both groups are strongly basic.",
-    "The carboxyl group is acidic (it can donate H⁺), and the amino group is weakly basic (it can accept H⁺)."
+    "The carboxyl group is acidic (can donate H⁺), and the amino group is weakly basic (can accept H⁺)."
    ],
    "answer": 3,
    "explain": "These are the two groups that join in a peptide bond. Their tendency to give up or accept H⁺ is also why amino acids with extra carboxyl or amino groups in their R groups are charged."
@@ -3835,7 +3835,7 @@
    "q": "A protein region binds a signaling molecule while a separate region binds DNA. What does this suggest about protein organization?",
    "choices": [
     "Every protein has only one function.",
-    "DNA-binding requires quaternary structure in all cases.",
+    "DNA-binding requires quaternary structure in all cases, so the two regions must be separate subunits.",
     "Signaling molecules always bind the DNA directly.",
     "Proteins can contain distinct functional domains, each with its own structure and function."
    ],
@@ -3862,8 +3862,8 @@
    "level": "recall",
    "q": "How do kinetic energy and potential energy differ?",
    "choices": [
-    "Kinetic energy is the energy of movement; potential energy is stored energy due to structure or location, such as in chemical bonds.",
-    "Kinetic energy is stored in chemical bonds; potential energy is the energy of motion.",
+    "Kinetic energy is the energy of motion; potential energy is stored energy due to structure or position, as in chemical bonds.",
+    "Kinetic energy is the energy stored in chemical bonds and molecular structure; potential energy is the energy of moving objects.",
     "They are the same thing, measured in different units.",
     "Potential energy exists only in living things."
    ],
@@ -3876,7 +3876,7 @@
    "level": "understand",
    "q": "What does the first law of thermodynamics state?",
    "choices": [
-    "Energy transfers always decrease the entropy of the universe.",
+    "Energy transfers always decrease the entropy of the universe, so total energy slowly runs down.",
     "Energy cannot be created or destroyed, only converted from one form to another.",
     "Living things create energy from nothing.",
     "Energy can be destroyed when it becomes heat."
@@ -3892,7 +3892,7 @@
    "choices": [
     "Energy transfers are 100% efficient.",
     "Each energy transfer increases entropy (disorder), so less energy is available to do work.",
-    "Entropy always decreases as energy is converted.",
+    "Entropy always decreases as energy is converted, so cells become more ordered with each transfer.",
     "Cells can reuse heat as efficiently as chemical energy."
    ],
    "answer": 1,
@@ -3904,7 +3904,7 @@
    "level": "understand",
    "q": "In the equation ΔG = ΔH − TΔS, what does a negative ΔG mean?",
    "choices": [
-    "The products have more free energy, so the reaction requires energy input.",
+    "The products have more free energy than the reactants, so the reaction is endergonic and needs energy input.",
     "The reaction happens instantly.",
     "The products have less free energy than the reactants, so the reaction is exergonic and spontaneous.",
     "The reaction cannot happen in a cell."
@@ -3918,9 +3918,9 @@
    "level": "understand",
    "q": "A reaction has a positive ΔG. Which statement is true?",
    "choices": [
-    "It is endergonic, not spontaneous, and needs an input of energy; its products store more free energy than its reactants.",
-    "It is exergonic and releases free energy.",
-    "It is spontaneous and will happen without help.",
+    "It is endergonic and nonspontaneous, needing energy input; its products store more free energy than its reactants.",
+    "It is exergonic and releases free energy, so its products store less free energy than its reactants.",
+    "It is spontaneous and will proceed without help, because positive ΔG means energy is released to the surroundings.",
     "Its products have less free energy than its reactants."
    ],
    "answer": 0,
@@ -3933,7 +3933,7 @@
    "q": "Is cellular respiration (breaking down glucose to CO₂ and water) endergonic or exergonic?",
    "choices": [
     "Endergonic: it requires a constant input of light energy.",
-    "Endergonic: its products store more energy than glucose.",
+    "Endergonic: its products, CO₂ and water, store more free energy than glucose, so energy must be put in.",
     "Neither: respiration does not involve energy changes.",
     "Exergonic: it releases free energy because the products have less free energy than glucose and oxygen."
    ],
@@ -3961,8 +3961,8 @@
    "q": "Which pairing is correct?",
    "choices": [
     "Catabolic pathways break molecules down and are exergonic; anabolic pathways build molecules and are endergonic.",
-    "Catabolic pathways build molecules and are endergonic.",
-    "Anabolic pathways break molecules down and release energy.",
+    "Catabolic pathways build molecules and are exergonic; anabolic pathways break molecules down and are endergonic.",
+    "Anabolic pathways break molecules down and release energy; catabolic pathways build molecules and consume energy.",
     "Both are always endergonic."
    ],
    "answer": 0,
@@ -3974,9 +3974,9 @@
    "level": "understand",
    "q": "How does an exothermic reaction differ from an endothermic one?",
    "choices": [
-    "Exothermic reactions absorb heat from the surroundings.",
-    "Exothermic reactions release heat, and the products have less potential energy (ΔH is negative); endothermic reactions take up heat, and the products have more potential energy.",
-    "Endothermic reactions always have a negative ΔG.",
+    "Exothermic reactions absorb heat from the surroundings, so their products have more potential energy (positive ΔH).",
+    "Exothermic reactions release heat and their products have less potential energy (negative ΔH); endothermic ones absorb heat.",
+    "Endothermic reactions release heat and always have a negative ΔG, while exothermic reactions absorb heat from their surroundings.",
     "They differ in entropy only, not in heat."
    ],
    "answer": 1,
@@ -3988,10 +3988,10 @@
    "level": "understand",
    "q": "Why does hydrolysis of ATP release so much free energy?",
    "choices": [
-    "Its three phosphate groups are negatively charged and repel each other, so breaking off the outer phosphate to form ADP + Pi is highly exergonic (about −7.3 kcal/mol).",
-    "ATP's phosphates are positively charged and attract each other strongly.",
+    "Its negatively charged phosphates repel each other, so removing the outer one to form ADP + Pi is highly exergonic (−7.3 kcal/mol).",
+    "ATP's phosphates are positively charged and attract each other strongly, so hydrolysis releases the energy stored in that attraction.",
     "Hydrolysis of ATP forms new peptide bonds.",
-    "ATP is a lipid that stores energy in fatty acid tails."
+    "ATP is a lipid that stores energy in its fatty acid tails, and hydrolysis releases it as the tails are cleaved off one at a time."
    ],
    "answer": 0,
    "explain": "Bonding three closely packed negative phosphates stores a lot of potential energy, and removing the outer phosphate relieves that strain. That is why ATP serves as the cell's energy currency."
@@ -4002,9 +4002,9 @@
    "level": "understand",
    "q": "What is energetic coupling?",
    "choices": [
-    "Linking two endergonic reactions so that both release energy",
+    "Linking two endergonic reactions so that, together, both release energy and proceed without any input",
     "Converting heat directly into chemical energy",
-    "Using the energy released by an exergonic reaction, such as ATP hydrolysis, to drive an endergonic reaction",
+    "Using the energy released by an exergonic reaction, such as ATP hydrolysis, to drive an endergonic one",
     "Pairing a reaction with its enzyme's inhibitor"
    ],
    "answer": 2,
@@ -4016,9 +4016,9 @@
    "level": "apply",
    "q": "How does ATP provide energy for muscle contraction?",
    "choices": [
-    "ATP is burned like fuel to produce heat that expands the muscle.",
-    "ATP hydrolysis is coupled to shape changes in motor proteins, so the energy released drives the protein movements that shorten the muscle.",
-    "ATP bonds directly to actin and becomes part of the filament.",
+    "ATP is burned like fuel inside the muscle, producing heat that expands the proteins and pulls the filaments closer together.",
+    "ATP hydrolysis is coupled to shape changes in motor proteins, so the released energy drives the movements that shorten the muscle.",
+    "ATP binds directly to actin and becomes a permanent part of the filament, adding length and stiffness that pull the muscle shorter.",
     "ATP is converted into glucose, which pulls the filaments together."
    ],
    "answer": 1,
@@ -4031,7 +4031,7 @@
    "q": "In a redox reaction, what happens to the molecule that is oxidized and to the one that is reduced?",
    "choices": [
     "The oxidized molecule loses electrons; the reduced molecule gains electrons.",
-    "The oxidized molecule gains electrons; the reduced molecule loses them.",
+    "The oxidized molecule gains electrons; the reduced molecule loses electrons.",
     "Both molecules gain oxygen atoms.",
     "Neither molecule changes; only protons move."
    ],
@@ -4046,8 +4046,8 @@
    "choices": [
     "It happens instantly.",
     "It requires ATP to proceed.",
-    "Its products have more free energy than its reactants.",
-    "It has a negative ΔG and can proceed without an input of energy, although it may still be very slow."
+    "Its products have more free energy than its reactants, so it releases energy as soon as it starts.",
+    "It has a negative ΔG and can proceed without energy input, though it may still be very slow."
    ],
    "answer": 3,
    "explain": "Spontaneity describes direction, not speed. Many spontaneous reactions need an enzyme to occur at a useful rate because of their activation energy."
@@ -4060,7 +4060,7 @@
    "choices": [
     "A lipid that stores energy for the cell",
     "A protein catalyst that speeds up a chemical reaction without being used up",
-    "A molecule that is consumed in each reaction it speeds up",
+    "A molecule that is consumed in each reaction it speeds up, so the cell must constantly remake it",
     "Any substance that raises the activation energy of a reaction"
    ],
    "answer": 1,
@@ -4072,7 +4072,7 @@
    "level": "understand",
    "q": "How do enzymes speed up reactions?",
    "choices": [
-    "By making ΔG more negative",
+    "By making ΔG more negative, so that more energy is released by the reaction",
     "By supplying heat to the reactants",
     "By changing the products of the reaction",
     "By lowering the activation energy needed to reach the transition state"
@@ -4086,10 +4086,10 @@
    "level": "apply",
    "q": "On an energy diagram, an enzyme-catalyzed reaction is compared with the same reaction without the enzyme. What differs?",
    "choices": [
-    "The products end at a lower free energy with the enzyme.",
-    "The reactants start at a higher free energy with the enzyme.",
+    "The products end at a lower free energy with the enzyme, so the reaction releases more energy overall.",
+    "The reactants start at a higher free energy with the enzyme, so less extra energy is needed to reach the peak.",
     "The reaction becomes endergonic with the enzyme.",
-    "The peak (activation energy) is lower with the enzyme, but the starting and ending free energies are the same."
+    "The peak (activation energy) is lower with the enzyme, but starting and ending free energies are the same."
    ],
    "answer": 3,
    "explain": "Catalysts change the path, not the endpoints, so ΔG is unchanged. Only the height of the activation-energy barrier drops."
@@ -4101,7 +4101,7 @@
    "q": "What is induced fit?",
    "choices": [
     "When the substrate binds, the enzyme changes shape to grip it more tightly, straining bonds toward the transition state.",
-    "The substrate changes shape to match a rigid active site.",
+    "The substrate changes its shape to fit a rigid active site, while the enzyme itself keeps exactly the same shape throughout.",
     "The enzyme is permanently consumed in the reaction.",
     "An inhibitor forces the active site closed."
    ],
@@ -4114,8 +4114,8 @@
    "level": "apply",
    "q": "In an experiment, enzyme concentration is held constant while substrate concentration is increased. How does the reaction rate behave?",
    "choices": [
-    "It rises forever in a straight line.",
-    "It rises roughly linearly at low substrate levels, then levels off at a maximum when the enzyme is saturated.",
+    "It rises in a straight line for as long as substrate is added, because each new substrate molecule finds a free enzyme.",
+    "It rises roughly linearly at low substrate, then levels off at a maximum once the enzyme is saturated.",
     "It falls as substrate is added.",
     "It stays constant at all substrate levels."
    ],
@@ -4129,8 +4129,8 @@
    "q": "What do 'affinity' and 'saturation' mean for an enzyme?",
    "choices": [
     "Affinity is the maximum rate; saturation is the activation energy.",
-    "Affinity is how strongly the enzyme attracts its substrate; saturation is the plateau where nearly all active sites are occupied.",
-    "Affinity is the enzyme's optimal temperature; saturation is its optimal pH.",
+    "Affinity is how strongly the enzyme attracts its substrate; saturation is the plateau where nearly all active sites are filled.",
+    "Affinity is the enzyme's optimal temperature for binding substrate; saturation is the pH at which its active sites are fully charged.",
     "Both describe how much product is made."
    ],
    "answer": 1,
@@ -4158,7 +4158,7 @@
    "choices": [
     "It binds an allosteric site and changes the enzyme's shape, lowering the maximum rate regardless of substrate.",
     "It permanently destroys the enzyme's peptide bonds.",
-    "It resembles the substrate and binds the active site, blocking substrate binding; adding more substrate can overcome it.",
+    "It resembles the substrate and binds the active site, blocking substrate; adding more substrate can overcome it.",
     "It increases the enzyme's affinity for the substrate."
    ],
    "answer": 2,
@@ -4171,9 +4171,9 @@
    "q": "A noncompetitive inhibitor is added to an enzyme reaction. What happens to the maximum rate, and does adding more substrate restore it?",
    "choices": [
     "The maximum rate is unchanged, and adding substrate overcomes the inhibitor.",
-    "The maximum rate decreases, and adding more substrate does not restore it, because the inhibitor binds an allosteric site.",
+    "The maximum rate decreases, and more substrate does not restore it, because the inhibitor binds an allosteric site.",
     "The maximum rate increases.",
-    "The inhibitor competes for the active site, so excess substrate fully restores the rate."
+    "The maximum rate decreases at first, but the inhibitor competes for the active site, so excess substrate fully restores it."
    ],
    "answer": 1,
    "explain": "Noncompetitive inhibitors change the enzyme's shape from another site, effectively removing working enzyme. That lowers the maximum rate without changing Km, so extra substrate cannot fix it."
@@ -4184,8 +4184,8 @@
    "level": "understand",
    "q": "Which contrast between an active site and an allosteric site is correct?",
    "choices": [
-    "The active site binds the substrate where catalysis happens; an allosteric site is elsewhere and binds regulators that change the enzyme's shape and activity.",
-    "The allosteric site binds the substrate; the active site binds regulators.",
+    "The active site binds the substrate where catalysis occurs; an allosteric site is elsewhere and binds regulators that change activity.",
+    "The allosteric site binds the substrate where catalysis occurs; the active site is elsewhere and binds regulators that change the enzyme's shape.",
     "Both sites bind only competitive inhibitors.",
     "Allosteric sites exist only in ribozymes."
    ],
@@ -4198,10 +4198,10 @@
    "level": "recall",
    "q": "Which correctly distinguishes cofactors, coenzymes, and prosthetic groups?",
    "choices": [
-    "Cofactors are proteins; coenzymes are lipids; prosthetic groups are RNA.",
+    "Cofactors are small proteins that assist the enzyme; coenzymes are lipids from the diet; prosthetic groups are RNA molecules that loosely bind the enzyme.",
     "All three are types of competitive inhibitors.",
-    "Coenzymes are inorganic ions; cofactors are vitamins.",
-    "Cofactors are inorganic ions such as Mg²⁺ or Zn²⁺; coenzymes are organic molecules, often from vitamins; prosthetic groups are non-protein parts permanently or tightly attached to the enzyme."
+    "Coenzymes are inorganic ions such as Mg²⁺ or Zn²⁺; cofactors are organic vitamins; prosthetic groups are proteins that only bind temporarily.",
+    "Cofactors are inorganic ions like Mg²⁺; coenzymes are organic molecules, often from vitamins; prosthetic groups are tightly bound non-protein parts."
    ],
    "answer": 3,
    "explain": "These helpers assist catalysis, for example by carrying electrons or stabilizing charges. Without them, many enzymes are inactive."
@@ -4212,9 +4212,9 @@
    "level": "recall",
    "q": "What are ribozymes?",
    "choices": [
-    "Proteins that make ribosomes",
-    "RNA molecules that act as catalysts, such as the rRNA that forms peptide bonds in the ribosome",
-    "Enzymes that digest RNA only",
+    "Proteins that assemble ribosomes from rRNA and ribosomal proteins in the nucleolus",
+    "RNA molecules that act as catalysts, such as the rRNA that forms peptide bonds in ribosomes",
+    "Protein enzymes that digest RNA only, such as those that break down old mRNA in the cytosol",
     "DNA sequences that bind repressors"
    ],
    "answer": 1,
@@ -4226,10 +4226,10 @@
    "level": "apply",
    "q": "A human enzyme works best at 37 °C and pH 7. What happens if it is heated to 70 °C?",
    "choices": [
-    "Its activity keeps rising, because heat always speeds reactions.",
+    "Its activity keeps rising, because heat always speeds reactions by giving molecules more kinetic energy.",
     "It changes the ΔG of the reaction it catalyzes.",
     "It becomes a ribozyme.",
-    "Its activity drops sharply because the heat denatures it and disrupts the shape of its active site."
+    "Its activity drops sharply because heat denatures it and disrupts the shape of its active site."
    ],
    "answer": 3,
    "explain": "Enzymes work within a narrow range of conditions. Moderate warming speeds collisions, but beyond the optimum, bonds that hold the 3D shape break and the active site no longer fits the substrate."
@@ -4240,10 +4240,10 @@
    "level": "understand",
    "q": "What is feedback inhibition in a metabolic pathway?",
    "choices": [
-    "The end product of the pathway inhibits an enzyme early in the pathway, preventing over-accumulation of the product.",
+    "The pathway's end product inhibits an enzyme early in the pathway, preventing over-accumulation of the product.",
     "The first substrate activates the final enzyme.",
     "The product stimulates its own production without limit.",
-    "Every enzyme in the pathway is inhibited by the first reactant."
+    "Every enzyme in the pathway is inhibited by the first reactant, so the pathway runs only when that reactant is scarce."
    ],
    "answer": 0,
    "explain": "This is negative feedback, which keeps product levels steady. Positive feedback is the opposite: the product stimulates more of its own production."
@@ -4268,7 +4268,7 @@
    "level": "understand",
    "q": "Which is an example of positive feedback?",
    "choices": [
-    "A reaction's product inhibits the first enzyme in its pathway.",
+    "A reaction's product inhibits the first enzyme in its pathway, so production slows down.",
     "An enzyme is denatured by high temperature.",
     "A competitive inhibitor blocks the active site.",
     "A reaction's product stimulates the enzyme that makes it, so production accelerates."
@@ -4299,7 +4299,7 @@
     "Each enzyme catalyzes every reaction in the cell.",
     "Specificity comes from the enzyme being consumed by its substrate.",
     "Each enzyme acts on particular substrates because the shape and chemistry of its active site fit only certain molecules.",
-    "Enzymes recognize substrates only by size, not shape or chemistry."
+    "Enzymes recognize substrates only by size, not shape or chemistry, so any molecule small enough can fit in the active site."
    ],
    "answer": 2,
    "explain": "Shape determines function: the arrangement of R groups in the active site binds specific substrates. Catalase, for instance, acts on hydrogen peroxide."

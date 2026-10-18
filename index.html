@@ -623,7 +623,7 @@ function renderClass(){const A=$('#classArea');A.innerHTML='';
   const st=c.topics.map(t=>[t,tStats(c,t.id)]);
   const seen=st.reduce((s,x)=>s+x[1].seen,0),mast=Q.length?st.reduce((s,x)=>s+x[1].mastery*x[1].total,0)/Q.length:0,due=st.reduce((s,x)=>s+x[1].due,0);
   const misses=Q.filter(q=>{const s=S.qs[q.id];return s&&s.miss>0&&s.box<3}).length;
-  A.innerHTML=`<div class="grid"><div class="stat"><b>${Math.round(mast*100)}%</b><span>Mastery (answered correctly on spaced repeats)</span></div><div class="stat"><b>${seen}/${Q.length}</b><span>Questions seen</span></div><div class="stat"><b>${due}</b><span>Reviews due now</span></div><div class="stat"><b>${misses}</b><span>Mistakes still to fix</span></div></div>
+  A.innerHTML=`<div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(180px,1fr))"><div class="stat"><b>${Math.round(mast*100)}%</b><span>Mastery</span></div><div class="stat"><b>${seen}/${Q.length}</b><span>Questions seen</span></div><div class="stat"><b>${due}</b><span>Reviews due now</span></div><div class="stat"><b>${misses}</b><span>Mistakes still to fix</span></div></div>
   <div class="card" style="margin-top:16px"><h3 style="margin-top:0">New session</h3>
    <label>Mode</label><div class="segs" id="segMode">${[['smart','Smart mix'],['weak','Weak topics'],['mistakes','My mistakes'],['exam','Exam simulation']].map(([v,t])=>`<button data-v="${v}" aria-pressed="${cfg.mode===v}">${t}</button>`).join('')}</div>
    <p class="small muted" id="modeHelp" style="margin:8px 0 0"></p>

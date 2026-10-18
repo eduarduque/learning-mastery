@@ -172,7 +172,7 @@
    "level": "understand",
    "q": "Why did IBM come to dominate the mainframe market by the mid-1960s, even though Remington-Rand had the first commercial computer?",
    "choices": [
-    "It was the only firm legally allowed to sell to the federal government",
+    "It was the only firm legally allowed to sell computers to federal government agencies",
     "It held the transistor patent and refused to license it to rivals",
     "It shipped the first personal computer with a graphical interface",
     "Bigger customer base, superior sales and marketing, and more R&D investment"
@@ -327,8 +327,8 @@
    "q": "In Quinn's terms, what is 'morality'?",
    "choices": [
     "A society's rules about what people ought and ought not to do",
-    "An individual's private feelings about right and wrong",
-    "The rational study of why people behave as they do",
+    "An individual's private feelings and personal intuitions about right and wrong",
+    "The rational study of why people in a society behave as they do",
     "The set of statutes passed by a legislature"
    ],
    "answer": 0,
@@ -410,7 +410,7 @@
    "level": "apply",
    "q": "Which statement is one of the rationalizations Quinn lists?",
    "choices": [
-    "I would not want someone to do this to me, so I won't",
+    "I would not want someone to do this to me, so I won't do it to them",
     "A person of good character would not act this way",
     "If everyone did this, the practice would defeat itself",
     "It will hurt them, but they are bad people who deserve it"
@@ -424,8 +424,8 @@
    "level": "understand",
    "q": "What makes an ethical theory 'workable' in Quinn's sense?",
    "choices": [
-    "Its conclusions match the majority opinion in a society",
-    "Its conclusions always match what the law requires",
+    "Its conclusions match the majority opinion of the members of a society",
+    "Its conclusions always match what the law of the land requires",
     "It is endorsed by a recognized religious authority",
     "Its explanations could persuade a skeptical yet open-minded audience"
    ],
@@ -452,9 +452,9 @@
    "level": "understand",
    "q": "According to Quinn, why do communities exist even though they impose costs, such as prohibited and obligatory actions?",
    "choices": [
-    "A divine authority commands people to live together",
+    "A divine authority commands people to live together in communities",
     "Their benefits, such as security and trade, outweigh the costs",
-    "Nobody can physically survive in complete isolation",
+    "Nobody can physically survive for long in complete isolation from others",
     "People are legally forced to join one at birth"
    ],
    "answer": 1,
@@ -494,8 +494,8 @@
    "level": "understand",
    "q": "Which of these does Quinn use as an argument against subjective relativism?",
    "choices": [
-    "It cannot resolve conflicts between two perfect duties",
-    "It requires too many calculations of costs and benefits",
+    "It cannot resolve conflicts between two perfect duties that both apply",
+    "It requires too many calculations of costs and benefits to be practical",
     "Nobody ever actually signed a contract agreeing to it",
     "It blurs doing what you think is right with doing what you feel like"
    ],
@@ -510,7 +510,7 @@
    "choices": [
     "Tolerance applies only to cultures, not to individuals",
     "Subjective relativism and tolerance are two different things",
-    "Tolerance requires subjective relativism, so it is workable",
+    "Tolerance requires subjective relativism, which shows that it is workable",
     "Tolerance is a vice, so subjective relativism is wrong"
    ],
    "answer": 1,
@@ -551,7 +551,7 @@
    "q": "Quinn says 'Because two societies have different moral views doesn't mean they ought to have different views.' What weakness of cultural relativism does this point to?",
    "choices": [
     "It moves from what norms are to what they should be",
-    "It relies on predicting uncertain consequences",
+    "It relies on predicting the uncertain consequences of a society's actions",
     "It makes ethical theories too hard to apply",
     "It ignores the role of emotions in moral life"
    ],
@@ -567,7 +567,7 @@
     "Inferring that any practice is acceptable because many are",
     "Inferring that a rule needs many exceptions to be valid",
     "Inferring that any popular rule produces happiness",
-    "Inferring that a belief is true because many hold it"
+    "Inferring that a belief is true simply because many people hold it"
    ],
    "answer": 0,
    "explain": "Admitting that many different practices can be acceptable does not mean every practice is. 'Many people believe it, so it's true' is a different fallacy, the appeal to popularity."
@@ -607,7 +607,7 @@
    "q": "A critic says that under cultural relativism, the reformers who first spoke out against slavery in their own society were wrong simply because they went against its norms. Which of Quinn's objections is the critic making?",
    "choices": [
     "It doesn't account for the evolution of moral guidelines",
-    "Societies do, in fact, share certain core values",
+    "Societies do, in fact, share certain core values despite their differences",
     "It provides no way out for cultures in conflict",
     "It fails when a society has no cultural norms"
    ],
@@ -663,7 +663,7 @@
    "q": "Which of these is an argument in Quinn's 'case for' divine command theory?",
    "choices": [
     "Its rules can be tested by universalizing them",
-    "It is the only theory grounded purely in reason",
+    "It is the only ethical theory grounded purely in reason rather than faith",
     "Different holy books agree on every important teaching",
     "God is all-good, all-knowing, and the ultimate authority"
    ],
@@ -676,8 +676,8 @@
    "level": "understand",
    "q": "Why does Quinn call divine command theory impractical for analyzing moral problems in a society like the United States?",
    "choices": [
-    "Holy books are too difficult to translate accurately",
-    "Most moral questions are already settled by existing law",
+    "Holy books are too old and too difficult to translate accurately into English",
+    "Most moral questions are already settled by existing federal and state law",
     "Society is multicultural and secular, without one shared religious authority",
     "Religious believers never disagree among themselves"
    ],
@@ -718,8 +718,8 @@
    "level": "apply",
    "q": "Two members of a corporate ethics committee belong to different religions, and their scriptures give conflicting guidance on a workplace issue. Which weakness of divine command theory does this show?",
    "choices": [
-    "The theory ignores consequences entirely",
-    "The theory cannot guide government policy",
+    "The theory ignores the consequences of actions entirely",
+    "The theory cannot be used to guide government policy",
     "The theory commits the many/any fallacy",
     "Different holy books disagree on certain teachings"
    ],
@@ -775,7 +775,7 @@
    "q": "According to ethical egoism, what is the morally right action?",
    "choices": [
     "The one required by duty regardless of results",
-    "The one maximizing happiness for everyone affected",
+    "The one maximizing total happiness for everyone affected",
     "The one giving oneself the maximum long-term benefit",
     "The one a person feels like doing at the moment"
    ],
@@ -816,7 +816,7 @@
    "level": "understand",
    "q": "To the claim that egoism is good because it is practical, Quinn replies:",
    "choices": [
-    "People who consider others lead happier lives",
+    "People who take others' interests into account lead happier lives",
     "Self-interest can lead to blatantly immoral behavior",
     "An easy moral philosophy may not be the best moral philosophy",
     "We know a lot about what is good for someone else"
@@ -917,7 +917,7 @@
     "A good will",
     "Happiness",
     "Knowledge",
-    "Courage"
+    "Intelligence"
    ],
    "answer": 0,
    "explain": "Kant held that only a good will, the desire to do the right thing, is good without qualification. Happiness or courage can serve bad ends, which is why they need qualification."
@@ -984,7 +984,7 @@
    "level": "apply",
    "q": "In the Rosa case, the rule 'You may claim credit for work performed by someone else' is universalized. What does Quinn conclude?",
    "choices": [
-    "Everyone would be happier with more free time, so the rule is fine",
+    "Everyone would be happier with more free time for other work, so the rule is fine",
     "The rule is acceptable because Rosa had a good reason",
     "Reports would stop showing what students know, so the rule defeats itself",
     "Professors would be justified in failing every student"
@@ -998,7 +998,7 @@
    "level": "understand",
    "q": "What is Quinn's 'quick check' for whether an action may violate the categorical imperative?",
    "choices": [
-    "Add up the benefits and harms to everyone affected",
+    "Add up the benefits and harms to everyone affected by the action",
     "Ask what most people in your society would do",
     "Ask whether the action is permitted by law",
     "Reverse roles: how would you react if it were done to you?"
@@ -1069,7 +1069,7 @@
    "q": "What is Quinn's overall verdict on Kantianism?",
    "choices": [
     "It is workable only combined with virtue ethics",
-    "It is unworkable because it ignores consequences",
+    "It is unworkable because it ignores the consequences of actions",
     "It is the only workable ethical theory",
     "Despite weaknesses, it is a workable ethical theory"
    ],
@@ -1082,7 +1082,7 @@
    "level": "apply",
    "q": "The essay 'Algorithmic Exploitation and Human Dignity' tests the rule 'It is fine to manipulate users' attention to maximize engagement and profit' and argues that if every platform did this, trust and honest communication would collapse. Which part of Kant's theory is the essay using?",
    "choices": [
-    "The second formulation (ends, not means)",
+    "The second formulation (ends, never merely means)",
     "The first formulation (universalizability)",
     "The Greatest Happiness Principle",
     "The perfect/imperfect duty distinction"
@@ -1124,9 +1124,9 @@
    "level": "recall",
    "q": "How does utilitarianism define 'utility'?",
    "choices": [
-    "The usefulness of an object for completing a practical task",
+    "The usefulness of an object or tool for completing some practical task",
     "The market value of a good or service to its buyers",
-    "The degree to which an action conforms to moral duty",
+    "The degree to which an action conforms to a moral duty or rule",
     "The tendency of an object to produce happiness or prevent unhappiness"
    ],
    "answer": 3,
@@ -1139,7 +1139,7 @@
    "q": "What does the Greatest Happiness Principle state?",
    "choices": [
     "An act is right if it benefits the least-advantaged members of society",
-    "An act is right if it benefits the greatest number, however the good is shared",
+    "An act is right if it benefits the greatest number of people, however the good is shared",
     "An act is right to the extent it increases the affected parties' total happiness",
     "An act is right if the agent could will it as a universal law"
    ],
@@ -1152,7 +1152,7 @@
    "level": "understand",
    "q": "Why is utilitarianism called a consequentialist theory?",
    "choices": [
-    "It judges acts by whether they follow established rules",
+    "It judges acts by whether they follow established moral rules",
     "An act's morality depends on its consequences, not intent",
     "It considers only consequences for the person acting",
     "It weighs intent and consequences equally"
@@ -1251,7 +1251,7 @@
    "q": "Which problem does Quinn raise specifically against act utilitarianism?",
    "choices": [
     "It is unclear whom to include and how far ahead to look",
-    "It undermines attempts to hold people responsible",
+    "It undermines attempts to hold people responsible for their bad acts",
     "It gives no guidance when two perfect duties conflict",
     "It assumes everyone has signed a social contract"
    ],
@@ -1278,10 +1278,10 @@
    "level": "recall",
    "q": "What does rule utilitarianism hold?",
    "choices": [
-    "Follow rules rational people would accept for mutual benefit",
+    "Follow the rules that rational people would accept for their mutual benefit",
     "Perform whichever single act maximizes total happiness",
     "Adopt rules that would maximize total happiness if everyone followed them",
-    "Follow rules that can be universalized without contradiction"
+    "Follow only those rules that can be universalized without contradiction"
    ],
    "answer": 2,
    "explain": "Rule utilitarianism applies the principle of utility to rules rather than to individual acts. 'Rational people would accept' is social contract theory, and 'universalized without contradiction' is Kantianism."
@@ -1295,7 +1295,7 @@
     "Act is concerned with rights; rule is concerned with duties",
     "Act applies utility to individual actions; rule applies it to moral rules",
     "Rule ignores happiness entirely and focuses on fairness",
-    "Act weighs the agent's intent; rule weighs only the consequences"
+    "Act weighs the agent's intent behind an action; rule weighs only the consequences"
    ],
    "answer": 1,
    "explain": "Both are consequentialist and both care about happiness. They differ in what gets evaluated: single acts or general rules."
@@ -1348,7 +1348,7 @@
    "level": "understand",
    "q": "Which statement reflects Quinn's 'case for' rule utilitarianism?",
    "choices": [
-    "It focuses on virtues rather than on consequences",
+    "It focuses on cultivating virtues rather than on consequences",
     "Not every decision needs a fresh utilitarian calculation",
     "It requires no agreement among members of society",
     "Every decision gets its own complete cost-benefit tally"
@@ -1363,7 +1363,7 @@
    "q": "Which criticism does Quinn make of utilitarianism in general, both act and rule?",
    "choices": [
     "It cannot explain why communities form",
-    "It treats people only as means to an end",
+    "It treats people merely as means to an end rather than as ends",
     "It is grounded in obedience to authority",
     "All consequences must be measured on a single scale"
    ],
@@ -1405,7 +1405,7 @@
    "q": "A manager asks, 'What would happen if every employee in this company always reported security flaws they discovered?' and judges the policy by whether the total benefits of everyone doing so exceed the total harms. Which theory is the manager using?",
    "choices": [
     "Act utilitarianism",
-    "Virtue ethics",
+    "Social contract theory",
     "Kantianism",
     "Rule utilitarianism"
    ],
@@ -1547,7 +1547,7 @@
     "Whether a virtuous store owner would choose to sell the data",
     "Who has rights to the transaction data, and whether confidentiality was owed",
     "Whether Hao's underlying motives for selling were good ones",
-    "Whether marketers' gains outweigh customers' annoyance at junk mail"
+    "Whether the marketers' gains outweigh the customers' annoyance at receiving junk mail"
    ],
    "answer": 1,
    "explain": "The social contract analysis is framed in terms of rights. If Hao and the customer have equal rights to the information, selling it is fine; if customers can expect confidentiality, Hao needed their permission. Weighing gains against annoyance would be utilitarian."
@@ -1589,7 +1589,7 @@
     "An obligation only when obeying maximizes happiness",
     "No obligation, since no one actually signed the contract",
     "A prima facie obligation, overridden only by a higher moral duty",
-    "An absolute obligation that admits no exceptions at all"
+    "An absolute obligation to obey every law, which admits no exceptions at all"
    ],
    "answer": 2,
    "explain": "Everyone bears burdens in exchange for benefits, so other things being equal we should obey, unless a higher-order moral obligation compels us to break the law. Obeying only when it maximizes happiness is act utilitarian reasoning."
@@ -1615,7 +1615,7 @@
    "q": "What does virtue ethics claim the Enlightenment theories (Kantianism, utilitarianism, social contract theory) leave out?",
    "choices": [
     "Moral education, moral wisdom, relationships, and emotions",
-    "Respect for the rights of individual persons",
+    "Respect for the rights of individual persons as autonomous agents",
     "The need for universal and impartial moral rules",
     "Careful attention to the consequences of actions"
    ],
@@ -1657,7 +1657,7 @@
    "q": "What is a vice, according to virtue ethics?",
    "choices": [
     "A character trait that keeps a person from flourishing",
-    "An action with more harms than benefits",
+    "An action whose harms outweigh its benefits to those affected",
     "Any single action that breaks a law",
     "A rule that cannot be universalized"
    ],
@@ -1754,7 +1754,7 @@
    "level": "recall",
    "q": "How does Quinn distinguish ethical objectivism from relativism?",
    "choices": [
-    "Objectivism weighs consequences; relativism weighs duties and rights",
+    "Objectivism weighs the consequences of actions; relativism weighs duties and rights",
     "Objectivism: morality exists outside the mind; relativism: it is a human invention",
     "Objectivism governs individuals; relativism governs whole governments",
     "Objectivism is religious in origin; relativism is entirely secular"
@@ -1880,7 +1880,7 @@
    "level": "recall",
    "q": "Which insight does Quinn attribute to Kantianism?",
    "choices": [
-    "A good person does right at the right time and way",
+    "A good person does the right thing at the right time and in the right way",
     "It is wrong to privilege your own needs over others'",
     "You should weigh consequences before deciding",
     "We should collectively promote human rights"
@@ -2048,7 +2048,7 @@
    "level": "understand",
    "q": "What is Quinn's basis for the concern that social media may harm democracy?",
    "choices": [
-    "Platforms refuse to carry any political content at all",
+    "Platforms refuse to carry any political content or advertising at all",
     "Platforms are directly owned and run by governments",
     "Very few Americans get any of their news from social media",
     "Feeds match users' preferences, creating ideological echo chambers"
@@ -2063,7 +2063,7 @@
    "q": "Why are police sting operations that pose as children online more likely to be accepted by a consequentialist than by others?",
    "choices": [
     "Consequentialists consider deception a perfect duty",
-    "Consequentialists judge only the officers' character",
+    "Consequentialists judge only the character of the officers involved, not the act",
     "Consequentialists give no weight to children's safety",
     "Consequentialists weigh results like arrests over methods like deception"
    ],
@@ -2076,7 +2076,7 @@
    "level": "recall",
    "q": "What did psychiatrist Jerald Block identify as the four characteristics of Internet addiction?",
    "choices": [
-    "Dopamine spikes, anxiety, insomnia, and depression",
+    "Dopamine spikes, anxiety, insomnia, depression, and loss of appetite",
     "Stress, isolation, fear of failure, and peer pressure",
     "Excessive use, withdrawal, tolerance, negative social consequences",
     "Gaming, messaging, online shopping, and video streaming"
@@ -2105,7 +2105,7 @@
    "q": "How does Quinn define censorship?",
    "choices": [
     "The automatic removal of spam messages from users' email inboxes",
-    "A government's large-scale collection of data about its own citizens",
+    "A government's large-scale collection and storage of data about all of its own citizens",
     "An attempt to suppress or regulate public access to harmful or offensive material",
     "Any law that restricts the sale of goods and services over the Internet"
    ],
@@ -2175,7 +2175,7 @@
    "q": "Which of these is part of John Stuart Mill's argument against censorship?",
    "choices": [
     "Censorship lowers the profits of printers and publishers",
-    "Have the courage to use your own reason without guidance",
+    "Have the courage to use your own reason without another's guidance",
     "Censorship violates the commands revealed in scripture",
     "No one is infallible, so truth emerges from a clash of ideas"
    ],
@@ -2191,7 +2191,7 @@
     "The congressional committee that drafted the First Amendment",
     "An English court that enforced the anti-sedition law De Scandalis Magnatum",
     "A medieval English guild that licensed every printing press",
-    "The Supreme Court panel that upheld the Child Internet Protection Act"
+    "The Supreme Court panel that upheld the Child Internet Protection Act in 2003"
    ],
    "answer": 1,
    "explain": "The Star Chamber reported directly to the king and ignored traditional rules of evidence. People could be convicted for verbal insults or private writings."
@@ -2204,7 +2204,7 @@
    "choices": [
     "It is a positive right, and Quinn denies positive rights exist",
     "It belongs only to the press and not to private individuals",
-    "The First Amendment protects only political speech, not other speech",
+    "The First Amendment protects only political speech, not commercial or artistic speech",
     "It must be balanced against the public good, as in banning TV cigarette ads"
    ],
    "answer": 3,
@@ -2260,7 +2260,7 @@
    "choices": [
     "All ISPs must block adult content; struck down 9-0 in 1997",
     "Schools must monitor student email; never reviewed by the Court",
-    "Sites need parental consent for children; upheld 5-4 in 2010",
+    "Websites need parental consent for children's data; upheld 5-4 in 2010",
     "Federally funded libraries must filter obscenity; upheld 6-3 in 2003"
    ],
    "answer": 3,
@@ -2274,7 +2274,7 @@
    "choices": [
     "Every theory, including Kantianism, agrees that CIPA is morally right",
     "Kantianism: wrong; act utilitarianism: depends; social contract: favors conscience",
-    "Act utilitarianism: clearly wrong; Kantianism: clearly right",
+    "Act utilitarianism: clearly wrong; Kantianism: clearly right; social contract: neutral",
     "Only virtue ethics concludes CIPA is wrong; the others all approve"
    ],
    "answer": 1,
@@ -2288,7 +2288,7 @@
    "choices": [
     "Only when they share the property equally with all",
     "Only when the government has granted them a patent",
-    "Whenever they pay fair market value for the materials",
+    "Whenever they pay fair market value for the raw materials they use",
     "When no one claims more than they can use and plenty is left"
    ],
    "answer": 3,
@@ -2303,7 +2303,7 @@
     "Plays are always written collaboratively, while buckles are made alone",
     "Belt buckles cannot legally be sold, while plays can be sold freely",
     "Two people can write the same play at once, and copying it leaves both with a copy",
-    "Writing a play takes far less labor than mining and casting a belt buckle"
+    "Writing a play takes far less labor than mining the metal and casting a belt buckle"
    ],
    "answer": 2,
    "explain": "Unlike physical property, intellectual property can be created independently twice and copied without taking anything away. These two paradoxes weaken the case for a natural right to intellectual property."
@@ -2314,7 +2314,7 @@
    "level": "apply",
    "q": "A soft-drink company keeps its formula confidential. It never expires, but competitors may legally try to reverse engineer it. What kind of protection is this?",
    "choices": [
-    "Patent",
+    "Utility patent",
     "Copyright",
     "Trade secret",
     "Trademark"
@@ -2427,7 +2427,7 @@
    "q": "Which conclusion does Quinn reach about Rajiv's two options?",
    "choices": [
     "Only act utilitarianism favors involvement; the other theories favor the clean room",
-    "Every one of the theories, including act utilitarianism, favors the clean room",
+    "Every one of the theories, including act utilitarianism, favors the clean-room approach",
     "Only virtue ethics favors the clean room; the rest favor getting involved",
     "Every one of the theories favors getting personally involved with the team"
    ],
@@ -2483,7 +2483,7 @@
    "q": "Which of these is one of the Digital Millennium Copyright Act's (DMCA) provisions?",
    "choices": [
     "The length of copyright protection was shortened",
-    "Consumers may make backup copies of any digital media",
+    "Consumers may make backup copies of any digital media they purchase",
     "Circumventing copy controls is illegal, even for fair use",
     "Noncommercial peer-to-peer file sharing was legalized"
    ],
@@ -2524,7 +2524,7 @@
    "level": "recall",
    "q": "What happened to Napster?",
    "choices": [
-    "It won its lawsuit against the RIAA and stayed a free file-sharing network",
+    "It won its lawsuit against the RIAA and remained a free peer-to-peer file-sharing network",
     "BitTorrent acquired it, and it was turned into a cyberlocker service",
     "The RIAA won in court; it went offline in 2001 and returned as a paid service",
     "The FBI shut it down in 1995 for distributing pirated business software"
@@ -2566,7 +2566,7 @@
    "level": "recall",
    "q": "What does a software copyright protect?",
    "choices": [
-    "The source code, but never the object program",
+    "The source code, but never the object program derived from it",
     "The expression of an idea, such as the object program",
     "Any software process with practical utility",
     "The underlying algorithm or idea itself"
@@ -2583,7 +2583,7 @@
     "Copyright is costly and slow to obtain; a patent is cheap and quick to obtain",
     "Patents protect screen displays, while copyrights protect useful processes",
     "Copyright is cheap and allows reverse engineering; a patent is costly and doesn't",
-    "Both copyrights and patents fully allow reverse engineering of software"
+    "Both copyrights and patents fully allow competitors to reverse engineer the software"
    ],
    "answer": 2,
    "explain": "Quinn's comparison table shows copyright is quick and inexpensive and protects the object program and screen displays. Patents are expensive and time-consuming and protect processes with practical utility."
@@ -2625,7 +2625,7 @@
     "Only the original developer may modify the source",
     "Users must pay a subscription to receive updates",
     "The same rights pass to everyone receiving redistributions",
-    "The software may be used only for noncommercial ends"
+    "The software may be used only for noncommercial or educational purposes"
    ],
    "answer": 2,
    "explain": "This 'copyleft' rule sits alongside including the source code and allowing anyone to modify, sell or give away the software. 'Noncommercial only' would itself be a restriction on use."
@@ -2667,7 +2667,7 @@
     "It blocks all copying of the work, including fair-use copying",
     "It says in advance which kinds of copying are allowed, speeding reuse",
     "It places a work permanently and irrevocably in the public domain",
-    "It registers the work with the Copyright Office for legal protection"
+    "It registers the work with the U.S. Copyright Office for full legal protection"
    ],
    "answer": 1,
    "explain": "Works are copyrighted the moment they are created, so without a license people must contact the creator before reusing them. A CC license spells out which rights are kept. Flickr hosts more than 250 million CC-licensed photos."
@@ -2751,7 +2751,7 @@
     "It exists only where the Constitution names it explicitly",
     "No right to privacy of any kind exists for anyone",
     "It is a prudential right recognized because it benefits society",
-    "It is an absolute natural right that can never be limited"
+    "It is an absolute natural right that can never be limited by the state"
    ],
    "answer": 2,
    "explain": "Privacy is not a natural right, but rational people agree to recognize some privacy rights because doing so benefits society, which fits the social contract approach. The Do Not Call Registry is a later example."
@@ -2821,7 +2821,7 @@
     "Opt-in requires prior permission, a barrier for new businesses",
     "Opt-out guarantees that consumers are never contacted",
     "Opt-in actually lets marketers share more information",
-    "Opt-out is the approach mandated by the GDPR in Europe"
+    "Opt-out is the approach that the GDPR mandates throughout Europe"
    ],
    "answer": 0,
    "explain": "Under opt-out, organizations can share information until a consumer forbids it, while opt-in puts the burden on them to get permission first. The GDPR leans toward requiring permission, the opposite of opt-out."
@@ -2861,7 +2861,7 @@
    "q": "Why did Lotus Development Corporation drop its plan to sell its Marketplace: Households CD?",
    "choices": [
     "Congress passed a law banning mailing lists",
-    "The FTC fined Lotus for violating COPPA",
+    "The FTC fined Lotus for violating children's privacy under COPPA",
     "The CD's data was found to be inaccurate",
     "Over 30,000 consumers complained about privacy"
    ],
@@ -2903,7 +2903,7 @@
    "q": "Under the Children's Online Privacy Protection Act (COPPA), what must online services do?",
    "choices": [
     "Delete all data collected about any user younger than 18",
-    "Filter content inappropriate for minors in all public libraries",
+    "Filter content inappropriate for minors on computers in all public libraries",
     "Get parental consent before collecting data from children 12 and under",
     "Verify every user's age with a government-issued identification"
    ],
@@ -2930,7 +2930,7 @@
    "level": "recall",
    "q": "When did the Census Bureau break its confidentiality requirement during wartime, according to Quinn?",
    "choices": [
-    "In the Civil War, to locate people who had escaped slavery",
+    "In the Civil War, to locate people who had escaped slavery in the South",
     "In the Vietnam War, to track antiwar protesters",
     "After 9/11, to identify immigrants from Muslim countries",
     "In both World Wars, including the internment of Japanese Americans"
@@ -2960,7 +2960,7 @@
    "choices": [
     "It contains information only about convicted felons",
     "It shares information on people never charged with a crime",
-    "The Supreme Court has ruled it unconstitutional",
+    "The Supreme Court has ruled that the system is unconstitutional",
     "Its data can be accessed by the FBI and no one else"
    ],
    "answer": 1,
@@ -2974,7 +2974,7 @@
    "choices": [
     "Facial recognition has never produced a single false match",
     "Federal law lets police treat any match as probable cause",
-    "Congress has banned all police use of facial recognition nationwide",
+    "Congress has banned all police use of facial recognition technology nationwide",
     "Some officers arrest on a match alone, and errors are higher for darker skin"
    ],
    "answer": 3,
@@ -3045,7 +3045,7 @@
     "Requests from foreign governments for U.S. intelligence",
     "Notices warning citizens that they are under surveillance",
     "FBI demands for records, issued without a judge or probable cause",
-    "Court orders that authorize a wiretap for up to 30 days"
+    "Court orders that authorize the FBI to wiretap a suspect's phone for up to 30 days"
    ],
    "answer": 2,
    "explain": "The FBI can collect library, medical, business and other records this way, and gag orders keep recipients, such as libraries, from saying they received one. The FBI issued about 50,000 a year from 2003 to 2006."
@@ -3085,7 +3085,7 @@
    "q": "Why does Quinn say the Privacy Act of 1974 falls short?",
    "choices": [
     "It covers only government databases and lets agencies share records",
-    "It applies only to the files kept by private credit bureaus",
+    "It applies only to the files kept by private credit bureaus, not agencies",
     "It requires every database to be deleted after seven years",
     "It was struck down as unconstitutional by the Supreme Court"
    ],
@@ -3099,7 +3099,7 @@
    "q": "Under the Fair Credit Reporting Act, how long may negative information generally stay on a credit report?",
    "choices": [
     "3 years (bankruptcies 5; convictions 10 years)",
-    "10 years (bankruptcies 15; convictions 20 years)",
+    "10 years (bankruptcies 15; criminal convictions 20 years)",
     "7 years (bankruptcies 10; convictions indefinitely)",
     "Indefinitely, with no exceptions for any item"
    ],
@@ -3112,7 +3112,7 @@
    "level": "recall",
    "q": "What does the Fair and Accurate Credit Transactions Act (2004) give consumers?",
    "choices": [
-    "A credit report mailed automatically to every consumer each month",
+    "A credit report mailed automatically to every consumer by each bureau every month",
     "The right to have any negative information deleted from reports",
     "A ban on credit bureaus selling reports to banks and lenders",
     "A free credit report from each major bureau every 12 months, on request"
@@ -3129,7 +3129,7 @@
     "Banks are forbidden to sell insurance",
     "Customers may sue over any data breach",
     "Privacy notices must include an opt-out clause",
-    "Customers must opt in before any sharing"
+    "Customers must opt in before any data sharing with affiliates"
    ],
    "answer": 2,
    "explain": "Privacy policies must be disclosed, and companies must protect confidential information. The act uses opt-out, which marketers prefer, rather than opt-in."
@@ -3182,7 +3182,7 @@
    "level": "understand",
    "q": "Which of these is one of the arguments against a national ID card that Quinn presents?",
    "choices": [
-    "No other democracies use such cards",
+    "No other democratic countries use national identification cards",
     "No card positively guarantees identification",
     "It would make illegal entry much easier",
     "Current ID cards are already excellent"
@@ -3196,7 +3196,7 @@
    "level": "recall",
    "q": "What does the Real ID Act (signed May 2005) require of new driver's licenses?",
    "choices": [
-    "Nothing for flying, since licenses are no longer needed to board",
+    "Nothing new for flying, since a license is no longer needed to board a plane",
     "An implanted RFID chip carried by every licensed driver",
     "The holder's Social Security number printed on the front",
     "Four forms of ID to apply, plus a biometric identifier on the license"
@@ -3239,7 +3239,7 @@
    "q": "Why does Quinn call the National Do Not Call Registry an example of privacy treated as a prudential right?",
    "choices": [
     "Its benefit was judged to outweigh the harm of limiting ads",
-    "It was created by a court ruling, not by an agency",
+    "It was created by a federal court ruling rather than by an agency",
     "The Constitution explicitly bans unwanted phone calls",
     "Telemarketing was legally found to be a form of fraud"
    ],
@@ -3254,7 +3254,7 @@
    "choices": [
     "After EPIC sued, scanners showing passenger-specific images were gone by 2013",
     "They were replaced at airports by ID checks for pseudoephedrine",
-    "Congress banned every airport body scanner in the United States in 2007",
+    "Congress banned every airport body scanner in the United States after protests in 2007",
     "Courts ordered all scanner images saved for criminal investigations"
    ],
    "answer": 0,
@@ -3281,7 +3281,7 @@
    "q": "Why is multifactor authentication effective, according to Quinn?",
    "choices": [
     "A stolen password alone is not enough to log in",
-    "It makes passwords completely unnecessary",
+    "It makes passwords completely unnecessary for logging in",
     "It stops users from ever reusing a password",
     "It encrypts all of a user's network traffic"
    ],
@@ -3534,7 +3534,7 @@
    "choices": [
     "One bad line of error-recovery code, shared by most switches",
     "A citywide power outage that started in New York City",
-    "A distributed denial-of-service attack by outside hackers",
+    "A distributed denial-of-service attack launched by outside hackers",
     "Operators who overrode repeated computer warnings"
    ],
    "answer": 0,
@@ -3591,7 +3591,7 @@
     "They built the device that caused the harm and were negligent",
     "They held the role of hospital administrators",
     "They deliberately intended to harm the patients",
-    "They were convicted of a crime in a court of law"
+    "They were tried and convicted of criminal negligence in a court of law"
    ],
    "answer": 0,
    "explain": "Moral responsibility requires a causal condition (causing the harm) and a mental condition (intending it, or being careless, reckless or negligent). Negligence is enough, so intent is not required."
@@ -3619,7 +3619,7 @@
     "Rideshare passengers refuse to take the wheel in emergencies",
     "Bored drivers need 3-7 seconds to take over, but crises unfold faster",
     "Software can't pass data between sensors fast enough to react",
-    "Cars hand control to remote operators who lack proper training"
+    "Cars hand control to remote operators who lack proper training and context"
    ],
    "answer": 1,
    "explain": "Many emergencies happen in less than 3 seconds. This is why Ford, Volvo and Google planned to skip SAE Level 3 and go straight to full automation."
@@ -3633,7 +3633,7 @@
     "Removing false positives can create worse false negatives",
     "False negatives only cause passenger discomfort",
     "False positives are always completely harmless",
-    "Uber's cars had no sensors able to see pedestrians"
+    "Uber's cars had no sensors capable of detecting pedestrians at night"
    ],
    "answer": 0,
    "explain": "Braking suddenly for steam, exhaust or litter is a real problem and can get the car rear-ended, but failing to detect a real hazard is far more dangerous."
@@ -3644,7 +3644,7 @@
    "level": "understand",
    "q": "Which decision does Quinn list as contributing to moral responsibility for the Boeing 737 MAX crashes?",
    "choices": [
-    "Refusing to update the 737 with fuel-efficient engines",
+    "Refusing to update the 737 design with newer, more fuel-efficient engines",
     "Requiring every pilot to complete simulator training",
     "Installing too many redundant angle-of-attack sensors",
     "Relying on a single angle-of-attack sensor to activate MCAS"
@@ -3729,7 +3729,7 @@
    "q": "What did researchers find when they tested commercial speech recognition systems on recordings of Black and white speakers?",
    "choices": [
     "All systems performed equally well",
-    "The systems understood Black speakers better",
+    "The systems understood Black speakers better than white speakers",
     "Only one system showed any difference",
     "Every system understood white speakers better"
    ],
@@ -3800,7 +3800,7 @@
    "choices": [
     "They are as mature as medicine and law",
     "Certification, licensing, and a degree are not required",
-    "150 semester hours and a national exam are required",
+    "150 semester hours of study and a national exam are required",
     "A license is required in every U.S. state"
    ],
    "answer": 1,
@@ -3814,7 +3814,7 @@
    "choices": [
     "It became mandatory in all 50 states",
     "Only 81 people took the exam in five years, and it ended",
-    "It is required for all safety-critical code",
+    "It is now required for all engineers who write safety-critical code",
     "It replaced the CPA exam for programmers"
    ],
    "answer": 1,
@@ -3826,7 +3826,7 @@
    "level": "recall",
    "q": "According to the preamble of the Software Engineering Code of Ethics, which concern is paramount?",
    "choices": [
-    "Loyalty to the employer",
+    "Loyalty to the employer and its clients",
     "Personal career advancement",
     "Concern for the public interest",
     "Maximizing shareholder value"
@@ -3869,7 +3869,7 @@
    "q": "A manager tells a developer that he will be reassigned to a dead-end project if he keeps raising ethical concerns about the product. Which clause of the Code is the manager violating?",
    "choices": [
     "3.11: Ensure adequate documentation is produced",
-    "8.01: Stay current with developments in the field",
+    "8.01: Stay current with developments in the field of software engineering",
     "5.12: Don't punish anyone for raising ethical concerns",
     "2.02: Don't use software obtained illegally"
    ],
@@ -3969,7 +3969,7 @@
     "Organizations should improve communication to prevent it",
     "Harm should be handled by lawsuits after the fact",
     "Whistle-blowing is always a strict moral duty",
-    "Whistle-blowers are disloyal and should be punished"
+    "Whistle-blowers are disloyal employees and should be punished for it"
    ],
    "answer": 0,
    "explain": "On this view whistle-blowing harms both the organization and the whistle-blower, though critics ask whether better communication is realistic. Robert Spitzer argues organizations should return to principle-based decisions. The 'disloyal' framing belongs to the corporate response view."
@@ -4066,7 +4066,7 @@
    "choices": [
     "At a 1969 symposium at MIT",
     "At a 1956 workshop at Dartmouth College",
-    "At a 1948 conference at Bell Labs",
+    "At a 1948 conference at Bell Telephone Laboratories",
     "At a 1973 seminar at Xerox PARC"
    ],
    "answer": 1,
@@ -4148,7 +4148,7 @@
    "level": "understand",
    "q": "What does the evidence Quinn cites show about employee monitoring?",
    "choices": [
-    "It has no measurable effect on workers",
+    "It has no measurable effect on workers' productivity",
     "It is illegal at most U.S. companies",
     "It raises focus but lowers job satisfaction",
     "It raises both focus and job satisfaction"
@@ -4204,7 +4204,7 @@
    "level": "recall",
    "q": "What is the digital divide?",
    "choices": [
-    "The pay gap between CEOs and production workers",
+    "The pay gap between chief executives and production workers",
     "The split between open and closed platforms",
     "The gap between people with and without access to IT",
     "The gap between hardware and software engineers"
@@ -4263,7 +4263,7 @@
     "Whether governments may censor political content",
     "Whether ISPs may charge more for priority routing",
     "Whether software can be patented in the U.S.",
-    "Whether ISPs must keep stored email for 180 days"
+    "Whether ISPs must keep users' stored email for at least 180 days"
    ],
    "answer": 1,
    "explain": "Net neutrality would require all packets to be treated the same. Supporters of tiered service point to services like voice over IP, while opponents such as Google say it would hurt start-ups and innovation."
